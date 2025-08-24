@@ -104,12 +104,39 @@
 <div class="container-fluid px-5">
     <div class="row">
         <div class="col-md-9 col-12" ng-if="cttlok" id="col1">
-            
+
             <div class="row">
+
+                <div class="col-12 col-md-6">
+                    <h2>Protein</h2>
+                    <hr>
+                    <p><label class="badge bg-secondary">Description:</label>
+                        Mitogen-activated protein kinase FUS3</p>
+                    <p><label class="badge bg-secondary">Organism:</label>
+                        Saccharomyces cerevisiae</p>
+                    <p><label class="badge bg-secondary">Chain:</label> A</p>
+                    <p><label class="badge bg-secondary">Length:</label>
+                        339</p>
+                    <p><label class="badge bg-secondary">523.85</label>
+                        668.32</p>
+                    <p><label class="badge bg-secondary">Hydrophobic (% a.a.):</label>
+                        -</p>
+                    <p><label class="badge bg-secondary">Molecular Weight:</label>
+                        -</p>
+                    <p><label class="badge bg-secondary">Aromaticity:</label>
+                        0.1</p>
+                    <p><label class="badge bg-secondary">Instability:</label>
+                        -</p>
+                    <p><label class="badge bg-secondary">Isoelectric Point:</label>
+                        7.67</p>
+                    <label class="badge bg-secondary">Sequence:</label>
+                    <pre>MPKRIVYNISSDFQLKSLLGEGAYGVVCSATHKPTGEIVAIKKIEPFDKPL<br>FALRTLREIKILKHFKHENIITIFNIQRPDSFENFNEVYIIQELMQTDLHRV<br>ISTQMLSDDHIQYFIYQTLRAVKVLHGSNVIHRDLKPSNLLINSNCDLKVCD<br>FGLARIIDVEFVATRWYRAPEVMLTSAKYSRAMDVWSCGCILAELFLRRPIF<br>PGRDYRHQLLLIFGIIGTPHSDNDLRCIESPRAREYIKSLPMYPAAPLEKMF<br>PRVNPKGIDLLQRMLVFDPAKRITAKEALEHPYLQTYHDPNDEPEGEPIPPS<br>FFEFDHYKEALTTKDLKKLIWNEIFSXX</pre>
+                </div>
+
                 <div class="col-12 col-md-6">
 
-                    <h2>Peptide</h2><hr>
-
+                    <h2>Peptide</h2>
+                    <hr>
                     <p><label class="badge bg-secondary">Description:</label>
                         Cyclin-dependent kinase inhibitor FAR1</p>
                     <p><label class="badge bg-secondary">Organism:</label>
@@ -133,33 +160,6 @@
                     <label class="badge bg-secondary">Sequence:</label>
                     <pre>KRGNIPKPLNL</pre>
 
-                </div>
-                <div class="col-12 col-md-6">
-                    <h2>Protein</h2>
-                
-                <hr>
-
-                <p><label class="badge bg-secondary">Description:</label>
-                    Mitogen-activated protein kinase FUS3</p>
-                <p><label class="badge bg-secondary">Organism:</label>
-                    Saccharomyces cerevisiae</p>
-                <p><label class="badge bg-secondary">Chain:</label> A</p>
-                <p><label class="badge bg-secondary">Length:</label>
-                    339</p>
-                <p><label class="badge bg-secondary">523.85</label>
-                    668.32</p>
-                <p><label class="badge bg-secondary">Hydrophobic (% a.a.):</label>
-                    -</p>
-                <p><label class="badge bg-secondary">Molecular Weight:</label>
-                    -</p>
-                <p><label class="badge bg-secondary">Aromaticity:</label>
-                    0.1</p>
-                <p><label class="badge bg-secondary">Instability:</label>
-                    -</p>
-                <p><label class="badge bg-secondary">Isoelectric Point:</label>
-                    7.67</p>
-                <label class="badge bg-secondary">Sequence:</label>
-                <pre>MPKRIVYNISSDFQLKSLLGEGAYGVVCSATHKPTGEIVAIKKIEPFDKPL<br>FALRTLREIKILKHFKHENIITIFNIQRPDSFENFNEVYIIQELMQTDLHRV<br>ISTQMLSDDHIQYFIYQTLRAVKVLHGSNVIHRDLKPSNLLINSNCDLKVCD<br>FGLARIIDVEFVATRWYRAPEVMLTSAKYSRAMDVWSCGCILAELFLRRPIF<br>PGRDYRHQLLLIFGIIGTPHSDNDLRCIESPRAREYIKSLPMYPAAPLEKMF<br>PRVNPKGIDLLQRMLVFDPAKRITAKEALEHPYLQTYHDPNDEPEGEPIPPS<br>FFEFDHYKEALTTKDLKKLIWNEIFSXX</pre>
                 </div>
             </div>
             <div class="row">
@@ -243,9 +243,9 @@
                 }
             </style>
             <div data-spy="affix" id="affix" data-offset-top="240" data-offset-bottom="250">
-                <p class="text-end my-0 text-muted small" style=""><i class="bi bi-arrows-fullscreen" ></i></p>
+                <p class="text-end my-0 text-muted small" style=""><i class="bi bi-arrows-fullscreen"></i></p>
                 <div id="pdb" style="min-height: 400px; height: 50vh; min-width:280px; width: 100%">
-                    
+
                 </div>
                 <p style="color:#ccc; text-align: right" class="small">
                     <a href="<?= base_url("/export/pdb-to-pymol/$id") ?>" class="me-2">Export to PyMOL</a> | <button class="btn btn-link btn-sm pt-0" onclick="reset()">Clear</button>
@@ -551,24 +551,29 @@
             const chains = [...new Set(atomsx.map(atom => atom.chain))]; // lista única de cadeias
 
             // Define cartoon e superfície para cada cadeia
-    chains.forEach((chain, i) => {
-        const color = colors[i % colors.length];
+            chains.forEach((chain, i) => {
+                const color = colors[i % colors.length];
 
-        // Estilo cartoon com cor
-        glviewer.setStyle(
-            { chain: chain },
-            {
-                line: { colorscheme: 'greyCarbon' },
-                cartoon: { color: color }
-            }
-        );
+                // Estilo cartoon com cor
+                glviewer.setStyle({
+                    chain: chain
+                }, {
+                    line: {
+                        colorscheme: 'greyCarbon'
+                    },
+                    cartoon: {
+                        color: color
+                    }
+                });
 
-        // Adiciona superfície com a mesma cor do cartoon
-        glviewer.addSurface($3Dmol.SurfaceType.VDW, {
-            opacity: 0.8,
-            color: color
-        }, { chain: chain });
-    });
+                // Adiciona superfície com a mesma cor do cartoon
+                glviewer.addSurface($3Dmol.SurfaceType.VDW, {
+                    opacity: 0.8,
+                    color: color
+                }, {
+                    chain: chain
+                });
+            });
 
             /* Name of the atoms */
             atoms = m.selectedAtoms({});
