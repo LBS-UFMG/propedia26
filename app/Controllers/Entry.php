@@ -127,12 +127,7 @@ class Entry extends BaseController
         // Abra o arquivo para leitura
         if (($handle = fopen($arquivo, "r")) !== false) {
             while (($linha = fgetcsv($handle, 0, ";")) !== false) {
-                // Verifica se a primeira coluna é igual ao ID
-                if ($linha[0] === $id) {
-                    // Exibe a linha encontrada
-                    $data['info'] = $linha;
-                    break; // Sai do loop após encontrar
-                }
+                $data['info'] = $linha;
             }
             fclose($handle);
         } 
