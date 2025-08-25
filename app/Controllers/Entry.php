@@ -111,14 +111,10 @@ class Entry extends BaseController
         if (!file_exists($arquivo)) {
             $modo = 'examples'; // se o arquivo nao existir, carrega a base de exemplo
             $arquivo = "data/$modo/csv/$sdb/".$id[0]."/".str_replace(":", "_", $id).".csv";
-                        print($arquivo);exit();
-
         }
         if (!file_exists($arquivo)) {
-            print('oi2');exit();
             return view('404');
         }
-        print('oi3');exit();
 
         $data['db'] = "$modo/$sdb";
         $data['id'] = $id;
