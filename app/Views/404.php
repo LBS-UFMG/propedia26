@@ -11,7 +11,7 @@
     <div class="col">
     <h1 style="font-size:100px;">Error 404</h1>
     <p>Entry not found in Propedia.</p>
-    <p><strong>A Propedia-ID has at least eight characters, <em>e.g.</em>, <a href="<?=base_url('/pep-pro/1a1m-B-A')?>">1a1m-B-A</a></p>
+    <p><strong>A Propedia-ID has at least eight characters, <em>e.g.</em>, <a href="<?=base_url('/pep-pro/1a1m-B-A')?>">1A1M-B-A</a></p>
 
     </div>
 </div>

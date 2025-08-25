@@ -109,68 +109,70 @@
 
             <div class="row">
                 <!-- # 0 ID; 1 PDB_ID; 2 TITLE; 3 RESOLUTION; 4 CLASSIFICATION; 5 DEPOSITION_DATE; 6 STRUCTURE_METHOD;7 PROTEIN_CHAIN;8 PEPTIDE_CHAIN; 9 PROTEIN_SIZE; 10 PEPTIDE_SIZE; 11 PROTEIN_DESC; 12 PEPTIDE_DESC; 13 PROTEIN_SEQ; 14 PEPTIDE_SEQ;15 leader_id; 16 is_leader; 17 db -->
+                <div class="table-responsive">
 
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th><h2>Protein</h2></th>
-                            <th><h2>Peptide</h2></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>Description</th>
-                            <td><?=$info[11]?></td>
-                            <td><?=$info[12]?></td>
-                        </tr>
-                        <tr>
-                            <th>Organism</th>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>Chain</th>
-                            <td><?=$info[7]?></td>
-                            <td><?=$info[8]?></td>
-                        </tr>
-                        <tr>
-                            <th>Length</th>
-                            <td><?=$info[9]?></td>
-                            <td><?=$info[10]?></td>
-                        </tr>
-                        <tr>
-                            <th>Hydrophobic (% a.a.)</th>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>Molecular Weight</th>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>Aromaticity</th>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>Instability</th>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>Isoelectric Point</th>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>Sequence</th>
-                            <td><pre><?=$info[13]?></pre></td>
-                            <td><pre><?=$info[14]?></pre></td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 20%;"></th>
+                                <th style="width: 40%;"><h2>Protein</h2></th>
+                                <th style="width: 40%;"><h2>Peptide</h2></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Description</th>
+                                <td><?=$info[11]?></td>
+                                <td><?=$info[12]?></td>
+                            </tr>
+                            <tr>
+                                <th>Organism</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>Chain</th>
+                                <td><?=$info[7]?></td>
+                                <td><?=$info[8]?></td>
+                            </tr>
+                            <tr>
+                                <th>Length</th>
+                                <td><?=$info[9]?></td>
+                                <td><?=$info[10]?></td>
+                            </tr>
+                            <tr>
+                                <th>Hydrophobic (% a.a.)</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>Molecular Weight</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>Aromaticity</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>Instability</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>Isoelectric Point</th>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>Sequence</th>
+                                <td><pre><?=$info[13]?></pre></td>
+                                <td><pre><?=$info[14]?></pre></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="row mt-5">
                 <div class="col-12">

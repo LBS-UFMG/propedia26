@@ -27,7 +27,7 @@
                 <table id="table_explore" class="table table-striped table-hover" style="width:100%; ">
                     <thead>
                         <tr class="tableheader">
-                            <th class="dt-center">ID <sup><a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="PDB - ID">?</a></sup></th>
+                            <th class="dt-center">ID <sup><a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Propedia ID: PDB - Peptide chain - Protein chain">?</a></sup></th>
                             
                             <th>PDB_ID</th><th>TITLE</th><th>RESOLUTION</th><th>CLASSIFICATION</th><th>DEPOSITION DATE</th><th>STRUCTURE METHOD</th><th>PROTEIN CHAIN</th><th>PEPTIDE CHAIN</th><th>PROTEIN SIZE</th><th>PEPTIDE SIZE</th><th>PROTEIN DESC</th><th>PEPTIDE DESC</th><th>Leader ID</th><th>Is cluster leader?</th><th>Database</th>
                         </tr>
@@ -74,7 +74,7 @@
                 if(linha!=""){
                     celulas = linha.split("\t")
                 }
-                celulas[0] = `<strong><a href="<?=base_url()?>/entry/${celulas[0]}">${celulas[0]}</a></strong>`;
+                celulas[0] = `<strong><a href="<?=base_url()?>${celulas[15]}/${celulas[0]}">${celulas[0]}</a></strong>`;
                 // salva células
                 dados_tabelados.push(celulas)
             }
