@@ -118,7 +118,8 @@ class Entry extends BaseController
             dd('fail:'.$arquivo);
             return view('404');
         }
-
+        dd('fail:'.$arquivo);
+        
         $data['db'] = "$modo/$sdb";
         $data['id'] = $id;
         $data['sdb'] = $sdb;
