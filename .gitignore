@@ -1,3 +1,7 @@
+/public/data/db/*
+!/public/data/db/index.html
+
+# codeigniter
 */config/development
 */logs/log-*.php
 !*/logs/index.html
@@ -11,9 +15,56 @@ user_guide_src/cilexer/build/*
 user_guide_src/cilexer/dist/*
 user_guide_src/cilexer/pycilexer.egg-info/*
 
-#codeigniter 3
-application/logs/*
-!application/logs/index.html
-!application/logs/.htaccess
 /vendor/
+
+# Diretório de cache
+/writable/cache/*
+!/writable/cache/index.html
+
+/writable/debugbar/*
+!/writable/debugbar/index.html
+
+# Diretório de logs
+/writable/logs/*
+!/writable/logs/index.html
+
+# Diretório de sessões
+/writable/session/*
+!/writable/session/index.html
+
+# Diretório de uploads
+/writable/uploads/*
+!/writable/uploads/index.html
+
+# Diretório de testes gerados
+/build/
+
+# Arquivos de ambiente
+.env
+.env.*
+
+# Cache do Node e dependências
+/node_modules/
+
+# Arquivos de sistema do editor/IDE
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Arquivos de sistema OS
 .DS_Store
+Thumbs.db
+
+# Arquivos de logs genéricos
+*.log
+
+# Diretórios de relatórios
+/phpunit.xml
+/phpunit.xml.dist
+/coverage/
+
+# Cache e outros arquivos temporários
+*.cache
+*.bak
+*.swp
