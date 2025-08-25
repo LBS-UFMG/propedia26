@@ -11,10 +11,10 @@ class Home extends BaseController
 
         $url = "./data/pdb/total_contacts2.txt";
 
-        $data['h1'] = "135,921";
+        $data['h1'] = "134,221";
         $data['h2'] = "48,050";
         $data['h3'] = "8,230";
-        $data['h4'] = "18,030";
+        $data['h4'] = "16,439";
 
         $data['update'] = 'Ago 17, 2025';
 
