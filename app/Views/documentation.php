@@ -27,15 +27,15 @@
         <th scope="row">Unique entries</th>
         <td>48,050</td>
         <td>8,230</td>
-        <td>18,030</td>
-        <td>74,310</td>
+        <td>16,439</td>
+        <td>72,719</td>
       </tr>
       <tr>
         <th scope="row">Duplicated entries</th>
         <td>29,522</td>
         <td>27,171</td>
-        <td>4,918</td>
-        <td>61,611</td>
+        <td>4,809</td>
+        <td>61,502</td>
       </tr>
     </tbody>
     <tfoot class="table-light">
@@ -43,8 +43,8 @@
         <th scope="row">Total</th>
         <td>77,572</td>
         <td>35,401</td>
-        <td>22,948</td>
-        <td><strong>135,921</strong></td>
+        <td>21,248</td>
+        <td><strong>134,221</strong></td>
       </tr>
     </tfoot>
   </table>
