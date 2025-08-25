@@ -74,6 +74,7 @@
                 if(linha!=""){
                     celulas = linha.split("\t")
                 }
+                celulas[0] = celulas[0].replace(":","_")
                 celulas[0] = `<strong><a href="<?=base_url()?>${celulas[15]}/${celulas[0]}">${celulas[0]}</a></strong>`;
                 // salva células
                 dados_tabelados.push(celulas)
