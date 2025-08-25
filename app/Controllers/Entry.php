@@ -100,13 +100,13 @@ class Entry extends BaseController
 
     // ********************************************* PEP-MULTIPRO *********************************************
     public function pep_multipro($id = null){
-
+        dd('fail<br>');
         $data = [];
         $sdb = 'pep-multipro';
 
         $modo = 'db'; // db
         $arquivo = "data/$modo/csv/$sdb/".$id[0]."/".str_replace(":", "_", $id).".csv";
-        dd('fail<br>');
+        
 
         // Verifique se o arquivo existe
         if (!file_exists($arquivo)) {
