@@ -16,7 +16,7 @@
 
     <div class="pb-3 text-center">
     <label class="badge bg-light text-dark border">Propedia 26 is composed of three subdatasets:</label>
-    <label class="badge bg-primary" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Traditional Propedia entry. Composed of a pair of protein-peptide structures">pep-pro</label>
+    <label class="badge bg-primary" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Traditional Propedia entry. Composed of a pair of protein-peptide structures" id="pep-pro">pep-pro</label>
     <label class="badge bg-success" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="NEW! Entry composed of a peptide-peptide complex. Peptides must be between 2 and 50 amino acids long.">pep-pep</label>
     <label class="badge bg-danger" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="NEW! Complex formed by a peptide interacting with multiple protein chains.">pep-multipro</label>
     </div>
@@ -29,7 +29,7 @@
                         <tr class="tableheader">
                             <th class="dt-center">ID <sup><a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Propedia ID: PDB - Peptide chain - Protein chain">?</a></sup></th>
                             
-                            <th>PDB_ID</th><th>TITLE</th><th>RESOLUTION</th><th>CLASSIFICATION</th><th>DEPOSITION DATE</th><th>STRUCTURE METHOD</th><th>PROTEIN CHAIN</th><th>PEPTIDE CHAIN</th><th>PROTEIN SIZE</th><th>PEPTIDE SIZE</th><th>PROTEIN DESC</th><th>PEPTIDE DESC</th><th>Leader ID</th><th>Is cluster leader?</th><th>Database</th>
+                            <th>PDB ID</th><th>TITLE</th><th>RESOLUTION</th><th>CLASSIFICATION</th><th>DEPOSITION DATE</th><th>STRUCTURE METHOD</th><th>PROTEIN CHAIN</th><th>PEPTIDE CHAIN</th><th>PROTEIN SIZE</th><th>PEPTIDE SIZE</th><th>PROTEIN DESC</th><th>PEPTIDE DESC</th><th>Leader ID</th><th>Is cluster leader?</th><th>Database</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,6 +50,16 @@
 
 <script>
     $(() => {
+
+        var table = $('#table_explore').DataTable({
+            "paging": true
+        });
+
+        $('#pep-pro').click(function() {
+            table.columns(15).search("pep-pro", true, false).draw();
+        });
+
+
         const lerDados = (arquivo) => {
             // ler arquivo usando jQuery
             $.ajax({
