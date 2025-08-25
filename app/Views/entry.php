@@ -538,7 +538,7 @@
 
     $(document).ready(function() {
 
-        const txt = "<?php echo base_url('/data/' . $db . '/' . $id[0] . '/' . $id . '/' . $id . '.pdb'); ?>";
+        const txt = "<?php echo base_url('/data/' . $db . '/' . $id[0] . '/' . $id . '.pdb'); ?>";
 
         $.get(txt, function(d) {
 
