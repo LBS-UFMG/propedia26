@@ -15,7 +15,7 @@
 <div style="background-color:#e4e4e4; min-height:180px; margin: -25px -10px 20px -10px;">
     <div class="container-fluid px-5">
         <div class="row">
-            <div class="col-md-9 col-12 pt-2">
+            <div class="col-12 pt-2">
                 <h1 class="title_h2 pt-4">
                     <strong><?php echo $id; ?></strong>
                     <div class="dropdown d-inline ms-2" title="Export files">
@@ -52,50 +52,52 @@
                         <span class="badge bg-dark">PubMed</span>
                     </a>
 
-                    <a title="Classified in the sequence cluster number 967" style="text-decoration:none" href="http://bioinfo.dcc.ufmg.br/propedia2/cluster/sequence/967"><span class="badge bg-dark">Cluster S967</span></a>
+                    <!-- <a title="Classified in the sequence cluster number 967" style="text-decoration:none" href="http://bioinfo.dcc.ufmg.br/propedia2/cluster/sequence/967"><span class="badge bg-dark">Cluster S967</span></a>
                     <a title="Classified in the binding cluster number 35" style="text-decoration:none" href="http://bioinfo.dcc.ufmg.br/propedia2/cluster/binding/35"><span class="badge bg-dark">Cluster C35</span></a>
-                    <a title="Classified in the interface cluster number 243" style="text-decoration:none" href="http://bioinfo.dcc.ufmg.br/propedia2/cluster/interface/243"><span class="badge bg-dark">Cluster I243</span></a>
+                    <a title="Classified in the interface cluster number 243" style="text-decoration:none" href="http://bioinfo.dcc.ufmg.br/propedia2/cluster/interface/243"><span class="badge bg-dark">Cluster I243</span></a> -->
                 </div>
 
-                <div class="row mb-2">
+                <div class="row mb-1">
                     <div class="col">
-                        <strong>PDB ID: </strong><span>1WRZ</span>
+                        <strong>PDB ID: </strong><span><?=$info[1]?></span>
                     </div>
                     <div class="col">
-                        <strong>Peptide chain: </strong><span>B</span>
+                        <strong>Structure method: </strong><span><?=$info[6]?></span>
                     </div>
                     <div class="col">
-                        <strong>Peptide length: </strong><span>10</span>
+                        <strong>Resolution: </strong><span><?=$info[3]?></span>
                     </div>
                     <div class="col">
-                        <strong>Protein chain: </strong><span>A</span>
+                        <strong>Cluster leader: </strong><span><?=$info[15]?></span>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col">
+                        <strong>Peptide chain: </strong><span><?=$info[8]?></span>
                     </div>
                     <div class="col">
-                        <strong>Protein length: </strong><span>120</span>
+                        <strong>Peptide length: </strong><span><?=$info[10]?></span>
                     </div>
                     <div class="col">
+                        <strong>Protein chain: </strong><span><?=$info[7]?></span>
+                    </div>
+                    <div class="col">
+                        <strong>Protein length: </strong><span><?=$info[9]?></span>
+                    </div>
+                    <!-- <div class="col">
                         <sup class="ms-2"><label class="badge bg-dark rounded" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="HB: Hydrogen Bonds | AT: Attractive  | RE: Repulsive | HY: Hydrophobic | AS: Aromatic Stacking | SB: Salt Bridge | DS: Disulfide Bond | u: uncertain">?</label></sup>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="row mb-4">
-                    <div class="col">
+                    <div class="col-12 col-md-8">
                         <p><strong>Description: </strong> Calmodulin complexed with a peptide from a human death-associated protein kinase <?= $info[1] ?></p>
                     </div>
+                    <div class="col-12 col-md-4">
+                        <strong>Classification: </strong><span><?=$info[4]?></span>
+                    </div>
                 </div>
-
             </div>
-
-            <!-- <div class="col-md-3 col-xs-12" style="height: 180px; background-color: #00bc9e; color:#fff">
-                <p style="text-align: center; font-size: 90px; padding-top:10px">
-                    <strong id="mutations_found_title"></strong>
-                </p>
-
-                <p style="font-size: 12px; text-align:center; margin-top: -20px">
-                    contacts found
-                    <a href="#" data-toggle="modal" data-target="#help" style="color:#fff"><span class="glyphicon glyphicon-info-sign"></span></a>
-                </p>
-            </div> -->
         </div>
     </div>
 </div>
@@ -106,63 +108,71 @@
         <div class="col-md-9 col-12" ng-if="cttlok" id="col1">
 
             <div class="row">
+                <!-- # 0 ID; 1 PDB_ID; 2 TITLE; 3 RESOLUTION; 4 CLASSIFICATION; 5 DEPOSITION_DATE; 6 STRUCTURE_METHOD;7 PROTEIN_CHAIN;8 PEPTIDE_CHAIN; 9 PROTEIN_SIZE; 10 PEPTIDE_SIZE; 11 PROTEIN_DESC; 12 PEPTIDE_DESC; 13 PROTEIN_SEQ; 14 PEPTIDE_SEQ;15 leader_id; 16 is_leader; 17 db -->
 
-                <div class="col-12 col-md-6">
-                    <h2>Protein</h2>
-                    <hr>
-                    <p><label class="badge bg-secondary">Description:</label>
-                        Mitogen-activated protein kinase FUS3</p>
-                    <p><label class="badge bg-secondary">Organism:</label>
-                        Saccharomyces cerevisiae</p>
-                    <p><label class="badge bg-secondary">Chain:</label> A</p>
-                    <p><label class="badge bg-secondary">Length:</label>
-                        339</p>
-                    <p><label class="badge bg-secondary">523.85</label>
-                        668.32</p>
-                    <p><label class="badge bg-secondary">Hydrophobic (% a.a.):</label>
-                        -</p>
-                    <p><label class="badge bg-secondary">Molecular Weight:</label>
-                        -</p>
-                    <p><label class="badge bg-secondary">Aromaticity:</label>
-                        0.1</p>
-                    <p><label class="badge bg-secondary">Instability:</label>
-                        -</p>
-                    <p><label class="badge bg-secondary">Isoelectric Point:</label>
-                        7.67</p>
-                    <label class="badge bg-secondary">Sequence:</label>
-                    <pre>MPKRIVYNISSDFQLKSLLGEGAYGVVCSATHKPTGEIVAIKKIEPFDKPL<br>FALRTLREIKILKHFKHENIITIFNIQRPDSFENFNEVYIIQELMQTDLHRV<br>ISTQMLSDDHIQYFIYQTLRAVKVLHGSNVIHRDLKPSNLLINSNCDLKVCD<br>FGLARIIDVEFVATRWYRAPEVMLTSAKYSRAMDVWSCGCILAELFLRRPIF<br>PGRDYRHQLLLIFGIIGTPHSDNDLRCIESPRAREYIKSLPMYPAAPLEKMF<br>PRVNPKGIDLLQRMLVFDPAKRITAKEALEHPYLQTYHDPNDEPEGEPIPPS<br>FFEFDHYKEALTTKDLKKLIWNEIFSXX</pre>
-                </div>
-
-                <div class="col-12 col-md-6">
-
-                    <h2>Peptide</h2>
-                    <hr>
-                    <p><label class="badge bg-secondary">Description:</label>
-                        Cyclin-dependent kinase inhibitor FAR1</p>
-                    <p><label class="badge bg-secondary">Organism:</label>
-                        -</p>
-                    <p><label class="badge bg-secondary">Chain:</label>
-                        C</p>
-                    <p><label class="badge bg-secondary">Length:</label>
-                        11</p>
-                    <p><label class="badge bg-secondary">Binding Area (Å2):</label>
-                        668.32</p>
-                    <p><label class="badge bg-secondary">Hydrophobic (% a.a.):</label>
-                        54%</p>
-                    <p><label class="badge bg-secondary">Molecular Weight:</label>
-                        1249.51</p>
-                    <p><label class="badge bg-secondary">Aromaticity:</label>
-                        0.00</p>
-                    <p><label class="badge bg-secondary">Instability:</label>
-                        53.76</p>
-                    <p><label class="badge bg-secondary">Isoelectric Point:</label>
-                        11.17</p>
-                    <label class="badge bg-secondary">Sequence:</label>
-                    <pre>KRGNIPKPLNL</pre>
-
-                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><h2>Protein</h2></th>
+                            <th><h2>Peptide</h2></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Description</th>
+                            <td><?=$info[11]?></td>
+                            <td><?=$info[12]?></td>
+                        </tr>
+                        <tr>
+                            <th>Organism</th>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Chain</th>
+                            <td><?=$info[7]?></td>
+                            <td><?=$info[8]?></td>
+                        </tr>
+                        <tr>
+                            <th>Length</th>
+                            <td><?=$info[9]?></td>
+                            <td><?=$info[10]?></td>
+                        </tr>
+                        <tr>
+                            <th>Hydrophobic (% a.a.)</th>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Molecular Weight</th>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Aromaticity</th>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Instability</th>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Isoelectric Point</th>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Sequence</th>
+                            <td><pre><?=$info[13]?></pre></td>
+                            <td><pre><?=$info[14]?></pre></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-12">
                     <h2>Clustering classification</h2>
                 </div>

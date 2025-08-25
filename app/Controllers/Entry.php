@@ -10,18 +10,39 @@ class Entry extends BaseController
 
     // ********************************************* PEP-PRO *********************************************
     public function pep_pro($id = null){
+
         $data = [];
-        $data['db'] = 'examples/pep-pro';
+        $modo = 'db'; // db
+        $arquivo = "data/$modo/csv/pep-pro/".$id[0]."/".str_replace(":", "_", $id).".csv";
+
+        // Verifique se o arquivo existe
+        if (!file_exists($arquivo)) {
+            $modo = 'examples'; // se o arquivo nao existir, carrega a base de exemplo
+            $arquivo = "data/$modo/csv/pep-pro/".$id[0]."/".str_replace(":", "_", $id).".csv";
+        }
+
+        $data['db'] = "$modo/pep-pro";
         $data['id'] = $id;
 
         $data['pdb_id'] = explode("-",$id)[0];
         $data['peptide_chain'] = explode("-",$id)[1];
         $data['protein_chain'] = explode("-",$id)[2];
-
-
-
         
-        $data['info'] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o'];
+        // Abra o arquivo para leitura
+        if (($handle = fopen($arquivo, "r")) !== false) {
+            while (($linha = fgetcsv($handle, 0, ";")) !== false) {
+                // Verifica se a primeira coluna é igual ao ID
+                if ($linha[0] === $id) {
+                    // Exibe a linha encontrada
+                    $data['info'] = $linha;
+                    break; // Sai do loop após encontrar
+                }
+            }
+            fclose($handle);
+        } 
+        $data['info'][13] = $this->br($data['info'][13]);
+        $data['info'][14] = $this->br($data['info'][14]);
+        # 0 ID; 1 PDB_ID; 2 TITLE; 3 RESOLUTION; 4 CLASSIFICATION; 5 DEPOSITION_DATE; 6 STRUCTURE_METHOD;7 PROTEIN_CHAIN;8 PEPTIDE_CHAIN; 9 PROTEIN_SIZE; 10 PEPTIDE_SIZE; 11 PROTEIN_DESC; 12 PEPTIDE_DESC; 13 PROTEIN_SEQ; 14 PEPTIDE_SEQ;15 leader_id; 16 is_leader; 17 db
 
         return view('entry', $data);
     }
@@ -36,4 +57,8 @@ class Entry extends BaseController
         return view('entry');
     }
     
+    private function br($texto, $tamanho = 40) {
+        return wordwrap($texto, $tamanho, "<br>", true);
+    }
+
 }

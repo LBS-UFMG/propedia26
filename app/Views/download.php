@@ -21,47 +21,18 @@
          <tbody>
             <tr style="font-weight: bold">
                <td>Propedia 26 - full database (recommended)</td>
-               <td class="text-end">135,921</td>
+               <td class="text-end">134,221</td>
                <td>Zip file</td>
-               <td></td>
-               <td><a target="_blank" href=""></a></td>
+               <td>6.1GB</td>
+               <td><a target="_blank" href="<?=base_url('/data/db/propedia26_v3.zip')?>">propedia26_v3.zip</a></td>
             </tr> 
             <tr>
                <td>Propedia descriptions</td>
-               <td class="text-end">135,921</td>
+               <td class="text-end">134,221</td>
                <td>CSV</td>
-               <td></td>
-               <td><a target="_blank" href=""></a></td>
+               <td>68MB</td>
+               <td><a target="_blank" href="<?=base_url('/data/propedia_26.csv')?>">propedia_26.csv</a></td>
             </tr>  
-            <tr>
-               <td>pep-pro</td>
-               <td class="text-end">77,572</td>
-               <td>PDB file (zip)</td>
-               <td></td>
-               <td><a target="_blank" href=""></a></td>
-            </tr>     
-            <tr>
-               <td>pep-pep</td>
-               <td class="text-end">35,401</td>
-               <td>PDB file (zip)</td>
-               <td></td>
-               <td><a target="_blank" href=""></a></td>
-            </tr>  
-            <tr>
-               <td>pep-multipro</td>
-               <td class="text-end">22,948</td>
-               <td>PDB file (zip)</td>
-               <td></td>
-               <td><a target="_blank" href=""></a></td>
-            </tr>  
-            <tr>
-               <td>Propedia NR (non-redundant)</td>
-               <td class="text-end"></td>
-               <td>PDB file (zip)</td>
-               <td></td>
-               <td><a target="_blank" href=""></a></td>
-            </tr>  
-            
          </tbody>
     </table>
     
