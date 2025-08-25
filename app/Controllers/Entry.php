@@ -71,13 +71,14 @@ class Entry extends BaseController
         }
 
         $data['db'] = "$modo/$sdb";
-        $data['id'] = $id;
+        //$data['id'] = $id;
         $data['sdb'] = $sdb;
 
         $data['pdb_id'] = explode("-",$id)[0];
         $data['peptide_chain'] = explode("-",$id)[1];
         $data['protein_chain'] = explode("-",$id)[2];
-        
+        $data['id'] = $data['pdb_id'].'-'.$data['protein_chain'].'-'.$data['peptide_chain'];
+
         // Abra o arquivo para leitura
         if (($handle = fopen($arquivo, "r")) !== false) {
             while (($linha = fgetcsv($handle, 0, ";")) !== false) {
