@@ -15,10 +15,10 @@
     <h1 class="text-dark">Explore</h1>
 
     <div class="pb-3 text-center">
-    <label class="badge bg-light text-dark border">Propedia 26 is composed of three subdatasets:</label>
-    <label class="badge bg-primary" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Traditional Propedia entry. Composed of a pair of protein-peptide structures" id="pep-pro">pep-pro</label>
-    <label class="badge bg-success" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="NEW! Entry composed of a peptide-peptide complex. Peptides must be between 2 and 50 amino acids long.">pep-pep</label>
-    <label class="badge bg-danger" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="NEW! Complex formed by a peptide interacting with multiple protein chains.">pep-multipro</label>
+    <label class="btn bg-light text-dark border">Propedia 26 is composed of three subdatasets:</label>
+    <a class="btn btn-lg btn-outline-primary" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Traditional Propedia entry. Composed of a pair of protein-peptide structures" id="pep-pro">pep-pro</a>
+    <a class="btn btn-lg btn-outline-success" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="NEW! Entry composed of a peptide-peptide complex. Peptides must be between 2 and 50 amino acids long." id="pep-pep">pep-pep</a>
+    <a class="btn btn-lg btn-outline-danger" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="NEW! Complex formed by a peptide interacting with multiple protein chains." id="pep-multipro">pep-multipro</a>
     </div>
 
     <div id="explore">
@@ -33,7 +33,7 @@
                             <th>CLASSIFICATION</th><!--<th>DEPOSITION DATE</th><th>STRUCTURE METHOD</th>-->
                             <th>PRO CHAIN</th><th>PEP CHAIN</th><th>PRO SIZE</th> <!-- 9 -->
                             <th>PEP SIZE</th><th>PRO DESC</th><th>PEP DESC</th>
-                            <th>Leader ID</th><th>Is cluster leader?</th><th>Database</th> <!-- 15 -->
+                            <th>Leader ID</th><th>Is the cluster leader?</th><th>Database</th> <!-- 15 -->
                         </tr>
                     </thead>
                     <tbody>
@@ -83,7 +83,9 @@
                 celulas[0] = celulas[0].replace(":","_")
                 celulas[0] = `<strong><a href="<?=base_url()?>${celulas[15]}/${celulas[0]}">${celulas[0]}</a></strong>`;
 
-                if(celulas[15] == 'pep-pro'){celulas[15] == '<label class="bg-primary badge">pep-pro</label>'}
+                if(celulas[15] == 'pep-pro'){ celulas[15] = '<label class="bg-primary badge">pep-pro</label>'; }
+                else if(celulas[15] == 'pep-pep'){ celulas[15] = '<label class="bg-success badge">pep-pep</label>'; }
+                else if(celulas[15] == 'pep-multipro'){ celulas[15] = '<label class="bg-danger badge">pep-multipro</label>'; }
                 // remove algumas colunas
                 [3, 5, 6].sort((a,b) => b - a).forEach(i => celulas.splice(i, 1));
                 // salva células
@@ -105,13 +107,13 @@
             })
 
             $('#pep-pro').click(function() {
-                table.columns(15).search("pep-pro", true, false).draw();
+                table.columns(12).search("pep-pro", true, false).draw();
             });
             $('#pep-pep').click(function() {
-                table.columns(15).search("pep-pep", true, false).draw();
+                table.columns(12).search("pep-pep", true, false).draw();
             });
             $('#pep-multipro').click(function() {
-                table.columns(15).search("pep-multipro", true, false).draw();
+                table.columns(12).search("pep-multipro", true, false).draw();
             });
         }
         lerDados("<?= base_url($entrada) ?>");
