@@ -27,9 +27,13 @@
                 <table id="table_explore" class="table table-striped table-hover" style="width:100%; ">
                     <thead>
                         <tr class="tableheader">
-                            <th class="dt-center">ID <sup><a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Propedia ID: PDB - Peptide chain - Protein chain">?</a></sup></th>
-                            
-                            <th>PDB ID</th><th>TITLE</th><th>RESOLUTION</th><th>CLASSIFICATION</th><th>DEPOSITION DATE</th><th>STRUCTURE METHOD</th><th>PROTEIN CHAIN</th><th>PEPTIDE CHAIN</th><th>PROTEIN SIZE</th><th>PEPTIDE SIZE</th><th>PROTEIN DESC</th><th>PEPTIDE DESC</th><th>Leader ID</th><th>Is cluster leader?</th><th>Database</th>
+                            <th class="dt-center">ID <sup><a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Propedia ID: PDB - Peptide chain - Protein chain">?</a></sup></th><!-- 0 -->
+
+                            <th>PDB ID</th><th>TITLE</th><!--<th>RESOLUTION</th>--><!-- 3 -->
+                            <th>CLASSIFICATION</th><!--<th>DEPOSITION DATE</th><th>STRUCTURE METHOD</th>-->
+                            <th>PROTEIN CHAIN</th><th>PEPTIDE CHAIN</th><th>PROTEIN SIZE</th> <!-- 9 -->
+                            <th>PEPTIDE SIZE</th><th>PROTEIN DESC</th><th>PEPTIDE DESC</th>
+                            <th>Leader ID</th><th>Is cluster leader?</th><th>Database</th> <!-- 15 -->
                         </tr>
                     </thead>
                     <tbody>
@@ -75,8 +79,11 @@
                 if(linha!=""){
                     celulas = linha.split("\t")
                 }
+
                 celulas[0] = celulas[0].replace(":","_")
                 celulas[0] = `<strong><a href="<?=base_url()?>${celulas[15]}/${celulas[0]}">${celulas[0]}</a></strong>`;
+                // remove algumas colunas
+                [3, 5, 6].sort((a,b) => b - a).forEach(i => celulas.splice(i, 1));
                 // salva células
                 dados_tabelados.push(celulas)
             }
@@ -97,6 +104,12 @@
 
             $('#pep-pro').click(function() {
                 table.columns(15).search("pep-pro", true, false).draw();
+            });
+            $('#pep-pep').click(function() {
+                table.columns(15).search("pep-pep", true, false).draw();
+            });
+            $('#pep-multipro').click(function() {
+                table.columns(15).search("pep-multipro", true, false).draw();
             });
         }
         lerDados("<?= base_url($entrada) ?>");
