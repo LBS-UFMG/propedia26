@@ -15,7 +15,7 @@
     <h1 class="text-dark">Explore</h1>
 
     <div class="pb-1 text-center">
-        <label class="btn btn-lg bg-light text-dark border">Propedia 26 is composed of three subdatasets:</label>
+        <label class="btn btn-sm bg-light text-dark border">Propedia 26 is composed of three subdatasets:</label>
         <a class="btn btn-lg btn-outline-primary" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Traditional Propedia entry. Composed of a pair of protein-peptide structures" id="pep-pro">pep-pro</a>
         <a class="btn btn-lg btn-outline-success" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="NEW! Entry composed of a peptide-peptide complex. Peptides must be between 2 and 50 amino acids long." id="pep-pep">pep-pep</a>
         <a class="btn btn-lg btn-outline-danger" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="NEW! Complex formed by a peptide interacting with multiple protein chains." id="pep-multipro">pep-multipro</a>
