@@ -112,6 +112,7 @@ class Entry extends BaseController
             $arquivo = "data/$modo/csv/$sdb/".$id[0]."/".str_replace(":", "_", $id).".csv";
         }
         if (!file_exists($arquivo)) {
+            dd('fail<br>', $arquivo);
             return view('404');
         }
 
