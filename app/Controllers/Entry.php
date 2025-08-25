@@ -103,7 +103,7 @@ class Entry extends BaseController
 
         $data = [];
         $sdb = 'pep-multipro';
-
+        print('oi');exit();
         $modo = 'db'; // db
         $arquivo = "data/$modo/csv/$sdb/".$id[0]."/".str_replace(":", "_", $id).".csv";
         
