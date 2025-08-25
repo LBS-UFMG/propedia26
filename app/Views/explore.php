@@ -51,15 +51,6 @@
 <script>
     $(() => {
 
-        var table = $('#table_explore').DataTable({
-            "paging": true
-        });
-
-        $('#pep-pro').click(function() {
-            table.columns(15).search("pep-pro", true, false).draw();
-        });
-
-
         const lerDados = (arquivo) => {
             // ler arquivo usando jQuery
             $.ajax({
@@ -97,12 +88,16 @@
         const plotar = (dados) => {
             // console.log(dados)
             // ativar datatable
-            $("#table_explore").DataTable({
+            const table = $("#table_explore").DataTable({
                 "data": dados,
                 // "order": [
                 //     [0, 'asc']
                 // ] // ordena pela coluna 0
             })
+
+            $('#pep-pro').click(function() {
+                table.columns(15).search("pep-pro", true, false).draw();
+            });
         }
         lerDados("<?= base_url($entrada) ?>");
     })
