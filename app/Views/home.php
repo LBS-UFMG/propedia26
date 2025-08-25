@@ -147,7 +147,7 @@
     <div class="col">
       <label class="badge bg-dark orange">pep-pep</label>
       <label class="badge bg-light text-dark">Peptide-Peptide entry</label>
-      <a href="<?= base_url('/entry/1A1M') ?>" class="badge bg-primary azul">...</a>
+      <a href="<?= base_url('/pep-pep/1A0M-B-A') ?>" class="badge bg-primary azul">1A0M-B-A</a>
     </div>
   </div>
 
@@ -155,7 +155,7 @@
     <div class="col">
       <label class="badge bg-dark orange">pep-multipro</label>
       <label class="badge bg-light text-dark">Multiprotein-Peptide entry</label>
-      <a href="<?= base_url('/entry/4PMI') ?>" class="badge bg-primary azul">...</a>
+      <a href="<?= base_url('/pep-multipro/1A1R-C-A_B') ?>" class="badge bg-primary azul">1A1R-C-A_B</a>
     </div>
   </div>
 </div>
