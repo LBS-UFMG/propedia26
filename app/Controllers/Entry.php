@@ -136,6 +136,7 @@ class Entry extends BaseController
             }
             fclose($handle);
         } 
+        dd($data['info']);
         $data['info'][13] = $this->br($data['info'][13]);
         $data['info'][14] = $this->br($data['info'][14]);
         # 0 ID; 1 PDB_ID; 2 TITLE; 3 RESOLUTION; 4 CLASSIFICATION; 5 DEPOSITION_DATE; 6 STRUCTURE_METHOD;7 PROTEIN_CHAIN;8 PEPTIDE_CHAIN; 9 PROTEIN_SIZE; 10 PEPTIDE_SIZE; 11 PROTEIN_DESC; 12 PEPTIDE_DESC; 13 PROTEIN_SEQ; 14 PEPTIDE_SEQ;15 leader_id; 16 is_leader; 17 db
