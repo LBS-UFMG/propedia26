@@ -40,15 +40,15 @@
                 </h1>
 
                 <div class="mb-3">
-                    <a target="_blank" style="text-decoration:none" title="Search in PDB" href="https://www.rcsb.org/structure/2b9j">
+                    <a target="_blank" style="text-decoration:none" title="Search in PDB" href="https://www.rcsb.org/structure/<?=$pdb_id?>">
                         <span class="badge bg-dark text-light">PDB</span>
                     </a>
 
-                    <a target="_blank" style="text-decoration:none" title="Search in UniProt" href="https://www.uniprot.org/uniprot/?query=2b9j+database:pdb">
+                    <a target="_blank" style="text-decoration:none" title="Search in UniProt" href="https://www.uniprot.org/uniprot/?query=<?=$pdb_id?>+database:pdb">
                         <span class="badge bg-dark">UniProt</span>
                     </a>
 
-                    <a target="_blank" style="text-decoration:none" title="Search in PubMed" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=2b9j">
+                    <a target="_blank" style="text-decoration:none" title="Search in PubMed" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=<?=$pdb_id?>">
                         <span class="badge bg-dark">PubMed</span>
                     </a>
 
