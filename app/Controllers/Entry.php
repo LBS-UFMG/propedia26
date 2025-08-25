@@ -100,6 +100,8 @@ class Entry extends BaseController
 
     // ********************************************* PEP-MULTIPRO *********************************************
     public function pep_multipro($id = null){
+        return view('download');
+        exit();
         dd('fail<br>');
         $data = [];
         $sdb = 'pep-multipro';
