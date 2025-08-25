@@ -103,7 +103,7 @@ class Entry extends BaseController
 
         $data = [];
         $sdb = 'pep-multipro';
-        print('oi');exit();
+        
         $modo = 'db'; // db
         $arquivo = "data/$modo/csv/$sdb/".$id[0]."/".str_replace(":", "_", $id).".csv";
         
@@ -111,14 +111,14 @@ class Entry extends BaseController
         if (!file_exists($arquivo)) {
             $modo = 'examples'; // se o arquivo nao existir, carrega a base de exemplo
             $arquivo = "data/$modo/csv/$sdb/".$id[0]."/".str_replace(":", "_", $id).".csv";
-                        dd('fail:');
+                        print('1');exit();
 
         }
         if (!file_exists($arquivo)) {
-            dd('fail:');
+            print('oi2');exit();
             return view('404');
         }
-        dd('fail');
+        print('oi3');exit();
 
         $data['db'] = "$modo/$sdb";
         $data['id'] = $id;
