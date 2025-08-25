@@ -31,8 +31,8 @@
 
                             <th>PDB ID</th><th>TITLE</th><!--<th>RESOLUTION</th>--><!-- 3 -->
                             <th>CLASSIFICATION</th><!--<th>DEPOSITION DATE</th><th>STRUCTURE METHOD</th>-->
-                            <th>PROTEIN CHAIN</th><th>PEPTIDE CHAIN</th><th>PROTEIN SIZE</th> <!-- 9 -->
-                            <th>PEPTIDE SIZE</th><th>PROTEIN DESC</th><th>PEPTIDE DESC</th>
+                            <th>PRO CHAIN</th><th>PEP CHAIN</th><th>PRO SIZE</th> <!-- 9 -->
+                            <th>PEP SIZE</th><th>PRO DESC</th><th>PEP DESC</th>
                             <th>Leader ID</th><th>Is cluster leader?</th><th>Database</th> <!-- 15 -->
                         </tr>
                     </thead>
@@ -82,6 +82,8 @@
 
                 celulas[0] = celulas[0].replace(":","_")
                 celulas[0] = `<strong><a href="<?=base_url()?>${celulas[15]}/${celulas[0]}">${celulas[0]}</a></strong>`;
+
+                if(celulas[15] == 'pep-pro'){celulas[15] == '<label class="bg-primary badge">pep-pro</label>'}
                 // remove algumas colunas
                 [3, 5, 6].sort((a,b) => b - a).forEach(i => celulas.splice(i, 1));
                 // salva células
