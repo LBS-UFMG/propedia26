@@ -148,7 +148,7 @@
                     if(url.length != 4){
                         window.location.href = '<?= base_url("/entry/404") ?>';
                     }
-                    window.location.href = '<?= base_url() ?>entry/'+url;
+                    window.location.href = '<?= base_url() ?>pep-pro/'+url;
                 }
             }
         }
