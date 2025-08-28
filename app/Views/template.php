@@ -28,7 +28,7 @@
         <ul class="nav me-auto">
             <li class="nav-item"><a href="<?= base_url('/') ?>" class="nav-link link-body-emphasis px-2"><i class="bi bi-house-door-fill"></i></a></li>
             <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#about" class="nav-link link-body-emphasis px-2">About</a></li>
-            <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#about" class="nav-link link-body-emphasis px-2">BLAST</a></li>
+            <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#blast" class="nav-link link-body-emphasis px-2">BLAST</a></li>
             <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#about" class="nav-link link-body-emphasis px-2">Clusters</a></li>
             <li class="nav-item"><a href="<?= base_url('documentation') ?>" class="nav-link link-body-emphasis px-2">Documentation</a></li>
             <li class="nav-item"><a href="<?= base_url('download') ?>" class="nav-link link-body-emphasis px-2">Download</a></li>
@@ -124,6 +124,47 @@
     <!-- /.modal-dialog -->
     </div>
     <!-- /.modal SOBRE -->
+
+<!-- /.modal BLAST -->
+    <div class="modal fade" tabindex="-1" id="blast" role="dialog">
+   <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+         <form id="form_blast_run" action="<?php echo base_url('/blast'); ?>" method="post" enctype="multipart/form-data">
+            <div class="modal-header">
+               <div>
+                  <h3><b>Search for similar sequences</b></h3>
+               </div>
+               <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+            </div>
+            <div class="modal-body">
+               <div class="row">
+                  <div class="col-md-12">
+                     <h5><b>Input sequence</b></h5>
+                     <textarea id="txt_sequence" class="form-control" form="form_blast_run" name="sequence" rows="10" placeholder="Insert the sequence here"></textarea>
+                     <div hidden id="feedback_blast" class="alert alert-danger" role="alert">
+                        Sequence cannot be empty!
+                     </div>
+                     <br>
+                     <h5><b>Search sequence from</b></h5>
+                     <label class="radio-inline me-4">
+                        <input type="radio" name="search" value="peptides" class="me-2" checked>Peptides
+                     </label>
+                     <label class="radio-inline">
+                     <input type="radio" name="search" value="receptors" class="me-2">Proteins
+                     </label>                           
+                  </div>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <input type="submit" class="btn btn-success" value="Run BLAST">
+               <button type="button" class="btn btn-light " data-bs-dismiss="modal">Cancel</button>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
+<!-- /.modal BLAST -->
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
