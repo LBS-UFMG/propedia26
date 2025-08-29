@@ -147,12 +147,14 @@
                      </div>
                      <br>
                      <h5><b>Search sequence from</b></h5>
-                     <label class="radio-inline me-4">
-                        <input type="radio" name="search" value="peptides" class="me-2" checked>Peptides
-                     </label>
-                     <label class="radio-inline">
-                     <input type="radio" name="search" value="receptors" class="me-2">Proteins
-                     </label>                           
+
+                     <input type="radio" class="btn-check" name="search" value="peptides" id="blast_peptides" autocomplete="off" checked>
+<label class="btn btn-lg" for="blast_peptides">Peptides</label>
+
+<input type="radio" class="btn-check" name="search" value="receptors"  id="blast_proteins" autocomplete="off">
+<label class="btn btn-lg" for="blast_proteins">Proteins</label>
+
+                                        
                   </div>
                </div>
             </div>

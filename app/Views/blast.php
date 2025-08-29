@@ -11,7 +11,7 @@
                 <h5><strong>Query sequence</strong></h5>
                 <h5 style="width: 600px; display: inline-block; word-wrap:break-word;"><?php echo $sequence; ?></h5>
             </div>
-            <div class="col-md-6 col-sm-12">
+            <!-- <div class="col-md-6 col-sm-12">
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
                         <a id="btn_download_selected" class="btn btn-info btn-block" href="#" data-toggle="modal" data-target="#modal_download_selected">
@@ -25,7 +25,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         <!--<form action="<?php echo base_url(); ?>blast" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6">
@@ -52,34 +52,25 @@
             <thead>
                 <tr class="table-primary">
                     <th class="col-md-1">Subject</th>
-                    <th class="col-md-1">Clusters</th>
-                    <th class="col-md-1">Protein</th>                    
-                    <th>Peptide</th>
-                    <th>Sequence</th> 
                     <th>Lenght</th>                    
                     <th>Score</th>    
                     <th>Coverage</th>
                     <th class="col-md-2">Identity</th>
-                    <!--<th>Similarity (positives)</th>-->                
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($result as $r){
+                <?php  foreach($result as $r){
                     $nome = explode("|",$r[1]);
-                    
-                    ?>
-
-
+                ?>
                 <tr>
-                    <td><a href="<?php echo base_url().'index.php/complex/view/'.$nome[0]; ?>"><strong><?php echo strtoupper($nome[0]); ?></strong></a></td>
-                    <td><?php if(isset($r[12])) echo $r[12]; ?></td>
+                    <td><a href="<?php echo base_url().'pep-pro/'.$nome[0]; ?>"><strong><?php echo strtoupper($nome[0]); ?></strong></a></td>
 
-                    <td><?php if(isset($nome[1])) echo str_replace('_', ' ', $nome[1]); ?></td>
-                    <td><?php if(isset($nome[2])) echo str_replace('_', ' ', $nome[2]); ?></td>
-                    <td><?php 
+                    <!-- <td><?php //if(isset($r[12])) echo $r[12]; ?></td>
+                    
+                    <td><?php /*
                     if(isset($nome[3])){
                         if(substr($nome[3],-5,5) == '[...]'){
-                            echo '<a href="'.base_url().'index.php/complex/view/'.strtoupper($nome[0]).'" title="See complete sequence">'.$nome[3].'</a>';
+                            echo '<a href="'.base_url().'pep-pro/'.strtoupper($nome[0]).'" title="See complete sequence">'.$nome[3].'</a>';
                         }
                         else{
                             echo $nome[3]; 
@@ -87,9 +78,8 @@
                     }
                     else{
                         echo '-';
-                    }
-                        
-                    ?></td>
+                    }*/
+                    ?></td> -->
                     <td><?php echo $r[4]; ?></td>                    
                     <td><?php echo $r[3]; ?></td>
                     <td>
@@ -106,8 +96,8 @@
                     </td>
                     <td>                 
                         <div class="progress" style="height: 25px; margin-bottom: 5px">
-                          <div class="progress-bar progress-bar-success" style="width: <?php echo $r[2]; ?>%; padding-top:2px"><?php echo (int)$r[2]; ?>%</div>
-                          <div class="progress-bar progress-bar-danger" style="width: <?php echo 100-$r[2]; ?>%"></div>
+                          <div class="progress-bar bg-success" style="width: <?php echo $r[2]; ?>%; padding-top:2px"><?php echo (int)$r[2]; ?>%</div>
+                          <div class="progress-bar bg-danger" style="width: <?php echo 100-$r[2]; ?>%"></div>
                         </div>
                     </td>
                     <!--                       
