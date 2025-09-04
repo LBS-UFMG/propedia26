@@ -1,5 +1,6 @@
 /public/data/db/*
 !/public/data/db/index.html
+/public/data/protparam/*
 
 # codeigniter
 */config/development
@@ -68,3 +69,4 @@ Thumbs.db
 *.cache
 *.bak
 *.swp
+public/data/peptides.tsv
