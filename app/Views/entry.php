@@ -40,15 +40,15 @@
                 </h1>
 
                 <div class="mb-3">
-                    <a target="_blank" style="text-decoration:none" title="Search in PDB" href="https://www.rcsb.org/structure/<?=$pdb_id?>">
+                    <a target="_blank" style="text-decoration:none" title="Search in PDB" href="https://www.rcsb.org/structure/<?= $pdb_id ?>">
                         <span class="badge bg-dark text-light">PDB</span>
                     </a>
 
-                    <a target="_blank" style="text-decoration:none" title="Search in UniProt" href="https://www.uniprot.org/uniprot/?query=<?=$pdb_id?>+database:pdb">
+                    <a target="_blank" style="text-decoration:none" title="Search in UniProt" href="https://www.uniprot.org/uniprot/?query=<?= $pdb_id ?>+database:pdb">
                         <span class="badge bg-dark">UniProt</span>
                     </a>
 
-                    <a target="_blank" style="text-decoration:none" title="Search in PubMed" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=<?=$pdb_id?>">
+                    <a target="_blank" style="text-decoration:none" title="Search in PubMed" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=<?= $pdb_id ?>">
                         <span class="badge bg-dark">PubMed</span>
                     </a>
 
@@ -59,34 +59,31 @@
 
                 <div class="row mb-1">
                     <div class="col">
-                        <strong>PDB ID: </strong><span><?=$info[1]?></span>
+                        <strong>PDB ID: </strong><span><?= $info[1] ?></span>
                     </div>
                     <div class="col">
-                        <strong>Structure method: </strong><span><?=$info[6]?></span>
+                        <strong>Structure method: </strong><span><?= $info[6] ?></span>
                     </div>
                     <div class="col">
-                        <strong>Resolution: </strong><span><?=$info[3]?></span>
+                        <strong>Resolution: </strong><span><?= $info[3] ?></span>
                     </div>
                     <div class="col">
-                        <strong>Cluster leader: </strong><span><?=$info[15]?></span>
+                        <strong>Cluster leader: </strong><span><?= $info[15] ?></span>
                     </div>
                 </div>
                 <div class="row mb-1">
                     <div class="col">
-                        <strong>Peptide chain: </strong><span><?=$info[8]?></span>
+                        <strong>Peptide chain: </strong><span><?= $info[8] ?></span>
                     </div>
                     <div class="col">
-                        <strong>Peptide length: </strong><span><?=$info[10]?></span>
+                        <strong>Peptide length: </strong><span><?= $info[10] ?></span>
                     </div>
                     <div class="col">
-                        <strong>Protein chain: </strong><span><?=$info[7]?></span>
+                        <strong>Protein chain: </strong><span><?= $info[7] ?></span>
                     </div>
                     <div class="col">
-                        <strong>Protein length: </strong><span><?=$info[9]?></span>
+                        <strong>Protein length: </strong><span><?= $info[9] ?></span>
                     </div>
-                    <!-- <div class="col">
-                        <sup class="ms-2"><label class="badge bg-dark rounded" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="HB: Hydrogen Bonds | AT: Attractive  | RE: Repulsive | HY: Hydrophobic | AS: Aromatic Stacking | SB: Salt Bridge | DS: Disulfide Bond | u: uncertain">?</label></sup>
-                    </div> -->
                 </div>
 
                 <div class="row mb-4">
@@ -94,7 +91,7 @@
                         <p><strong>Description: </strong> Calmodulin complexed with a peptide from a human death-associated protein kinase <?= $info[1] ?></p>
                     </div>
                     <div class="col-12 col-md-4">
-                        <strong>Classification: </strong><span><?=$info[4]?></span>
+                        <strong>Classification: </strong><span><?= $info[4] ?></span>
                     </div>
                 </div>
             </div>
@@ -108,70 +105,125 @@
         <div class="col-md-9 col-12" ng-if="cttlok" id="col1">
 
             <div class="row">
-                <!-- # 0 ID; 1 PDB_ID; 2 TITLE; 3 RESOLUTION; 4 CLASSIFICATION; 5 DEPOSITION_DATE; 6 STRUCTURE_METHOD;7 PROTEIN_CHAIN;8 PEPTIDE_CHAIN; 9 PROTEIN_SIZE; 10 PEPTIDE_SIZE; 11 PROTEIN_DESC; 12 PEPTIDE_DESC; 13 PROTEIN_SEQ; 14 PEPTIDE_SEQ;15 leader_id; 16 is_leader; 17 db -->
+                <!-- [0] id;PDB_ID;TITLE;RESOLUTION;CLASSIFICATION;
+        # [5] DEPOSITION_DATE;STRUCTURE_METHOD;PROTEIN_CHAIN;PEPTIDE_CHAIN;PROTEIN_SIZE;
+        # [10] PEPTIDE_SIZE;PROTEIN_DESC;PEPTIDE_DESC;PROTEIN_SEQ;PEPTIDE_SEQ;
+        # [15] leader_id;is_leader;peptide_Length;peptide_MW;peptide_pI;
+        # [20] peptide_InstabilityIndex;peptide_AliphaticIndex;peptide_GRAVY;peptide_HydrophobicPercent;peptide_PositiveResidues;
+        # [25] peptide_NegativeResidues;peptide_C;peptide_H;peptide_N;peptide_O;
+        # [30] peptide_S;peptide_Formula;peptide_TotalAtoms;peptide_ExtCoeff_Disulfide;peptide_ExtCoeff_NoDisulfide;
+        # [35] protein_Length;protein_MW;protein_pI;protein_InstabilityIndex;protein_AliphaticIndex;
+        # [40] protein_GRAVY;protein_HydrophobicPercent;protein_PositiveResidues;protein_NegativeResidues;protein_C;
+        # [45] protein_H;protein_N;protein_O;protein_S;protein_Formula;
+        # [50] protein_TotalAtoms;protein_ExtCoeff_Disulfide;protein_ExtCoeff_NoDisulfide -->
                 <div class="table-responsive">
 
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th style="width: 20%;"></th>
-                                <th style="width: 40%;"><h2>Protein</h2></th>
-                                <th style="width: 40%;"><h2>Peptide</h2></th>
+                                <th style="width: 40%;">
+                                    <h2>Protein</h2>
+                                </th>
+                                <th style="width: 40%;">
+                                    <h2>Peptide</h2>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th>Description</th>
-                                <td><?=$info[11]?></td>
-                                <td><?=$info[12]?></td>
-                            </tr>
-                            <tr>
-                                <th>Organism</th>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
                                 <th>Chain</th>
-                                <td><?=$info[7]?></td>
-                                <td><?=$info[8]?></td>
+                                <td><?= $info[7] ?></td>
+                                <td><?= $info[8] ?></td>
                             </tr>
                             <tr>
-                                <th>Length</th>
-                                <td><?=$info[9]?></td>
-                                <td><?=$info[10]?></td>
+                                <th>Description</th>
+                                <td><?= $info[11] ?></td>
+                                <td><?= $info[12] ?></td>
                             </tr>
                             <tr>
-                                <th>Hydrophobic (% a.a.)</th>
-                                <td></td>
-                                <td></td>
+                                <th>Length (residues)</th>
+                                <td><?= $info[9] ?></td>
+                                <td><?= $info[10] ?></td>
                             </tr>
                             <tr>
-                                <th>Molecular Weight</th>
-                                <td></td>
-                                <td></td>
+                                <th>Molecular Weight (Da)</th>
+                                <td><?= $info[36] ?></td>
+                                <td><?= $info[18] ?></td>
                             </tr>
                             <tr>
-                                <th>Aromaticity</th>
-                                <td></td>
-                                <td></td>
+                                <th>Isoelectric Point (pI)</th>
+                                <td><?= $info[37] ?></td>
+                                <td><?= $info[19] ?></td>
                             </tr>
                             <tr>
-                                <th>Instability</th>
-                                <td></td>
-                                <td></td>
+                                <th>Instability Index</th>
+                                <td><?= $info[38] ?></td>
+                                <td><?= $info[20] ?></td>
                             </tr>
                             <tr>
-                                <th>Isoelectric Point</th>
-                                <td></td>
-                                <td></td>
+                                <th>Aliphatic Index</th>
+                                <td><?= $info[39] ?></td>
+                                <td><?= $info[21] ?></td>
+                            </tr>
+                            <tr>
+                                <th>GRAVY</th>
+                                <td><?= $info[40] ?></td>
+                                <td><?= $info[22] ?></td>
+                            </tr>
+                            <tr>
+                                <th>Hydrophobic (%)</th>
+                                <td><?= $info[41] ?></td>
+                                <td><?= $info[23] ?></td>
+                            </tr>
+                            <tr>
+                                <th>Positive Residues</th>
+                                <td><?= $info[42] ?></td>
+                                <td><?= $info[24] ?></td>
+                            </tr>
+                            <tr>
+                                <th>Negative Residues</th>
+                                <td><?= $info[43] ?></td>
+                                <td><?= $info[25] ?></td>
+                            </tr>
+                            <tr>
+                                <th>C, H, N, O, S</th>
+                                <td><?= $info[44] ?>, <?= $info[45] ?>, <?= $info[46] ?>, <?= $info[47] ?>, <?= $info[48] ?></td>
+                                <td><?= $info[26] ?>, <?= $info[27] ?>, <?= $info[28] ?>, <?= $info[29] ?>, <?= $info[30] ?></td>
+                            </tr>
+                            <tr>
+                                <th>Atomic Formula</th>
+                                <td><?= $info[49] ?></td>
+                                <td><?= $info[31] ?></td>
+                            </tr>
+                            <tr>
+                                <th>Total Atoms</th>
+                                <td><?= $info[50] ?></td>
+                                <td><?= $info[32] ?></td>
+                            </tr>
+                            <tr>
+                                <th>Extinction Coeff. (with disulfide)</th>
+                                <td><?= $info[51] ?></td>
+                                <td><?= $info[33] ?></td>
+                            </tr>
+                            <tr>
+                                <th>Extinction Coeff. (no disulfide)</th>
+                                <td><?= $info[52] ?></td>
+                                <td><?= $info[34] ?></td>
                             </tr>
                             <tr>
                                 <th>Sequence</th>
-                                <td><pre><?=$info[13]?></pre></td>
-                                <td><pre><?=$info[14]?></pre></td>
+                                <td>
+                                    <pre><?= $info[13] ?></pre>
+                                </td>
+                                <td>
+                                    <pre><?= $info[14] ?></pre>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
+
+
                 </div>
             </div>
             <div class="row mt-5">
@@ -232,9 +284,7 @@
                             <th>Show</th>
                         </tr>
                     </thead>
-                    <tbody>
-
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </div>
         </div>
@@ -255,7 +305,20 @@
                 }
             </style>
             <div data-spy="affix" id="affix" data-offset-top="240" data-offset-bottom="250">
-                <p class="text-end my-0 text-muted small" style=""><i class="bi bi-arrows-fullscreen"></i></p>
+                <div class="row">
+                    <div class="col">
+                        <div>
+                            <label class="badge bg-secondary" for="opacityRange">Surface: <span class="badge bg-dark" id="opacityValue">100%</span></label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input class="form-range" type="range" id="opacityRange" min="0" max="1" step="0.1" value="1">
+                    </div>
+                    <div class="col">
+                        <p class="text-end my-0 text-muted small" style=""><i class="bi bi-arrows-fullscreen"></i></p>
+                    </div>
+                </div>
+
                 <div id="pdb" style="min-height: 400px; height: 50vh; min-width:280px; width: 100%">
 
                 </div>
@@ -325,8 +388,8 @@
     // loading
     $(() => setTimeout(() => $('#loading').fadeOut(), 1000));
 
-    $(document).ready(function() {
-        var table = $('#mut').DataTable({
+    $(() => {
+        let table = $('#mut').DataTable({
             "paging": true
         });
 
@@ -538,11 +601,11 @@
         location.reload();
     }
 
-    $(document).ready(function() {
+    $(() => {
 
-        const txt = "<?php echo base_url('/data/' . $db . '/' . $id[0] . '/' . $id . '.pdb'); ?>";
+        const pdb_data = "<?php echo base_url('/data/' . $db . '/pdb/' . $id[0] . '/' . $id . '.pdb'); ?>";
 
-        $.get(txt, function(d) {
+        $.get(pdb_data, function(d) {
 
             moldata = data = d;
 
@@ -580,7 +643,7 @@
 
                 // Adiciona superfície com a mesma cor do cartoon
                 glviewer.addSurface($3Dmol.SurfaceType.VDW, {
-                    opacity: 0.8,
+                    opacity: 1,
                     color: color
                 }, {
                     chain: chain
@@ -600,6 +663,38 @@
             glviewer.render();
 
         });
+
+//         const surfaces = []; // array global para guardar referências das superfícies
+
+// chains.forEach((chain, i) => {
+//     const color = colors[i % colors.length];
+
+//     glviewer.setStyle({
+//         chain: chain
+//     }, {
+//         line: { colorscheme: 'greyCarbon' },
+//         cartoon: { color: color }
+//     });
+
+//     const surface = glviewer.addSurface($3Dmol.SurfaceType.VDW, {
+//         opacity: 1,  // valor inicial
+//         color: color
+//     }, { chain: chain });
+
+//     surfaces.push(surface); // guarda referência
+// });
+
+// $('#opacityRange').on('input', function() {
+//     const newOpacity = parseFloat($(this).val());
+//     $('#opacityValue').text(newOpacity.toFixed(2));
+
+//     surfaces.forEach(surf => {
+//         surf.opacity = newOpacity;
+//     });
+
+//     glviewer.render(); // atualiza o visualizador
+// });
+
 
         const atomcallback = function(atom, viewer) {
             if (atom.clickLabel === undefined ||
@@ -694,7 +789,7 @@
         link.click();
     }
 
-    fetch('<?php echo base_url(); ?>data/pdb/<?= substr($id, 0, 1) ?>/<?= $id ?>/<?= $id ?>_contacts.csv')
+    fetch('<?php echo base_url(); ?>data/<?= $db ?>/contacts/<?= $id ?>_contacts.csv')
         .then(response => response.text())
         .then(text => {
             const lines = text.split('\n').map(line => line.trim()).filter(line => line);
