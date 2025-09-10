@@ -53,10 +53,32 @@ class Entry extends BaseController
         # [15] leader_id;is_leader;peptide_Length;peptide_MW;peptide_pI;
         # [20] peptide_InstabilityIndex;peptide_AliphaticIndex;peptide_GRAVY;peptide_HydrophobicPercent;peptide_PositiveResidues;peptide_NegativeResidues;peptide_C;peptide_H;peptide_N;peptide_O;peptide_S;peptide_Formula;peptide_TotalAtoms;peptide_ExtCoeff_Disulfide;peptide_ExtCoeff_NoDisulfide;protein_Length;protein_MW;protein_pI;protein_InstabilityIndex;protein_AliphaticIndex;protein_GRAVY;protein_HydrophobicPercent;protein_PositiveResidues;protein_NegativeResidues;protein_C;protein_H;protein_N;protein_O;protein_S;protein_Formula;protein_TotalAtoms;protein_ExtCoeff_Disulfide;protein_ExtCoeff_NoDisulfide
 
+        $data['contacts'] = $this->getContacts($id,$modo);
 
         return view('entry', $data);
     }
 
+    private function getContacts($id, $modo): Array 
+    {
+        $contacts = [];
+
+        # contacts
+        $url = "./data/$modo/contacts/$id"."_contacts.csv";
+        if (!file_exists($url)) {
+            return ["File not exist."];
+        }
+        $file_handle = fopen($url, 'r');
+        if ($file_handle) {
+            while (($line = fgets($file_handle)) !== false) {
+                array_push($contacts,$line);
+            }
+            fclose($file_handle);
+        } else {
+            echo "Error.";
+        }
+        
+        return $contacts;
+    }
 
     // ********************************************* PEP-MULTIPRO *********************************************
     public function multipro($id = null){

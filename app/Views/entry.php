@@ -232,7 +232,15 @@
                 </div>
                 <hr>
                 <div class="col-12">
-                    <p>Unavailable</p>
+                    <p>
+ <strong>Unique: </strong><span><label class="badge bg-<?php if($info[16]=='yes'){ echo 'primary'; } else {echo 'danger';} ?>"><?= $info[16] ?></span>
+                    </p>
+                    <p>
+ <strong>Cluster leader: </strong><span><a href=""><?= $info[15] ?></a></span>
+                    </p>
+                    <p>
+ <strong>PDB classification: </strong><span><?= $info[4] ?></span>
+                    </p>
                 </div>
             </div>
             <div class="row mt-4">
@@ -284,7 +292,86 @@
                             <th>Show</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        <?php foreach ($contacts as $contact) {  ?>
+                            <?php
+                            $m = explode(',', $contact);
+                            $len_mut = count($m);
+                            if (($len_mut < 5) or ($m[0] == 'Chain1')) {
+                                continue;
+                            }
+                            ?>
+                            <tr onclick="selectID(
+                            glviewer,
+                            this.children[0].innerHTML, // residues, 
+                            this.children[8].innerHTML, // type, => inter ou intra
+                            this.children[1].innerHTML,  // chain 1, 
+                            this.children[4].innerHTML,  // chain 2, 
+                            this.children[3].innerHTML,  // a1, 
+                            this.children[6].innerHTML  // a2
+                            )" id="<?php echo $m[2] . $m[1] . '/' . $m[6] . $m[5]; ?>">
+                                <td><?php echo $m[2] . $m[1] . '/' . $m[6] . $m[5]; ?></td>
+                                <td><?php echo $m[0]; // chain 1 
+                                    ?></td>
+                                <td><?php echo $m[2];
+                                    echo $m[1]; // res 1 
+                                    ?></td>
+                                <td><?php echo $m[3]; // atom 1 
+                                    ?></td>
+                                <td><?php echo $m[4]; // chain 2 
+                                    ?></td>
+                                <td><?php echo $m[6];
+                                    echo $m[5]; // res2 
+                                    ?></td>
+                                <td><?php echo $m[7]; // atom2 
+                                    ?></td>
+                                <td><?php echo $m[8]; // dist 
+                                    ?></td>
+                                <td>
+                                    <?php // local = INTRA ou PPI
+                                    if ($m[0] == $m[4]) {
+                                        echo "<span class='badge text-bg-dark'>INTRA</hb>";
+                                    } else {
+                                        echo "<span class='badge text-bg-secondary'>INTER</hb>";
+                                    }
+                                    ?>
+                                </td>
+                                <td><?php
+                                    //echo $m[9];  // type
+                                    switch (trim($m[9])) {
+                                        case "HB":
+                                            echo "<span class='badge text-bg-success'>HB</hb>";
+                                            break;
+                                        case "HY":
+                                            echo "<span class='badge text-bg-warning'>HY</hb>";
+                                            break;
+                                        case "AT":
+                                            echo "<span class='badge text-bg-info'>AT</hb>";
+                                            break;
+                                        case "RE":
+                                            echo "<span class='badge text-bg-danger'>RE</hb>";
+                                            break;
+                                        case "SB":
+                                            echo "<span class='badge text-bg-primary'>SB</hb>";
+                                            break;
+                                        case "DS":
+                                            echo "<span class='badge text-bg-dark text-white'>DS</hb>";
+                                            break;
+                                        default:
+                                            echo "<span class='badge text-bg-light'>$m[9]</hb>";
+                                            break;
+                                    }
+
+                                    ?>
+                                </td>
+                                <td class="text-center">
+                                    <a href="javascript:void(0);"><i class="bi bi-eye-fill"></i></a>
+                                </td>
+
+
+                            </tr>
+                        <?php } ?>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -308,11 +395,11 @@
                 <div class="row">
                     <div class="col">
                         <div>
-                            <label class="badge bg-secondary" for="opacityRange">Surface: <span class="badge bg-dark" id="opacityValue">100%</span></label>
+                            <label class="badge bg-secondary" for="opacityRange">Surface: <span class="badge bg-dark" id="opacityValue">30%</span></label>
                         </div>
                     </div>
                     <div class="col-6">
-                        <input class="form-range" type="range" id="opacityRange" min="0" max="1" step="0.1" value="1">
+                        <input class="form-range" type="range" id="opacityRange" min="0" max="1" step="0.1" value="0.3">
                     </div>
                     <div class="col">
                         <p class="text-end my-0 text-muted small" style=""><i class="bi bi-arrows-fullscreen"></i></p>
@@ -643,7 +730,7 @@
 
                 // Adiciona superfície com a mesma cor do cartoon
                 glviewer.addSurface($3Dmol.SurfaceType.VDW, {
-                    opacity: 1,
+                    opacity: 0.3,
                     color: color
                 }, {
                     chain: chain

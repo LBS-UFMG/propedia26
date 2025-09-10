@@ -32,7 +32,7 @@
                             <th>PROTEIN SIZE</th><th>PEPTIDE SIZE</th><th>PEPTIDE SEQUENCE</th>
                             <th style="width: 30%">TITLE</th>
                             <th>CLASSIFICATION</th>
-                            <th>Leader <sup><a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="We clustered structures with similar sequence. Unique sequences are described as 'leader'.">?</a></sup></th>
+                            <th>Unique <sup><a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="We clustered structures with similar sequence. Unique sequences are described as 'leader'.">?</a></sup></th>
                             <th>Leader ID</th>
                         </tr>
                     </thead>
