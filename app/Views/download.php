@@ -6,6 +6,8 @@
 
     <h1 class="pb-4 text-dark"><strong>Download</strong></h1>
 
+    <hr>
+
     <h2 class="text-success">Propedia v26 <label class="badge bg-success">New</label></h2>
 
     <table class="table table-hover table-striped mb-5">
