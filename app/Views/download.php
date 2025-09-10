@@ -8,7 +8,7 @@
 
     <hr>
 
-    <h2 class="text-success">Propedia v26 <label class="badge bg-success">New</label></h2>
+    <h2 class="text-success mt-5">Propedia v26 <label class="badge bg-success">New</label></h2>
 
     <table class="table table-hover table-striped mb-5">
          <thead>
