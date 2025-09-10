@@ -11,12 +11,12 @@ class Home extends BaseController
 
         $url = "./data/pdb/total_contacts2.txt";
 
-        $data['h1'] = "134,221";
-        $data['h2'] = "48,050";
-        $data['h3'] = "8,230";
-        $data['h4'] = "16,439";
+        $data['h1'] = "98,780";
+        $data['h2'] = "78,148";
+        $data['h3'] = "51,082";
+        $data['h4'] = "20,632";
 
-        $data['update'] = 'Ago 17, 2025';
+        $data['update'] = 'Sep 8, 2025';
 
         if (file_exists($url)) {
             # se houver um arquivo de configuração, atualize os valores

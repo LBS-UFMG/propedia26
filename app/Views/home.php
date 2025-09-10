@@ -79,7 +79,7 @@
                     <?= $h3 ?>
                   </strong>
                 </h3>
-                <p class="text-muted small"><strong>PEP-PEP COMPLEXES</strong></p>
+                <p class="text-muted small"><strong>UNIQUE ENTRIES</strong></p>
               </div>
             </div>
           </div>
@@ -99,7 +99,7 @@
                     <?= $h4 ?>
                   </strong>
                 </h3>
-                <p class="text-muted small"><strong>PEP-MULTIPRO COMPLEXES</strong></p>
+                <p class="text-muted small"><strong>MULTIPRO COMPLEXES</strong></p>
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@
 
   <div class="row">
     <div class="col">
-      <label class="badge bg-dark orange">pep-multipro</label>
+      <label class="badge bg-dark orange">multipro</label>
       <label class="badge bg-light text-dark">Multiprotein-Peptide entry</label>
       <a href="<?= base_url('/pep-multipro/1A1R-C') ?>" class="badge bg-primary azul">1A1R-C</a>
     </div>

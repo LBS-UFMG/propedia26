@@ -24,23 +24,23 @@
     <tbody>
       <tr>
         <th scope="row">Unique entries</th>
-        <td>78,148</td>
-        <td>0</td>
-        <td></td>
+        <td>51,082</td>
+        <td>20,632</td>
+        <td>71,714</td>
       </tr>
       <tr>
         <th scope="row">Duplicated entries</th>
-        <td></td>
+        <td>27,066</td>
         <td>0</td>
-        <td></td>
+        <td>27,066</td>
       </tr>
     </tbody>
     <tfoot class="table-light">
       <tr>
         <th scope="row">Total</th>
-        <td></td>
-        <td>0</td>
-        <td><strong></strong></td>
+        <td>78,148</td>
+        <td>20,632</td>
+        <td><strong>98,780</strong></td>
       </tr>
     </tfoot>
   </table>
