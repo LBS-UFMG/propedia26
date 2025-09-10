@@ -24,7 +24,7 @@
     <tbody>
       <tr>
         <th scope="row">Unique entries</th>
-        <td></td>
+        <td>78,148</td>
         <td>0</td>
         <td></td>
       </tr>
@@ -32,13 +32,13 @@
         <th scope="row">Duplicated entries</th>
         <td></td>
         <td>0</td>
-        <td>61,502</td>
+        <td></td>
       </tr>
     </tbody>
     <tfoot class="table-light">
       <tr>
         <th scope="row">Total</th>
-        <td>78,148</td>
+        <td></td>
         <td>0</td>
         <td><strong></strong></td>
       </tr>

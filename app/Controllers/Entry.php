@@ -15,12 +15,12 @@ class Entry extends BaseController
         $data = [];
 
         $modo = 'db'; // db
-        $arquivo = "data/$modo/csv/".$id.".csv";
+        $arquivo = "data/$modo/csv/".$id[0].'/'.$id.".csv";
 
         // Verifique se o arquivo existe
         if (!file_exists($arquivo)) {
             $modo = 'examples'; // se o arquivo nao existir, carrega a base de exemplo
-            $arquivo = "data/$modo/csv/".$id.".csv";
+            $arquivo = "data/$modo/csv/".$id[0].'/'.$id.".csv";
         }
         if (!file_exists($arquivo)) {
             return view('404');
