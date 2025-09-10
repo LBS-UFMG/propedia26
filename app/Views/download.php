@@ -20,14 +20,14 @@
          </thead>
          <tbody>
             <tr style="font-weight: bold">
-               <td>Propedia 26 - full database (recommended)</td>
+               <td>Propedia 26 - PDB complexes</td>
                <td class="text-end">78,148</td>
                <td>Zip file</td>
-               <td>6.1GB</td>
-               <td><a target="_blank" href="<?=base_url('/data/db/propedia26_v3.zip')?>">propedia26_v3.zip</a></td>
+               <td>3.4GB</td>
+               <td><a target="_blank" href="<?=base_url('/data/db/propedia26_v6.zip')?>">propedia26_v6.zip</a></td>
             </tr> 
             <tr>
-               <td>Propedia descriptions</td>
+               <td>Propedia 26 - descriptions</td>
                <td class="text-end">78,148</td>
                <td>CSV</td>
                <td>53MB</td>
