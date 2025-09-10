@@ -21,21 +21,23 @@
          <tbody>
             <tr style="font-weight: bold">
                <td>Propedia 26 - full database (recommended)</td>
-               <td class="text-end">134,221</td>
+               <td class="text-end">78,148</td>
                <td>Zip file</td>
                <td>6.1GB</td>
                <td><a target="_blank" href="<?=base_url('/data/db/propedia26_v3.zip')?>">propedia26_v3.zip</a></td>
             </tr> 
             <tr>
                <td>Propedia descriptions</td>
-               <td class="text-end">134,221</td>
+               <td class="text-end">78,148</td>
                <td>CSV</td>
-               <td>68MB</td>
-               <td><a target="_blank" href="<?=base_url('/data/propedia_26.csv')?>">propedia_26.csv</a></td>
+               <td>53MB</td>
+               <td><a target="_blank" href="<?=base_url('/data/propedia26_v6.csv')?>">propedia_26.csv</a></td>
             </tr>  
          </tbody>
     </table>
     
+    <br class="my-5">
+    <hr class="my-5 py-5">
 
     <div id="download" class="bg-light p-5 border rounded">
         <h2 class="text-center"><strong>Propedia Legacy</strong></h2>
