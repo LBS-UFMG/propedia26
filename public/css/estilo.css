@@ -48,6 +48,19 @@ footer{
     border-color: orangered !important;
 }
 
+@media (min-width: 992px) {
+    .bd-toc {
+        position:-webkit-sticky;
+        position: sticky;
+        top: 2rem;
+        right: 0;
+        z-index: 2;
+        height: calc(100vh - 7rem);
+        /* overflow-y: auto; */
+        width:100%
+    }
+}
+
 #loading{
     position: absolute;
     background-color: #031430fd;
@@ -67,4 +80,12 @@ footer{
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
+}
+
+.affix {
+    top: 100px;
+    z-index: 9999 !important;
+}
+#pdb canvas {
+    position: relative !important;
 }

@@ -380,18 +380,9 @@
         <div class="col-md-3" id="col2">
 
             <style>
-                .affix {
-                    top: 100px;
-                    z-index: 9999 !important;
-                }
+                
             </style>
-
-            <style>
-                #pdb canvas {
-                    position: relative !important;
-                }
-            </style>
-            <div data-spy="affix" id="affix" data-offset-top="240" data-offset-bottom="250">
+            <div class="bd-toc" data-spy="affix" id="affix" data-offset-top="240" data-offset-bottom="250">
                 <div class="row">
                     <div class="col">
                         <div>

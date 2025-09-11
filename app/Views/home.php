@@ -147,7 +147,7 @@
     <div class="col">
       <label class="badge bg-dark orange">multipro</label>
       <label class="badge bg-light text-dark">Multiprotein-Peptide entry</label>
-      <a href="<?= base_url('/pep-multipro/1A1R-C') ?>" class="badge bg-primary azul">1A1R-C</a>
+      <a href="<?= base_url('/multipro/1MT1-A') ?>" class="badge bg-primary azul">1MT1-A</a>
     </div>
   </div>
 </div>
