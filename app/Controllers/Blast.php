@@ -30,6 +30,8 @@ class Blast extends BaseController
 
         $output = shell_exec('blastp -query ../writable/blast/tmp.fasta -subject data/' . $where . '.fasta -outfmt="6 qseqid sseqid pident score slen sstart send qlen qstart qend qframe positive" -max_target_seqs 50' . $tamanho);
 
+        // dd('blastp -query ../writable/blast/tmp.fasta -subject data/' . $where . '.fasta -outfmt="6 qseqid sseqid pident score slen sstart send qlen qstart qend qframe positive" -max_target_seqs 50' . $tamanho);
+
         $out = explode("\n", $output);
         $i = 0;
         $data['result'] = array();
