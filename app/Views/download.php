@@ -44,15 +44,15 @@
             </tr>  
             <tr>
                <td>Propedia26 Multipro - PDB files</td>
-               <td class="text-end"></td>
-               <td></td>
+               <td class="text-end">20,632</td>
+               <td>ZIP</td>
                <td>2.4GB</td>
                <td><a target="_blank" href="<?=base_url('/data/db/multipro_v6.zip')?>">multipro_v6.zip</a></td>
             </tr>  
             <tr>
                <td>Propedia26 Multipro - descriptions</td>
-               <td class="text-end"></td>
-               <td></td>
+               <td class="text-end">20,632</td>
+               <td>CSV</td>
                <td>27MB</td>
                <td><a target="_blank" href="<?=base_url('/data/multipro.csv')?>">multipro.csv</a></td>
             </tr>  

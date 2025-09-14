@@ -133,7 +133,7 @@ class Entry extends BaseController
 
         $data['contacts'] = $this->getContacts($id,$modo);
 
-        return view('entry', $data);
+        return view('multipro', $data);
     }
     
     private function br($texto, $tamanho = 40) {

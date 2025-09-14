@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div class="container-fluid py-4 px-5">
+<div class="container-fluid py-4 px-4">
 
     <h1 class="text-dark">Explore</h1>
 <!-- 
@@ -32,8 +32,8 @@
                             <th>PROTEIN SIZE</th><th>PEPTIDE SIZE</th><th>PEPTIDE SEQUENCE</th>
                             <th style="width: 30%">TITLE</th>
                             <th>CLASSIFICATION</th>
-                            <th>Unique <sup><a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="We clustered structures with similar sequence. Unique sequences are described as 'unique' or 'leader'.">?</a></sup></th>
-                            <th>Leader ID</th>
+                            <th>Unique<sup><a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="We clustered structures with similar sequence. Unique sequences are described as 'unique' or 'leader'.">?</a></sup></th>
+                            <th class="dt-center" >Download</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,6 +62,8 @@
                 success: (dados) => {
                     dados_formatados = formatarTabela(dados)
                     plotar(dados_formatados)
+                    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+                    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
                 }
             });
         }
@@ -79,11 +81,15 @@
                 if(linha!=""){
                     celulas = linha.split("\t")
                 }
-
-                celulas[0] = `<strong><a href="<?=base_url()?>entry/${celulas[0]}">${celulas[0]}</a></strong>`;
+                let id = celulas[0];
+                celulas[0] = `<strong><a href="<?=base_url()?>entry/${id}">${id}</a></strong>`;
                 if(celulas[6] == 'yes'){ celulas[6] = `<label class='badge bg-primary'>${celulas[6]}</label>`; }
-                if(celulas[6] == 'no'){ celulas[6] = `<label class='badge bg-danger'>${celulas[6]}</label>`; }
-                celulas[7] = `<strong><a href="<?=base_url()?>entry/${celulas[7]}">${celulas[7]}</a></strong>`;
+                if(celulas[6] == 'no'){ celulas[6] = `<a class="badge bg-danger" href="<?=base_url()?>entry/${celulas[7]}" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Similar to ${celulas[7]}" class="link-light">
+                        ${celulas[6]}
+                    </a>
+                `; }
+
+                celulas[7] = `<a class="text-center" href="<?=base_url()?>data/db/pdb/${id[0]}/${id}.pdb" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Click to download the file: ${id}.pdb"><strong><i class="bi bi-download"></i></strong></a>`
 
                 // remove algumas colunas
                 //[3, 5, 6].sort((a,b) => b - a).forEach(i => celulas.splice(i, 1));
@@ -105,15 +111,15 @@
                 // ] // ordena pela coluna 0
             })
 
-            $('#pep-pro').click(function() {
-                table.columns(12).search("pep-pro", true, false).draw();
-            });
-            $('#pep-pep').click(function() {
-                table.columns(12).search("pep-pep", true, false).draw();
-            });
-            $('#pep-multipro').click(function() {
-                table.columns(12).search("pep-multipro", true, false).draw();
-            });
+            // $('#pep-pro').click(function() {
+            //     table.columns(12).search("pep-pro", true, false).draw();
+            // });
+            // $('#pep-pep').click(function() {
+            //     table.columns(12).search("pep-pep", true, false).draw();
+            // });
+            // $('#pep-multipro').click(function() {
+            //     table.columns(12).search("pep-multipro", true, false).draw();
+            // });
         }
         lerDados("<?= base_url($entrada) ?>");
     })

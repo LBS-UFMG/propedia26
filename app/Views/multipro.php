@@ -401,7 +401,7 @@
 
                 </div>
                 <p style="color:#ccc; text-align: right" class="small">
-                    <!-- <a href="<?= base_url("/export/pdb-to-pymol/$id") ?>" class="me-2">Export to PyMOL</a> | --><button class="btn btn-link btn-sm pt-0" onclick="reset()">Clear</button> 
+                    <!--<a href="<?= base_url("/export/pdb-to-pymol/$id") ?>" class="me-2">Export to PyMOL</a> |--> <button class="btn btn-link btn-sm pt-0" onclick="reset()">Clear</button>
                 </p>
             </div>
         </div>
@@ -681,7 +681,7 @@
 
     $(() => {
 
-        const pdb_data = "<?php echo base_url('/data/' . $db . '/pdb/' . $id[0] . '/' . $id . '.pdb'); ?>";
+        const pdb_data = "<?php echo base_url('/data/' . $db . '/multipro/pdb/' . $id[0] . '/' . $id . '.pdb'); ?>";
 
         $.get(pdb_data, function(d) {
 

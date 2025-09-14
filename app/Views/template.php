@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <title>Propedia – The Protein-Peptide Interaction Database</title>
-    <?php $version = "25.910 BETA"; // 10-set-2025 ?> 
+    <?php $version = "25.913 BETA"; // 13-set-2025 ?> 
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,7 +24,7 @@
 <body>
    
     <nav class="py-2 bg-body-tertiary menu link-light">
-        <div class="px-5 container-fluid d-flex flex-wrap">
+        <div class="px-4 container-fluid d-flex flex-wrap">
         <ul class="nav me-auto">
             <li class="nav-item"><a href="<?= base_url('/') ?>" class="nav-link link-body-emphasis px-2"><i class="bi bi-house-door-fill"></i></a></li>
             <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#about" class="nav-link link-body-emphasis px-2">About</a></li>
@@ -42,7 +42,7 @@
         </div>
     </nav>
     <header class="py-3 mb-4 border-bottom bg-light">
-        <div class="px-5 container-fluid d-flex flex-wrap justify-content-center">
+        <div class="px-4 container-fluid d-flex flex-wrap justify-content-center">
         <a href="<?= base_url() ?>" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
             <img src="<?= base_url('/img/logo_propedia2.svg') ?>" width="250">
             <label class="bg-dark badge">v26-beta</label>
@@ -62,11 +62,11 @@
     <footer>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-md-6 ps-5">
+                <div class="col-12 col-md-6 ps-4">
                     <img src="<?= base_url('/img/logo_propedia.svg') ?>" width="200px">
                     <p class="text-light small pt-3 col-9">PROPEDIA is a database of peptide-protein complexes clusterized in three methodologies: based on peptide sequences; based on structure interface; and based on binding sites. PROPEDIA main goal is to give new insights into peptide design of biotechnological interests.</p>
 
-                    <p style="font-size: 0.6em;color:#ccc">©<?=date('Y')?> Propedia v<?= $version ?> | Laboratory of Bioinformatics and Systems, UFMG (Brazil) | <a class="text-white" href="https://github.com/LBS-UFMG/propedia">GitHub</a>
+                    <p style="font-size: 0.6em;color:#ccc">©<?=date('Y')?> Propedia v<?= $version ?> | Laboratory of Bioinformatics and Systems, UFMG (Brazil) | <a class="text-white" href="https://github.com/LBS-UFMG/propedia26">GitHub</a>
                 </div>
 
                 <div class="col-12 col-md-6">
