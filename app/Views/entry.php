@@ -27,7 +27,7 @@
                                 <li><b class="ms-3">Download</b></li>
                                 <hr>
                                 <li><a class="dropdown-item mt-2" href="<?php echo base_url(); ?>data/pdb/<?= substr($id, 0, 1) ?>/<?= $id ?>/<?= $id ?>_contacts.csv">Contacts</a></li>
-                                <li><a class="dropdown-item" href="https://files.rcsb.org/download/<?php echo $id; ?>.cif">PDB file</a></li>
+                                <li><a class="dropdown-item" href="<?php echo base_url('/data/' .$db. '/pdb/' .$id[0]. '/' .$id. '.pdb'); ?>">PDB file</a></li>
                                 <hr>
                                 <!-- <li><a class="dropdown-item" href="<?= base_url("/export/pdb-to-pymol/$id") ?>">Export to PyMOL</a></li> -->
                             </ul>
@@ -681,7 +681,7 @@
 
     $(() => {
 
-        const pdb_data = "<?php echo base_url('/data/' . $db . '/pdb/' . $id[0] . '/' . $id . '.pdb'); ?>";
+        const pdb_data = "<?php echo base_url('/data/' .$db. '/pdb/' .$id[0]. '/' .$id. '.pdb'); ?>";
 
         $.get(pdb_data, function(d) {
 

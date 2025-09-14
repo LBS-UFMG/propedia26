@@ -62,7 +62,7 @@ class Entry extends BaseController
         $contacts = [];
 
         # contacts
-        $url = "./data/$modo/contacts/$id"."_contacts.csv";
+        $url = "./data/$modo/contacts/$id/".substr($id,0,4)."_contacts.csv";
         if (!file_exists($url)) {
             return ["File not exist."];
         }

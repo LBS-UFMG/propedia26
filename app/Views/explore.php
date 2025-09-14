@@ -62,8 +62,11 @@
                 success: (dados) => {
                     dados_formatados = formatarTabela(dados)
                     plotar(dados_formatados)
-                    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-                    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+                    loadPopover();
+                    $('.dt-paging-button').on('click',()=>{
+                        loadPopover();
+                        alert('ola')
+                    });
                 }
             });
         }
@@ -132,9 +135,12 @@
 
 <script>
         $(()=>setTimeout(() => $('#loading').fadeOut(), 1000));
-
 // tooltips
+function loadPopover(){
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+};
+loadPopover();
+    
 </script>
 <?= $this->endSection() ?>

@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <title>Propedia – The Protein-Peptide Interaction Database</title>
-    <?php $version = "25.913 BETA"; // 13-set-2025 ?> 
+    <?php $version = "25.914 BETA"; // 14-set-2025 ?> 
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
