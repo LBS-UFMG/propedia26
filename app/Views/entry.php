@@ -102,7 +102,7 @@
 
 <div class="container-fluid px-4">
     <div class="row">
-        <div class="col-md-9 col-12" ng-if="cttlok" id="col1">
+        <div class="col-md-8 col-12" ng-if="cttlok" id="col1">
 
             <div class="row">
                 <!-- [0] id;PDB_ID;TITLE;RESOLUTION;CLASSIFICATION;
@@ -378,7 +378,7 @@
         </div>
 
 
-        <div class="col-md-3" id="col2">
+        <div class="col-md-4 col-12" id="col2">
             <div class="bd-toc" data-spy="affix" id="affix" data-offset-top="240" data-offset-bottom="250">
                 <div class="row">
                     <div class="col">
@@ -398,7 +398,7 @@
                     </div>
                 </div>
 
-                <div id="pdb" style="min-height: 400px; height: 50vh; min-width:280px; width: 100%">
+                <div id="pdb" style="min-height: 400px; height: 80vh; min-width:280px; width: 100%">
 
                 </div>
                 <p style="color:#ccc; text-align: right" class="small">
@@ -754,12 +754,14 @@ let lastZoomValue = 100; // valor inicial do slider
 
     $(() => {
     const pdb_data = "<?php echo base_url('/data/' . $db . '/pdb/' . $id[0] . '/' . $id . '.pdb'); ?>";
+    
+    var glviewer = $3Dmol.createViewer("pdb", { defaultcolors: $3Dmol.rasmolElementColors });
 
+    
     $.get(pdb_data, function(d) {
         const data = d;
-
         // Cria viewer
-        const glviewer = $3Dmol.createViewer("pdb", { defaultcolors: $3Dmol.rasmolElementColors });
+        
         glviewer.setBackgroundColor(0xffffff);
 
         // Adiciona modelo
