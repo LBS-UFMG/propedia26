@@ -866,7 +866,7 @@
         link.click();
     }
 
-    fetch('<?php echo base_url(); ?>data/<?= $db ?>/contacts/<?= $id ?>_contacts.csv')
+    fetch('<?php echo base_url(); ?>data/<?= $db ?>/contacts/<?=$id?>/<?=substr($id,0,4)?>_contacts.csv')
         .then(response => response.text())
         .then(text => {
             const lines = text.split('\n').map(line => line.trim()).filter(line => line);
