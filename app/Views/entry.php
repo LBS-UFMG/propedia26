@@ -819,7 +819,6 @@
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
-
     // MAPA DE CONTATOS
     let allChains = new Set();
     let allDataPoints = [];
@@ -843,8 +842,8 @@
             chainX.appendChild(optionX);
             chainY.appendChild(optionY);
         });
-        chainX.value = 'A';
-        chainY.value = 'A';
+        chainX.value = '<?=substr($id, 4, 1)?>';
+        chainY.value = '<?=substr($id, 7, 1)?>';
     }
 
     function updateChart() {
