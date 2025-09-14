@@ -842,7 +842,7 @@
             chainX.appendChild(optionX);
             chainY.appendChild(optionY);
         });
-        chainX.value = '<?=substr($id, 4, 1)?>';
+        chainX.value = '<?=substr($id, 5, 1)?>';
         chainY.value = '<?=substr($id, 7, 1)?>';
     }
 
