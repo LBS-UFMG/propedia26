@@ -918,7 +918,7 @@
                 data: {
                     datasets: [{
                         label: 'Dispersão CSV',
-                        data: allDataPoints.filter(p => p.c1 === 'A' && p.c2 === 'A'),
+                        data: allDataPoints.filter(p => p.c1 === '<?=substr($id, 5, 1)?>' && p.c2 === '<?=substr($id, 7, 1)?>'),
                         pointBackgroundColor: allDataPoints.map(p => p.backgroundColor),
                         borderWidth: 0,
                         pointRadius: 5,
@@ -945,7 +945,7 @@
                                 text: 'Chain A'
                             },
                             beginAtZero: false,
-                            min: 1,
+                            // min: 1,
                         },
                         y: {
                             title: {
@@ -953,7 +953,7 @@
                                 text: 'Chain A'
                             },
                             beginAtZero: false,
-                            min: 1,
+                            // min: 1,
                         }
                     }
                 }
