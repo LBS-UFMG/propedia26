@@ -98,7 +98,7 @@ class Entry extends BaseController
         }
         if (!file_exists($arquivo)) {
             if(strlen($id) == 6){
-                return redirect()->back()->with('success', 'Structure composed of only a single protein-peptide pair.');
+                return redirect()->back()->with('success', '<strong>No multi-protein complex available</strong>. Structure composed of only a single protein-peptide pair.');
             }
             else{ return view('404'); }
         }
