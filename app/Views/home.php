@@ -118,7 +118,16 @@
           <div class="row">
             <div class="col-md-12 p-4">
               <h4 class="" style="color:#031430"><strong>How to cite:</strong></h4>
+              <label class="badge bg-dark">Original paper (2021)</label>
               <p class="small" id="browse"> Martins, P.M., Santos, L.H., Mariano, D. et al. <strong>Propedia: a database for protein–peptide identification based on a hybrid clustering algorithm.</strong> BMC Bioinformatics 22, 1 (2021). https://doi.org/10.1186/s12859-020-03881-z
+              </p>
+
+              <label class="badge bg-dark">Propedia v2.3 (2023)</label>
+              <p class="small" id="browse"> Martins P, Mariano D, Carvalho FC, Bastos LL, Moraes L, Paixão V and Cardoso de Melo-Minardi R (2023). <strong>Propedia v2.3: A novel representation approach for the peptide-protein interaction database using graph-based structural signatures</strong>. Front. Bioinform. 3:1103103. doi: https://doi.org/10.3389/fbinf.2023.1103103
+              </p>
+
+              <label class="badge bg-dark">Propedia 26 (2026)</label>
+              <p class="small" id="browse"><em>In development.</em>
               </p>
             </div>
           </div>
@@ -153,33 +162,33 @@
 </div>
 
 <script>
-  const go = document.getElementById('go');
+  // const go = document.getElementById('go');
 
-  go.addEventListener('click', () => {
-    let url = document.getElementById('pdb_go').value;
-    url = url.toUpperCase();
-    if (url) {
-      if (url.length != 4) {
-        window.location.href = '<?= base_url("/entry/404") ?>';
-      }
-      window.location.href = '<?= base_url() ?>entry/' + url;
-    }
-  });
+  // go.addEventListener('click', () => {
+  //   let url = document.getElementById('pdb_go').value;
+  //   url = url.toUpperCase();
+  //   if (url) {
+  //     if (url.length != 4) {
+  //       window.location.href = '<?= base_url("/entry/404") ?>';
+  //     }
+  //     window.location.href = '<?= base_url() ?>entry/' + url;
+  //   }
+  // });
 
-  function redirectToURL2(event) {
-    // Verificar se a tecla pressionada foi Enter (código 13)
-    if (event.keyCode === 13) {
-      event.preventDefault(); // Prevenir o envio do formulário
-      let url = document.getElementById('pdb_go').value;
-      url = url.toUpperCase();
-      if (url) {
-        if (url.length != 4) {
-          window.location.href = '<?= base_url("/entry/404") ?>';
-        }
-        window.location.href = '<?= base_url() ?>entry/' + url;
-      }
-    }
-  }
+  // function redirectToURL2(event) {
+  //   // Verificar se a tecla pressionada foi Enter (código 13)
+  //   if (event.keyCode === 13) {
+  //     event.preventDefault(); // Prevenir o envio do formulário
+  //     let url = document.getElementById('pdb_go').value;
+  //     url = url.toUpperCase();
+  //     if (url) {
+  //       if (url.length != 4) {
+  //         window.location.href = '<?= base_url("/entry/404") ?>';
+  //       }
+  //       window.location.href = '<?= base_url() ?>entry/' + url;
+  //     }
+  //   }
+  // }
 </script>
 
 <?= $this->endSection() ?>
