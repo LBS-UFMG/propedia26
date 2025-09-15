@@ -26,7 +26,7 @@
                             <ul class="dropdown-menu">
                                 <li><b class="ms-3">Download</b></li>
                                 <hr>
-                                <li><a class="dropdown-item mt-2" href="<?php echo base_url(); ?>data/db/pdb/<?= $id ?>/<?= $id ?>_contacts.csv">Contacts</a></li>
+                                <li><a class="dropdown-item mt-2" href="<?php echo base_url(); ?>data/db/contacts/<?= $id ?>/<?= substr($id,0,4) ?>_contacts.csv">Contacts</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('/data/' . $db . '/pdb/' . $id[0] . '/' . $id . '.pdb'); ?>">PDB file</a></li>
                                 <hr>
                                 <!-- <li><a class="dropdown-item" href="<?= base_url("/export/pdb-to-pymol/$id") ?>">Export to PyMOL</a></li> -->
