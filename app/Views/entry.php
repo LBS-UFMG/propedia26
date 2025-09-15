@@ -68,7 +68,12 @@
                         <strong>Resolution: </strong><span><?= $info[3] ?></span>
                     </div>
                     <div class="col">
-                        <strong>Cluster leader: </strong><span><?= $info[15] ?></span>
+                        <strong>Complex: </strong>
+                        <span>
+                            <a class="badge bg-primary" href="<?=base_url('/multipro/'.substr($info[15],0,6))?>">
+                                <?= substr($info[15],0,6) ?>
+                            </a>
+                        </span>
                     </div>
                 </div>
                 <div class="row mb-1">
