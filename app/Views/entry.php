@@ -797,8 +797,6 @@
     $(() => {
         const pdb_data = "<?php echo base_url('/data/' . $db . '/pdb/' . $id[0] . '/' . $id . '.pdb'); ?>";
 
-
-
         $.get(pdb_data, function(d) {
             const data = d;
             // Cria viewer

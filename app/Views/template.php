@@ -20,7 +20,7 @@
 
     <link rel="stylesheet" href="<?= base_url('css/estilo.css') ?>">
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 
 </head>
 
@@ -58,7 +58,7 @@
                     <li class="nav-item"><a href="<?= base_url('documentation') ?>" class="nav-link link-body-emphasis px-2">Documentation</a></li>
                     <li class="nav-item"><a href="<?= base_url('download') ?>" class="nav-link link-body-emphasis px-2">Download</a></li>
                     <li class="nav-item"><a href="<?= base_url('explore') ?>" class="nav-link link-body-emphasis px-2">Explore</a></li>
-                    <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#about" class="nav-link link-body-emphasis px-2 orange">Search<sup><span class="badge bg-dark">by binding site</span></sup></a></li>
+                    <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#probis" class="nav-link link-body-emphasis px-2 orange">Search<sup><span class="badge bg-dark">by binding site</span></sup></a></li>
                 </ul>
                 <ul class="nav">
                     <li class="nav-item"><a href="<?= base_url('#cite') ?>"
@@ -105,101 +105,17 @@
             </div>
         </div>
     </footer>
-
-    <!-- MODAL: SOBRE -->
-    <div class="modal fade" tabindex="-1" id="about" role="dialog">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-dark">
-                    <div class="text-center">
-                        <img width="150" class="me-3" src="<?php echo base_url('/img/logo_propedia.svg'); ?>">
-                    </div>
-                    <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body small">
-                    <div class="row">
-                        <p class="text-muted">
-                            PROPEDIA is a database of peptide-protein complexes clusterized in three methodologies: based on peptide sequences; based on structure interface; and based on binding sites. PROPEDIA main goal is to give new insights into peptide design of biotechnological interests.
-                        </p>
-                    </div>
-                    <div class="row text-secondary">
-                        <div class="col-md-8">
-
-                            <strong># Created by:</strong><br>
-                            Pedro Martins / Diego Mariano / Raquel C. de Melo-Minardi<br><br>
-
-                            <strong># Backend/frontend:</strong><br>
-                            Diego Mariano
-                        </div>
-                    </div>
-
-                    <span><label class="badge bg-dark mt-3">Cite:</label></span>
-                    <p class="small text-muted border-start border-dark mx-3 col-11 bg-light p-2">
-                        Martins, P.M., Santos, L.H., Mariano, D. et al. Propedia: a database for protein–peptide identification based on a hybrid clustering algorithm. BMC Bioinformatics 22, 1 (2021). https://doi.org/10.1186/s12859-020-03881-z
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <img height="50" class="me-3" src="<?php echo base_url('/img/dcc_b.svg'); ?>">
-                    <img height="50" class="me-3" src="<?php echo base_url('/img/ufmg_b.svg'); ?>">
-
-                    <button type="button" class="btn btn-dark py-4 px-5" data-bs-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal SOBRE -->
-
-    <!-- /.modal BLAST -->
-    <div class="modal fade" tabindex="-1" id="blast" role="dialog">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
-                <form id="form_blast_run" action="<?php echo base_url('/blast'); ?>" method="post" enctype="multipart/form-data">
-                    <div class="modal-header">
-                        <div>
-                            <h3><b>BLAST - Search for similar sequences</b></h3>
-                        </div>
-                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h5><b>Input sequence</b></h5>
-                                <textarea id="txt_sequence" class="form-control" form="form_blast_run" name="sequence" rows="10" placeholder="Insert the sequence here"></textarea>
-                                <div hidden id="feedback_blast" class="alert alert-danger" role="alert">
-                                    Sequence cannot be empty!
-                                </div>
-                                <br>
-                                <h5><b>Search sequence from</b></h5>
-
-                                <input type="radio" class="btn-check" name="search" value="peptides" id="blast_peptides" autocomplete="off" checked>
-                                <label class="btn btn-lg" for="blast_peptides">Peptides</label>
-
-                                <input type="radio" class="btn-check" name="search" value="receptors" id="blast_proteins" autocomplete="off">
-                                <label class="btn btn-lg" for="blast_proteins">Proteins</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="submit" class="btn btn-primary" value="Run BLAST">
-                        <button type="button" class="btn btn-light " data-bs-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- /.modal BLAST -->
+    
+    <!-- HTML MODALS -->
+    <?= $this->include('modal') ?>
+    <!-- /fim HTML MODALS -->
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-
     <script src="<?php echo base_url('DataTables/datatables.min.js'); ?>"></script>
-    <script src="//cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
 
     <script src="<?php echo base_url('js/3dmol.js'); ?>"></script>
 

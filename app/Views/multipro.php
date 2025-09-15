@@ -102,7 +102,7 @@
 
 <div class="container-fluid px-4">
     <div class="row">
-        <div class="col-md-9 col-12" ng-if="cttlok" id="col1">
+        <div class="col-md-8 col-12" ng-if="cttlok" id="col1">
 
             <div class="row">
                 <!-- [0] id;PDB_ID;TITLE;RESOLUTION;CLASSIFICATION;
@@ -377,11 +377,7 @@
         </div>
 
 
-        <div class="col-md-3" id="col2">
-
-            <style>
-                
-            </style>
+        <div class="col-md-4 col-12" id="col2">
             <div class="bd-toc" data-spy="affix" id="affix" data-offset-top="240" data-offset-bottom="250">
                 <div class="row">
                     <div class="col">
@@ -393,15 +389,19 @@
                         <input class="form-range" type="range" id="opacityRange" min="0" max="1" step="0.1" value="0.3">
                     </div>
                     <div class="col">
-                        <p class="text-end my-0 text-muted small" style=""><i class="bi bi-arrows-fullscreen"></i></p>
+                        <p class="text-end my-0 text-muted small" style="">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#zoom" class="text-muted" id="click_zoom">
+                                <i class="bi bi-arrows-fullscreen" title="See 3D structure in full screen"></i>
+                            </a>
+                        </p>
                     </div>
                 </div>
 
-                <div id="pdb" style="min-height: 400px; height: 50vh; min-width:280px; width: 100%">
+                <div id="pdb" style="min-height: 400px; height: 80vh; min-width:280px; width: 100%">
 
                 </div>
                 <p style="color:#ccc; text-align: right" class="small">
-                    <!--<a href="<?= base_url("/export/pdb-to-pymol/$id") ?>" class="me-2">Export to PyMOL</a> |--> <button class="btn btn-link btn-sm pt-0" onclick="reset()">Clear</button>
+                    <!-- <a href="<?= base_url("/export/pdb-to-pymol/$id") ?>" class="me-2">Export to PyMOL</a> | --><button class="btn btn-link btn-sm pt-0" onclick="reset()">Clear</button>
                 </p>
             </div>
         </div>
@@ -438,13 +438,7 @@
                     </div>
                 </div>
 
-                <style>
-                    canvas {
-                        max-width: calc(100vh - 150px) !important;
-                    }
-                </style>
                 <div class="row">
-
                     <div class="col">
                         <canvas id="scatterChart" class="p-4"></canvas>
                         <div id="legend" class="pb-3"></div>
@@ -459,8 +453,121 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="zoom" tabindex="-1" aria-labelledby="title3d" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="title3d">3D structure</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Contêiner do 3Dmol -->
+                <div id="pdbModalViewer" style="width: 1100px; height: 650px;" class=""></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    let glviewerModal; // variável global para o viewer do modal
+
+    $('#click_zoom').on('click', function() {
+        // Inicializa viewer só na primeira vez
+        if (!glviewerModal) {
+            glviewerModal = $3Dmol.createViewer("pdbModalViewer", {
+                defaultcolors: $3Dmol.rasmolElementColors
+            });
+
+            // Adiciona modelo
+            $.get('<?php echo base_url('/data/' . $db . '/multipro/pdb/' . $id[0] . '/' . $id . '.pdb'); ?>', function(data) {
+                const m2 = glviewerModal.addModel(data, "pdb");
+                glviewerModal.setBackgroundColor(0xffffff);
+
+                glviewerModal.setStyle({}, {
+                    line: {
+                        colorscheme: 'greyCarbon'
+                    },
+                    cartoon: {
+                        color: 'grey'
+                    }
+                });
+
+                glviewerModal.setStyle({
+                    chain: '<?= substr($id, 5, 1) ?>'
+                }, {
+                    stick: {
+                        colorscheme: 'orangeredCarbon'
+                    },
+                    cartoon: {
+                        color: 'orangered'
+                    }
+                });
+
+                function three_to_one(a) {
+                    const code = a.toUpperCase();
+
+                    // Dicionário de conversão 3 letras -> 1 letra
+                    const map = {
+                        ALA: "A",
+                        ARG: "R",
+                        ASN: "N",
+                        ASP: "D",
+                        CYS: "C",
+                        GLN: "Q",
+                        GLU: "E",
+                        GLY: "G",
+                        HIS: "H",
+                        ILE: "I",
+                        LEU: "L",
+                        LYS: "K",
+                        MET: "M",
+                        PHE: "F",
+                        PRO: "P",
+                        SER: "S",
+                        THR: "T",
+                        TRP: "W",
+                        TYR: "Y",
+                        VAL: "V",
+                        SEC: "U",
+                        PYL: "O" // aminoácidos especiais
+                    };
+
+                    // Retorna o código de 1 letra ou "X" para desconhecido
+                    return map[code] || "X";
+                }
+                const atoms21 = m2.selectedAtoms({});
+                for (let i in atoms21) {
+                    let atom = atoms21[i];
+                    if (atom.elem == 'N') {
+                        glviewerModal.addLabel(three_to_one(atom.resn) + atom.resi, {
+                            fontSize: 9,
+                            position: {
+                                x: atom.x,
+                                y: atom.y,
+                                z: atom.z
+                            },
+                            backgroundColor: "grey",
+                            fontColor: 'black',
+                            backgroundOpacity: 0,
+
+                        });
+
+                    }
+                }
+
+                glviewerModal.zoomTo();
+                glviewerModal.render();
+            });
+        } else {
+            glviewerModal.render(); // re-render se modal for aberto novamente
+        }
+    });
+    let lastZoomValue = 100; // valor inicial do slider
+</script>
+
 <!-- Return to Top -->
-<a href="#" title="Return to top" style="position:fixed; right:10px; bottom:10px; color:#cccccc77"><span class="glyphicon glyphicon-chevron-up small" aria-hidden="true">Return to top</span></a>
+<a href="#" title="Return to top" style="position:fixed; right:10px; bottom:10px; color:#cccccc77"><span class="glyphicon glyphicon-chevron-up small" aria-hidden="true">Top</span></a>
 
 <script>
     // loading
@@ -510,8 +617,6 @@
         $('#show_all').click(function() {
             table.columns(9).search(".*", true, false).draw();
         });
-
-
     });
 
 
@@ -680,56 +785,99 @@
     }
 
     $(() => {
-
         const pdb_data = "<?php echo base_url('/data/' . $db . '/multipro/pdb/' . $id[0] . '/' . $id . '.pdb'); ?>";
 
         $.get(pdb_data, function(d) {
-
-            moldata = data = d;
-
-            /* Creating visualization */
+            const data = d;
+            // Cria viewer
             glviewer = $3Dmol.createViewer("pdb", {
                 defaultcolors: $3Dmol.rasmolElementColors
             });
-
-            /* Color background */
             glviewer.setBackgroundColor(0xffffff);
 
-            receptorModel = m = glviewer.addModel(data, "pqr");
+            // Adiciona modelo
+            const m = glviewer.addModel(data, "pqr");
 
-            // Defina um array de cores
+            // Cores e cadeias
             const colors = ["grey", "orangered", "deepskyblue", "green", "purple", "cyan"];
-
             const atomsx = m.selectedAtoms({});
-            const chains = [...new Set(atomsx.map(atom => atom.chain))]; // lista única de cadeias
+            const chains = [...new Set(atomsx.map(atom => atom.chain))];
 
-            // Define cartoon e superfície para cada cadeia
-            chains.forEach((chain, i) => {
-                const color = colors[i % colors.length];
+            // Função utilitária debounce
+            const debounce = (fn, wait = 80) => {
+                let t;
+                return function(...args) {
+                    clearTimeout(t);
+                    t = setTimeout(() => fn.apply(this, args), wait);
+                };
+            };
 
-                // Estilo cartoon com cor
-                glviewer.setStyle({
-                    chain: chain
-                }, {
-                    line: {
-                        colorscheme: 'greyCarbon'
-                    },
-                    cartoon: {
-                        color: color
+            // Função segura para remover todas as superfícies
+            function removeAllSurfacesSafe(viewer) {
+                // Preferir método pronto, se existir
+                if (typeof viewer.removeAllSurfaces === 'function') {
+                    viewer.removeAllSurfaces();
+                    return;
+                }
+                // Fallback: iterar sobre viewer.surfaces (se existir) e tentar remover
+                if (Array.isArray(viewer.surfaces) && viewer.surfaces.length) {
+                    // copie a lista porque removeSurface pode mutar viewer.surfaces
+                    const existing = viewer.surfaces.slice();
+                    for (const s of existing) {
+                        try {
+                            // tentamos remover pelo objeto/handle — envolver em try para não quebrar
+                            viewer.removeSurface(s);
+                        } catch (err) {
+                            // Algumas versões esperam um índice ou outro formato; ignorar se falhar
+                            console.warn('removeSurface failed for', s, err);
+                        }
                     }
-                });
+                }
+            }
 
-                // Adiciona superfície com a mesma cor do cartoon
-                glviewer.addSurface($3Dmol.SurfaceType.VDW, {
-                    opacity: 0.3,
-                    color: color
-                }, {
-                    chain: chain
+            // Função que (re)cria todas as superfícies com a opacidade passada
+            function createSurfacesWithOpacity(opacity) {
+                chains.forEach((chain, i) => {
+                    const color = colors[i % colors.length];
+                    glviewer.setStyle({
+                        chain: chain
+                    }, {
+                        line: {
+                            colorscheme: 'greyCarbon'
+                        },
+                        cartoon: {
+                            color: color
+                        }
+                    });
+                    glviewer.addSurface($3Dmol.SurfaceType.VDW, {
+                        opacity: opacity,
+                        color: color
+                    }, {
+                        chain: chain
+                    });
                 });
-            });
+            }
 
-            /* Name of the atoms */
-            atoms = m.selectedAtoms({});
+            // Cria superfícies iniciais usando o valor atual do slider (fallback 0.3)
+            const initialOpacity = parseFloat($('#opacityRange').val()) || 0.3;
+            createSurfacesWithOpacity(initialOpacity);
+
+            // Handler único, debounced, que remove e recria superfícies
+            $('#opacityRange').on('input', debounce(function() {
+                const newOpacity = parseFloat($(this).val());
+                $('#opacityValue').text((newOpacity * 100).toFixed(0) + "%");
+
+                // remove todas as superfícies de forma segura
+                removeAllSurfacesSafe(glviewer);
+
+                // (re)cria todas as superfícies com a nova opacidade
+                createSurfacesWithOpacity(newOpacity);
+
+                glviewer.render();
+            }, 60));
+
+            // restante: marca átomos como clicáveis etc.
+            const atoms = m.selectedAtoms({});
             for (let i in atoms) {
                 let atom = atoms[i];
                 atom.clickable = true;
@@ -739,13 +887,10 @@
             glviewer.mapAtomProperties($3Dmol.applyPartialCharges);
             glviewer.zoomTo();
             glviewer.render();
-
         });
 
-
         const atomcallback = function(atom, viewer) {
-            if (atom.clickLabel === undefined ||
-                !atom.clickLabel instanceof $3Dmol.Label) {
+            if (atom.clickLabel === undefined || !(atom.clickLabel instanceof $3Dmol.Label)) {
                 atom.clickLabel = viewer.addLabel(atom.resn + " " + atom.resi + " (" + atom.elem + ")", {
                     fontSize: 10,
                     position: {
@@ -756,15 +901,10 @@
                     backgroundColor: "black"
                 });
                 atom.clicked = true;
-            }
-
-            //toggle label style
-            else {
-
+            } else {
                 if (atom.clicked) {
                     let newstyle = atom.clickLabel.getStyle();
                     newstyle.backgroundColor = 0x66ccff;
-
                     viewer.setLabelStyle(atom.clickLabel, newstyle);
                     atom.clicked = !atom.clicked;
                 } else {
@@ -775,6 +915,103 @@
             }
         };
     });
+
+    // $(() => {
+
+    //     const pdb_data = "<?php echo base_url('/data/' . $db . '/multipro/pdb/' . $id[0] . '/' . $id . '.pdb'); ?>";
+
+    //     $.get(pdb_data, function(d) {
+
+    //         moldata = data = d;
+
+    //         /* Creating visualization */
+    //         glviewer = $3Dmol.createViewer("pdb", {
+    //             defaultcolors: $3Dmol.rasmolElementColors
+    //         });
+
+    //         /* Color background */
+    //         glviewer.setBackgroundColor(0xffffff);
+
+    //         receptorModel = m = glviewer.addModel(data, "pqr");
+
+    //         // Defina um array de cores
+    //         const colors = ["grey", "orangered", "deepskyblue", "green", "purple", "cyan"];
+
+    //         const atomsx = m.selectedAtoms({});
+    //         const chains = [...new Set(atomsx.map(atom => atom.chain))]; // lista única de cadeias
+
+    //         // Define cartoon e superfície para cada cadeia
+    //         chains.forEach((chain, i) => {
+    //             const color = colors[i % colors.length];
+
+    //             // Estilo cartoon com cor
+    //             glviewer.setStyle({
+    //                 chain: chain
+    //             }, {
+    //                 line: {
+    //                     colorscheme: 'greyCarbon'
+    //                 },
+    //                 cartoon: {
+    //                     color: color
+    //                 }
+    //             });
+
+    //             // Adiciona superfície com a mesma cor do cartoon
+    //             glviewer.addSurface($3Dmol.SurfaceType.VDW, {
+    //                 opacity: 0.3,
+    //                 color: color
+    //             }, {
+    //                 chain: chain
+    //             });
+    //         });
+
+    //         /* Name of the atoms */
+    //         atoms = m.selectedAtoms({});
+    //         for (let i in atoms) {
+    //             let atom = atoms[i];
+    //             atom.clickable = true;
+    //             atom.callback = atomcallback;
+    //         }
+
+    //         glviewer.mapAtomProperties($3Dmol.applyPartialCharges);
+    //         glviewer.zoomTo();
+    //         glviewer.render();
+
+    //     });
+
+
+    //     const atomcallback = function(atom, viewer) {
+    //         if (atom.clickLabel === undefined ||
+    //             !atom.clickLabel instanceof $3Dmol.Label) {
+    //             atom.clickLabel = viewer.addLabel(atom.resn + " " + atom.resi + " (" + atom.elem + ")", {
+    //                 fontSize: 10,
+    //                 position: {
+    //                     x: atom.x,
+    //                     y: atom.y,
+    //                     z: atom.z
+    //                 },
+    //                 backgroundColor: "black"
+    //             });
+    //             atom.clicked = true;
+    //         }
+
+    //         //toggle label style
+    //         else {
+
+    //             if (atom.clicked) {
+    //                 let newstyle = atom.clickLabel.getStyle();
+    //                 newstyle.backgroundColor = 0x66ccff;
+
+    //                 viewer.setLabelStyle(atom.clickLabel, newstyle);
+    //                 atom.clicked = !atom.clicked;
+    //             } else {
+    //                 viewer.removeLabel(atom.clickLabel);
+    //                 delete atom.clickLabel;
+    //                 atom.clicked = false;
+    //             }
+    //         }
+    //     };
+    // });
 </script>
 
 <?= $this->endSection() ?>

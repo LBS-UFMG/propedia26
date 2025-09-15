@@ -1,0 +1,181 @@
+<!-- MODAL: SOBRE -->
+<div class="modal fade" tabindex="-1" id="about" role="dialog">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <div class="text-center">
+          <img width="150" class="me-3" src="<?php echo base_url('/img/logo_propedia.svg'); ?>">
+        </div>
+        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body small">
+        <div class="row">
+          <p class="text-muted">
+            PROPEDIA is a database of peptide-protein complexes clusterized in three methodologies: based on peptide sequences; based on structure interface; and based on binding sites. PROPEDIA main goal is to give new insights into peptide design of biotechnological interests.
+          </p>
+        </div>
+        <div class="row text-secondary">
+          <div class="col-md-8">
+
+            <strong># Created by:</strong><br>
+            Pedro Martins / Diego Mariano / Raquel C. de Melo-Minardi<br><br>
+
+            <strong># Backend/frontend:</strong><br>
+            Diego Mariano
+          </div>
+        </div>
+
+        <span><label class="badge bg-dark mt-3">Cite:</label></span>
+        <p class="small text-muted border-start border-dark mx-3 col-11 bg-light p-2">
+          Martins, P.M., Santos, L.H., Mariano, D. et al. <strong>Propedia: a database for protein–peptide identification based on a hybrid clustering algorithm</strong>. BMC Bioinformatics 22, 1 (2021). https://doi.org/10.1186/s12859-020-03881-z
+        </p>
+      </div>
+      <div class="modal-footer">
+        <img height="50" class="me-3" src="<?php echo base_url('/img/dcc_b.svg'); ?>">
+        <img height="50" class="me-3" src="<?php echo base_url('/img/ufmg_b.svg'); ?>">
+
+        <button type="button" class="btn btn-dark py-4 px-5" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal SOBRE -->
+
+<!-- /.modal BLAST -->
+<div class="modal fade" tabindex="-1" id="blast" role="dialog">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <form id="form_blast_run" action="<?php echo base_url('/blast'); ?>" method="post" enctype="multipart/form-data">
+        <div class="modal-header">
+          <div>
+            <h3><b>BLAST - Search for similar sequences</b></h3>
+          </div>
+          <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h5><b>Input sequence</b></h5>
+              <textarea id="txt_sequence" class="form-control" form="form_blast_run" name="sequence" rows="10" placeholder="Insert the sequence here"></textarea>
+              <div hidden id="feedback_blast" class="alert alert-danger" role="alert">
+                Sequence cannot be empty!
+              </div>
+              <br>
+              <h5><b>Search sequence from</b></h5>
+
+              <input type="radio" class="btn-check" name="search" value="peptides" id="blast_peptides" autocomplete="off" checked>
+              <label class="btn btn-lg" for="blast_peptides">Peptides</label>
+
+              <input type="radio" class="btn-check" name="search" value="receptors" id="blast_proteins" autocomplete="off">
+              <label class="btn btn-lg" for="blast_proteins">Proteins</label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-primary" value="Run BLAST">
+          <button type="button" class="btn btn-light " data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /.modal BLAST -->
+
+<!-- /.modal PROBIS -->
+
+
+<div class="modal fade" tabindex="-1" id="probis" role="dialog">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <form id="form_blast_run" action="<?php echo base_url('/blast'); ?>" method="post" enctype="multipart/form-data">
+        <div class="modal-header">
+          <div>
+            <h3><b>Search for similar binding sites</b></h3>
+          </div>
+          <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+           <form id="form_probis_run" action="<?php echo base_url(); ?>search/binding" method="post" enctype="multipart/form-data">
+
+          <div id="3DmolViewer" style="min-height: 400px; margin:10px 0; width: 100%;"></div>
+          <div class="row">
+            <div class="col-md-5">
+              <div class="form-group row">
+                <label class="col-sm-5 col-form-label col-spacing_custom">
+                  <h5><b>Search from PDB:</b></h5>
+                </label>
+                <div class="col-sm-3 col-spacing_custom">
+                  <input id="search_pdb_id" class="form-control" placeholder="1a1m">
+                </div>
+                <div class="col-sm-4 col-spacing_custom">
+                  <label id="btn_pdb_id" class="btn btn-block btn-primary">
+                    <i class="fa fa-search"></i>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="text-center">
+                <h4><b>OR</b></h4>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <label class="btn btn-block btn-info">
+                <i class="fa fa-upload"></i>&nbsp;Upload PDB
+                <input type="file" id="btn_pdb_file" accept=".pdb" style="display: none;">
+              </label>
+              <input id="input_pdb_file" name="input_pdb_file" hidden>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <small><label id="loading_covid" class="btn-small btn-block btn-link">Loading sample: SARS-CoV-2 main protease (6lu7)</label></small>
+            </div>
+          </div>
+          <div id="feedback_upload" class="alert" role="alert" hidden></div>
+          <div id="fields" class="row" hidden>
+            <div class="col-md-12">
+              <h4><b>Protein chain select</b></h4>
+              <select id="selected_chain" name="selected_chain" class="form-control" style="width: 100%"></select>
+              <h4><b>Input residues id</b></h4>
+              <p style="color:gray;font-size:12px;">Separated by comma (',')</p>
+              <div class="row">
+                <div class="col-md-8">
+                  <textarea id="residues_list" class="form-control" form="form_probis_run" name="residues_list" rows="3" placeho
+                    lder=""></textarea>
+                </div>
+                <div class="col-md-4">
+                  <label id="highlight_residues" class="btn btn-block btn-primary">Highlight residues surface
+                    <br>
+                    <i class="fa fa-eye"></i>
+                  </label>
+                </div>
+              </div>
+              <h4><b>Search scope</b></h4>
+              <label class="radio-inline">
+                <input type="radio" name="scope" value="ccd" checked>Only CCD <sup><a class="tip" href="#" data-placement="top" dat
+                    a-toggle="tooltip" title="Search in <?= number_format(1) //$ccd_number)
+                                                        ?> complex of Clustered Complex Dataset (faster).">?</a></sup>
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="scope" value="all">Whole database <sup><a class="tip" href="#" data-placement="top" data-
+                    toggle="tooltip" title="Search in <?= number_format(1) //$complex_number)
+                                                      ?> complex (slower).">?</a></sup>
+              </label>
+              <div hidden id="feedback_probis" class="alert alert-danger" role="alert">
+                PDB file and residue list cannot by empty!
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input id="run_probis_btn" type="submit" class="btn btn-success" value="Run ProBiS NOW" style="display: none;">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
