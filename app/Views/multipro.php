@@ -742,37 +742,6 @@
 
         });
 
-//         const surfaces = []; // array global para guardar referências das superfícies
-
-// chains.forEach((chain, i) => {
-//     const color = colors[i % colors.length];
-
-//     glviewer.setStyle({
-//         chain: chain
-//     }, {
-//         line: { colorscheme: 'greyCarbon' },
-//         cartoon: { color: color }
-//     });
-
-//     const surface = glviewer.addSurface($3Dmol.SurfaceType.VDW, {
-//         opacity: 1,  // valor inicial
-//         color: color
-//     }, { chain: chain });
-
-//     surfaces.push(surface); // guarda referência
-// });
-
-// $('#opacityRange').on('input', function() {
-//     const newOpacity = parseFloat($(this).val());
-//     $('#opacityValue').text(newOpacity.toFixed(2));
-
-//     surfaces.forEach(surf => {
-//         surf.opacity = newOpacity;
-//     });
-
-//     glviewer.render(); // atualiza o visualizador
-// });
-
 
         const atomcallback = function(atom, viewer) {
             if (atom.clickLabel === undefined ||
@@ -867,7 +836,7 @@
         link.click();
     }
 
-    fetch('<?php echo base_url(); ?>data/<?= $db ?>/contacts/<?= $id ?>_contacts.csv')
+    fetch('<?php echo base_url(); ?>data/<?= $db ?>/multipro/contacts/<?= $id ?>/<?= substr($id,0,4) ?>_contacts.csv')
         .then(response => response.text())
         .then(text => {
             const lines = text.split('\n').map(line => line.trim()).filter(line => line);

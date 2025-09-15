@@ -57,12 +57,15 @@ class Entry extends BaseController
         return view('entry', $data);
     }
 
-    private function getContacts($id, $modo): Array 
+    private function getContacts($id, $modo, $tipo = null): Array 
     {
         $contacts = [];
 
         # contacts
         $url = "./data/$modo/contacts/$id/".substr($id,0,4)."_contacts.csv";
+        if($tipo == 'multipro'){
+            $url = "./data/$modo/multipro/contacts/$id/".substr($id,0,4)."_contacts.csv";
+        }
         if (!file_exists($url)) {
             return ["File not exist."];
         }
@@ -131,7 +134,7 @@ class Entry extends BaseController
 
         $data['protein_chain'] = $data['info'][53];
 
-        $data['contacts'] = $this->getContacts($id,$modo);
+        $data['contacts'] = $this->getContacts($id,$modo,'multipro');
 
         return view('multipro', $data);
     }
