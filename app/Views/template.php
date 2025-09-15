@@ -39,22 +39,32 @@
         </div>
     <?php endif; ?>
 
-    <nav class="py-2 bg-body-tertiary menu link-light">
+    <nav class="py-2 bg-body-tertiary menu link-light navbar-expand-md">
         <div class="px-4 container-fluid d-flex flex-wrap">
-            <ul class="nav me-auto">
-                <li class="nav-item"><a href="<?= base_url('/') ?>" class="nav-link link-body-emphasis px-2"><i class="bi bi-house-door-fill"></i></a></li>
-                <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#about" class="nav-link link-body-emphasis px-2">About</a></li>
-                <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#blast" class="nav-link link-body-emphasis px-2">BLAST</a></li>
-                <li class="nav-item"><a href="<?= base_url('clusters') ?>" class="nav-link link-body-emphasis px-2">Clusters</a></li>
-                <li class="nav-item"><a href="<?= base_url('documentation') ?>" class="nav-link link-body-emphasis px-2">Documentation</a></li>
-                <li class="nav-item"><a href="<?= base_url('download') ?>" class="nav-link link-body-emphasis px-2">Download</a></li>
-                <li class="nav-item"><a href="<?= base_url('explore') ?>" class="nav-link link-body-emphasis px-2">Explore</a></li>
-                <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#about" class="nav-link link-body-emphasis px-2">Search</a></li>
-            </ul>
-            <ul class="nav">
-                <li class="nav-item"><a href="<?= base_url('#cite') ?>"
-                        class="nav-link link-body-emphasis px-2">How to cite Propedia</a></li>
-            </ul>
+
+            <!-- Botão hamburger -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuCollapse"
+                aria-controls="menuCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <h1 class="mb-0"><i class="bi bi-list text-white"></i></h1>
+            </button>
+            <div class="collapse navbar-collapse" id="menuCollapse">
+
+
+                <ul class="nav me-auto">
+                    <li class="nav-item"><a href="<?= base_url('/') ?>" class="nav-link link-body-emphasis px-2"><i class="bi bi-house-door-fill"></i></a></li>
+                    <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#about" class="nav-link link-body-emphasis px-2">About</a></li>
+                    <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#blast" class="nav-link link-body-emphasis px-2">BLAST</a></li>
+                    <li class="nav-item"><a href="<?= base_url('clusters') ?>" class="nav-link link-body-emphasis px-2">Clusters</a></li>
+                    <li class="nav-item"><a href="<?= base_url('documentation') ?>" class="nav-link link-body-emphasis px-2">Documentation</a></li>
+                    <li class="nav-item"><a href="<?= base_url('download') ?>" class="nav-link link-body-emphasis px-2">Download</a></li>
+                    <li class="nav-item"><a href="<?= base_url('explore') ?>" class="nav-link link-body-emphasis px-2">Explore</a></li>
+                    <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#about" class="nav-link link-body-emphasis px-2 orange">Search<sup><span class="badge bg-dark">by binding site</span></sup></a></li>
+                </ul>
+                <ul class="nav">
+                    <li class="nav-item"><a href="<?= base_url('#cite') ?>"
+                            class="nav-link link-body-emphasis px-2">How to cite Propedia</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
     <header class="py-3 mb-4 border-bottom bg-light">

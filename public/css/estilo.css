@@ -89,3 +89,7 @@ footer{
 #pdb canvas {
     position: relative !important;
 }
+
+.orange:hover span{
+    color: orangered;
+}
