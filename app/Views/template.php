@@ -153,12 +153,12 @@
 
     <!-- /.modal BLAST -->
     <div class="modal fade" tabindex="-1" id="blast" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <form id="form_blast_run" action="<?php echo base_url('/blast'); ?>" method="post" enctype="multipart/form-data">
                     <div class="modal-header">
                         <div>
-                            <h3><b>Search for similar sequences</b></h3>
+                            <h3><b>BLAST - Search for similar sequences</b></h3>
                         </div>
                         <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
@@ -179,13 +179,11 @@
 
                                 <input type="radio" class="btn-check" name="search" value="receptors" id="blast_proteins" autocomplete="off">
                                 <label class="btn btn-lg" for="blast_proteins">Proteins</label>
-
-
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" class="btn btn-success" value="Run BLAST">
+                        <input type="submit" class="btn btn-primary" value="Run BLAST">
                         <button type="button" class="btn btn-light " data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </form>
