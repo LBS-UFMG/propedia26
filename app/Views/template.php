@@ -25,6 +25,19 @@
 </head>
 
 <body>
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?= session()->getFlashdata('success') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= session()->getFlashdata('error') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
 
     <nav class="py-2 bg-body-tertiary menu link-light">
         <div class="px-4 container-fluid d-flex flex-wrap">
@@ -181,24 +194,6 @@
     <script src="//cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
 
     <script src="<?php echo base_url('js/3dmol.js'); ?>"></script>
-
-
-    <script>
-        // function redirectToURL(event) {
-        //     // Verificar se a tecla pressionada foi Enter (código 13)
-        //     if (event.keyCode === 13) {
-        //         event.preventDefault(); // Prevenir o envio do formulário
-        //         let url = document.getElementById('urlInput').value;
-        //         url = url.toUpperCase();
-        //         if (url) {
-        //             if(url.length != 4){
-        //                 window.location.href = '<?= base_url("/entry/404") ?>';
-        //             }
-        //             window.location.href = '<?= base_url() ?>pep-pro/'+url;
-        //         }
-        //     }
-        // }
-    </script>
 
     <?= $this->renderSection('scripts') ?>
 
