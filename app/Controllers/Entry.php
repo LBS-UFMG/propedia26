@@ -97,7 +97,10 @@ class Entry extends BaseController
             $arquivo = "data/$modo/multipro/csv/".$id[0].'/'.$id.".csv";
         }
         if (!file_exists($arquivo)) {
-            return view('404');
+            if(strlen($id) == 6){
+                return redirect()->back()->with('error', 'Structure composed of only a single protein-peptide pair.');
+            }
+            else{ return view('404'); }
         }
 
         $data['db'] = "$modo";
