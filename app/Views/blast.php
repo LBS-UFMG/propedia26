@@ -52,6 +52,7 @@
             <thead>
                 <tr class="table-primary">
                     <th class="col-md-1">Subject</th>
+                    <th>Sequence</th>
                     <th>Lenght</th>                    
                     <th>Score</th>    
                     <th>Coverage</th>
@@ -64,6 +65,8 @@
                 ?>
                 <tr>
                     <td><a href="<?php echo base_url().'entry/'.$nome[0]; ?>"><strong><?php echo strtoupper($nome[0]); ?></strong></a></td>
+
+                    <td><?php echo $r[12]; ?></td>     
 
                     <!-- <td><?php //if(isset($r[12])) echo $r[12]; ?></td>
                     
