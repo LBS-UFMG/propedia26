@@ -52,8 +52,8 @@
             <thead>
                 <tr class="table-primary">
                     <th class="col-md-1">Subject</th>
-                    <th>Sequence</th>
-                    <th>Lenght</th>                    
+                    <th>Subject sequence</th>
+                    <th>Length</th>                    
                     <th>Score</th>    
                     <th>Coverage</th>
                     <th class="col-md-2">Identity</th>
