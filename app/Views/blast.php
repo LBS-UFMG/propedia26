@@ -63,7 +63,7 @@
                     $nome = explode("|",$r[1]);
                 ?>
                 <tr>
-                    <td><a href="<?php echo base_url().'pep-pro/'.$nome[0]; ?>"><strong><?php echo strtoupper($nome[0]); ?></strong></a></td>
+                    <td><a href="<?php echo base_url().'entry/'.$nome[0]; ?>"><strong><?php echo strtoupper($nome[0]); ?></strong></a></td>
 
                     <!-- <td><?php //if(isset($r[12])) echo $r[12]; ?></td>
                     
