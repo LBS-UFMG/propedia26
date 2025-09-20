@@ -120,6 +120,13 @@
     <script src="<?php echo base_url('js/3dmol.js'); ?>"></script>
 
     <?= $this->renderSection('scripts') ?>
+    <script>
+    function loadPopover() {
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+        };
+        loadPopover();
+    </script>
 
 </body>
 

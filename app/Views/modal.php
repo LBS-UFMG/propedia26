@@ -100,7 +100,35 @@
         <div class="modal-body">
            <form id="form_probis_run" action="<?php echo base_url(); ?>search/binding" method="post" enctype="multipart/form-data">
 
-          <div id="3DmolViewer" style="min-height: 400px; margin:10px 0; width: 100%;"></div>
+           <div class="row">
+            <div class="col">
+              <p class="small text-muted">
+                The search for similar binding sites in Propedia employs the <a class="link-dark" href="#" data-bs-placement="bottom" data-bs-toggle="tooltip" data-bs-title="ProBiS achieves this by aligning surface patches based on geometric and physicochemical properties, followed by statistical scoring of the alignments, thereby enabling the identification of proteins that share structurally conserved binding sites with the protein indicated here."><strong>ProBiS algorithm</strong></a>, which detects local structural similarities by comparing the three-dimensional surface of the queried protein binding site with those of proteins stored in the database. 
+              </p>
+              <p class="small text-muted"><strong>Enter the PDB code, target protein chain, and binding site residue numbers separated by commas (use hyphens to indicate ranges) <a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="E.g.: 100,101,105-110">?</a>.</strong></p>
+
+              <p>
+                <label class="badge bg-secondary">PDB ID</label>
+                <input type="text" class="form-control" placeholder="e.g.: 1a1m">
+              </p>
+              <p>
+                <label class="badge bg-secondary">Chain</label>
+                <input type="text" class="form-control" placeholder="e.g.: A">
+              </p>
+              <p>
+                <label class="badge bg-secondary">Binding site residues</label>
+                <textarea class="form-control" placeholder="e.g.: 100,101,105-110" rows="3"></textarea>
+              </p>
+
+              <input type="submit" value="Search for similar binding sites" class="btn w-100 btn-primary mb-5 btn-lg">
+
+            </div>
+            <div class="col text-end">
+              <img src="<?=base_url('/img/bindingsite.png')?>" class="w-75 ">
+            </div>
+           </div>
+
+          <!-- <div id="3DmolViewer" style="min-height: 400px; margin:10px 0; width: 100%;"></div>
           <div class="row">
             <div class="col-md-5">
               <div class="form-group row">
@@ -134,7 +162,7 @@
             <div class="col-md-12">
               <small><label id="loading_covid" class="btn-small btn-block btn-link">Loading sample: SARS-CoV-2 main protease (6lu7)</label></small>
             </div>
-          </div>
+          </div> -->
           <div id="feedback_upload" class="alert" role="alert" hidden></div>
           <div id="fields" class="row" hidden>
             <div class="col-md-12">
@@ -179,3 +207,4 @@
     </div>
   </div>
 </div>
+
