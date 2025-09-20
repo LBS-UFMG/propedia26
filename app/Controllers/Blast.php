@@ -16,7 +16,7 @@ class Blast extends BaseController
 
         $where = addslashes($_POST["search"]);
 
-        if($where == 'peptides'){ $tamanho = " -word_size 2"; } 
+        if($where == 'peptides'){ $tamanho = " -word_size 2 -task blastp-short -seg no  -evalue 1000"; } 
         else{ $tamanho = " -word_size 3"; }
 
         if (($where != 'peptides') and ($where != 'receptors')) {
