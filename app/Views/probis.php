@@ -20,7 +20,7 @@
                <div class="thumbnail" style="border-left: #ff1232 5px solid; color: #ccc; padding:20px">
                   <div class="caption">   
                      <div class="row"> 
-                        <h3 class="text-info">Project ID: <a href='<?=base_url()?>search/probis/<?=$project_id?>'><strong><?=$project_id?></a></strong></h3>
+                        <h3 class="text-info">Project ID: <a href='<?=base_url()?>search/probis/<?=$id?>'><strong><?=$id?></a></strong></h3>
                         <br>
                         <?php if ($status != 1) {?>
                            <h4><strong>Status</strong></h4>
@@ -29,9 +29,9 @@
                         
                         <?php if ($status == 1) {?>
                            <h5 style="width: 600px; display: inline-block; word-wrap:break-word;" class="text-muted">
-                              <strong>Chain: </strong><?=$query_chain?>
+                              <strong>Chain: </strong><?=$chain?>
                               <br>
-                              <strong>Residues: </strong><?=$query_residues_list?>
+                              <strong>Residues: </strong><?=$residues?>
                            </h5>               
                            <div id="boxplot">
                               <svg id="svg_boxplot"></svg>
@@ -42,9 +42,9 @@
                            </div>       
                         <?php } ?>
 
-                        <input id="project_id" value="<?=$project_id?>" hidden></input>
-                        <input id="query_chain" value="<?=$query_chain?>" hidden></input>
-                        <input id="query_residues_list" value="<?=$query_residues_list?>" hidden></input>
+                        <input id="project_id" value="<?=$id?>" hidden></input>
+                        <input id="query_chain" value="<?=$chain?>" hidden></input>
+                        <input id="query_residues_list" value="<?=$residues?>" hidden></input>
                         <input id="status" value="<?=$status?>" hidden></input>
                        
                      </div>
@@ -56,7 +56,7 @@
          <?php if ($status == 1) {?>
             <div class="row">
                <div class="col-md-4 col-sm-12">
-                  <a class="btn btn-success btn-block" href='<?=base_url() . "public/probis/projects/" . $project_id . "/result.csv";?>'>
+                  <a class="btn btn-success btn-block" href='<?=base_url() . "public/probis/projects/" . $id . "/result.csv";?>'>
                   Result CSV&nbsp;<i class="fas fa-download"></i>
                   </a>
                </div>

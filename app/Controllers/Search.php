@@ -91,7 +91,27 @@ class Search extends BaseController
 
     public function project($id): string{
         $data = [];
-        $data['project_id'] = $id;
+
+        $save_dir = FCPATH . "data/projects/{$id}/";
+        $file = $save_dir . "info.csv";
+
+        if (!file_exists($file)) {
+            throw new \RuntimeException("Arquivo não encontrado: {$file}");
+        }
+
+        $dados = [];
+        if (($fp = fopen($file, 'r')) !== false) {
+            $dados = fgetcsv($fp, 0, ';');
+            fclose($fp);
+        }
+
+        $data['id'] = $id;
+        $data['pdb'] = $dados[0];
+        $data['chain'] = $dados[1];
+        $data['residues'] = $dados[2];
+        $data['status'] = 1;
+        $data['log'] = 'ok';
+
         return view("probis",$data);
     }
 
