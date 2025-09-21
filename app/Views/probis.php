@@ -94,7 +94,7 @@ DB - peptide chain - receptor chain">?</a></sup></th>
                                RMSD;
                                QUERY ALIGNED RESIDUES;
                                SUBJECT ALIGNED RESIDUES -->
-                              <td><input type="checkbox"></td>
+                              <td><input type="radio" name="compare" value="<?=$r['COMPLEX NAME']?>"></td>
                               <td><?=$r['COMPLEX NAME']?></td>
                               <td><?=$r['ALIGNMENT SCORE']?></td>
                               <td><?=$r['RMSD']?></td>
