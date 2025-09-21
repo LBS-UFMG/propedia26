@@ -12,7 +12,6 @@ $routes->get('/download', 'Home::download');
 $routes->get('/explore', 'Home::explore');
 $routes->post('/blast', 'Blast::index');
 $routes->post('/run', 'Project::create');
-$routes->get('/project/(:any)', 'Project::id/$1');
 $routes->get('/export/pymol/(:any)', 'Export::pymol/$1');
 $routes->get('/export/pdb-to-pymol/(:any)', 'Export::pdb_to_pymol/$1');
 
