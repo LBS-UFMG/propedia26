@@ -116,6 +116,13 @@ DB - peptide chain - receptor chain">?</a></sup></th>
    $(() => {
       const pdb_data = "<?php echo base_url("/data/projects/{$id}/{$pdb}.pdb"); ?>";
 
+      document.querySelectorAll('input[name="compare"]').forEach(radio => {
+         radio.addEventListener('click', function () {
+            // Quando clicado, chama a função
+            load_subject(this.value);
+         });
+      });
+
       function load_subject(pdb_data2){
          $.get(pdb_data2, function(d) {
             const data = d;
