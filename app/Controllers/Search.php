@@ -37,10 +37,7 @@ class Search extends BaseController
 
 		# Create project folder 
 		mkdir("../../../public/data/projects/$id");
-		chmod("../../../public/data/projects/$id", 0777);
-
-		$data_folder = getcwd();
-		$raiz = str_replace("/public/data/projects", "",$data_folder);
+		chmod("../../../public/data/projects/$id", 0777);        
 
         // download pdb
         // URL da API REST do RCSB PDB
@@ -55,6 +52,23 @@ class Search extends BaseController
 
         // grava no diretório
         file_put_contents($save_path, $response);
+
+        // grava info no diretório
+        // Caminho do arquivo CSV
+        $info = $save_dir . "info.csv";
+
+        // Abre o arquivo para escrita (sobrescreve se já existir)
+        $fp = fopen($info, 'w');
+        if ($fp === false) {
+            throw new \RuntimeException("Não foi possível criar o arquivo: {$info}");
+        }
+
+        fputcsv($fp, [
+            $data['pdb'],
+            $data['chain'],
+            $data['residues']
+        ], ';');
+        fclose($fp);
 
         // PROBIS
         // passo 1 - converte entrada num arquivo 'probis'
@@ -77,7 +91,7 @@ class Search extends BaseController
 
     public function project($id): string{
         $data = [];
-        $data['id'] = $id;
+        $data['project_id'] = $id;
         return view("probis",$data);
     }
 
