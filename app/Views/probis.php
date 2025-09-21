@@ -88,6 +88,7 @@ DB - peptide chain - receptor chain">?</a></sup></th>
                         </tr>
                      </thead>
                      <tbody>
+                        <?=$result?>
                      </tbody>
                   </table>
                </div>
