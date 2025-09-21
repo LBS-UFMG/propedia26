@@ -96,7 +96,7 @@ class Search extends BaseController
         $fileinfo = $save_dir . "info.csv";
 
         dd("Diretório atual: " . getcwd());
-        chmod("../../data/projects/{$id}/result.nosql", 0755);
+        chmod("./data/projects/{$id}/result.nosql", 0755);
 
         if (!file_exists($fileinfo)) {
             throw new \RuntimeException("Arquivo não encontrado: {$fileinfo}");
