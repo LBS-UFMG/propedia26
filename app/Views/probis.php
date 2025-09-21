@@ -6,12 +6,12 @@
    <div class="row">
       <div class="col-md-4 col-12">
          <div id="3Dmol_query" style="min-height: 350px; width: 100%; position: relative;">
-            <h1 class="text-muted text-center" style="padding:100px 50px 0 50px; color:#ddd">Query</h1>
+            <h1 class="text-muted text-center mt-4">Query</h1>
          </div>    
       </div>
       <div class="col-md-4 col-12">
          <div id="3Dmol_subject" style="min-height: 350px; width: 100%; position: relative;">
-            <h1 class="text-muted text-center" style="padding:0 50px; color:#ddd">Target</h1>
+            <h1 class="text-muted text-center mt-4">Target</h1>
          </div>         
       </div>
       <div class="col-md-4 col-12" style="overflow: auto; height: 1000px;">
@@ -111,4 +111,138 @@ DB - peptide chain - receptor chain">?</a></sup></th>
    </div>
 </div>
 
+<script>
+
+    $(() => {
+        const pdb_data = "<?php echo base_url("/data/projects/{$id}/{$pdb}.pdb"); ?>";
+
+        $.get(pdb_data, function(d) {
+            const data = d;
+            // Cria viewer
+            glviewer = $3Dmol.createViewer("3Dmol_query", {
+                defaultcolors: $3Dmol.rasmolElementColors
+            });
+            glviewer.setBackgroundColor(0xffffff);
+
+            // Adiciona modelo
+            const m = glviewer.addModel(data, "pqr");
+
+            // Cores e cadeias
+            const colors = ["grey", "orangered", "deepskyblue", "green", "purple", "cyan"];
+            const atomsx = m.selectedAtoms({});
+            const chains = [...new Set(atomsx.map(atom => atom.chain))];
+
+            // Função utilitária debounce
+            const debounce = (fn, wait = 80) => {
+                let t;
+                return function(...args) {
+                    clearTimeout(t);
+                    t = setTimeout(() => fn.apply(this, args), wait);
+                };
+            };
+
+            // Função segura para remover todas as superfícies
+            function removeAllSurfacesSafe(viewer) {
+                // Preferir método pronto, se existir
+                if (typeof viewer.removeAllSurfaces === 'function') {
+                    viewer.removeAllSurfaces();
+                    return;
+                }
+                // Fallback: iterar sobre viewer.surfaces (se existir) e tentar remover
+                if (Array.isArray(viewer.surfaces) && viewer.surfaces.length) {
+                    // copie a lista porque removeSurface pode mutar viewer.surfaces
+                    const existing = viewer.surfaces.slice();
+                    for (const s of existing) {
+                        try {
+                            // tentamos remover pelo objeto/handle — envolver em try para não quebrar
+                            viewer.removeSurface(s);
+                        } catch (err) {
+                            // Algumas versões esperam um índice ou outro formato; ignorar se falhar
+                            console.warn('removeSurface failed for', s, err);
+                        }
+                    }
+                }
+            }
+
+            // Função que (re)cria todas as superfícies com a opacidade passada
+            function createSurfacesWithOpacity(opacity) {
+                chains.forEach((chain, i) => {
+                    const color = colors[i % colors.length];
+                    glviewer.setStyle({
+                        chain: chain
+                    }, {
+                        line: {
+                            colorscheme: 'greyCarbon'
+                        },
+                        cartoon: {
+                            color: color
+                        }
+                    });
+                    glviewer.addSurface($3Dmol.SurfaceType.VDW, {
+                        opacity: opacity,
+                        color: color
+                    }, {
+                        chain: chain
+                    });
+                });
+            }
+
+            // Cria superfícies iniciais usando o valor atual do slider (fallback 0.3)
+            const initialOpacity = parseFloat($('#opacityRange').val()) || 0.3;
+            createSurfacesWithOpacity(initialOpacity);
+
+            // Handler único, debounced, que remove e recria superfícies
+            $('#opacityRange').on('input', debounce(function() {
+                const newOpacity = parseFloat($(this).val());
+                $('#opacityValue').text((newOpacity * 100).toFixed(0) + "%");
+
+                // remove todas as superfícies de forma segura
+                removeAllSurfacesSafe(glviewer);
+
+                // (re)cria todas as superfícies com a nova opacidade
+                createSurfacesWithOpacity(newOpacity);
+
+                glviewer.render();
+            }, 60));
+
+            // restante: marca átomos como clicáveis etc.
+            const atoms = m.selectedAtoms({});
+            for (let i in atoms) {
+                let atom = atoms[i];
+                atom.clickable = true;
+                atom.callback = atomcallback;
+            }
+
+            glviewer.mapAtomProperties($3Dmol.applyPartialCharges);
+            glviewer.zoomTo();
+            glviewer.render();
+        });
+
+        const atomcallback = function(atom, viewer) {
+            if (atom.clickLabel === undefined || !(atom.clickLabel instanceof $3Dmol.Label)) {
+                atom.clickLabel = viewer.addLabel(atom.resn + " " + atom.resi + " (" + atom.elem + ")", {
+                    fontSize: 10,
+                    position: {
+                        x: atom.x,
+                        y: atom.y,
+                        z: atom.z
+                    },
+                    backgroundColor: "black"
+                });
+                atom.clicked = true;
+            } else {
+                if (atom.clicked) {
+                    let newstyle = atom.clickLabel.getStyle();
+                    newstyle.backgroundColor = 0x66ccff;
+                    viewer.setLabelStyle(atom.clickLabel, newstyle);
+                    atom.clicked = !atom.clicked;
+                } else {
+                    viewer.removeLabel(atom.clickLabel);
+                    delete atom.clickLabel;
+                    atom.clicked = false;
+                }
+            }
+        };
+    });
+</script>
 <?= $this->endSection() ?>
