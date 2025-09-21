@@ -89,7 +89,7 @@ DB - peptide chain - receptor chain">?</a></sup></th>
                      </thead>
                      <tbody>
                         <?php foreach($results as $r):?>
-                           <?php dd($r); //$r = explode(';', $result); ?>
+                           <?php if(count($r) == 5):  ?>
                            <tr>
                               <!-- [0] COMPLEX NAME;
                                ALIGNMENT SCORE;
@@ -103,6 +103,7 @@ DB - peptide chain - receptor chain">?</a></sup></th>
                               <td><?=$r[1]?></td>
                               <td><?=$r[2]?></td>
                            </tr>
+                           <?php endif; ?> 
                         <?php endforeach; ?> 
                      </tbody>
                   </table>
