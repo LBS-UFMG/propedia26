@@ -95,7 +95,6 @@ class Search extends BaseController
         $save_dir = FCPATH . "data/projects/{$id}/";
         $fileinfo = $save_dir . "info.csv";
 
-        d("Diretório atual: " . getcwd());
         chmod("./data/projects/{$id}/result.nosql", 0755);
 
         if (!file_exists($fileinfo)) {
@@ -110,7 +109,7 @@ class Search extends BaseController
 
         $resultcsv = $save_dir . "result.csv";
         if (!file_exists($resultcsv)) {
-            system("python app/ThirdParty/nosql_to_csv.py {$save_dir}result.nosql {$save_dir}");
+            dd("python app/ThirdParty/nosql_to_csv.py {$save_dir}result.nosql {$save_dir}");
         }
 
         $result = [];
