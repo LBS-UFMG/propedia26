@@ -5,13 +5,14 @@
 <div class="container-fluid">
    <div class="row">
       <div class="col-md-4 col-12">
-         <div id="3Dmol_query" style="min-height: 350px; width: 100%; position: relative;">
-            <h1 class="text-muted text-center mt-4">Query</h1>
+         <h1 class="text-muted text-center mt-2">Query</h1>
+         <div id="3Dmol_query" style="min-height: 550px; width: 100%; position: relative;">
+            
          </div>    
       </div>
       <div class="col-md-4 col-12">
-         <div id="3Dmol_subject" style="min-height: 350px; width: 100%; position: relative;">
-            <h1 class="text-muted text-center mt-4">Target</h1>
+         <h1 class="text-muted text-center mt-2">Target</h1>
+         <div id="3Dmol_subject" style="min-height: 550px; width: 100%; position: relative;">
          </div>         
       </div>
       <div class="col-md-4 col-12" style="overflow: auto; height: 1000px;">
