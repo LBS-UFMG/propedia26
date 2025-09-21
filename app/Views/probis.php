@@ -4,18 +4,19 @@
 
 <div class="container-fluid">
    <div class="row">
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-4 col-12">
          <div id="3Dmol_query" style="min-height: 350px; width: 100%; position: relative;">
-            <h1 class="text-muted text-center" style="padding:100px 50px 0 50px; color:#ddd"></h1>
+            <h1 class="text-muted text-center" style="padding:100px 50px 0 50px; color:#ddd">Query</h1>
          </div>    
+      </div>
+      <div class="col-md-4 col-12">
          <div id="3Dmol_subject" style="min-height: 350px; width: 100%; position: relative;">
-            <h1 class="text-muted text-center" style="padding:0 50px; color:#ddd"></h1>
+            <h1 class="text-muted text-center" style="padding:0 50px; color:#ddd">Target</h1>
          </div>         
       </div>
-      <div class="col-md-6 col-sm-12" style="overflow: auto; height: 1000px;">
+      <div class="col-md-4 col-12" style="overflow: auto; height: 1000px;">
          <div class="row">
             <div class="col-md-12">
-
                <div class="thumbnail" style="border-left: #001858ff 5px solid; color: #ccc; padding:20px">
                   <div class="caption">   
                      <div class="row"> 
