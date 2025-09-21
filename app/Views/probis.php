@@ -29,7 +29,7 @@
                         <?php } ?>
 
                         <?php if ($status == 1) { ?>
-                           <p class="mb-0" style="width: 600px; display: inline-block; word-wrap:break-word;" class="text-muted">
+                           <p class="mb-0" style="width: 600px; display: inline-block; word-wrap:break-word;">
                               <strong>PDB: </strong><?= $pdb ?><br>
                               <strong>Chain: </strong><?= $chain ?>
                               <br>
