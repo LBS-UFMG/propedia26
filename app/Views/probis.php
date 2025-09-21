@@ -119,7 +119,9 @@ DB - peptide chain - receptor chain">?</a></sup></th>
       document.querySelectorAll('input[name="compare"]').forEach(radio => {
          radio.addEventListener('click', function () {
             // Quando clicado, chama a função
-            load_subject(this.value);
+            console.log(this.value);
+            let url = '<?=base_url("/data/db/pdb/")?>' + this.value[0] + '/' + this.value + '.pdb';
+            console.log(url)
          });
       });
 
