@@ -72,8 +72,6 @@ selected">
                      <thead>
                         <tr class="tableheader">
                            
-                           <th class="dt-center">Complex</th>
-
                            <th class="dt-center"><i class="fa fa-eye"></i></th>
 
                            <th class="dt-center">Complex<sup><a class="tip" href="#"  data-placement="top" data-toggle="tooltip" title="P
@@ -96,9 +94,8 @@ DB - peptide chain - receptor chain">?</a></sup></th>
                                RMSD;
                                QUERY ALIGNED RESIDUES;
                                SUBJECT ALIGNED RESIDUES -->
-
-                              <td><?=$r['COMPLEX NAME']?></td>
                               <td><input type="checkbox"></td>
+                              <td><?=$r['COMPLEX NAME']?></td>
                               <td></td>
                               <td><?=$r['ALIGNMENT SCORE']?></td>
                               <td><?=$r['RMSD']?></td>
