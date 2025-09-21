@@ -5,13 +5,13 @@
 <div class="container-fluid">
    <div class="row">
       <div class="col-md-4 col-12">
-         <h2 class="text-center mt-1">Query</h2>
+         <h3 class="text-center mt-1">Query <label class="badge bg-primary"><?= $pdb ?></label></h3>
          <div id="3Dmol_query" style="min-height: 600px; width: 100%; position: relative;">
 
          </div>
       </div>
       <div class="col-md-4 col-12">
-         <h2 class="text-center mt-1">Subject</h2>
+         <h3 class="text-center mt-1">Subject <label class="badge bg-dark" id="sbj"><?= $results[0]['COMPLEX NAME'] ?></label></h3>
          <div id="3Dmol_subject" style="min-height: 600px; width: 100%; position: relative;">
          </div>
       </div>
@@ -120,11 +120,13 @@ DB - peptide chain - receptor chain">?</a></sup></th>
          radio.addEventListener('click', function () {
             let url = '<?=base_url("/data/db/pdb/")?>' + this.value[0] + '/' + this.value + '.pdb';
             load_subject(url); // Quando clicado, chama a função
+            $('#sbj').text(this.value)
          });
       });
 
       function load_subject(pdb_data2){
          $.get(pdb_data2, function(d) {
+            
             const data = d;
             // Cria viewer
             glviewer = $3Dmol.createViewer("3Dmol_subject", {
