@@ -115,9 +115,8 @@ DB - peptide chain - receptor chain">?</a></sup></th>
 <script>
    $(() => {
       const pdb_data = "<?php echo base_url("/data/projects/{$id}/{$pdb}.pdb"); ?>";
-      const pdb_data2 = "<?php echo base_url("/data/db/pdb/{$results[0]['COMPLEX NAME'][0]}/{$results[0]['COMPLEX NAME']}.pdb"); ?>";
 
-      function load_subject(){
+      function load_subject(pdb_data2){
          $.get(pdb_data2, function(d) {
             const data = d;
             // Cria viewer
@@ -201,7 +200,7 @@ DB - peptide chain - receptor chain">?</a></sup></th>
          });
       }
 
-      load_subject();
+      load_subject(<?php echo base_url("/data/db/pdb/{$results[0]['COMPLEX NAME'][0]}/{$results[0]['COMPLEX NAME']}.pdb"); ?>); // carrega o primeiro item por padrão
 
       // QUERY -------------------------------------------------->
       $.get(pdb_data, function(d) {
