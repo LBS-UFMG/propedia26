@@ -141,7 +141,7 @@ document.getElementById("loading_blast").addEventListener("click", e => {
               </p>
               <p>
                 <label class="badge bg-secondary">Binding site residues</label>
-                <textarea name="residues" class="form-control" placeholder="e.g.: 100,101,105-110" rows="3" required></textarea>
+                <textarea name="residues" class="form-control" placeholder="e.g.: 60,62-82,146-171" rows="3" required></textarea>
               </p>
 
               <input name="search_binding_sites" type="submit" value="Search for proteins with similar binding sites" class="btn w-100 btn-primary mb-5 mt-3 btn-lg">

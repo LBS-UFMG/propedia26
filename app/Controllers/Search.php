@@ -57,12 +57,18 @@ class Search extends BaseController
 
         // PROBIS
         // passo 1 - converte entrada num arquivo 'probis'
-        $comando = "probis -extract -f1 {$save_dir}{$data['pdb']}.pdb -c1 {$data['chain']} -motif \[:{$data['chain']} and {$data['residues']}]\ -srffile {$save_dir}query.srf";
+        $comando = "probis -extract -f1 {$save_dir}{$data['pdb']}.pdb -c1 {$data['chain']} -motif \[:{$data['chain']} and {$data['residues']}]\ -srffile {$save_dir}query.srf > {$save_dir}conversao.log";
 
         system($comando);
 
-        // passo 2
-        dd($id);
+        // passo 2 - roda o probis para buscar proteínas com sítio de ligação similar
+        $probis_db = "/home/liase/www/propedia26/public/data/db/probis/propedia26_srf.csv";
+        $comando2 = "nohup probis -ncpu 4 -longnames -surfdb -local -sfile {$probis_db} -f1 {$save_dir}query.srf -c1 A -nosql {$save_dir}query.nosql > {$save_dir}busca.log &";
+
+        dd($comando2);
+
+        // muda as permissões de segurança
+        chmod("../../../public/data/projects/$id", 0755);
 
         // carrega view - aguardando processamento
         return view("probis", $data);
