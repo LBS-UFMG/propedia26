@@ -129,7 +129,7 @@ class Search extends BaseController
         $data['residues'] = $dados[2];
         $data['status'] = 1;
         $data['log'] = 'ok';
-        $data['result'] = $result;
+        $data['results'] = $result;
 
         return view("probis",$data);
     }

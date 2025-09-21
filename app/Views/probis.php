@@ -88,7 +88,22 @@ DB - peptide chain - receptor chain">?</a></sup></th>
                         </tr>
                      </thead>
                      <tbody>
-                        <?=dd($result)?>
+                        <?php foreach($results as $result):?>
+                           <?php $r = explode(';', $result); ?>
+                           <tr>
+                              <!-- [0] COMPLEX NAME;
+                               ALIGNMENT SCORE;
+                               RMSD;
+                               QUERY ALIGNED RESIDUES;
+                               SUBJECT ALIGNED RESIDUES -->
+
+                              <td><?=$r[0]?></td>
+                              <td><input type="checkbox"></td>
+                              <td></td>
+                              <td><?=$r[1]?></td>
+                              <td><?=$r[2]?></td>
+                           </tr>
+                        <?php endforeach; ?> 
                      </tbody>
                   </table>
                </div>
