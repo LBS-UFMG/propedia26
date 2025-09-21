@@ -5,14 +5,14 @@
 <div class="container-fluid">
    <div class="row">
       <div class="col-md-4 col-12">
-         <h1 class="text-muted text-center mt-2">Query</h1>
-         <div id="3Dmol_query" style="min-height: 550px; width: 100%; position: relative;">
+         <h2 class="text-center mt-1">Query</h2>
+         <div id="3Dmol_query" style="min-height: 600px; width: 100%; position: relative;">
             
          </div>    
       </div>
       <div class="col-md-4 col-12">
-         <h1 class="text-muted text-center mt-2">Target</h1>
-         <div id="3Dmol_subject" style="min-height: 550px; width: 100%; position: relative;">
+         <h2 class="text-center mt-1">Target</h2>
+         <div id="3Dmol_subject" style="min-height: 600px; width: 100%; position: relative;">
          </div>         
       </div>
       <div class="col-md-4 col-12" style="overflow: auto; height: 1000px;">
@@ -74,7 +74,7 @@ selected">
                      <thead>
                         <tr class="tableheader">
                            
-                           <th class="dt-center"><i class="fa fa-eye"></i></th>
+                           <th class="dt-center"><i class="bi bi-eye"></i></th>
 
                            <th class="dt-center">Complex<sup><a class="tip" href="#"  data-placement="top" data-toggle="tooltip" title="P
 DB - peptide chain - receptor chain">?</a></sup></th>
