@@ -118,7 +118,25 @@ DB - peptide chain - receptor chain">?</a></sup></th>
         const pdb_data = "<?php echo base_url("/data/projects/{$id}/{$pdb}.pdb"); ?>";
         const pdb_data2= "<?php echo base_url("/data/db/pdb/{$r['COMPLEX NAME'][0]}/{$r['COMPLEX NAME']}.pdb"); ?>";
 
-      // Função utilitária debounce
+      
+
+      $.get(pdb_data2, function(d) {
+            const data = d;
+            // Cria viewer
+            glviewer = $3Dmol.createViewer("3Dmol_subject", {
+                defaultcolors: $3Dmol.rasmolElementColors
+            });
+            glviewer.setBackgroundColor(0xffffff);
+
+            // Adiciona modelo
+            const m = glviewer.addModel(data, "pqr");
+
+            // Cores e cadeias
+            const colors = ["grey", "orangered", "deepskyblue", "green", "purple", "cyan"];
+            const atomsx = m.selectedAtoms({});
+            const chains = [...new Set(atomsx.map(atom => atom.chain))];
+
+            // Função utilitária debounce
             const debounce = (fn, wait = 80) => {
                 let t;
                 return function(...args) {
@@ -172,23 +190,6 @@ DB - peptide chain - receptor chain">?</a></sup></th>
                     });
                 });
             }
-
-      $.get(pdb_data2, function(d) {
-            const data = d;
-            // Cria viewer
-            glviewer = $3Dmol.createViewer("3Dmol_subject", {
-                defaultcolors: $3Dmol.rasmolElementColors
-            });
-            glviewer.setBackgroundColor(0xffffff);
-
-            // Adiciona modelo
-            const m = glviewer.addModel(data, "pqr");
-
-            // Cores e cadeias
-            const colors = ["grey", "orangered", "deepskyblue", "green", "purple", "cyan"];
-            const atomsx = m.selectedAtoms({});
-            const chains = [...new Set(atomsx.map(atom => atom.chain))];
-
                         const initialOpacity = parseFloat($('#opacityRange').val()) || 0;
                         createSurfacesWithOpacity(initialOpacity);
 
@@ -221,6 +222,61 @@ DB - peptide chain - receptor chain">?</a></sup></th>
             const atomsx = m.selectedAtoms({});
             const chains = [...new Set(atomsx.map(atom => atom.chain))];
 
+            // Função utilitária debounce
+            const debounce = (fn, wait = 80) => {
+                let t;
+                return function(...args) {
+                    clearTimeout(t);
+                    t = setTimeout(() => fn.apply(this, args), wait);
+                };
+            };
+
+            // Função segura para remover todas as superfícies
+            function removeAllSurfacesSafe(viewer) {
+                // Preferir método pronto, se existir
+                if (typeof viewer.removeAllSurfaces === 'function') {
+                    viewer.removeAllSurfaces();
+                    return;
+                }
+                // Fallback: iterar sobre viewer.surfaces (se existir) e tentar remover
+                if (Array.isArray(viewer.surfaces) && viewer.surfaces.length) {
+                    // copie a lista porque removeSurface pode mutar viewer.surfaces
+                    const existing = viewer.surfaces.slice();
+                    for (const s of existing) {
+                        try {
+                            // tentamos remover pelo objeto/handle — envolver em try para não quebrar
+                            viewer.removeSurface(s);
+                        } catch (err) {
+                            // Algumas versões esperam um índice ou outro formato; ignorar se falhar
+                            console.warn('removeSurface failed for', s, err);
+                        }
+                    }
+                }
+            }
+
+            // Função que (re)cria todas as superfícies com a opacidade passada
+            function createSurfacesWithOpacity(opacity) {
+                chains.forEach((chain, i) => {
+                    const color = colors[i % colors.length];
+                    glviewer.setStyle({
+                        chain: chain
+                    }, {
+                        line: {
+                            colorscheme: 'greyCarbon'
+                        },
+                        cartoon: {
+                            color: color
+                        }
+                    });
+                    glviewer.addSurface($3Dmol.SurfaceType.VDW, {
+                        opacity: opacity,
+                        color: color
+                    }, {
+                        chain: chain
+                    });
+                });
+            }
+            
             // Cria superfícies iniciais usando o valor atual do slider (fallback 0)
             const initialOpacity = parseFloat($('#opacityRange').val()) || 0;
             createSurfacesWithOpacity(initialOpacity);
