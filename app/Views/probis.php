@@ -115,7 +115,7 @@ DB - peptide chain - receptor chain">?</a></sup></th>
 <script>
    $(() => {
       const pdb_data = "<?php echo base_url("/data/projects/{$id}/{$pdb}.pdb"); ?>";
-      const pdb_data2 = "<?php echo base_url("/data/db/pdb/{$result[0]['COMPLEX NAME'][0]}/{$result[0]['COMPLEX NAME']}.pdb"); ?>";
+      const pdb_data2 = "<?php echo base_url("/data/db/pdb/{$results[0]['COMPLEX NAME'][0]}/{$results[0]['COMPLEX NAME']}.pdb"); ?>";
 
       $.get(pdb_data2, function(d) {
          const data = d;
