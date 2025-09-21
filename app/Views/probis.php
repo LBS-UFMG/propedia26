@@ -29,7 +29,7 @@
                         <?php } ?>
 
                         <?php if ($status == 1) { ?>
-                           <p style="width: 600px; display: inline-block; word-wrap:break-word;" class="text-muted">
+                           <p class="mb-0" style="width: 600px; display: inline-block; word-wrap:break-word;" class="text-muted">
                               <strong>PDB: </strong><?= $pdb ?><br>
                               <strong>Chain: </strong><?= $chain ?>
                               <br>
@@ -73,18 +73,10 @@ selected">
                   <table id="dt_probis" class="table table-striped table-bordered">
                      <thead>
                         <tr class="tableheader">
-
-                           <th class="dt-center"><i class="bi bi-eye"></i></th>
-
-                           <th class="dt-center">Complex<sup><a class="tip" href="#" data-placement="top" data-toggle="tooltip" title="P
-DB - peptide chain - receptor chain">?</a></sup></th>
-
-                           <!-- <th class="dt-center">Clusters</th> -->
-
+                           <th class="dt-center"><i class="bi bi-eye-fill"></i></th>
+                           <th class="dt-center">Complex</th>
                            <th class="dt-center">Alignment Score<sup></sup></th>
-
                            <th class="dt-center">RMSD<sup></sup></th>
-
                         </tr>
                      </thead>
                      <tbody>
