@@ -95,7 +95,7 @@ class Search extends BaseController
         $save_dir = FCPATH . "data/projects/{$id}/";
         $fileinfo = $save_dir . "info.csv";
 
-        chmod("../../public/data/projects/{$id}/result.nosql", 0755);
+        chmod("../../data/projects/{$id}/result.nosql", 0755);
 
         if (!file_exists($fileinfo)) {
             throw new \RuntimeException("Arquivo não encontrado: {$fileinfo}");
