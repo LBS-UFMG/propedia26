@@ -77,7 +77,7 @@ selected">
                            <th class="dt-center">Complex<sup><a class="tip" href="#"  data-placement="top" data-toggle="tooltip" title="P
 DB - peptide chain - receptor chain">?</a></sup></th>
 
-                           <th class="dt-center">Clusters</th>
+                           <!-- <th class="dt-center">Clusters</th> -->
                            
                            <th class="dt-center">Alignment Score<sup></sup></th>
 
@@ -96,7 +96,6 @@ DB - peptide chain - receptor chain">?</a></sup></th>
                                SUBJECT ALIGNED RESIDUES -->
                               <td><input type="checkbox"></td>
                               <td><?=$r['COMPLEX NAME']?></td>
-                              <td></td>
                               <td><?=$r['ALIGNMENT SCORE']?></td>
                               <td><?=$r['RMSD']?></td>
                            </tr>
