@@ -5,13 +5,13 @@
 <div class="container-fluid">
    <div class="row">
       <div class="col-md-4 col-12">
-         <h3 class="text-center mt-1">Query <label class="badge bg-primary"><?= $pdb ?></label></h3>
+         <h3 class="text-center mt-1">Query</h3> <label class="badge bg-primary"><?= $pdb ?></label>
          <div id="3Dmol_query" style="min-height: 600px; width: 100%; position: relative;">
 
          </div>
       </div>
       <div class="col-md-4 col-12">
-         <h3 class="text-center mt-1">Subject <label class="badge bg-dark" id="sbj"><?= $results[0]['COMPLEX NAME'] ?></label></h3>
+         <h3 class="text-center mt-1">Subject</h3> <label class="badge bg-dark" id="sbj"><?= $results[0]['COMPLEX NAME'] ?></label>
          <div id="3Dmol_subject" style="min-height: 600px; width: 100%; position: relative;">
          </div>
       </div>
