@@ -89,7 +89,7 @@ DB - peptide chain - receptor chain">?</a></sup></th>
                      </thead>
                      <tbody>
                         <?php foreach($results as $r):?>
-                           <?php if(count($r) == 5): dd($r); ?>
+                           <?php if(count($r) == 5): ?>
                            <tr>
                               <!-- [0] COMPLEX NAME;
                                ALIGNMENT SCORE;
@@ -97,11 +97,11 @@ DB - peptide chain - receptor chain">?</a></sup></th>
                                QUERY ALIGNED RESIDUES;
                                SUBJECT ALIGNED RESIDUES -->
 
-                              <td><?=$r[0]?></td>
+                              <td><?=$r['COMPLEX NAME']?></td>
                               <td><input type="checkbox"></td>
                               <td></td>
-                              <td><?=$r[1]?></td>
-                              <td><?=$r[2]?></td>
+                              <td><?=$r['ALIGNMENT SCORE']?></td>
+                              <td><?=$r['RMSD']?></td>
                            </tr>
                            <?php endif; ?> 
                         <?php endforeach; ?> 
