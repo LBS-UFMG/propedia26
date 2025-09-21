@@ -109,7 +109,7 @@ class Search extends BaseController
 
         $resultcsv = $save_dir . "result.csv";
         if (!file_exists($resultcsv)) {
-            dd("python app/ThirdParty/nosql_to_csv.py {$save_dir}result.nosql {$save_dir}");
+            dd("python ../app/ThirdParty/nosql_to_csv.py {$save_dir}result.nosql {$save_dir}");
         }
 
         $result = [];
