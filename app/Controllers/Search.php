@@ -78,7 +78,7 @@ class Search extends BaseController
 
         // passo 2 - roda o probis para buscar proteínas com sítio de ligação similar
         $probis_db = "/home/liase/www/propedia26/public/data/db/probis/propedia26_srf.csv";
-        $comando2 = "nohup probis -ncpu 4 -longnames -surfdb -local -sfile {$probis_db} -f1 {$save_dir}query.srf -c1 A -nosql {$save_dir}query.nosql > {$save_dir}busca.log &";
+        $comando2 = "nohup probis -ncpu 4 -longnames -surfdb -local -sfile {$probis_db} -f1 {$save_dir}query.srf -c1 A -nosql {$save_dir}result.nosql > {$save_dir}busca.log &";
 
         system($comando2);
 
@@ -93,15 +93,33 @@ class Search extends BaseController
         $data = [];
 
         $save_dir = FCPATH . "data/projects/{$id}/";
-        $file = $save_dir . "info.csv";
+        $fileinfo = $save_dir . "info.csv";
 
-        if (!file_exists($file)) {
-            throw new \RuntimeException("Arquivo não encontrado: {$file}");
+        chmod("../../../public/data/projects/{$id}/result.nosql", 0755);
+
+        if (!file_exists($fileinfo)) {
+            throw new \RuntimeException("Arquivo não encontrado: {$fileinfo}");
         }
 
         $dados = [];
-        if (($fp = fopen($file, 'r')) !== false) {
+        if (($fp = fopen($fileinfo, 'r')) !== false) {
             $dados = fgetcsv($fp, 0, ';');
+            fclose($fp);
+        }
+
+        $resultcsv = $save_dir . "result.csv";
+        if (!file_exists($resultcsv)) {
+            system("python app/ThirdParty/nosql_to_csv.py {$save_dir}result.nosql {$save_dir}");
+        }
+
+        $result = [];
+        if (($fp = fopen($resultcsv, 'r')) !== false) {
+            // Lê o cabeçalho (primeira linha)
+            $cabecalho = fgetcsv($fp, 0, ';');
+            // Lê cada linha e monta array associativo
+            while (($linha = fgetcsv($fp, 0, ';')) !== false) {
+                $result[] = array_combine($cabecalho, $linha);
+            }
             fclose($fp);
         }
 
@@ -111,6 +129,7 @@ class Search extends BaseController
         $data['residues'] = $dados[2];
         $data['status'] = 1;
         $data['log'] = 'ok';
+        $data['result'] = $result;
 
         return view("probis",$data);
     }

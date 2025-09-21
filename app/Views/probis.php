@@ -11,7 +11,6 @@
          <div id="3Dmol_subject" style="min-height: 350px; width: 100%; position: relative;">
             <h1 class="text-muted text-center" style="padding:0 50px; color:#ddd"></h1>
          </div>         
-         <!--<svg id="cluster_viz" style="min-height: 800px; margin:10px 0; width: 100%; position: relative;"></svg>-->
       </div>
       <div class="col-md-6 col-sm-12" style="overflow: auto; height: 1000px;">
          <div class="row">
