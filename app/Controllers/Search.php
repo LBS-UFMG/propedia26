@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 class Search extends BaseController
 {
-    public function probis()
+    public function probis(): string
     {
         if (!isset($_POST["search_binding_sites"]) || !isset($_POST["pdb"]) || !isset($_POST["chain"])|| !isset($_POST["residues"])) {
             redirect("/explore");
@@ -74,6 +74,12 @@ class Search extends BaseController
         // carrega view - aguardando processamento
         return view("running", $data);
 
+    }
+
+    public function entry($id): string{
+        $data = [];
+        $data['id'] = $id;
+        return view("probis",$data);
     }
 
     private function generateRandomString($size): string {
