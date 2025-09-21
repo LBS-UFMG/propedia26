@@ -20,7 +20,7 @@
                <div class="thumbnail" style="border-left: #001858ff 5px solid; color: #ccc; padding:20px">
                   <div class="caption">   
                      <div class="row"> 
-                        <h3 class="">Project ID: <a href='<?=base_url()?>project/<?=$id?>'><strong><?=$id?></a></strong></h3>
+                        <h3 class="text-dark">Project ID: <a href='<?=base_url()?>project/<?=$id?>'><strong><?=$id?></a></strong></h3>
                         <br>
                         <?php if ($status != 1) {?>
                            <p><strong>Status</strong></p>
@@ -29,17 +29,12 @@
                         
                         <?php if ($status == 1) {?>
                            <p style="width: 600px; display: inline-block; word-wrap:break-word;" class="text-muted">
+                              <strong>PDB: </strong><?=$pdb?><br>
                               <strong>Chain: </strong><?=$chain?>
                               <br>
-                              <strong>Residues: </strong><?=$residues?>
+                              <strong>Residues: </strong><span class="small"><?=$residues?></span>
                         </p>               
-                           <div id="boxplot">
-                              <svg id="svg_boxplot"></svg>
-                              <h5 class="text-muted"><strong>Alignment Score</strong>
-                                 <input readonly type="text" id="input_distance" style="border:0; font-weight:bold;">            
-                                 <div id="distance_slider"></div>
-                              </h5>
-                           </div>       
+                           
                         <?php } ?>
 
                         <input id="project_id" value="<?=$id?>" hidden></input>
