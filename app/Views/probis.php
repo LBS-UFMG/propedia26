@@ -21,7 +21,7 @@
                <div class="thumbnail" style="border-left: #001858ff 5px solid; color: #ccc; padding:20px">
                   <div class="caption">
                      <div class="row">
-                        <h3 class="text-dark">Project ID: <a href='<?= base_url() ?>project/<?= $id ?>'><strong><?= $id ?></a></strong></h3>
+                        <h3 class="text-dark"><strong>Project ID:</strong> <a href='<?= base_url() ?>project/<?= $id ?>'><strong><?= $id ?></a></strong></h3>
                         <br>
                         <?php if ($status != 1) { ?>
                            <p><strong>Status</strong></p>
@@ -29,7 +29,7 @@
                         <?php } ?>
 
                         <?php if ($status == 1) { ?>
-                           <p class="mb-0" style="width: 600px; display: inline-block; word-wrap:break-word;">
+                           <p class="mb-0 text-muted" style="width: 600px; display: inline-block; word-wrap:break-word;">
                               <strong>PDB: </strong><?= $pdb ?><br>
                               <strong>Chain: </strong><?= $chain ?>
                               <br>
