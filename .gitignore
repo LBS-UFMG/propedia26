@@ -5,6 +5,8 @@
 /public/data/projects/*
 !/public/data/projects/index.html
 
+writable/blast/tmp.fasta
+
 # codeigniter
 */config/development
 */logs/log-*.php
