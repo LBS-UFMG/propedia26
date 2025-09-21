@@ -117,45 +117,8 @@ DB - peptide chain - receptor chain">?</a></sup></th>
     $(() => {
         const pdb_data = "<?php echo base_url("/data/projects/{$id}/{$pdb}.pdb"); ?>";
         const pdb_data2= "<?php echo base_url("/data/db/pdb/{$r['COMPLEX NAME'][0]}/{$r['COMPLEX NAME']}.pdb"); ?>";
-      console.log(pdb_data2);
 
-      $.get(pdb_data2, function(d) {
-            const data = d;
-            // Cria viewer
-            glviewer = $3Dmol.createViewer("3Dmol_subject", {
-                defaultcolors: $3Dmol.rasmolElementColors
-            });
-            glviewer.setBackgroundColor(0xffffff);
-
-            // Adiciona modelo
-            const m = glviewer.addModel(data, "pqr");
-
-            // Cores e cadeias
-            const colors = ["grey", "orangered", "deepskyblue", "green", "purple", "cyan"];
-            const atomsx = m.selectedAtoms({});
-            const chains = [...new Set(atomsx.map(atom => atom.chain))];
-         glviewer.mapAtomProperties($3Dmol.applyPartialCharges);
-            glviewer.zoomTo();
-            glviewer.render();
-      });
-
-         $.get(pdb_data, function(d) {
-            const data = d;
-            // Cria viewer
-            glviewer = $3Dmol.createViewer("3Dmol_query", {
-                defaultcolors: $3Dmol.rasmolElementColors
-            });
-            glviewer.setBackgroundColor(0xffffff);
-
-            // Adiciona modelo
-            const m = glviewer.addModel(data, "pqr");
-
-            // Cores e cadeias
-            const colors = ["grey", "orangered", "deepskyblue", "green", "purple", "cyan"];
-            const atomsx = m.selectedAtoms({});
-            const chains = [...new Set(atomsx.map(atom => atom.chain))];
-
-            // Função utilitária debounce
+      // Função utilitária debounce
             const debounce = (fn, wait = 80) => {
                 let t;
                 return function(...args) {
@@ -209,6 +172,54 @@ DB - peptide chain - receptor chain">?</a></sup></th>
                     });
                 });
             }
+
+      $.get(pdb_data2, function(d) {
+            const data = d;
+            // Cria viewer
+            glviewer = $3Dmol.createViewer("3Dmol_subject", {
+                defaultcolors: $3Dmol.rasmolElementColors
+            });
+            glviewer.setBackgroundColor(0xffffff);
+
+            // Adiciona modelo
+            const m = glviewer.addModel(data, "pqr");
+
+            // Cores e cadeias
+            const colors = ["grey", "orangered", "deepskyblue", "green", "purple", "cyan"];
+            const atomsx = m.selectedAtoms({});
+            const chains = [...new Set(atomsx.map(atom => atom.chain))];
+
+                        const initialOpacity = parseFloat($('#opacityRange').val()) || 0;
+                        createSurfacesWithOpacity(initialOpacity);
+
+
+            // restante: marca átomos como clicáveis etc.
+            const atoms = m.selectedAtoms({});
+            for (let i in atoms) {
+                let atom = atoms[i];
+                atom.clickable = true;
+                atom.callback = atomcallback;
+            }
+            glviewer.mapAtomProperties($3Dmol.applyPartialCharges);
+            glviewer.zoomTo();
+            glviewer.render();
+      });
+
+         $.get(pdb_data, function(d) {
+            const data = d;
+            // Cria viewer
+            glviewer = $3Dmol.createViewer("3Dmol_query", {
+                defaultcolors: $3Dmol.rasmolElementColors
+            });
+            glviewer.setBackgroundColor(0xffffff);
+
+            // Adiciona modelo
+            const m = glviewer.addModel(data, "pqr");
+
+            // Cores e cadeias
+            const colors = ["grey", "orangered", "deepskyblue", "green", "purple", "cyan"];
+            const atomsx = m.selectedAtoms({});
+            const chains = [...new Set(atomsx.map(atom => atom.chain))];
 
             // Cria superfícies iniciais usando o valor atual do slider (fallback 0)
             const initialOpacity = parseFloat($('#opacityRange').val()) || 0;
