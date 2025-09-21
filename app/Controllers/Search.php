@@ -95,6 +95,8 @@ class Search extends BaseController
         $save_dir = FCPATH . "data/projects/{$id}/";
         $fileinfo = $save_dir . "info.csv";
 
+        echo "Diretório atual: " . getcwd();
+
         chmod("../../data/projects/{$id}/result.nosql", 0755);
 
         if (!file_exists($fileinfo)) {
