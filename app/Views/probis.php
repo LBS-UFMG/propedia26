@@ -200,7 +200,7 @@ DB - peptide chain - receptor chain">?</a></sup></th>
          });
       }
 
-      load_subject(<?php echo base_url("/data/db/pdb/{$results[0]['COMPLEX NAME'][0]}/{$results[0]['COMPLEX NAME']}.pdb"); ?>); // carrega o primeiro item por padrão
+      load_subject('<?=base_url("/data/db/pdb/{$results[0]['COMPLEX NAME'][0]}/{$results[0]['COMPLEX NAME']}.pdb")?>'); // carrega o primeiro item por padrão
 
       // QUERY -------------------------------------------------->
       $.get(pdb_data, function(d) {
