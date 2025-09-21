@@ -72,7 +72,7 @@ class Search extends BaseController
         chmod("../../../public/data/projects/$id", 0644);
 
         // carrega view - aguardando processamento
-        return view("probis", $data);
+        return view("running", $data);
 
     }
 

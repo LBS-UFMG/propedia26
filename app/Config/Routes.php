@@ -19,3 +19,4 @@ $routes->get('/export/pdb-to-pymol/(:any)', 'Export::pdb_to_pymol/$1');
 $routes->get('/entry/(:any)', 'Entry::entry/$1');
 $routes->get('/multipro/(:any)', 'Entry::multipro/$1');
 $routes->post('/probis', 'Search::probis');
+$routes->post('/project/(:any)', 'Search::project');
