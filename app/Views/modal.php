@@ -103,7 +103,7 @@
 <script>
   // Intercepta o submit do formulário
 document.getElementById("loading_blast").addEventListener("click", e => {
-  $('#loading-blast').css('visibility','visible');
+  $('#loading-blast').css('visibility','visible').css('display','block');
   document.getElementById("form_blast_run").submit();
 });
 

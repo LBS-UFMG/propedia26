@@ -86,6 +86,7 @@ footer{
     z-index: 99999;
     color: white;
     visibility: hidden;
+    display: none; 
 }
 
 #legend {
