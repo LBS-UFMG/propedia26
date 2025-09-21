@@ -19,6 +19,7 @@ class Search extends BaseController
 
         # ********************* Create new ID *********************
 		$id = $this->generateRandomString(6);
+        $data['id'] = $id;
 		
 		# Read directory
 		if (file_exists('../public/data/projects')) { chdir('../public/data/projects'); }
@@ -65,41 +66,14 @@ class Search extends BaseController
         $probis_db = "/home/liase/www/propedia26/public/data/db/probis/propedia26_srf.csv";
         $comando2 = "nohup probis -ncpu 4 -longnames -surfdb -local -sfile {$probis_db} -f1 {$save_dir}query.srf -c1 A -nosql {$save_dir}query.nosql > {$save_dir}busca.log &";
 
-        dd($comando2);
+        system($comando2);
 
         // muda as permissões de segurança
-        chmod("../../../public/data/projects/$id", 0755);
+        chmod("../../../public/data/projects/$id", 0644);
 
         // carrega view - aguardando processamento
         return view("probis", $data);
 
-
-        $fp = fopen('../writable/blast/tmp.fasta', 'w');
-        fwrite($fp, $data['sequence']);
-        fclose($fp);
-
-
-        $output = shell_exec('blastp -query ../writable/blast/tmp.fasta -subject data/' . $where . '.fasta -outfmt="6 qseqid sseqid pident score slen sstart send qlen qstart qend qframe positive sseq" -max_target_seqs 50' . $tamanho);
-
-        // dd('blastp -query ../writable/blast/tmp.fasta -subject data/' . $where . '.fasta -outfmt="6 qseqid sseqid pident score slen sstart send qlen qstart qend qframe positive" -max_target_seqs 50' . $tamanho);
-
-        $out = explode("\n", $output);
-        $i = 0;
-        $data['result'] = array();
-
-
-        foreach ($out as $o) {
-            $c = explode("\t", $o);
-
-            if (isset($c[6]) and isset($c[5]) and isset($c[4]) and isset($c[2])) {
-                if ((($c[6] - $c[5]) / $c[4] > 0.5) and ($c[2] > 25)) {
-                    $complex_name = str_replace("-", "_", explode("|", $c[1])[0]);
-                    array_push($data['result'], $c);
-                }
-            }
-        }
-
-        return view("blast", $data);
     }
 
     private function generateRandomString($size): string {
