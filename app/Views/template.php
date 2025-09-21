@@ -3,7 +3,7 @@
 
 <head>
     <title>Propedia – The Protein-Peptide Interaction Database</title>
-    <?php $version = "25.920 BETA"; // 20-set-2025 
+    <?php $version = "25.921 BETA"; // 21-set-2025 
     ?>
 
     <meta charset="utf-8">
@@ -39,6 +39,8 @@
         </div>
     <?php endif; ?>
 
+    <div id="alert-container"></div>
+
     <nav class="py-2 bg-body-tertiary menu link-light navbar-expand-md">
         <div class="px-4 container-fluid d-flex flex-wrap">
 
@@ -51,17 +53,17 @@
 
 
                 <ul class="nav me-auto">
-                    <li class="nav-item"><a href="<?= base_url('/') ?>" class="nav-link link-body-emphasis px-2"><i class="bi bi-house-door-fill"></i></a></li>
-                    <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#about" class="nav-link link-body-emphasis px-2">About</a></li>
-                    <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#blast" class="nav-link link-body-emphasis px-2">BLAST</a></li>
-                    <li class="nav-item"><a href="<?= base_url('clusters') ?>" class="nav-link link-body-emphasis px-2">Clusters</a></li>
-                    <li class="nav-item"><a href="<?= base_url('documentation') ?>" class="nav-link link-body-emphasis px-2">Documentation</a></li>
-                    <li class="nav-item"><a href="<?= base_url('download') ?>" class="nav-link link-body-emphasis px-2">Download</a></li>
-                    <li class="nav-item"><a href="<?= base_url('explore') ?>" class="nav-link link-body-emphasis px-2">Explore</a></li>
-                    <li class="nav-item"><a href="#" data-bs-toggle="modal" data-bs-target="#probis" class="nav-link link-body-emphasis px-2 orange">Search<sup><span class="badge bg-dark">by binding site</span></sup></a></li>
+                    <li class="nav-item"><a title="Home page" href="<?= base_url('/') ?>" class="nav-link link-body-emphasis px-2"><i class="bi bi-house-door-fill"></i></a></li>
+                    <li class="nav-item"><a title="About Propedia" href="#" data-bs-toggle="modal" data-bs-target="#about" class="nav-link link-body-emphasis px-2">About</a></li>
+                    <li class="nav-item"><a href="#" title="Search for similar sequences using BLAST" data-bs-toggle="modal" data-bs-target="#blast" class="nav-link link-body-emphasis px-2">BLAST</a></li>
+                    <li class="nav-item"><a title="Collected data grouped by different methods" href="<?= base_url('clusters') ?>" class="nav-link link-body-emphasis px-2">Clusters</a></li>
+                    <li class="nav-item"><a title="See the Propedia complete documentation" href="<?= base_url('documentation') ?>" class="nav-link link-body-emphasis px-2">Documentation</a></li>
+                    <li class="nav-item"><a title="Download Propedia data" href="<?= base_url('download') ?>" class="nav-link link-body-emphasis px-2">Download</a></li>
+                    <li class="nav-item"><a title="Explore all Propedia protein-peptide entries" href="<?= base_url('explore') ?>" class="nav-link link-body-emphasis px-2">Explore</a></li>
+                    <li class="nav-item"><a href="#" title="Find proteins with similar binding site" data-bs-toggle="modal" data-bs-target="#probis" class="nav-link link-body-emphasis px-2 orange">Search<sup><span class="badge bg-dark">by binding site</span></sup></a></li>
                 </ul>
                 <ul class="nav">
-                    <li class="nav-item"><a href="<?= base_url('#cite') ?>"
+                    <li class="nav-item"><a title="Please, cite the original Propedia paper (Martins et al., 2021) and the more recent publication (Martins et al., 2023)." href="<?= base_url('#cite') ?>"
                             class="nav-link link-body-emphasis px-2">How to cite Propedia</a></li>
                 </ul>
             </div>

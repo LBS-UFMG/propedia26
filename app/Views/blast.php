@@ -2,57 +2,28 @@
 <?= $this->section('conteudo') ?>
 <!-- Conteúdo personalizado -->
 
-<div class="container text-secondary">
+<div class="container-fluid px-4">
 
 	<div id="download">
-		<h2 style="margin-bottom: 15px"><strong>Sequence search results (BLAST)</strong></h2>
         <div class="row">
+            <div class="col">
+		        <h2 class="mt-4"><strong>BLAST results</strong></h2>
+            </div>
+            <div class="col text-end">
+                <button class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#blast" >New search</button>
+            </div>
+        </div>
+        <div class="row mt-2">
             <div class="col-md-6 col-sm-12">
-                <h5><strong>Query sequence</strong></h5>
-                <h5 style="width: 600px; display: inline-block; word-wrap:break-word;"><?php echo $sequence; ?></h5>
+                <h5 class="badge bg-secondary mb-0"><strong>Query sequence:</strong></h5>
+                <pre class="border rounded p-2" style="width: 600px; display: inline-block; word-wrap:break-word;"><?php echo $sequence; ?></pre>
             </div>
-            <!-- <div class="col-md-6 col-sm-12">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <a id="btn_download_selected" class="btn btn-info btn-block" href="#" data-toggle="modal" data-target="#modal_download_selected">
-                            Download complex&nbsp;<i class="fas fa-download"></i>
-                        </a>
-                    </div>
-                    <br><br>
-                    <div class="col-md-12 col-sm-12">
-                        <a id="btn_advanced_search" class="btn btn-warning btn-block" href="#" data-toggle="modal">
-                            Advanced search&nbsp;<i class="fas fa-filter"></i>
-                        </a>
-                    </div>
-                </div>
-            </div> -->
-        <!--<form action="<?php echo base_url(); ?>blast" method="post" enctype="multipart/form-data">
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="btn btn-default btn-sm" disabled="disabled">Query</p>
-                </div>
-                <div class="col-md-6" style="text-align: right">
-                    <div class="btn-group btn-group-sm" data-toggle="buttons" style="text-align: right">
-                        <button class="btn btn-default" disabled="disabled">Search for</button>
-                        <label class="btn btn-default active">
-                            <input type="radio" name="search" value="peptides" CHECKED>Peptide
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="radio" name="search" value="receptors">Protein
-                        </label>                        
-                    </div>
-                    <input type="submit" class="btn btn-success btn-sm" value="NEW BLAST">
 
-                </div>
-            </div>
-            <textarea class="form-control" name="sequence" rows="4" placeholder="Your query" style="color:#777"><?php echo $sequence; ?></textarea>
-        </form>-->
-
-        <table id="table_search" class="table table-hover table-striped" style="margin-top: 40px">
+        <table id="table_search" class="table table-hover table-striped mt-3">
             <thead>
-                <tr class="table-primary">
+                <tr class="table-secondary">
                     <th class="col-md-1">Subject</th>
-                    <th>Subject sequence</th>
+                    <th>Similar region in the sequence</th>
                     <th>Length</th>                    
                     <th>Score</th>    
                     <th>Coverage</th>
@@ -66,23 +37,8 @@
                 <tr>
                     <td><a href="<?php echo base_url().'entry/'.$nome[0]; ?>"><strong><?php echo strtoupper($nome[0]); ?></strong></a></td>
 
-                    <td><?php echo $r[12]; ?></td>     
+                    <td><pre class="mb-0"><?php echo $r[12]; ?></pre></td>     
 
-                    <!-- <td><?php //if(isset($r[12])) echo $r[12]; ?></td>
-                    
-                    <td><?php /*
-                    if(isset($nome[3])){
-                        if(substr($nome[3],-5,5) == '[...]'){
-                            echo '<a href="'.base_url().'pep-pro/'.strtoupper($nome[0]).'" title="See complete sequence">'.$nome[3].'</a>';
-                        }
-                        else{
-                            echo $nome[3]; 
-                        }
-                    }
-                    else{
-                        echo '-';
-                    }*/
-                    ?></td> -->
                     <td><?php echo $r[4]; ?></td>                    
                     <td><?php echo $r[3]; ?></td>
                     <td>
@@ -90,33 +46,22 @@
                         <?php $qcov = 1+(100*($r[9]-$r[8]+1)/$r[7]); ?>
                         <?php $pos = (100*$r[11]/$r[7]); ?>
 
-                        <div class="progress" style="height: 10px; margin-bottom: 5px">
-                            <div class="progress-bar" role="progressbar" title="Subject" style="width:  <?php echo intval($scov); ?>%;"></div>
-                        </div>
-                        <div class="progress" style="height: 10px; margin-bottom: 5px">
-                            <div class="progress-bar" role="progressbar" title="Query" style="width:  <?php echo intval($qcov); ?>%;"></div>
-                        </div>
+                        <label class="badge bg-secondary">Subject: <span class="badge bg-<?= (intval($scov) - 1 > 95) ? 'primary' : 'dark'; ?>"><?php echo intval($scov)-1; ?>%</span></label>
+                        | <label class="badge bg-secondary">Query: <span class="badge bg-<?= (intval($qcov) - 1 > 95) ? 'primary' : 'dark'; ?>"><?php echo intval($qcov)-1; ?>%</span></label>
                     </td>
                     <td>                 
                         <div class="progress" style="height: 25px; margin-bottom: 5px">
                           <div class="progress-bar bg-success" style="width: <?php echo $r[2]; ?>%; padding-top:2px"><?php echo (int)$r[2]; ?>%</div>
-                          <div class="progress-bar bg-danger" style="width: <?php echo 100-$r[2]; ?>%"></div>
+                          <div class="progress-bar bg-dark" style="width: <?php echo 100-$r[2]; ?>%"></div>
                         </div>
-                    </td>
-                    <!--                       
-                    <td>
-                        <div class="progress" style="height: 25px; margin-bottom: 5px">
-                          <div class="progress-bar progress-bar-success" style="width: <?php echo $pos; ?>%; padding-top:2px"><?php echo (int)$pos; ?>%</div>
-                          <div class="progress-bar progress-bar-danger" style="width: <?php echo 100-$pos; ?>%"></div>
-                        </div>
-                    </td>       -->          
+                    </td>     
                 </tr>
                 <?php } ?>           
                 
             </tbody>
 			
         </table>
-        <?php if(empty($result)){ echo 'No result found.'; }    ?>
+        <?php if(empty($result)){ echo '<span>No result found. Try doing a substring search using the <a href="'.base_url('/explore?q='.trim($sequence)).'">Explore module</a> <a class="badge bg-dark" href="#" data-bs-placement="bottom" data-bs-toggle="tooltip" data-bs-title="BLAST may not be very efficient at finding peptides that have at least 5 identical residues (parameters used for peptides search: -word_size 2 -task blastp-short -seg no -evalue 100000). Therefore, a substring search may find more results (although it may return a higher number of false positives).">?</a>.</span>'; }    ?>
     </div>
 </div>
 

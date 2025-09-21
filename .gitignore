@@ -2,6 +2,9 @@
 !/public/data/db/index.html
 /public/data/protparam/*
 
+/public/data/projects/*
+!/public/data/projects/index.html
+
 # codeigniter
 */config/development
 */logs/log-*.php

@@ -50,50 +50,74 @@
       <form id="form_blast_run" action="<?php echo base_url('/blast'); ?>" method="post" enctype="multipart/form-data">
         <div class="modal-header">
           <div>
-            <h3><b>BLAST - Search for similar sequences</b></h3>
+            <h3><b><i class="bi bi-search me-2"></i> Search for similar protein or peptide sequences using BLAST</b></h3>
           </div>
           <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-12 col-md-6">
+
+            <p class="small text-muted"><strong>BLAST algorithm</strong> searches for similar protein or peptide sequences by identifying short local matches (words) between the query and database sequences <a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Then extending these matches in both directions to form high-scoring segment pairs (HSPs), and finally scoring and ranking the alignments based on a substitution matrix and statistical significance. Parameters used for peptides search: -word_size 2 -task blastp-short -seg no -evalue 100000">?</a>.</p>
               <h5><b>Input sequence</b></h5>
-              <textarea id="txt_sequence" class="form-control" form="form_blast_run" name="sequence" rows="10" placeholder="Insert the sequence here"></textarea>
+              <textarea id="txt_sequence" class="form-control" form="form_blast_run" name="sequence" rows="5" placeholder="Insert the sequence here (e.g.: TPYDINQML)"></textarea>
               <div hidden id="feedback_blast" class="alert alert-danger" role="alert">
                 Sequence cannot be empty!
               </div>
               <br>
-              <h5><b>Search sequence from</b></h5>
+              <h5><b>Search for:</b></h5>
 
               <input type="radio" class="btn-check" name="search" value="peptides" id="blast_peptides" autocomplete="off" checked>
               <label class="btn btn-lg" for="blast_peptides">Peptides</label>
 
               <input type="radio" class="btn-check" name="search" value="receptors" id="blast_proteins" autocomplete="off">
               <label class="btn btn-lg" for="blast_proteins">Proteins</label>
+
+              <input type="button" class="btn btn-primary w-100 btn-lg mt-5 mb-4" id="loading_blast" value="Run BLAST">
+
+            </div>
+
+            <div class="col text-center mt-5">
+              <img class="w-75 img-thumbnail shadow p-3" src="<?=base_url('/img/blast.png')?>">
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <input type="submit" class="btn btn-primary" value="Run BLAST">
           <button type="button" class="btn btn-light " data-bs-dismiss="modal">Cancel</button>
         </div>
       </form>
     </div>
   </div>
 </div>
+
+<!-- loading blast -->
+<div id="loading-blast">
+    <div class="text-center">
+        <img src="<?= base_url('/img/cocadito-loading.png') ?>" width="200px"><br>
+        <div class="spinner-border spinner-border-sm" role="status"></div>
+        <strong class="ms-2">Loading...</strong>
+    </div>
+</div>
+
+<script>
+  // Intercepta o submit do formulário
+document.getElementById("loading_blast").addEventListener("click", e => {
+  $('#loading-blast').css('visibility','visible');
+  document.getElementById("form_blast_run").submit();
+});
+
+</script>
 <!-- /.modal BLAST -->
 
 <!-- /.modal PROBIS -->
-
-
 <div class="modal fade" tabindex="-1" id="probis" role="dialog">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
-      <form id="form_blast_run" action="<?php echo base_url('/blast'); ?>" method="post" enctype="multipart/form-data">
+      <form id="form_probis_run" action="<?php echo base_url('/probis'); ?>" method="post" enctype="multipart/form-data">
         <div class="modal-header">
           <div>
-            <h3><b>Search for similar binding sites</b></h3>
+            <h3><b><i class="bi bi-search me-2"></i> Search for similar binding sites</b></h3>
           </div>
           <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
@@ -105,22 +129,22 @@
               <p class="small text-muted">
                 The search for similar binding sites in Propedia employs the <a class="link-dark" href="#" data-bs-placement="bottom" data-bs-toggle="tooltip" data-bs-title="ProBiS achieves this by aligning surface patches based on geometric and physicochemical properties, followed by statistical scoring of the alignments, thereby enabling the identification of proteins that share structurally conserved binding sites with the protein indicated here."><strong>ProBiS algorithm</strong></a>, which detects local structural similarities by comparing the three-dimensional surface of the queried protein binding site with those of proteins stored in the database. 
               </p>
-              <p class="small text-muted"><strong>Enter the PDB code, target protein chain, and binding site residue numbers separated by commas (use hyphens to indicate ranges) <a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="E.g.: 100,101,105-110">?</a>.</strong></p>
+              <p class="small text-muted"><strong>Enter the PDB code, target protein chain, and binding site residue numbers separated by commas (use hyphens to indicate ranges) <a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="E.g.: 100,101,105-110 (i.e.: 100,101,105,106,107,108,109,110)">?</a>.</strong></p>
 
               <p>
                 <label class="badge bg-secondary">PDB ID</label>
-                <input type="text" class="form-control" placeholder="e.g.: 1a1m">
+                <input name="pdb" type="text" class="form-control" placeholder="e.g.: 1a1m" required>
               </p>
               <p>
                 <label class="badge bg-secondary">Chain</label>
-                <input type="text" class="form-control" placeholder="e.g.: A">
+                <input name="chain" type="text" class="form-control" placeholder="e.g.: A" required>
               </p>
               <p>
                 <label class="badge bg-secondary">Binding site residues</label>
-                <textarea class="form-control" placeholder="e.g.: 100,101,105-110" rows="3"></textarea>
+                <textarea name="residues" class="form-control" placeholder="e.g.: 100,101,105-110" rows="3" required></textarea>
               </p>
 
-              <input type="submit" value="Search for similar binding sites" class="btn w-100 btn-primary mb-5 btn-lg">
+              <input name="search_binding_sites" type="submit" value="Search for proteins with similar binding sites" class="btn w-100 btn-primary mb-5 mt-3 btn-lg">
 
             </div>
             <div class="col text-end">

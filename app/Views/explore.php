@@ -17,20 +17,20 @@
     <form class="row row-cols-lg-auto align-items-center p-3 bg-light rounded small">
         <!-- Min peptide size -->
         <div class="col-12">
-            <label class="form-label" for="minSize">Min peptide size</label>
-            <input type="number" class="form-control" id="minSize" name="minSize" placeholder="e.g. 2" min="2">
+            <label class="form-label mb-1" for="minSize">Min peptide size</label>
+            <input type="number" class="form-control form-control-sm" id="minSize" name="minSize" placeholder="e.g. 2" min="2">
         </div>
 
         <!-- Max peptide size -->
         <div class="col-12">
-            <label class="form-label" for="maxSize">Max peptide size</label>
-            <input type="number" class="form-control" id="maxSize" name="maxSize" placeholder="e.g. 50" min="2">
+            <label class="form-label mb-1" for="maxSize">Max peptide size</label>
+            <input type="number" class="form-control form-control-sm" id="maxSize" name="maxSize" placeholder="e.g. 50" min="2">
         </div>
 
         <!-- Classification -->
         <div class="col-12">
-            <label class="form-label" for="classification">PDB Classification</label>
-            <select class="form-select" id="classification" name="classification">
+            <label class="form-label mb-1" for="classification">PDB Classification</label>
+            <select class="form-select form-select-sm" id="classification" name="classification">
                 <option value="">All</option>
                 <option value="ALLERGEN">ALLERGEN (33)</option>
                 <option value="ANTIBIOTIC">ANTIBIOTIC (81)</option>
@@ -371,7 +371,7 @@
         <!-- Submit Button -->
         <div class="col-12 d-flex align-items-end">
             <!-- <button type="button" id="btn-clear" class="btn btn-outline-secondary mt-4 me-2">Clear</button> -->
-            <button type="button" id="btn-filtrar" class="btn btn-primary mt-4">Apply filter</button>
+            <button type="button" id="btn-filtrar" class="btn btn-primary mt-3">Apply filters</button>
         </div>
     </form>
 
@@ -486,9 +486,10 @@
                 deferRender: true,
                 processing: true,
                 // outras opções que achar necessárias...
-                dom: 'Bfrtip',"buttons": [
-                'csv', 'excel',
-            ],
+                dom: 'Bfrtip',
+                "buttons": [
+                    'csv', 'excel',
+                ],
             });
 
             // aplica busca inicial se tiver query na URL
@@ -542,6 +543,15 @@
                 table.draw();
                 // remove o filtro para evitar duplicação em cliques futuros
                 $.fn.dataTable.ext.search.pop();
+
+                const alert = `
+                <div class="alert alert-success alert-dismissible fade show mb-0 small text-center rounded-0" role="alert">
+                    Filters applied successfully!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`;
+                $('#alert-container').html(alert);
+                setTimeout(() => { $('.alert').alert('close') }, 3000);
+
             });
 
 
@@ -592,19 +602,21 @@
 <?= $this->section('scripts') ?>
 
 <script>
-    $(() => setTimeout(() => $('#loading').fadeOut(), 1000));
+    $(() => {
+        setTimeout(() => $('#loading').fadeOut(), 1000);
+    });
 </script>
 
 <!-- DataTables JS + botões de exportação -->
-  <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 
-  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
 
-  <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-  <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
 <?= $this->endSection() ?>
