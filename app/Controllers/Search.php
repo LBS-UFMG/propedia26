@@ -69,14 +69,13 @@ class Search extends BaseController
         system($comando2);
 
         // muda as permissões de segurança
-        chmod("../../../public/data/projects/$id", 0644);
+        chmod("../../../public/data/projects/$id", 0755);
 
         // carrega view - aguardando processamento
         return view("running", $data);
-
     }
 
-    public function entry($id): string{
+    public function project($id): string{
         $data = [];
         $data['id'] = $id;
         return view("probis",$data);
