@@ -172,9 +172,6 @@ DB - peptide chain - receptor chain">?</a></sup></th>
                glviewer.setStyle({
                   chain: chain
                }, {
-                  line: {
-                     colorscheme: 'greyCarbon'
-                  },
                   cartoon: {
                      color: color
                   }
@@ -202,6 +199,7 @@ DB - peptide chain - receptor chain">?</a></sup></th>
          glviewer.render();
       });
 
+      // QUERY -------------------------------------------------->
       $.get(pdb_data, function(d) {
          const data = d;
          // Cria viewer
@@ -257,9 +255,6 @@ DB - peptide chain - receptor chain">?</a></sup></th>
                glviewer.setStyle({
                   chain: chain
                }, {
-                  line: {
-                     colorscheme: 'greyCarbon'
-                  },
                   cartoon: {
                      color: color
                   }
