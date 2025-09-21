@@ -202,6 +202,7 @@
       <div class="modal-header bg-dark">
         <div class="text-center">
           <img width="150" class="me-3" src="<?php echo base_url('/img/logo_propedia.svg'); ?>">
+          <h1 class="orange">Cite Propedia</h1>
         </div>
         <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
@@ -231,4 +232,4 @@
   </div>
   <!-- /.modal-dialog -->
 </div>
-<!-- /.modal SOBRE -->
+<!-- /.modal cite -->

@@ -63,8 +63,7 @@
                     <li class="nav-item"><a href="#" title="Find proteins with similar binding site" data-bs-toggle="modal" data-bs-target="#probis" class="nav-link link-body-emphasis px-2 orange">Search<sup><span class="badge bg-dark">by binding site</span></sup></a></li>
                 </ul>
                 <ul class="nav">
-                    <li class="nav-item"><a data-bs-toggle="modal" data-bs-target="#cite" title="Please, cite the original Propedia paper (Martins et al., 2021) and the more recent publication (Martins et al., 2023)." href="#"
-                            class="nav-link link-body-emphasis px-2">How to cite Propedia</a></li>
+                    <li class="nav-item"><a data-bs-toggle="modal" data-bs-target="#cite" title="Please, cite the original Propedia paper (Martins et al., 2021) and the more recent publication (Martins et al., 2023)." href="#" class="nav-link link-body-emphasis px-2">How to cite Propedia</a></li>
                 </ul>
             </div>
         </div>
