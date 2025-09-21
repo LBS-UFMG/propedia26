@@ -53,8 +53,8 @@ for line in open(nosql_file).readlines():
                                 if int(r[7]) == 0]
 
         result_data.append((complex_name, alignment_score, rmsd,
-                            ";".join(query_aligned_res),
-                            ";".join(subject_aligned_res)))
+                            ",".join(query_aligned_res),
+                            ",".join(subject_aligned_res)))
 
 # SORT BY ALIGNMEN SCORE
 result_data = sorted(result_data, key=lambda x: float(x[1]),
@@ -66,5 +66,5 @@ headers = "COMPLEX NAME;ALIGNMENT SCORE;RMSD;"\
             "SUBJECT ALIGNED RESIDUES\n"
 result_csv.write(headers)
 for r in result_data:
-    result_csv.write(",".join(r) + "\n")
+    result_csv.write(";".join(r) + "\n")
 result_csv.close()
