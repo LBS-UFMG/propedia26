@@ -116,8 +116,30 @@ DB - peptide chain - receptor chain">?</a></sup></th>
 
     $(() => {
         const pdb_data = "<?php echo base_url("/data/projects/{$id}/{$pdb}.pdb"); ?>";
+        const pdb_data2= "<?php echo base_url("/data/pdb/{$r['COMPLEX NAME'][0]}/{$r['COMPLEX NAME']}.pdb"); ?>";
+      console.log(pdb_data2);
 
-        $.get(pdb_data, function(d) {
+      $.get(pdb_data2, function(d) {
+            const data = d;
+            // Cria viewer
+            glviewer = $3Dmol.createViewer("3Dmol_subject", {
+                defaultcolors: $3Dmol.rasmolElementColors
+            });
+            glviewer.setBackgroundColor(0xffffff);
+
+            // Adiciona modelo
+            const m = glviewer.addModel(data, "pqr");
+
+            // Cores e cadeias
+            const colors = ["grey", "orangered", "deepskyblue", "green", "purple", "cyan"];
+            const atomsx = m.selectedAtoms({});
+            const chains = [...new Set(atomsx.map(atom => atom.chain))];
+         glviewer.mapAtomProperties($3Dmol.applyPartialCharges);
+            glviewer.zoomTo();
+            glviewer.render();
+      });
+
+         $.get(pdb_data, function(d) {
             const data = d;
             // Cria viewer
             glviewer = $3Dmol.createViewer("3Dmol_query", {
@@ -188,8 +210,8 @@ DB - peptide chain - receptor chain">?</a></sup></th>
                 });
             }
 
-            // Cria superfícies iniciais usando o valor atual do slider (fallback 0.3)
-            const initialOpacity = parseFloat($('#opacityRange').val()) || 0.3;
+            // Cria superfícies iniciais usando o valor atual do slider (fallback 0)
+            const initialOpacity = parseFloat($('#opacityRange').val()) || 0;
             createSurfacesWithOpacity(initialOpacity);
 
             // Handler único, debounced, que remove e recria superfícies
