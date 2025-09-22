@@ -117,7 +117,6 @@ selected">
       function load_subject(pdb_data2, residues, cadeia_pep) {
          
          $.get(pdb_data2, function(d) {
-console.log(pdb_data2, residues, cadeia_pep)
             const data = d;
             // Cria viewer
             glviewer = $3Dmol.createViewer("3Dmol_subject", {
@@ -218,8 +217,8 @@ console.log(pdb_data2, residues, cadeia_pep)
 
       load_subject(
          '<?= base_url("/data/db/pdb/{$results[0]['COMPLEX NAME'][0]}/{$results[0]['COMPLEX NAME']}.pdb") ?>',
-         '<?=$results[0]['COMPLEX NAME']?>'.split(',').map(Number), // residues
-         '<?=$results[0]['SUBJECT ALIGNED RESIDUES'][5]?>' // chain
+         '<?=$results[0]['SUBJECT ALIGNED RESIDUES']?>'.split(',').map(Number), // residues
+         '<?=$results[0]['COMPLEX NAME'][5]?>' // chain
       ); // carrega o primeiro item por padrão
 
       // QUERY -------------------------------------------------->
