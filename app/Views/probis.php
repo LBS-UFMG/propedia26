@@ -169,8 +169,6 @@ selected">
                chains.forEach((chain, i) => {
                   const color = colors[i % colors.length];
 
-                  console.log(chain, cadeia_pep)
-
                   if(chain == cadeia_pep){
                      glviewer.setStyle({ chain: chain }, { line: { color: 'orangered' }, cartoon: { color: color } });
                   }
@@ -219,8 +217,8 @@ selected">
 
       load_subject(
          '<?= base_url("/data/db/pdb/{$results[0]['COMPLEX NAME'][0]}/{$results[0]['COMPLEX NAME']}.pdb") ?>',
-         <?=$results[0]['COMPLEX NAME']?>.split(',').map(Number), // residues
-         <?=$results[0]['SUBJECT ALIGNED RESIDUES'][5]?> // chain
+         '<?=$results[0]['COMPLEX NAME']?>'.split(',').map(Number), // residues
+         '<?=$results[0]['SUBJECT ALIGNED RESIDUES'][5]?>' // chain
       ); // carrega o primeiro item por padrão
 
       // QUERY -------------------------------------------------->
