@@ -186,7 +186,7 @@ selected">
                         chain: cadeia_pep,
                         resi: residues
                      }, {
-                        stick: {
+                        line: {
                            colorscheme: 'greenCarbon'
                         },
                         cartoon: {
@@ -199,7 +199,7 @@ selected">
                            color: 'green'
                         }, {
                            chain: chain_query,
-                           resi: residues_array
+                           resi: residues
                         }
                      );
                   }
