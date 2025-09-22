@@ -108,7 +108,6 @@ selected">
             let url = '<?= base_url("/data/db/pdb/") ?>' + this.value[0] + '/' + this.value + '.pdb';
             let residues = this.getAttribute('data'); 
             let cadeia_pep = this.value[5];
-            console.log(cadeia_pep,'fora')
             load_subject(url, residues, cadeia_pep); // Quando clicado, chama a função
             $('#sbj').text(this.value)
          });
@@ -116,7 +115,6 @@ selected">
 
       function load_subject(pdb_data2, residues, cadeia_pep) {
          $.get(pdb_data2, function(d) {
-            console.log(cadeia_pep,'dentro')
 
             const data = d;
             // Cria viewer
@@ -179,38 +177,31 @@ selected">
                      glviewer.setStyle({ chain: chain }, { cartoon: { color: color } });
                   }
                   
-                  glviewer.addSurface($3Dmol.SurfaceType.VDW, {
-                     opacity: opacity,
-                     color: color
-                  }, {
-                     chain: chain
-                  });
-
 
                   if (chain === cadeia_pep) {
-                  // residues_array deve ser um array de números
-                  glviewer.setStyle({
-                     chain: cadeia_pep,
-                     resi: residues
-                  }, {
-                     stick: {
-                        colorscheme: 'greenCarbon'
-                     },
-                     cartoon: {
-                        color: 'green'
-                     }
-                  });
-                  glviewer.addSurface(
-                     $3Dmol.SurfaceType.VDW, {
-                        opacity: 0.7,
-                        color: 'green'
+                     console.log('res',residues)
+                     // residues_array deve ser um array de números
+                     glviewer.setStyle({
+                        chain: cadeia_pep,
+                        resi: residues
                      }, {
-                        chain: chain_query,
-                        resi: residues_array
-                     }
-                  );
-               }
-
+                        stick: {
+                           colorscheme: 'greenCarbon'
+                        },
+                        cartoon: {
+                           color: 'green'
+                        }
+                     });
+                     glviewer.addSurface(
+                        $3Dmol.SurfaceType.VDW, {
+                           opacity: 0.7,
+                           color: 'green'
+                        }, {
+                           chain: chain_query,
+                           resi: residues_array
+                        }
+                     );
+                  }
                });
             }
             const initialOpacity = parseFloat($('#opacityRange').val()) || 0;
