@@ -182,7 +182,7 @@ selected">
                         chain: chain,
                         resi: residues
                      }, {
-                        stick: {
+                        line: {
                            colorscheme: 'greenCarbon'
                         },
                         cartoon: {
