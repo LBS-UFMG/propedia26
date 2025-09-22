@@ -266,10 +266,9 @@ selected">
         // Se for a cadeia que queremos destacar os resíduos
         if (chain === chain_query) {
             // residues_array deve ser um array de números
-            console.log('aqui', residues_array);
             glviewer.setStyle(
                 { chain: chain_query, resi: residues_array },
-                { stick: { color: 'greenCarbon' }, cartoon:{ color: 'green'} }
+                { stick: { colorscheme: 'greenCarbon' }, cartoon:{ color: 'green'} }
             );
             glviewer.addSurface(
                 $3Dmol.SurfaceType.VDW,
