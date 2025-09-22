@@ -166,13 +166,14 @@ selected">
             function createSurfacesWithOpacity(opacity) {
                chains.forEach((chain, i) => {
                   const color = colors[i % colors.length];
-                  glviewer.setStyle({
-                     chain: chain
-                  }, {
-                     cartoon: {
-                        color: color
-                     }
-                  });
+
+                  if(color == 'orangered'){
+                     glviewer.setStyle({ chain: chain }, { stick: { color: color } });
+                  }
+                  else{
+                     glviewer.setStyle({ chain: chain }, { cartoon: { color: color } });
+                  }
+                  
                   glviewer.addSurface($3Dmol.SurfaceType.VDW, {
                      opacity: opacity,
                      color: color
