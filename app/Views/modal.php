@@ -34,7 +34,7 @@
         <img height="50" class="me-3" src="<?php echo base_url('/img/dcc_b.svg'); ?>">
         <img height="50" class="me-3" src="<?php echo base_url('/img/ufmg_b.svg'); ?>">
 
-        <button type="button" class="btn btn-dark py-4 px-5" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-light py-4 px-5" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
     <!-- /.modal-content -->
@@ -222,7 +222,7 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
     <!-- /.modal-content -->
