@@ -131,13 +131,13 @@ selected">
             const chains = [...new Set(atomsx.map(atom => atom.chain))];
 
             // Função utilitária debounce
-            // const debounce = (fn, wait = 80) => {
-            //    let t;
-            //    return function(...args) {
-            //       clearTimeout(t);
-            //       t = setTimeout(() => fn.apply(this, args), wait);
-            //    };
-            // };
+            const debounce = (fn, wait = 80) => {
+               let t;
+               return function(...args) {
+                  clearTimeout(t);
+                  t = setTimeout(() => fn.apply(this, args), wait);
+               };
+            };
 
             // Função segura para remover todas as superfícies
             function removeAllSurfacesSafe(viewer) {
@@ -167,15 +167,12 @@ selected">
                chains.forEach((chain, i) => {
                   const color = colors[i % colors.length];
 
-                  let selection = { chain: chain };
-
-if (color === 'orangered') {
-    // mantém cartoon E adiciona sticks laranjas
-    glviewer.addStyle(selection, { stick: { color: color } });
-} else {
-    // apenas muda a cor do cartoon sem remover sticks existentes
-    glviewer.setStyle(selection, { cartoon: { color: color }, stick: { radius: 0.15 } });
-}
+                  if(color == 'orangered'){
+                     glviewer.setStyle({ chain: chain }, { stick: { color: color } });
+                  }
+                  else{
+                     glviewer.setStyle({ chain: chain }, { cartoon: { color: color } });
+                  }
                   
                   glviewer.addSurface($3Dmol.SurfaceType.VDW, {
                      opacity: opacity,
