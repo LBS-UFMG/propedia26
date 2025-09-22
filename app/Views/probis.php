@@ -90,8 +90,8 @@ selected">
                                SUBJECT ALIGNED RESIDUES -->
                                  <td><input type="radio" name="compare" value="<?= $r['COMPLEX NAME'] ?>"></td>
                                  <td><a href="<?=base_url("/entry/{$r['COMPLEX NAME']}")?>" target="_blank"><?= $r['COMPLEX NAME'] ?></a></td>
-                                 <td><?= $r['ALIGNMENT SCORE'] ?></td>
-                                 <td><?= $r['RMSD'] ?></td>
+                                 <td><?= round($r['ALIGNMENT SCORE'],2) ?></td>
+                                 <td><?= round($r['RMSD'],2) ?></td>
                               </tr>
                            <?php endif; ?>
                         <?php endforeach; ?>
@@ -106,8 +106,9 @@ selected">
 
 <script>
    $(() => {
-      const pdb_data = "<?php echo base_url("/data/projects/{$id}/{$pdb}.pdb"); ?>";
-
+      const pdb_data = "<?=base_url("/data/projects/{$id}/{$pdb}.pdb")?>";
+      const residues_query = "<?=$residues?>";
+      const chain_query = "<?=$chain?>";
       document.querySelectorAll('input[name="compare"]').forEach(radio => {
          radio.addEventListener('click', function () {
             let url = '<?=base_url("/data/db/pdb/")?>' + this.value[0] + '/' + this.value + '.pdb';
@@ -169,6 +170,17 @@ selected">
             // Função que (re)cria todas as superfícies com a opacidade passada
             function createSurfacesWithOpacity(opacity) {
                chains.forEach((chain, i) => {
+                  if(chain == chain_query){
+                     glviewer.setStyle({
+                        chain: chain_query,
+                        resi: residues_query
+                     }, {
+                        stick: {
+                              colorscheme: orange
+                        }
+                     });
+                  }
+
                   const color = colors[i % colors.length];
                   glviewer.setStyle({
                      chain: chain

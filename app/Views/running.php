@@ -4,9 +4,6 @@
 
 <div class="container py-5 text-secondary text-center">
     <div class="row">
-        <div class="col-3">
-            <img src="<?= base_url('img/cocadito.png'); ?>" width="300px" class="rounded">
-        </div>
         <div class="col">
         <p class="mt-4 alert alert-success"><b>Project created – </b>ID: <a href="<?=base_url('/project/'.$id)?>"><?=$id?></a></p>
 
