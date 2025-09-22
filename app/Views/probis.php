@@ -108,6 +108,7 @@ selected">
    $(() => {
       const pdb_data = "<?=base_url("/data/projects/{$id}/{$pdb}.pdb")?>";
       const residues_query = "<?=$residues?>";
+      const residues_array = residues_query.split(',').map(Number);
       const chain_query = "<?=$chain?>";
       document.querySelectorAll('input[name="compare"]').forEach(radio => {
          radio.addEventListener('click', function () {
@@ -261,10 +262,10 @@ selected">
                   console.log('aqui', residues_query)
                      glviewer.setStyle({
                         chain: chain_query,
-                        resi: residues_query
+                        resi: residues_array
                      }, {
                         stick: {
-                           color: 'green'
+                           color: 'greenCarbon'
                         }
                      });
                   }
