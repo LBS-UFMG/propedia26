@@ -107,12 +107,13 @@ selected">
          radio.addEventListener('click', function() {
             let url = '<?= base_url("/data/db/pdb/") ?>' + this.value[0] + '/' + this.value + '.pdb';
             let residues = this.getAttribute('data'); 
-            load_subject(url); // Quando clicado, chama a função
+            let cadeia_pep = this.value[5];
+            load_subject(url, residues, cadeia_pep); // Quando clicado, chama a função
             $('#sbj').text(this.value)
          });
       });
 
-      function load_subject(pdb_data2) {
+      function load_subject(pdb_data2, residues, cadeia_pep) {
          $.get(pdb_data2, function(d) {
 
             const data = d;
@@ -140,34 +141,34 @@ selected">
             // };
 
             // Função segura para remover todas as superfícies
-            function removeAllSurfacesSafe(viewer) {
-               // Preferir método pronto, se existir
-               if (typeof viewer.removeAllSurfaces === 'function') {
-                  viewer.removeAllSurfaces();
-                  return;
-               }
-               // Fallback: iterar sobre viewer.surfaces (se existir) e tentar remover
-               if (Array.isArray(viewer.surfaces) && viewer.surfaces.length) {
-                  // copie a lista porque removeSurface pode mutar viewer.surfaces
-                  const existing = viewer.surfaces.slice();
-                  for (const s of existing) {
-                     try {
-                        // tentamos remover pelo objeto/handle — envolver em try para não quebrar
-                        viewer.removeSurface(s);
-                     } catch (err) {
-                        // Algumas versões esperam um índice ou outro formato; ignorar se falhar
-                        console.warn('removeSurface failed for', s, err);
-                     }
-                  }
-               }
-            }
+            // function removeAllSurfacesSafe(viewer) {
+            //    // Preferir método pronto, se existir
+            //    if (typeof viewer.removeAllSurfaces === 'function') {
+            //       viewer.removeAllSurfaces();
+            //       return;
+            //    }
+            //    // Fallback: iterar sobre viewer.surfaces (se existir) e tentar remover
+            //    if (Array.isArray(viewer.surfaces) && viewer.surfaces.length) {
+            //       // copie a lista porque removeSurface pode mutar viewer.surfaces
+            //       const existing = viewer.surfaces.slice();
+            //       for (const s of existing) {
+            //          try {
+            //             // tentamos remover pelo objeto/handle — envolver em try para não quebrar
+            //             viewer.removeSurface(s);
+            //          } catch (err) {
+            //             // Algumas versões esperam um índice ou outro formato; ignorar se falhar
+            //             console.warn('removeSurface failed for', s, err);
+            //          }
+            //       }
+            //    }
+            // }
 
             // Função que (re)cria todas as superfícies com a opacidade passada
             function createSurfacesWithOpacity(opacity) {
                chains.forEach((chain, i) => {
                   const color = colors[i % colors.length];
 
-                  if(color == 'orangered'){
+                  if(chain == cadeia_pep){
                      glviewer.setStyle({ chain: chain }, { line: { color: 'orangered' }, cartoon: { color: color } });
                   }
                   else{
@@ -180,6 +181,32 @@ selected">
                   }, {
                      chain: chain
                   });
+
+
+                  if (chain === cadeia_pep) {
+                  // residues_array deve ser um array de números
+                  glviewer.setStyle({
+                     chain: cadeia_pep,
+                     resi: residues
+                  }, {
+                     stick: {
+                        colorscheme: 'greenCarbon'
+                     },
+                     cartoon: {
+                        color: 'green'
+                     }
+                  });
+                  glviewer.addSurface(
+                     $3Dmol.SurfaceType.VDW, {
+                        opacity: 0.7,
+                        color: 'green'
+                     }, {
+                        chain: chain_query,
+                        resi: residues_array
+                     }
+                  );
+               }
+
                });
             }
             const initialOpacity = parseFloat($('#opacityRange').val()) || 0;
