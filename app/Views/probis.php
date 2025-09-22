@@ -107,6 +107,7 @@ selected">
          radio.addEventListener('click', function() {
             let url = '<?= base_url("/data/db/pdb/") ?>' + this.value[0] + '/' + this.value + '.pdb';
             let residues = this.getAttribute('data'); 
+            residues = residues.split(',').map(Number);
             let cadeia_pep = this.value[5];
             load_subject(url, residues, cadeia_pep); // Quando clicado, chama a função
             $('#sbj').text(this.value)
