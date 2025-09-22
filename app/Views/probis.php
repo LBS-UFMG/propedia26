@@ -269,7 +269,7 @@ selected">
             console.log('aqui', residues_array);
             glviewer.setStyle(
                 { chain: chain_query, resi: residues_array },
-                { stick: { color: 'green' } }
+                { stick: { color: 'greenCarbon' }, cartoon:{ color: 'green'} }
             );
             glviewer.addSurface(
                 $3Dmol.SurfaceType.VDW,
