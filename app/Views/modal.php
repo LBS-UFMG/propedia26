@@ -201,22 +201,21 @@
     <div class="modal-content">
       <div class="modal-header bg-dark">
         <div class="text-center">
-          <img width="150" class="me-3" src="<?php echo base_url('/img/logo_propedia.svg'); ?>">
-          <h1 class="orange">Cite Propedia</h1>
+          <!-- <img width="150" class="me-3" src="<?php echo base_url('/img/logo_propedia.svg'); ?>"> -->
+          <h3 class="orange">Cite Propedia</h3>
         </div>
         <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <h4 class="" style="color:#031430"><strong>How to cite:</strong></h4>
         <label class="badge bg-dark">Original paper (2021)</label>
         <p class="small" id="browse1"> Martins, P.M., Santos, L.H., Mariano, D. et al. <strong>Propedia: a database for protein–peptide identification based on a hybrid clustering algorithm.</strong> BMC Bioinformatics 22, 1 (2021). doi: <a href="https://doi.org/10.1186/s12859-020-03881-z" target="_blank">10.1186/s12859-020-03881-z</a>
         </p>
 
-        <label class="badge bg-dark">Propedia v2.3 (2023)</label>
+        <label class="badge bg-dark mt-4">Propedia v2.3 (2023)</label>
         <p class="small" id="browse2"> Martins P, Mariano D, Carvalho FC, Bastos LL, Moraes L, Paixão V and Cardoso de Melo-Minardi R (2023). <strong>Propedia v2.3: A novel representation approach for the peptide-protein interaction database using graph-based structural signatures</strong>. Front. Bioinform. 3:1103103. doi: <a href="https://doi.org/10.3389/fbinf.2023.1103103" target="_blank">10.3389/fbinf.2023.1103103</a>
         </p>
 
-        <label class="badge bg-dark">Propedia 26 (2026)</label>
+        <label class="badge bg-dark mt-4">Propedia 26 (2026)</label>
         <p class="small" id="browse3"><em>In development.</em>
         </p>
       </div>
