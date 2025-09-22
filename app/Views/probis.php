@@ -115,8 +115,9 @@ selected">
       });
 
       function load_subject(pdb_data2, residues, cadeia_pep) {
+         
          $.get(pdb_data2, function(d) {
-
+console.log(pdb_data2, residues, cadeia_pep)
             const data = d;
             // Cria viewer
             glviewer = $3Dmol.createViewer("3Dmol_subject", {
