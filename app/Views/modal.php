@@ -196,7 +196,7 @@
 </div>
 
 <!-- MODAL: CITE -->
-<div class="modal fade" tabindex="-1" id="cite" role="dialog">
+<div class="modal fade" tabindex="-1" id="cite-propedia" role="dialog">
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header bg-dark">
