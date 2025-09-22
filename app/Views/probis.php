@@ -168,7 +168,9 @@ selected">
                   const color = colors[i % colors.length];
 
                   if(color == 'orangered'){
-                     glviewer.addBonds().setStyle({ chain: chain }, { stick: { color: color } });
+                     let model = glviewer.getModel();
+                     model.addBonds(); // força inferência de ligações
+                     glviewer.setStyle({ chain: chain }, { stick: { color: color } });
                   }
                   else{
                      glviewer.setStyle({ chain: chain }, { cartoon: { color: color } });
