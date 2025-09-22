@@ -256,36 +256,32 @@ selected">
 
          // Função que (re)cria todas as superfícies com a opacidade passada
          function createSurfacesWithOpacity(opacity) {
-            chains.forEach((chain, i) => {
+    chains.forEach((chain, i) => {
+        const color = colors[i % colors.length];
 
-               if(chain == chain_query){
-                  console.log('aqui', residues_query)
-                     glviewer.setStyle({
-                        chain: chain_query,
-                        resi: residues_array
-                     }, {
-                        stick: {
-                           color: 'greenCarbon'
-                        }
-                     });
-                  }
+        // Estilo padrão cartoon + superfície
+        glviewer.setStyle({ chain: chain }, { cartoon: { color: color } });
+        glviewer.addSurface($3Dmol.SurfaceType.VDW, { opacity: opacity, color: color }, { chain: chain });
 
-               const color = colors[i % colors.length];
-               glviewer.setStyle({
-                  chain: chain
-               }, {
-                  cartoon: {
-                     color: color
-                  }
-               });
-               glviewer.addSurface($3Dmol.SurfaceType.VDW, {
-                  opacity: opacity,
-                  color: color
-               }, {
-                  chain: chain
-               });
-            });
-         }
+        // Se for a cadeia que queremos destacar os resíduos
+        if (chain === chain_query) {
+            // residues_array deve ser um array de números
+            console.log('aqui', residues_array);
+            glviewer.setStyle(
+                { chain: chain_query, resi: residues_array },
+                { stick: { color: 'green' } }
+            );
+            glviewer.addSurface(
+                $3Dmol.SurfaceType.VDW,
+                { opacity: 0.7, color: 'green' },
+                { chain: chain_query, resi: residues_array }
+            );
+        }
+    });
+
+    glviewer.render();
+}
+
 
          // Cria superfícies iniciais usando o valor atual do slider (fallback 0)
          const initialOpacity = parseFloat($('#opacityRange').val()) || 0;
