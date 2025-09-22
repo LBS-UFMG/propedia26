@@ -170,17 +170,6 @@ selected">
             // Função que (re)cria todas as superfícies com a opacidade passada
             function createSurfacesWithOpacity(opacity) {
                chains.forEach((chain, i) => {
-                  if(chain == chain_query){
-                     glviewer.setStyle({
-                        chain: chain_query,
-                        resi: residues_query
-                     }, {
-                        stick: {
-                              colorscheme: greenCarbon
-                        }
-                     });
-                  }
-
                   const color = colors[i % colors.length];
                   glviewer.setStyle({
                      chain: chain
@@ -267,6 +256,18 @@ selected">
          // Função que (re)cria todas as superfícies com a opacidade passada
          function createSurfacesWithOpacity(opacity) {
             chains.forEach((chain, i) => {
+
+               if(chain == chain_query){
+                     glviewer.setStyle({
+                        chain: chain_query,
+                        resi: residues_query
+                     }, {
+                        stick: {
+                              colorscheme: green
+                        }
+                     });
+                  }
+                  
                const color = colors[i % colors.length];
                glviewer.setStyle({
                   chain: chain
