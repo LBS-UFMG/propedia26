@@ -179,7 +179,7 @@ selected">
             
                      // residues_array deve ser um array de números
                      glviewer.setStyle({
-                        chain: cadeia_pep,
+                        chain: chain,
                         resi: residues
                      }, {
                         stick: {
