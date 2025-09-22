@@ -222,10 +222,7 @@
       </div>
 
       <div class="modal-footer">
-        <img height="50" class="me-3" src="<?php echo base_url('/img/dcc_b.svg'); ?>">
-        <img height="50" class="me-3" src="<?php echo base_url('/img/ufmg_b.svg'); ?>">
-
-        <button type="button" class="btn btn-dark py-4 px-5" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
       </div>
     </div>
     <!-- /.modal-content -->
