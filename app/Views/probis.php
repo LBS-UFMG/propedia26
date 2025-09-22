@@ -89,9 +89,9 @@ selected">
                                QUERY ALIGNED RESIDUES;
                                SUBJECT ALIGNED RESIDUES -->
                                  <td><input type="radio" name="compare" value="<?= $r['COMPLEX NAME'] ?>"></td>
-                                 <td><a href="<?=base_url("/entry/{$r['COMPLEX NAME']}")?>" target="_blank"><?= $r['COMPLEX NAME'] ?></a></td>
-                                 <td><?= round($r['ALIGNMENT SCORE'],2) ?></td>
-                                 <td><?= round($r['RMSD'],2) ?></td>
+                                 <td><a href="<?= base_url("/entry/{$r['COMPLEX NAME']}") ?>" target="_blank"><?= $r['COMPLEX NAME'] ?></a></td>
+                                 <td><?= round($r['ALIGNMENT SCORE'], 2) ?></td>
+                                 <td><?= round($r['RMSD'], 2) ?></td>
                               </tr>
                            <?php endif; ?>
                         <?php endforeach; ?>
@@ -106,21 +106,21 @@ selected">
 
 <script>
    $(() => {
-      const pdb_data = "<?=base_url("/data/projects/{$id}/{$pdb}.pdb")?>";
-      const residues_query = "<?=$residues?>";
+      const pdb_data = "<?= base_url("/data/projects/{$id}/{$pdb}.pdb") ?>";
+      const residues_query = "<?= $residues ?>";
       const residues_array = residues_query.split(',').map(Number);
-      const chain_query = "<?=$chain?>";
+      const chain_query = "<?= $chain ?>";
       document.querySelectorAll('input[name="compare"]').forEach(radio => {
-         radio.addEventListener('click', function () {
-            let url = '<?=base_url("/data/db/pdb/")?>' + this.value[0] + '/' + this.value + '.pdb';
+         radio.addEventListener('click', function() {
+            let url = '<?= base_url("/data/db/pdb/") ?>' + this.value[0] + '/' + this.value + '.pdb';
             load_subject(url); // Quando clicado, chama a função
             $('#sbj').text(this.value)
          });
       });
 
-      function load_subject(pdb_data2){
+      function load_subject(pdb_data2) {
          $.get(pdb_data2, function(d) {
-            
+
             const data = d;
             // Cria viewer
             glviewer = $3Dmol.createViewer("3Dmol_subject", {
@@ -203,7 +203,7 @@ selected">
          });
       }
 
-      load_subject('<?=base_url("/data/db/pdb/{$results[0]['COMPLEX NAME'][0]}/{$results[0]['COMPLEX NAME']}.pdb")?>'); // carrega o primeiro item por padrão
+      load_subject('<?= base_url("/data/db/pdb/{$results[0]['COMPLEX NAME'][0]}/{$results[0]['COMPLEX NAME']}.pdb") ?>'); // carrega o primeiro item por padrão
 
       // QUERY -------------------------------------------------->
       $.get(pdb_data, function(d) {
@@ -218,7 +218,7 @@ selected">
          const m = glviewer.addModel(data, "pqr");
 
          // Cores e cadeias
-         const colors = ["grey", "orangered", "deepskyblue", "green", "purple", "cyan"];
+         const colors = ["white"];
          const atomsx = m.selectedAtoms({});
          const chains = [...new Set(atomsx.map(atom => atom.chain))];
 
@@ -256,49 +256,56 @@ selected">
 
          // Função que (re)cria todas as superfícies com a opacidade passada
          function createSurfacesWithOpacity(opacity) {
-    chains.forEach((chain, i) => {
-        const color = colors[i % colors.length];
+            chains.forEach((chain, i) => {
+               const color = colors[i % colors.length];
 
-        // Estilo padrão cartoon + superfície
-        glviewer.setStyle({ chain: chain }, { cartoon: { color: color } });
-        glviewer.addSurface($3Dmol.SurfaceType.VDW, { opacity: opacity, color: color }, { chain: chain });
+               // Estilo padrão cartoon + superfície
+               glviewer.setStyle({
+                  chain: chain
+               }, {
+                  cartoon: {
+                     color: color
+                  }
+               });
+               glviewer.addSurface($3Dmol.SurfaceType.VDW, {
+                  opacity: opacity,
+                  color: color
+               }, {
+                  chain: chain
+               });
 
-        // Se for a cadeia que queremos destacar os resíduos
-        if (chain === chain_query) {
-            // residues_array deve ser um array de números
-            glviewer.setStyle(
-                { chain: chain_query, resi: residues_array },
-                { stick: { colorscheme: 'greenCarbon' }, cartoon:{ color: 'green'} }
-            );
-            glviewer.addSurface(
-                $3Dmol.SurfaceType.VDW,
-                { opacity: 0.7, color: 'green' },
-                { chain: chain_query, resi: residues_array }
-            );
-        }
-    });
+               // Se for a cadeia que queremos destacar os resíduos
+               if (chain === chain_query) {
+                  // residues_array deve ser um array de números
+                  glviewer.setStyle({
+                     chain: chain_query,
+                     resi: residues_array
+                  }, {
+                     stick: {
+                        colorscheme: 'greenCarbon'
+                     },
+                     cartoon: {
+                        color: 'green'
+                     }
+                  });
+                  glviewer.addSurface(
+                     $3Dmol.SurfaceType.VDW, {
+                        opacity: 0.7,
+                        color: 'green'
+                     }, {
+                        chain: chain_query,
+                        resi: residues_array
+                     }
+                  );
+               }
+            });
 
-    glviewer.render();
-}
-
+            glviewer.render();
+         }
 
          // Cria superfícies iniciais usando o valor atual do slider (fallback 0)
          const initialOpacity = parseFloat($('#opacityRange').val()) || 0;
          createSurfacesWithOpacity(initialOpacity);
-
-         // Handler único, debounced, que remove e recria superfícies
-         $('#opacityRange').on('input', debounce(function() {
-            const newOpacity = parseFloat($(this).val());
-            $('#opacityValue').text((newOpacity * 100).toFixed(0) + "%");
-
-            // remove todas as superfícies de forma segura
-            removeAllSurfacesSafe(glviewer);
-
-            // (re)cria todas as superfícies com a nova opacidade
-            createSurfacesWithOpacity(newOpacity);
-
-            glviewer.render();
-         }, 60));
 
          // restante: marca átomos como clicáveis etc.
          const atoms = m.selectedAtoms({});
