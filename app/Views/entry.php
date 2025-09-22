@@ -95,9 +95,9 @@
                     <div class="col-12 col-md-8">
                         <p><strong>Description: </strong> Calmodulin complexed with a peptide from a human death-associated protein kinase <?= $info[1] ?></p>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <!-- <div class="col-12 col-md-4">
                         <strong>Classification: </strong><span><?= $info[4] ?></span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
