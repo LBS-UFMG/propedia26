@@ -263,11 +263,11 @@ selected">
                         resi: residues_query
                      }, {
                         stick: {
-                              colorscheme: green
+                           color: 'greenCarbon'
                         }
                      });
                   }
-                  
+
                const color = colors[i % colors.length];
                glviewer.setStyle({
                   chain: chain
