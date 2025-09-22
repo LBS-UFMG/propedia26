@@ -84,7 +84,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-light " data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
         </div>
       </form>
     </div>
@@ -188,7 +188,7 @@
         </div>
         <div class="modal-footer">
           <input id="run_probis_btn" type="submit" class="btn btn-success" value="Run ProBiS NOW" style="display: none;">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
         </div>
       </form>
     </div>
