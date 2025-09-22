@@ -168,7 +168,7 @@ selected">
                   const color = colors[i % colors.length];
 
                   if(color == 'orangered'){
-                     glviewer.setStyle({ chain: chain }, { stick: { color: 'orangered' }, cartoon: { color: color } });
+                     glviewer.setStyle({ chain: chain }, { line: { color: 'orangered' }, cartoon: { color: color } });
                   }
                   else{
                      glviewer.setStyle({ chain: chain }, { cartoon: { color: color } });
