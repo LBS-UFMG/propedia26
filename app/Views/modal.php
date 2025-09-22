@@ -207,17 +207,17 @@
         <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <p class="small text-muted">We ask that you cite both the original article and the most recent published article from the database.</p>
+        <p class="small text-muted">We kindly ask that you cite both the original article and the most recent published article from the database. You can cite the other articles if you use data and functionalities from specific versions.</p>
         <label class="badge bg-dark mt-3">Original paper (2021)</label>
-        <p class="small" id="browse1"> Martins, P.M., Santos, L.H., Mariano, D. et al. <strong>Propedia: a database for protein–peptide identification based on a hybrid clustering algorithm.</strong> BMC Bioinformatics 22, 1 (2021). doi: <a href="https://doi.org/10.1186/s12859-020-03881-z" target="_blank">10.1186/s12859-020-03881-z</a>
+        <p class="small border p-2 rounded" id="browse1"> Martins, P.M., Santos, L.H., Mariano, D. et al. <strong>Propedia: a database for protein–peptide identification based on a hybrid clustering algorithm.</strong> BMC Bioinformatics 22, 1 (2021). doi: <a href="https://doi.org/10.1186/s12859-020-03881-z" target="_blank">10.1186/s12859-020-03881-z</a>
         </p>
 
         <label class="badge bg-dark mt-3">Propedia v2.3 (2023)</label>
-        <p class="small" id="browse2"> Martins P, Mariano D, Carvalho FC, Bastos LL, Moraes L, Paixão V and Cardoso de Melo-Minardi R (2023). <strong>Propedia v2.3: A novel representation approach for the peptide-protein interaction database using graph-based structural signatures</strong>. Front. Bioinform. 3:1103103. doi: <a href="https://doi.org/10.3389/fbinf.2023.1103103" target="_blank">10.3389/fbinf.2023.1103103</a>
+        <p class="small border p-2 rounded" id="browse2"> Martins P, Mariano D, Carvalho FC, Bastos LL, Moraes L, Paixão V and Cardoso de Melo-Minardi R (2023). <strong>Propedia v2.3: A novel representation approach for the peptide-protein interaction database using graph-based structural signatures</strong>. Front. Bioinform. 3:1103103. doi: <a href="https://doi.org/10.3389/fbinf.2023.1103103" target="_blank">10.3389/fbinf.2023.1103103</a>
         </p>
 
         <label class="badge bg-dark mt-3">Propedia 26 (2026)</label>
-        <p class="small" id="browse3"><em>In development.</em>
+        <p class="small border p-2 rounded" id="browse3"><em>In development.</em>
         </p>
       </div>
 
