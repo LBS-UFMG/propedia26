@@ -81,7 +81,7 @@ selected">
                            <?php if (count($r) == 5): ?>
                               <tr>
                                  <!-- [0] COMPLEX NAME; [1] ALIGNMENT SCORE; [3] RMSD; [4] QUERY ALIGNED RESIDUES; [5] SUBJECT ALIGNED RESIDUES -->
-                                 <td><input type="radio" name="compare" value="<?= $r['COMPLEX NAME'] ?>" data="<?= $r['SUBJECT ALIGNED RESIDUES'] ?>" <?php if($results['COMPLEX NAME'][0] === $r['COMPLEX NAME']){echo 'checked'; }?>></td>
+                                 <td><input type="radio" name="compare" value="<?= $r['COMPLEX NAME'] ?>" data="<?= $r['SUBJECT ALIGNED RESIDUES'] ?>" <?php if($results[0]['COMPLEX NAME'] === $r['COMPLEX NAME']){echo 'checked'; }?>></td>
                                  <td><a href="<?= base_url("/entry/{$r['COMPLEX NAME']}") ?>" target="_blank"><?= $r['COMPLEX NAME'] ?></a></td>
                                  <td><?= round($r['ALIGNMENT SCORE'], 2) ?></td>
                                  <td><?= round($r['RMSD'], 2) ?></td>
