@@ -6,14 +6,11 @@
    <div class="row">
       <div class="col-md-4 col-12">
          <p class="text-center mt-1 mb-1"><strong>Query</strong> <label class="badge bg-primary"><?= $pdb ?></label></p>
-         <div id="3Dmol_query" style="min-height: 600px; width: 100%; position: relative;">
-
-         </div>
+         <div id="3Dmol_query" style="min-height: 600px; width: 100%; position: relative;"></div>
       </div>
       <div class="col-md-4 col-12">
          <p class="text-center mt-1 mb-1"><strong>Subject</strong> <label class="badge bg-dark" id="sbj"><?= $results[0]['COMPLEX NAME'] ?></label></p>
-         <div id="3Dmol_subject" style="min-height: 600px; width: 100%; position: relative;">
-         </div>
+         <div id="3Dmol_subject" style="min-height: 600px; width: 100%; position: relative;"></div>
       </div>
       <div class="col-md-4 col-12" style="overflow: auto; height: 1000px;">
          <div class="row">
@@ -73,7 +70,7 @@ selected">
                   <table id="dt_probis" class="table table-striped table-bordered">
                      <thead>
                         <tr class="tableheader">
-                           <th class="dt-center"><i class="bi bi-eye-fill"></i></th>
+                           <th class="dt-center"><i class="bi bi-eye-fill" title="View in 3dmol"></i></th>
                            <th class="dt-center">Complex</th>
                            <th class="dt-center">Alignment Score<sup></sup></th>
                            <th class="dt-center">RMSD<sup></sup></th>
@@ -83,12 +80,8 @@ selected">
                         <?php foreach ($results as $r): ?>
                            <?php if (count($r) == 5): ?>
                               <tr>
-                                 <!-- [0] COMPLEX NAME;
-                               ALIGNMENT SCORE;
-                               RMSD;
-                               QUERY ALIGNED RESIDUES;
-                               SUBJECT ALIGNED RESIDUES -->
-                                 <td><input type="radio" name="compare" value="<?= $r['COMPLEX NAME'] ?>"></td>
+                                 <!-- [0] COMPLEX NAME; [1] ALIGNMENT SCORE; [3] RMSD; [4] QUERY ALIGNED RESIDUES; [5] SUBJECT ALIGNED RESIDUES -->
+                                 <td><input type="radio" name="compare" value="<?= $r['COMPLEX NAME'] ?>" data="<?= $r['SUBJECT ALIGNED RESIDUES'] ?>"></td>
                                  <td><a href="<?= base_url("/entry/{$r['COMPLEX NAME']}") ?>" target="_blank"><?= $r['COMPLEX NAME'] ?></a></td>
                                  <td><?= round($r['ALIGNMENT SCORE'], 2) ?></td>
                                  <td><?= round($r['RMSD'], 2) ?></td>
@@ -113,6 +106,7 @@ selected">
       document.querySelectorAll('input[name="compare"]').forEach(radio => {
          radio.addEventListener('click', function() {
             let url = '<?= base_url("/data/db/pdb/") ?>' + this.value[0] + '/' + this.value + '.pdb';
+            let residues = this.getAttribute('data'); 
             load_subject(url); // Quando clicado, chama a função
             $('#sbj').text(this.value)
          });
@@ -137,13 +131,13 @@ selected">
             const chains = [...new Set(atomsx.map(atom => atom.chain))];
 
             // Função utilitária debounce
-            const debounce = (fn, wait = 80) => {
-               let t;
-               return function(...args) {
-                  clearTimeout(t);
-                  t = setTimeout(() => fn.apply(this, args), wait);
-               };
-            };
+            // const debounce = (fn, wait = 80) => {
+            //    let t;
+            //    return function(...args) {
+            //       clearTimeout(t);
+            //       t = setTimeout(() => fn.apply(this, args), wait);
+            //    };
+            // };
 
             // Função segura para remover todas as superfícies
             function removeAllSurfacesSafe(viewer) {
