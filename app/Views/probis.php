@@ -217,7 +217,11 @@ selected">
          });
       }
 
-      load_subject('<?= base_url("/data/db/pdb/{$results[0]['COMPLEX NAME'][0]}/{$results[0]['COMPLEX NAME']}.pdb") ?>'); // carrega o primeiro item por padrão
+      load_subject(
+         '<?= base_url("/data/db/pdb/{$results[0]['COMPLEX NAME'][0]}/{$results[0]['COMPLEX NAME']}.pdb") ?>',
+         <?=$results[0]['COMPLEX NAME']?>.split(',').map(Number), // residues
+         <?=$results[0]['SUBJECT ALIGNED RESIDUES'][5]?> // chain
+      ); // carrega o primeiro item por padrão
 
       // QUERY -------------------------------------------------->
       $.get(pdb_data, function(d) {
@@ -295,7 +299,7 @@ selected">
                      chain: chain_query,
                      resi: residues_array
                   }, {
-                     stick: {
+                     line: {
                         colorscheme: 'greenCarbon'
                      },
                      cartoon: {
