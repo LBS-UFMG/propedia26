@@ -176,17 +176,13 @@ selected">
                   }
                   else{
                      glviewer.setStyle({ chain: chain }, { cartoon: { color: color } });
-                  }
-                  
-
-                  if (chain === cadeia_pep) {
-                     console.log('res',residues)
+            
                      // residues_array deve ser um array de números
                      glviewer.setStyle({
                         chain: cadeia_pep,
                         resi: residues
                      }, {
-                        line: {
+                        stick: {
                            colorscheme: 'greenCarbon'
                         },
                         cartoon: {
@@ -198,7 +194,7 @@ selected">
                            opacity: 0.7,
                            color: 'green'
                         }, {
-                           chain: chain_query,
+                           chain: chain,
                            resi: residues
                         }
                      );
