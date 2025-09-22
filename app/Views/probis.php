@@ -168,6 +168,8 @@ selected">
                chains.forEach((chain, i) => {
                   const color = colors[i % colors.length];
 
+                  console.log(chain, cadeia_pep)
+
                   if(chain == cadeia_pep){
                      glviewer.setStyle({ chain: chain }, { line: { color: 'orangered' }, cartoon: { color: color } });
                   }
