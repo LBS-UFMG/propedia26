@@ -132,7 +132,7 @@ selected">
             const m = glviewer.addModel(data, "pqr");
 
             // Cores e cadeias
-            const colors = ["grey", "orangered", "deepskyblue", "green", "purple", "cyan"];
+            const colors = ["white", "orangered", "deepskyblue", "green", "purple", "cyan"];
             const atomsx = m.selectedAtoms({});
             const chains = [...new Set(atomsx.map(atom => atom.chain))];
 
