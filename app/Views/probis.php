@@ -258,12 +258,13 @@ selected">
             chains.forEach((chain, i) => {
 
                if(chain == chain_query){
+                  console.log('aqui', residues_query)
                      glviewer.setStyle({
                         chain: chain_query,
                         resi: residues_query
                      }, {
                         stick: {
-                           color: 'greenCarbon'
+                           color: 'green'
                         }
                      });
                   }
