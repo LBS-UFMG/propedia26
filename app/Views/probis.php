@@ -131,13 +131,13 @@ selected">
             const chains = [...new Set(atomsx.map(atom => atom.chain))];
 
             // Função utilitária debounce
-            const debounce = (fn, wait = 80) => {
-               let t;
-               return function(...args) {
-                  clearTimeout(t);
-                  t = setTimeout(() => fn.apply(this, args), wait);
-               };
-            };
+            // const debounce = (fn, wait = 80) => {
+            //    let t;
+            //    return function(...args) {
+            //       clearTimeout(t);
+            //       t = setTimeout(() => fn.apply(this, args), wait);
+            //    };
+            // };
 
             // Função segura para remover todas as superfícies
             function removeAllSurfacesSafe(viewer) {
@@ -168,7 +168,12 @@ selected">
                   const color = colors[i % colors.length];
 
                   if(color == 'orangered'){
-                     glviewer.setStyle({ chain: chain }, { stick: { color: color } });
+                     glviewer.setStyle({ chain: chain }, {stick: {
+                        colorscheme: 'greenCarbon'
+                     },
+                     cartoon: {
+                        color: 'green'
+                     } });
                   }
                   else{
                      glviewer.setStyle({ chain: chain }, { cartoon: { color: color } });
