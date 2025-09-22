@@ -176,7 +176,7 @@ selected">
                         resi: residues_query
                      }, {
                         stick: {
-                              colorscheme: orange
+                              colorscheme: greenCarbon
                         }
                      });
                   }
