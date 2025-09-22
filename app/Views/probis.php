@@ -167,13 +167,15 @@ selected">
                chains.forEach((chain, i) => {
                   const color = colors[i % colors.length];
 
-                  if(color == 'orangered'){
-                     // glviewer.setStyle({ chain: chain }, { stick: { color: color } });
-                     glviewer.setStyle({ chain: chain }, { cartoon: { color: color } });
-                  }
-                  else{
-                     glviewer.setStyle({ chain: chain }, { cartoon: { color: color } });
-                  }
+                  let selection = { chain: chain };
+
+if (color === 'orangered') {
+    // mantém cartoon E adiciona sticks laranjas
+    glviewer.addStyle(selection, { stick: { color: color } });
+} else {
+    // apenas muda a cor do cartoon sem remover sticks existentes
+    glviewer.setStyle(selection, { cartoon: { color: color }, stick: { radius: 0.15 } });
+}
                   
                   glviewer.addSurface($3Dmol.SurfaceType.VDW, {
                      opacity: opacity,
