@@ -202,11 +202,12 @@
       <div class="modal-header bg-dark">
         <div class="text-center">
           <!-- <img width="150" class="me-3" src="<?php echo base_url('/img/logo_propedia.svg'); ?>"> -->
-          <h3 class="orange mb-0">Please, cite Propedia</h3>
+          <h3 class="orange mb-0">Please, cite Propedia in your publication</h3>
         </div>
         <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
+        <p class="small text-muted">We ask that you cite both the original article and the most recent published article from the database.</p>
         <label class="badge bg-dark mt-3">Original paper (2021)</label>
         <p class="small" id="browse1"> Martins, P.M., Santos, L.H., Mariano, D. et al. <strong>Propedia: a database for protein–peptide identification based on a hybrid clustering algorithm.</strong> BMC Bioinformatics 22, 1 (2021). doi: <a href="https://doi.org/10.1186/s12859-020-03881-z" target="_blank">10.1186/s12859-020-03881-z</a>
         </p>
