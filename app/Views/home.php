@@ -19,7 +19,7 @@
 
       <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-1">
 
-        <a class="btn btn-primary btn-lg px-4 me-md-2 azul" href="<?=base_url('explore')?>">Explore Propedia</button>
+        <a class="btn btn-primary btn-lg px-4 me-md-2 azul" href="<?= base_url('explore') ?>">Explore Propedia</button>
           <a href="http://bioinfo.dcc.ufmg.br/propedia" class="btn btn-outline-dark btn-lg px-4 me-md-2">Back to Propedia-legacy</a>
       </div>
     </div>
@@ -90,7 +90,7 @@
           <div class="caption">
             <div class="row">
               <div class="col-md-3 text-dark" style="font-size: 72px">
-                
+
                 <i class="bi bi-ui-radios-grid"></i>
               </div>
               <div class="col-md-9 text-end">
@@ -141,39 +141,102 @@
 
 <div class="container mt-5 my-5 px-5 pb-5" id="examples">
   <h1 class="pt-5"><strong>Examples</strong></h1>
-  <hr>
-  <p class="text-muted">Click on one of the following Propedia-IDs to explore the corresponding entry:</p>
-
+      <hr>
   <div class="row">
     <div class="col">
-      <label class="badge bg-dark orange">pep-pro</label>
-      <label class="badge bg-light text-dark">Protein-Peptide entry</label>
-      <a href="<?= base_url('/entry/1WRZ-B-A') ?>" class="badge bg-primary azul">1WRZ-B-A</a>
+      <p class="text-muted">Click on one of the following Propedia-IDs to explore the corresponding entry:</p>
+
+      <div class="row">
+        <div class="col">
+          <label class="badge bg-dark orange">pep-pro</label>
+          <label class="badge bg-light text-dark">Protein-Peptide entry</label>
+          <a href="<?= base_url('/entry/1WRZ-B-A') ?>" class="badge bg-primary azul">1WRZ-B-A</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label class="badge bg-dark orange">multipro</label>
+          <label class="badge bg-light text-dark">Multiprotein-Peptide entry</label>
+          <a href="<?= base_url('/multipro/1MT1-A') ?>" class="badge bg-primary azul">1MT1-A</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <p class="text-muted">Or access an entry by typing the 6-characters Propedia code: <label class="badge bg-dark">PDB ID + peptide-chain + protein-chain: <label class="orange">1A1M-C-A</label></label></p>
+      <div class="row g-2">
+                <div class="col-1">
+                    <input type="text" id="code1" name="code1" class="form-control validacao" size="1" maxlength="1"> 
+                </div> 
+                <div class="col-1">
+                    <input type="text" id="code2" name="code2" class="form-control validacao" size="1" maxlength="1"> 
+                </div> 
+                <div class="col-1">
+                    <input type="text" id="code3" name="code3" class="form-control validacao" size="1" maxlength="1"> 
+                </div> 
+                <div class="col-1">
+                    <input type="text" id="code4" name="code4" class="form-control validacao" size="1" maxlength="1"> 
+                </div> 
+                <div class="col-1">
+                    <input type="text" name="" class="form-control validacao" size="1" maxlength="1" value="-" disabled readonly> 
+                </div> 
+                <div class="col-1">
+                    <input type="text" id="code5" name="code5" class="form-control validacao" size="1" maxlength="1"> 
+                </div> 
+                <div class="col-1">
+                    <input type="text" name="" class="form-control validacao" size="1" maxlength="1" value="-" disabled readonly> 
+                </div> 
+                <div class="col-1">
+                    <input type="text" id="code6" name="code6" class="form-control validacao" size="1" maxlength="1"> 
+                </div> 
+                <div class="col-1">
+                    <button type="button" id="go" class="btn btn-dark azul" value="Go to entry"><i class="bi bi-play-fill"></i></button>
+                </div> 
+            </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col">
-      <label class="badge bg-dark orange">multipro</label>
-      <label class="badge bg-light text-dark">Multiprotein-Peptide entry</label>
-      <a href="<?= base_url('/multipro/1MT1-A') ?>" class="badge bg-primary azul">1MT1-A</a>
-    </div>
-  </div>
 </div>
 
 <script>
-  // const go = document.getElementById('go');
+  const go = document.getElementById('go');
 
-  // go.addEventListener('click', () => {
-  //   let url = document.getElementById('pdb_go').value;
-  //   url = url.toUpperCase();
-  //   if (url) {
-  //     if (url.length != 4) {
-  //       window.location.href = '<?= base_url("/entry/404") ?>';
-  //     }
-  //     window.location.href = '<?= base_url() ?>entry/' + url;
-  //   }
-  // });
+  go.addEventListener('click', () => {
+    let c1 = document.getElementById('code1').value;
+    let c2 = document.getElementById('code2').value;
+    let c3 = document.getElementById('code3').value;
+    let c4 = document.getElementById('code4').value;
+    let c5 = document.getElementById('code5').value;
+    let c6 = document.getElementById('code6').value;
+
+    let code = c1+c2+c3+c4+'-'+c5+'-'+c6
+
+    code = code.toUpperCase();
+    if (code) {
+      if (code.length != 6) {
+        window.location.href = '<?= base_url("/entry/404") ?>';
+      }
+      window.location.href = '<?= base_url() ?>entry/' + code;
+    }
+  });
+
+$(()=>{
+    
+    // pula para o prÃ³ximo campo (keycode==8 => backspace)
+    $("[name=code1]").on('keyup',(e)=>{ if(e.keyCode!=8 ){$("[name=code2]").focus() }});
+    $("[name=code2]").on('keyup',()=>{ $("[name=code3]").focus() });
+    $("[name=code3]").on('keyup',()=>{ $("[name=code4]").focus() });
+    $("[name=code4]").on('keyup',()=>{ $("[name=code5]").focus() });
+    $("[name=code5]").on('keyup',()=>{ $("[name=code6]").focus() });
+    
+    // ao apagar, volta para campo anterior
+    $("[name=code6]").on('keyup', (e)=>{ if(e.keyCode==8){ $("[name=code5]").focus() }}); 
+    $("[name=code5]").on('keyup', (e)=>{ if(e.keyCode==8){ $("[name=code4]").focus() }}); 
+    $("[name=code4]").on('keyup', (e)=>{ if(e.keyCode==8){ $("[name=code3]").focus() }}); 
+    $("[name=code3]").on('keyup', (e)=>{ if(e.keyCode==8){ $("[name=code2]").focus() }}); 
+    $("[name=code2]").on('keyup', (e)=>{ if(e.keyCode==8){ $("[name=code1]").focus() }}); 
+
+});
 
   // function redirectToURL2(event) {
   //   // Verificar se a tecla pressionada foi Enter (código 13)

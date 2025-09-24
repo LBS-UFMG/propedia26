@@ -108,3 +108,7 @@ footer{
 .orange:hover span{
     color: orangered;
 }
+
+.validacao {
+    text-transform: uppercase;
+}
