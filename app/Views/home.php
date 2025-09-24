@@ -190,7 +190,7 @@
                     <input type="text" id="code6" name="code6" class="form-control validacao" size="1" maxlength="1"> 
                 </div> 
                 <div class="col-1">
-                    <button type="button" id="go" class="btn btn-dark azul" value="Go to entry"><i class="bi bi-play-fill"></i></button>
+                    <button type="button" id="go" class="btn btn-dark azul" name="go" value="Go to entry"><i class="bi bi-play-fill"></i></button>
                 </div> 
             </div>
     </div>
@@ -228,6 +228,7 @@ $(()=>{
     $("[name=code3]").on('keyup',()=>{ $("[name=code4]").focus() });
     $("[name=code4]").on('keyup',()=>{ $("[name=code5]").focus() });
     $("[name=code5]").on('keyup',()=>{ $("[name=code6]").focus() });
+    $("[name=code6]").on('keyup',()=>{ $("[name=go]").focus() });
     
     // ao apagar, volta para campo anterior
     $("[name=code6]").on('keyup', (e)=>{ if(e.keyCode==8){ $("[name=code5]").focus() }}); 
