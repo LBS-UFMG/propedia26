@@ -245,7 +245,9 @@
                 <div class="col-12">
                     <h4>Structural similiarities</h4>
                     <ul class="bg-light p-3 rounded small">
-                        <li class="ms-4"><strong>Unique complex: </strong><span><label class="badge bg-<?php if ($info[16] == 'yes') { echo 'primary'; } else { echo 'danger'; } ?>"><?= $info[16] ?></span> | <strong>Similar complex: </strong><a href=""><?= $info[15] ?></a></li>
+                        <li class="ms-4"><strong>Unique complex: </strong><span><label class="badge bg-<?php if ($info[16] == 'yes') { echo 'primary'; } else { echo 'danger'; } ?>"><?= $info[16] ?></span></li>
+                        
+                        <li class="ms-4"><strong>Similar complex: </strong><a href=""><?= $info[15] ?></a></li>
 
                         <li class="ms-4"><strong>Similar peptide: </strong><a href=""><?= $info[84] ?></a></li>
 
