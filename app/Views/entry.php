@@ -289,9 +289,9 @@
             <h4>Surface (calculated using Naccess)</h4>
             <ul class="bg-light p-3 rounded small">
                 <li class="ms-4"><strong>ASA Complex: </strong><span><?= (int)$info[71] ?></span></li>
-                <li class="ms-4"><strong>Delta Protein: </strong><span><?= (int)$info[72] ?></span></li>
-                <li class="ms-4"><strong>Delta Peptide: </strong><span><?= (int)$info[73] ?></span></li>
-                <li class="ms-4"><strong>Delta ASA: </strong><span><?= (int)$info[74] ?></span></li>
+                <li class="ms-4"><strong>Δ Protein: </strong><span><?= (int)$info[72] ?></span></li>
+                <li class="ms-4"><strong>Δ Peptide: </strong><span><?= (int)$info[73] ?></span></li>
+                <li class="ms-4"><strong>ΔASA: </strong><span><?= (int)$info[74] ?></span></li>
                 <li class="ms-4"><strong>BSA: </strong><span><?= (int)$info[75] ?></span></li>
             </ul>
 
