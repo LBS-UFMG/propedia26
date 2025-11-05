@@ -29,6 +29,8 @@
                                 <li><a class="dropdown-item mt-2" href="<?php echo base_url(); ?>data/db/contacts/<?= $id ?>/<?= substr($id,0,4) ?>_contacts.csv">Contacts</a></li>
                                 <li><a class="dropdown-item" href="<?php echo base_url('/data/' . $db . '/pdb/' . $id[0] . '/' . $id . '.pdb'); ?>">PDB file</a></li>
                                 <hr>
+                                <li><a class="dropdown-item" href="<?php echo base_url('/data/' . $db . '/csv/' . $id[0] . '/' . $id . '.csv'); ?>">Complex data</a></li>
+
                                 <!-- <li><a class="dropdown-item" href="<?= base_url("/export/pdb-to-pymol/$id") ?>">Export to PyMOL</a></li> -->
                             </ul>
                         </div>
@@ -51,10 +53,6 @@
                     <a target="_blank" style="text-decoration:none" title="Search in PubMed" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=<?= $pdb_id ?>">
                         <span class="badge bg-dark">PubMed</span>
                     </a>
-
-                    <!-- <a title="Classified in the sequence cluster number 967" style="text-decoration:none" href="http://bioinfo.dcc.ufmg.br/propedia2/cluster/sequence/967"><span class="badge bg-dark">Cluster S967</span></a>
-                    <a title="Classified in the binding cluster number 35" style="text-decoration:none" href="http://bioinfo.dcc.ufmg.br/propedia2/cluster/binding/35"><span class="badge bg-dark">Cluster C35</span></a>
-                    <a title="Classified in the interface cluster number 243" style="text-decoration:none" href="http://bioinfo.dcc.ufmg.br/propedia2/cluster/interface/243"><span class="badge bg-dark">Cluster I243</span></a> -->
                 </div>
 
                 <div class="row mb-1">
@@ -109,9 +107,9 @@
     <div class="row">
         <div class="col-md-8 col-12" ng-if="cttlok" id="col1">
 
-            <div class="row">
-                <!-- [0] id;PDB_ID;TITLE;RESOLUTION;CLASSIFICATION;
-        # [5] DEPOSITION_DATE;STRUCTURE_METHOD;PROTEIN_CHAIN;PEPTIDE_CHAIN;PROTEIN_SIZE;
+            <div class="row"><!--
+        # [ 0] id;PDB_ID;TITLE;RESOLUTION;CLASSIFICATION;
+        # [ 5] DEPOSITION_DATE;STRUCTURE_METHOD;PROTEIN_CHAIN;PEPTIDE_CHAIN;PROTEIN_SIZE;
         # [10] PEPTIDE_SIZE;PROTEIN_DESC;PEPTIDE_DESC;PROTEIN_SEQ;PEPTIDE_SEQ;
         # [15] leader_id;is_leader;peptide_Length;peptide_MW;peptide_pI;
         # [20] peptide_InstabilityIndex;peptide_AliphaticIndex;peptide_GRAVY;peptide_HydrophobicPercent;peptide_PositiveResidues;
@@ -120,10 +118,18 @@
         # [35] protein_Length;protein_MW;protein_pI;protein_InstabilityIndex;protein_AliphaticIndex;
         # [40] protein_GRAVY;protein_HydrophobicPercent;protein_PositiveResidues;protein_NegativeResidues;protein_C;
         # [45] protein_H;protein_N;protein_O;protein_S;protein_Formula;
-        # [50] protein_TotalAtoms;protein_ExtCoeff_Disulfide;protein_ExtCoeff_NoDisulfide -->
+        # [50] protein_TotalAtoms;protein_ExtCoeff_Disulfide;protein_ExtCoeff_NoDisulfide/Status;No. of intermolecular contacts;
+        # [55] No. of charged-charged contacts;No. of charged-polar contacts;No. of charged-apolar contacts;No. of polar-polar contacts;No. of apolar-polar contacts;
+        # [60] No. of apolar-apolar contacts;Percentage of apolar NIS residues;Percentage of charged NIS residues;Predicted binding affinity (kcal.mol-1);Predicted dissociation constant (M) at 25.0˚C;
+        # [65] Structure contains gaps;No contacts found for selection;PDB Column Misalignment;Unkown Aminoacid Found;Invalid or missing coordinate;
+        # [70] Interface Residues;ASA_Complex;Delta_Protein;Delta_Peptide;Delta_ASA;
+        # [75] BSA;AAP;ABP;ACP;AIP;
+        # [80] QSP;SBP;binding-cluster;interface-cluster;seq100_clusters;
+        $ [85] sequence-cluster
+        -->
                 <div class="table-responsive">
 
-                    <table class="table table-striped">
+                    <table class="table table-striped small">
                         <thead>
                             <tr>
                                 <th style="width: 20%;"></th>
@@ -237,26 +243,85 @@
                 </div>
                 <hr>
                 <div class="col-12">
-                    <p>
-                        <strong>Unique: </strong><span><label class="badge bg-<?php if ($info[16] == 'yes') {
-                                                                                    echo 'primary';
-                                                                                } else {
-                                                                                    echo 'danger';
-                                                                                } ?>"><?= $info[16] ?></span> | <strong>Cluster leader: </strong><span><a href=""><?= $info[15] ?></a></span>
-                    </p>
-                    <p>
-                        <strong>PDB classification: </strong><span><?= $info[4] ?></span>
-                    </p>
+                    <h4>Structural similiarities</h4>
+                    <ul class="bg-light p-3 rounded small">
+                        <li class="ms-4"><strong>Unique complex: </strong><span><label class="badge bg-<?php if ($info[16] == 'yes') { echo 'primary'; } else { echo 'danger'; } ?>"><?= $info[16] ?></span> | <strong>Similar complex: </strong><a href=""><?= $info[15] ?></a></li>
+
+                        <li class="ms-4"><strong>Similar peptide: </strong><a href=""><?= $info[84] ?></a></li>
+
+                        <li class="ms-4"><strong>PDB classification: </strong><span><?= $info[4] ?></span></li>
+                    </ul>
+
+                    <?php function avalia($valor) {
+                        // Se for maior ou igual a 0.9 → sucesso
+                        if ($valor >= 0.9) {
+                            echo "✅";
+                        } else {
+                            echo "❌";
+                        }
+                    }?>
+                    <h4>CSM-peptides classes</h4>
+                    <ul class="bg-light p-3 rounded small">
+
+                        <li class="ms-4"><strong>Anti-Angiogenic (AAP): </strong><span><?= avalia($info[76]).' '.$info[76] ?></span></li>
+                        <li class="ms-4"><strong>Anti-Bacterial (ABP): </strong><span><?= avalia($info[77]).' '.$info[77] ?></span></li>
+                        <li class="ms-4"><strong>Anti-Cancer (ACP): </strong><span><?= avalia($info[78]).' '.$info[78] ?></span></li>
+
+                        <li class="ms-4"><strong>Anti-Inflammatory (AIP): </strong><span><?= avalia($info[79]).' '.$info[79] ?></span></li>
+                        <li class="ms-4"><strong>Quorum Sensing (QSP): </strong><span><?= avalia($info[80]).' '.$info[80] ?></span></li>
+                        <li class="ms-4"><strong>Surface Binding (SBP): </strong><span><?= avalia($info[81]).' '.$info[81] ?></span></li>
+                    </ul>
+
+                    <h4>Propedia v1 classes</h4>
+                    <ul class="bg-light p-3 rounded small">
+                        <li class="ms-4"><strong>Binding site: </strong><span><?= $info[82] ?></span></li>
+                        <li class="ms-4"><strong>Interface: </strong><span><?= $info[83] ?></span></li>
+                        <li class="ms-4"><strong>Sequence: </strong><span><?= $info[85] ?></span></li>
+                    </ul>
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-md-2 col-12">
-                    <h2>Contacts</h2>
-                </div>
-                <div class="col"><label class="badge bg-secondary small">Powered by COCaDA</label></h2>
-                </div>
+                <h2>Protein-peptide interactions</h2>
             </div>
             <hr>
+            <h4>Surface (calculated using Naccess)</h4>
+            <ul class="bg-light p-3 rounded small">
+                <li class="ms-4"><strong>ASA Complex: </strong><span><?= (int)$info[71] ?></span></li>
+                <li class="ms-4"><strong>Delta Protein: </strong><span><?= (int)$info[72] ?></span></li>
+                <li class="ms-4"><strong>Delta Peptide: </strong><span><?= (int)$info[73] ?></span></li>
+                <li class="ms-4"><strong>Delta ASA: </strong><span><?= (int)$info[74] ?></span></li>
+                <li class="ms-4"><strong>BSA: </strong><span><?= (int)$info[75] ?></span></li>
+            </ul>
+
+
+            <h4>Interaction energy (calculated using Prodigy)</h4>
+            <ul class="bg-light p-3 rounded small">
+                <li class="ms-4"><strong>Number of intermolecular contacts: </strong><span><?= (int)$info[54] ?></span></li>
+                <li class="ms-4"><strong>Number of charged-charged contacts: </strong><span><?= (int)$info[55] ?></span></li>
+                <li class="ms-4"><strong>Number of charged-polar contacts: </strong><span><?= (int)$info[56] ?></span></li>
+                <li class="ms-4"><strong>Number of charged-apolar contacts: </strong><span><?= (int)$info[57] ?></span></li>
+                <li class="ms-4"><strong>Number of polar-polar contacts: </strong><span><?= (int)$info[58] ?></span></li>
+                <li class="ms-4"><strong>Number of apolar-polar contacts: </strong><span><?= (int)$info[59] ?></span></li>
+                <li class="ms-4"><strong>Number of apolar-apolar contacts: </strong><span><?= (int)$info[60] ?></span></li>
+                <li class="ms-4"><strong>Percentage of apolar NIS residues: </strong><span><?= $info[61] ?>%</span></li>
+                <li class="ms-4"><strong>Percentage of charged NIS residues: </strong><span><?= $info[62] ?>%</span></li>
+                <li class="ms-4"><strong>Predicted binding affinity (kcal.mol-1): </strong><span><?= $info[63] ?></span></li>
+                <li class="ms-4"><strong>Predicted dissociation constant (M) at 25.0˚C: </strong><span><?= $info[64] ?></span></li>
+                <li class="ms-4"><strong>Structure contains gaps: </strong><span><?= $info[65] ?></span></li>
+                <li class="ms-4"><strong>No contacts found for selection: </strong><span><?= $info[66] ?></span></li>
+                <li class="ms-4"><strong>PDB Column Misalignment: </strong><span><?= $info[67] ?></span></li>
+                <li class="ms-4"><strong>Unkown Aminoacid Found: </strong><span><?= $info[68] ?></span></li>
+                <li class="ms-4"><strong>Invalid or missing coordinate: </strong><span><?= $info[69] ?></span></li>
+            </ul>
+
+            <h4>Interface residues (dist<sub>max</sub> ≤ 6 Å)</h4>
+
+            <p class="bg-light p-3 rounded small">
+                <label class="badge bg-dark">Chain: <?= $info[7] ?></label><br>
+                <?= str_replace(',', ', ', $info[70]) ?></span>
+            </p>
+
+            <h4>Contacts (Calculated using COCaDA)</h4>
             <center>
                 <div class="btn-group btn-group-sm" role="group" aria-label="...">
                     <span class="btn btn-outline-dark" id="basic-addon1">
@@ -281,7 +346,7 @@
 
             </center>
 
-            <div class="table-responsive">
+            <div class="table-responsive small">
                 <table class="display" id="mut">
                     <thead>
                         <tr>
