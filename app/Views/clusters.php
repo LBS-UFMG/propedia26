@@ -174,7 +174,7 @@
                         </thead>
                         <tbody></tbody>
                     </table>
-                    <a href="<?= base_url('/data/clusters/AAP.tsv') ?>" class="btn btn-primary btn-lg mt-5 w-100">Download ABP clusters (tsv file: ~600KB)</a>
+                    <a href="<?= base_url('/data/clusters/ABP.tsv') ?>" class="btn btn-primary btn-lg mt-5 w-100">Download ABP clusters (tsv file: ~600KB)</a>
 
 
                 </div>
@@ -191,7 +191,7 @@
                         </thead>
                         <tbody></tbody>
                     </table>
-                    <a href="<?= base_url('/data/clusters/ACP.tsv') ?>" class="btn btn-primary btn-lg mt-5 w-100">Download AAP clusters (tsv file: ~600KB)</a>
+                    <a href="<?= base_url('/data/clusters/ACP.tsv') ?>" class="btn btn-primary btn-lg mt-5 w-100">Download ACP clusters (tsv file: ~600KB)</a>
 
 
                 </div>
@@ -208,7 +208,7 @@
                         </thead>
                         <tbody></tbody>
                     </table>
-                    <a href="<?= base_url('/data/clusters/AAP.tsv') ?>" class="btn btn-primary btn-lg mt-5 w-100">Download AIP clusters (tsv file: ~600KB)</a>
+                    <a href="<?= base_url('/data/clusters/AIP.tsv') ?>" class="btn btn-primary btn-lg mt-5 w-100">Download AIP clusters (tsv file: ~600KB)</a>
 
 
                 </div>
@@ -225,7 +225,7 @@
                         </thead>
                         <tbody></tbody>
                     </table>
-                    <a href="<?= base_url('/data/clusters/AAP.tsv') ?>" class="btn btn-primary btn-lg mt-5 w-100">Download QSP clusters (tsv file: ~600KB)</a>
+                    <a href="<?= base_url('/data/clusters/QSP.tsv') ?>" class="btn btn-primary btn-lg mt-5 w-100">Download QSP clusters (tsv file: ~600KB)</a>
 
 
                 </div>
