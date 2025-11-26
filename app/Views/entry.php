@@ -144,7 +144,7 @@
                         <tbody>
                             <tr>
                                 <th>Chain 
-                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Unique identifier assigned to each molecular chain within the same crystallographic structure or PDB entry."><i class="bi bi-question-circle-fill"></i>
+                                    <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="<b>Chain:</b> Unique identifier assigned to each molecular chain within the same crystallographic structure or PDB entry."><i class="bi bi-question-circle-fill"></i>
                                 </th>
                                 <td><?= $info[7] ?></td>
                                 <td><?= $info[8] ?></td>
