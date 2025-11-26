@@ -1155,11 +1155,3 @@
         .catch(error => console.error('Erro ao carregar o arquivo CSV:', error));
 </script>
 <?= $this->endSection() ?>
-
-<?= $this->section('scripts') ?>
-<script>
-    // tooltips
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-</script>
-<?= $this->endSection() ?>
