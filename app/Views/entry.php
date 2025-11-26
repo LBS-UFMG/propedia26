@@ -310,9 +310,9 @@
 
                     <h4>Propedia v1 classes <sup><a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Classes inherited from Propedia 1.  For more details, see https://doi.org/10.1186/s12859-020-03881-z"><i class="bi bi-question-circle-fill opacity-25"></i></a></sup></h4>
                     <ul class="bg-light p-3 rounded small">
-                        <li class="ms-4"><strong>Binding site <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content=""><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= $info[82] ?></span></li>
-                        <li class="ms-4"><strong>Interface <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content=""><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= $info[83] ?></span></li>
-                        <li class="ms-4"><strong>Sequence <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content=""><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= $info[85] ?></span></li>
+                        <li class="ms-4"><strong>Binding site <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Structures with similar binding site. For more details, see https://doi.org/10.1186/s12859-020-03881-z"><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= $info[82] ?></span></li>
+                        <li class="ms-4"><strong>Interface <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Structures with similar interface. For more details, see https://doi.org/10.1186/s12859-020-03881-z"><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= $info[83] ?></span></li>
+                        <li class="ms-4"><strong>Sequence <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Structures with similar sequence. For more details, see https://doi.org/10.1186/s12859-020-03881-z"><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= $info[85] ?></span></li>
                     </ul>
                 </div>
             </div>
