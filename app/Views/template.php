@@ -123,6 +123,7 @@
     <?= $this->renderSection('scripts') ?>
     <script>
         function loadPopover() {
+            console.log("Carregando popovers")
             const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
             const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
         };
