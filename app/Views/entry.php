@@ -549,6 +549,12 @@
 <script>
     let glviewerModal; // variável global para o viewer do modal
 
+    // habilita popover
+    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl);
+    });
+
     $('#click_zoom').on('click', function() {
         // Inicializa viewer só na primeira vez
         if (!glviewerModal) {
