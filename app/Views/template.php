@@ -106,7 +106,7 @@
             </div>
         </div>
     </footer>
-    
+
     <!-- HTML MODALS -->
     <?= $this->include('modal') ?>
     <!-- /fim HTML MODALS -->
@@ -122,7 +122,7 @@
 
     <?= $this->renderSection('scripts') ?>
     <script>
-    function loadPopover() {
+        function loadPopover() {
             const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
             const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
         };
