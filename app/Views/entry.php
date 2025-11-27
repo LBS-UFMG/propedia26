@@ -320,7 +320,7 @@
                 <h2>Protein-peptide interactions</h2>
             </div>
             <hr>
-            <h4>Surface (calculated using Naccess) <sup><a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content=""><i class="bi bi-question-circle-fill opacity-25"></i></a></sup></h4>
+            <h4>Surface (calculated using Naccess) <sup><a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="We used naccess to calculate the protein-peptide interaction interface. To more details, see https://www.bioinf.manchester.ac.uk/naccess/nac_intro.html"><i class="bi bi-question-circle-fill opacity-25"></i></a></sup></h4>
             <ul class="bg-light p-3 rounded small">
                 <li class="ms-4"><strong>ASA <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ASA: Accessible Surface Area (ASA) is the measure of the entire surface area of the molecule that is exposed and can come into contact with the solvent (usually water)."><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[71] ?></span></li>
                 <li class="ms-4"><strong>ΔASA (protein) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA (protein): ΔASA_protein represents the surface area that is no longer exposed to the solvent upon complex formation and is calculated by the equation: ΔASA = ASA_unbound - ASA_bound."><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[72] ?></span></li>
