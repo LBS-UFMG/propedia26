@@ -33,7 +33,7 @@
                             <ul class="dropdown-menu">
                                 <li><b class="ms-3">Download</b></li>
                                 <hr>
-                                <li><a class="dropdown-item mt-2" href="<?php echo base_url(); ?>data/db/multipro/contacts/<?= $id ?>/<?= $id ?>_contacts.csv">Contacts</a></li>
+                                <li><a class="dropdown-item mt-2" href="<?php echo base_url(); ?>data/db/multipro/contacts/<?= $id ?>/<?= substr($id,0,-2) ?>_contacts.csv">Contacts</a></li>
                                 <li><a class="dropdown-item" href="https://files.rcsb.org/download/<?= substr($id,0,-2) ?>.cif">PDB file</a></li>
                                 <hr>
                                 <!-- <li><a class="dropdown-item" href="<?= base_url("/export/pdb-to-pymol/$id") ?>">Export to PyMOL</a></li> -->
