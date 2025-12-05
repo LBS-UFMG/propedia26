@@ -219,13 +219,13 @@
                                 <td><?= $info[43] ?></td>
                                 <td><?= $info[25] ?></td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <th>C, H, N, O, S
                                     <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="C, H, N, O, S: Count of carbon (C), hydrogen (H), nitrogen (N), oxygen (O), and sulfur (S) atoms present in the protein molecule."><i class="bi bi-question-circle-fill opacity-25"></i></a>
                                 </th>
                                 <td><?= $info[44] ?>, <?= $info[45] ?>, <?= $info[46] ?>, <?= $info[47] ?>, <?= $info[48] ?></td>
                                 <td><?= $info[26] ?>, <?= $info[27] ?>, <?= $info[28] ?>, <?= $info[29] ?>, <?= $info[30] ?></td>
-                            </tr>
+                            </tr> -->
                             
                             <tr>
                                 <th>Atomic Formula
