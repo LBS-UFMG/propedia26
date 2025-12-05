@@ -386,11 +386,11 @@
                 <div class="row">
                     <div class="col">
                         <div>
-                            <label class="badge bg-secondary" for="opacityRange">Surface: <span class="badge bg-dark" id="opacityValue">30%</span></label>
+                            <label class="badge bg-secondary" for="opacityRange">Surface: <span class="badge bg-dark" id="opacityValue">100%</span></label>
                         </div>
                     </div>
                     <div class="col-6">
-                        <input class="form-range" type="range" id="opacityRange" min="0" max="1" step="0.1" value="0.3">
+                        <input class="form-range" type="range" id="opacityRange" min="0" max="1" step="0.1" value="1">
                     </div>
                     <div class="col">
                         <p class="text-end my-0 text-muted small" style="">
@@ -863,7 +863,7 @@
             }
 
             // Cria superfícies iniciais usando o valor atual do slider (fallback 0.3)
-            const initialOpacity = parseFloat($('#opacityRange').val()) || 0.3;
+            const initialOpacity = parseFloat($('#opacityRange').val()) || 1.0;
             createSurfacesWithOpacity(initialOpacity);
 
             // Handler único, debounced, que remove e recria superfícies
