@@ -226,12 +226,17 @@
                                 <td><?= $info[44] ?>, <?= $info[45] ?>, <?= $info[46] ?>, <?= $info[47] ?>, <?= $info[48] ?></td>
                                 <td><?= $info[26] ?>, <?= $info[27] ?>, <?= $info[28] ?>, <?= $info[29] ?>, <?= $info[30] ?></td>
                             </tr>
+                            
                             <tr>
                                 <th>Atomic Formula
                                     <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Atomic Formula: The complete elemental formula representing the protein’s overall atomic composition (e.g., C₂₆₄₄H₄₂₀₅N₇₅₇O₈₁₆S₁₂)."><i class="bi bi-question-circle-fill opacity-25"></i></a>
                                 </th>
-                                <td><?= $info[49] ?></td>
-                                <td><?= $info[31] ?></td>
+                                <?php function formata_formula($f){
+                                    preg_match('/([0-9]*[+-]+)$/', $f, $m); $c = $m[1] ?? ''; if($c) $f = substr($f, 0, -strlen($c));
+                                    return preg_replace('/(\d+)/','<sub>$1</sub>',htmlspecialchars($f)).($c?'<sup>'.$c.'</sup>':'');
+                                }?>
+                                <td><?= formata_formula($info[49]) ?></td>
+                                <td><?= formata_formula($info[31]) ?></td>
                             </tr>
                             <tr>
                                 <th>Total Atoms
@@ -768,9 +773,9 @@
             resi: res1,
             chain: chain1
         }, {
-            // cartoon: {
-            //     opacity: 0.7
-            // },
+            cartoon: {
+                opacity: 0.7
+            },
             stick: {
                 colorscheme: 'whiteCarbon'
             }
@@ -780,9 +785,9 @@
             resi: res2,
             chain: chain2
         }, {
-            // cartoon: {
-            //     opacity: 0.7
-            // },
+            cartoon: {
+                opacity: 0.7
+            },
             stick: {
                 colorscheme: 'whiteCarbon'
             }
