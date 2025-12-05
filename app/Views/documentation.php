@@ -71,15 +71,21 @@ Modernized layout: Complete visual overhaul with improved navigation and respons
 Enhanced search page: More intuitive organization of search options and filters.
 Advanced results page: Redesigned results table with better sorting capabilities and immediate access to key complex information.
 
+<img src="<?= base_url('img/docs/fig2.png') ?>">
 
 Figure 2. Propedia user interface. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2021, Propedia-legacy). 
+
 <h3 class="pt-4 pb-1">New analytical tools</h3>
 Peptide clustering: Implementation of a novel peptide similarity clustering algorithm that groups complexes based on peptide sequence similarity, enabling evolutionary and functional analysis (Figure 3), more details in section X.
-     
+
+<img src="<?= base_url('img/docs/fig3.png') ?>">
+
 Figure 3. Propedia peptide clustering. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2021, Propedia-legacy). 
 
 <h3 class="pt-4 pb-1">Improved search capabilities</h3>
 BLAST Search: Updated sequence search with better performance and more configurable parameters (Figure 4).
+
+<img src="<?= base_url('img/docs/fig4.png') ?>">
 
 Figure 4. New tool in Propedia v26: BLAST.
 
@@ -101,6 +107,8 @@ https://bioinfo.dcc.ufmg.br/propedia26/
 Upon accessing the home page, users will find an intuitive navigation panel that allows them to quickly explore the main features of the database, including complex search, structural visualization, interaction analysis, and access to download tools. The initial interface features a top navigation bar that directs users to the Home, About, Browse, Clusters, Downloads, and Help pages. In addition, there is a quick search field that allows users to directly search for PDB IDs, peptides, or proteins. The page also includes a highlights panel with information about new features and updates incorporated into version 26. These details are shown in Figure 5.
 In addition, the home page features a highlights/statistics panel that displays, in a visual and objective manner, the main figures from the database, such as the number of complexes available, the number of clusters, and the total size of the database. This section gives users an immediate perception of the scale and informational value of Propedia, allowing them to understand the magnitude of the repository upon their first visit. The page features a section dedicated to the credibility and authorship of the project, which identifies the developers responsible for Propedia. In a further step, the page includes an area dedicated to use cases and practical examples, illustrating how the user can search using an input code. Users can enter the code for a protein-peptide complex, also known as a “Propeedia code” (e.g., 1WRZ-B-A, where the first four characters correspond to the PDB code, the fifth character corresponds to the peptide chain, and the sixth character corresponds to the protein chain) or a multicomplex (e.g., 1MT1-A), which does not specify the protein chain.
 
+<img src="<?= base_url('img/docs/fig5.png') ?>">
+
 Figure 5. Propedia home page.
 At the bottom of the page, institutional support and funding sources linked to the development of Propedia are also indicated, such as the Bioinformatics and Systems Laboratory (LBS), the Department of Computer Science (DCC), and the Federal University of Minas Gerais (UFMG), reinforcing the transparency and academic origin of the platform.
 
@@ -108,7 +116,7 @@ At the bottom of the page, institutional support and funding sources linked to t
 The BLAST (Basic Local Alignment Search Tool) identifies local similarities between protein sequences. It compares a query sequence with sequences stored in a database, evaluating the statistical relevance of the matches found (Mariano et al., 2015; Wheeler; Bhagwat, 2016). The BLAST tool available in PROPEDIA allows users to search for peptides or proteins similar to those present in the database, using local alignment based on sequence similarity. This functionality is essential for identifying structurally or functionally related complexes, locating similar peptides already described in the database, and facilitating comparative studies, evolutionary analyses, and functional inference.
 The Propedia sequence search system is implemented using the BLAST+ package, as described in Altschul et al. (1990) and Camacho et al. (2009). The tool compares the sequence provided by the user with all sequences deposited in PROPEDIA 2.6, returning the best local alignments, along with identifiers of the associated complexes, similarity metrics, and coverage and identity information.
 The search can be performed for both peptides and proteins, and each type of query uses different parameters, adjusted for greater sensitivity according to the size of the sequence analyzed.
-2.1.2 Parameters and Configuration
+<h3 class="pt-4 pb-1">Parameters and Configuration</h3>
 Peptides have short sequences and require specialized parameters to ensure good sensitivity. For this reason, Propedia uses:
 ·   	word_size 2
 The word-size is a NCBI parameter which determines the minimum size of the fragment (“word”) that must match between the query sequence and the database sequences for the algorithm to initiate an alignment extension. A word is the smallest sequence block that BLAST uses to identify possible regions of similarity between the query sequence and the database. The sequence is fragmented into all possible word sizes. For example, if word-size = 3, the protein ACDEFG becomes: ACD, CDE, DEF, EFG. BLAST searches the database for identical or similar occurrences of these words.
@@ -126,6 +134,8 @@ For complete proteins, Propedia uses a more conservative set of parameters that 
 When dealing with full-length protein sequences, the search behavior differs substantially from searches involving short peptides. Longer sequences contain a much larger amount of information, allowing BLAST to reliably detect similarity using more stringent initial seeds. In this context, the parameter word_size 3 is more appropriate because it requires longer contiguous matches (3 amino acids) before extending an alignment. This choice reduces noise, improves specificity, and accelerates the search, as larger words decrease the number of initial “hotspots” generated during the seeding phase. Since full proteins typically range from hundreds to thousands of residues, a word-size of 3 does not compromise sensitivity: even distantly related proteins usually share enough local similarity to satisfy this requirement.
 Therefore, for protein-versus-protein searches, PROPEDIA adopts a more conservative configuration to balance sensitivity and performance. This contrasts with peptide searches, where shorter sequences require extremely permissive parameters. The distinction ensures that each type of query, short peptides versus complete proteins, is processed using criteria tailored to its biological characteristics and statistical behavior under the BLAST algorithm.
 A summary of all parameters is illustrated in Figure 6. It is important to note that BLAST alignment will always search for peptides if the input is a peptide sequence, or proteins if the input is a protein sequence.
+
+<img src="<?= base_url('img/docs/fig6.png') ?>">
 
 Figure 6. Parameters used for the development of the BLAST tool. On the left are examples of peptide sequence algorithms. The peptide sequence of 9VEI-F-A (available in the Propedia database) was used as input, and the sequence used as a response is a real example of a BLAST run performed by Propedia. The right side shows an example of the protein sequence algorithm (the total sequence has been omitted for better image visualization). The protein sequence 9VEI-F-A was used as input, and the sequence used as a response is a real example of a BLAST run performed by Propedia.
 
