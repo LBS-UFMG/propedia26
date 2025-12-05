@@ -62,7 +62,7 @@ Propedia 26 introduces major updates that significantly expand the database and 
 Increased complex count: The updated version of Propedia now includes 78,148 protein-peptide complexes, representing nearly a fourfold increase in data coverage compared to the previous release (19,813 complexes), an increase of approximately 3.9-fold, as shown in Figure 1.
 Updated PDB sources: Includes structures from the Protein Data Bank up to 2023, ensuring researchers have access to the most recent structural data.
 
-<img src="<?= base_url('img/docs/fig1.png') ?>">
+<img src="<?= base_url('img/docs/fig1.png') ?>" class="border mx-5 mt-4 mb-2 p-2 border-1 rounded w-75">
 
 Figure 1. Expanding the dataset. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2021, Propedia-legacy). 
 
@@ -71,21 +71,21 @@ Modernized layout: Complete visual overhaul with improved navigation and respons
 Enhanced search page: More intuitive organization of search options and filters.
 Advanced results page: Redesigned results table with better sorting capabilities and immediate access to key complex information.
 
-<img src="<?= base_url('img/docs/fig2.png') ?>">
+<img src="<?= base_url('img/docs/fig2.png') ?>" class="border mx-5 mt-4 mb-2 p-2 border-1 rounded w-75">
 
 Figure 2. Propedia user interface. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2021, Propedia-legacy). 
 
 <h3 class="pt-4 pb-1">New analytical tools</h3>
 Peptide clustering: Implementation of a novel peptide similarity clustering algorithm that groups complexes based on peptide sequence similarity, enabling evolutionary and functional analysis (Figure 3), more details in section X.
 
-<img src="<?= base_url('img/docs/fig3.png') ?>">
+<img src="<?= base_url('img/docs/fig3.png') ?>" class="border mx-5 mt-4 mb-2 p-2 border-1 rounded w-75">
 
 Figure 3. Propedia peptide clustering. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2021, Propedia-legacy). 
 
 <h3 class="pt-4 pb-1">Improved search capabilities</h3>
 BLAST Search: Updated sequence search with better performance and more configurable parameters (Figure 4).
 
-<img src="<?= base_url('img/docs/fig4.png') ?>">
+<img src="<?= base_url('img/docs/fig4.png') ?>" class="border mx-5 mt-4 mb-2 p-2 border-1 rounded w-75">
 
 Figure 4. New tool in Propedia v26: BLAST.
 
@@ -107,7 +107,7 @@ https://bioinfo.dcc.ufmg.br/propedia26/
 Upon accessing the home page, users will find an intuitive navigation panel that allows them to quickly explore the main features of the database, including complex search, structural visualization, interaction analysis, and access to download tools. The initial interface features a top navigation bar that directs users to the Home, About, Browse, Clusters, Downloads, and Help pages. In addition, there is a quick search field that allows users to directly search for PDB IDs, peptides, or proteins. The page also includes a highlights panel with information about new features and updates incorporated into version 26. These details are shown in Figure 5.
 In addition, the home page features a highlights/statistics panel that displays, in a visual and objective manner, the main figures from the database, such as the number of complexes available, the number of clusters, and the total size of the database. This section gives users an immediate perception of the scale and informational value of Propedia, allowing them to understand the magnitude of the repository upon their first visit. The page features a section dedicated to the credibility and authorship of the project, which identifies the developers responsible for Propedia. In a further step, the page includes an area dedicated to use cases and practical examples, illustrating how the user can search using an input code. Users can enter the code for a protein-peptide complex, also known as a “Propeedia code” (e.g., 1WRZ-B-A, where the first four characters correspond to the PDB code, the fifth character corresponds to the peptide chain, and the sixth character corresponds to the protein chain) or a multicomplex (e.g., 1MT1-A), which does not specify the protein chain.
 
-<img src="<?= base_url('img/docs/fig5.png') ?>">
+<img src="<?= base_url('img/docs/fig5.png') ?>" class="border mx-5 mt-4 mb-2 p-2 border-1 rounded w-75">
 
 Figure 5. Propedia home page.
 At the bottom of the page, institutional support and funding sources linked to the development of Propedia are also indicated, such as the Bioinformatics and Systems Laboratory (LBS), the Department of Computer Science (DCC), and the Federal University of Minas Gerais (UFMG), reinforcing the transparency and academic origin of the platform.
@@ -135,7 +135,7 @@ When dealing with full-length protein sequences, the search behavior differs sub
 Therefore, for protein-versus-protein searches, PROPEDIA adopts a more conservative configuration to balance sensitivity and performance. This contrasts with peptide searches, where shorter sequences require extremely permissive parameters. The distinction ensures that each type of query, short peptides versus complete proteins, is processed using criteria tailored to its biological characteristics and statistical behavior under the BLAST algorithm.
 A summary of all parameters is illustrated in Figure 6. It is important to note that BLAST alignment will always search for peptides if the input is a peptide sequence, or proteins if the input is a protein sequence.
 
-<img src="<?= base_url('img/docs/fig6.png') ?>">
+<img src="<?= base_url('img/docs/fig6.png') ?>" class="border mx-5 mt-4 mb-2 p-2 border-1 rounded w-75">
 
 Figure 6. Parameters used for the development of the BLAST tool. On the left are examples of peptide sequence algorithms. The peptide sequence of 9VEI-F-A (available in the Propedia database) was used as input, and the sequence used as a response is a real example of a BLAST run performed by Propedia. The right side shows an example of the protein sequence algorithm (the total sequence has been omitted for better image visualization). The protein sequence 9VEI-F-A was used as input, and the sequence used as a response is a real example of a BLAST run performed by Propedia.
 
