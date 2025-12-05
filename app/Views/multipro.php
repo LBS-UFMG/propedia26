@@ -4,6 +4,10 @@
 
 <?php function quebra($x){ return str_replace(":","<br>",$x); }?>
 <?php function soma($x){ return str_replace(":","+",$x); }?>
+<?php function formata_formula($f){
+    preg_match('/([0-9]*[+-]+)$/', $f, $m); $c = $m[1] ?? ''; if($c) $f = substr($f, 0, -strlen($c));
+    return preg_replace('/(\d+)/','<sub>$1</sub>',htmlspecialchars($f)).($c?'<sup>'.$c.'</sup>':'');
+}?>
 <link rel="stylesheet" href="<?php echo base_url('/css/dt.css'); ?>">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -136,7 +140,7 @@
                         <tbody>
                             <tr>
                                 <th>Chain</th>
-                                <td><?= $info[7] ?></td>
+                                <td><?= quebra($info[7]) ?></td>
                                 <td><?= $info[8] ?></td>
                             </tr>
                             <tr>
@@ -192,7 +196,7 @@
                            
                             <tr>
                                 <th>Atomic Formula</th>
-                                <td><?= quebra($info[49]) ?></td>
+                                <td><?= quebra(formata_formula($info[49])) ?></td>
                                 <td><?= $info[31] ?></td>
                             </tr>
                             <tr>
