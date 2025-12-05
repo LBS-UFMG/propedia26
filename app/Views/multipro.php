@@ -236,9 +236,9 @@
                 </div>
                 <hr>
                 <div class="col-12">
-                    <p>
+                    <!-- <p>
  <strong>Unique: </strong><span><label class="badge bg-<?php if($info[16]=='yes'){ echo 'primary'; } else {echo 'danger';} ?>"><?= $info[16] ?></span>
-                    </p>
+                    </p> -->
                     <p>
  <strong>Cluster entries: </strong><span><a href=""><?= quebra($info[15]) ?></a></span>
                     </p>
