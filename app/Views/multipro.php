@@ -3,6 +3,7 @@
 <!-- Conteúdo personalizado -->
 
 <?php function quebra($x){ return str_replace(":","<br>",$x); }?>
+<?php function quebra2($x){ return str_replace(":","<br><br>",$x); }?>
 <?php function soma($x){ return str_replace(":","+",$x); }?>
 <?php function formata_formula($f){
     preg_match('/([0-9]*[+-]+)$/', $f, $m); $c = $m[1] ?? ''; if($c) $f = substr($f, 0, -strlen($c));
@@ -217,7 +218,7 @@
                             <tr>
                                 <th>Sequence</th>
                                 <td>
-                                    <pre><?= quebra($info[13]) ?></pre>
+                                    <pre><?= quebra2($info[13]) ?></pre>
                                 </td>
                                 <td>
                                     <pre><?= $info[14] ?></pre>
