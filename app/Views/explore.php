@@ -395,7 +395,7 @@
                     <tbody>
                     </tbody>
                 </table>
-                <p id="loading-data" class="text-center text-muted small">Wait... loading data...</p>
+                <p id="loading-data" class="text-center text-muted small">Wait... loading data...<br><div class="spinner-border spinner-border-sm" role="status"></div></p>
             </div>
         </div>
     </div>
