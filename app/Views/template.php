@@ -3,7 +3,7 @@
 
 <head>
     <title>Propedia – The Protein-Peptide Interaction Database</title>
-    <?php $version = "25.1205 BETA"; // 5-dez-2025 
+    <?php $version = "25.1205"; // 5-dez-2025 
     ?>
 
     <meta charset="utf-8">
@@ -72,7 +72,7 @@
         <div class="px-4 container-fluid d-flex flex-wrap justify-content-center">
             <a href="<?= base_url() ?>" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
                 <img src="<?= base_url('/img/logo_propedia2.svg') ?>" width="250">
-                <label class="bg-dark badge">v26-beta</label>
+                <label class="bg-dark badge">v26</label>
             </a>
             <form method="get" class="col-12 col-md-auto mb-3 mb-md-0" role="search" action="<?= base_url('/explore') ?>">
                 <input name="q" type="search" class="form-control form-control-md mt-2" placeholder="Search..." aria-label="Search" id="urlInput"><!--onkeydown="redirectToURL(event)" >-->
