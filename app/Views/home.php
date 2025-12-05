@@ -15,7 +15,7 @@
     <div class="col-md-6">
       <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">The Protein-Peptide interaction database</h1>
 
-      <p class="lead">PROPEDIA is a database of peptide-protein complexes. PROPEDIA main goal is to give new insights into peptide design of biotechnological interests.</p>
+      <p class="lead">PROPEDIA is a database of peptide-protein complexes. Version 26 introduces new features calculated for complexes, aiming at their use in machine learning applications. PROPEDIA main goal is to give new insights into peptide design of biotechnological interests.</p>
 
       <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-1">
 
