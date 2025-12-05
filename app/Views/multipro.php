@@ -240,7 +240,7 @@
  <strong>Unique: </strong><span><label class="badge bg-<?php if($info[16]=='yes'){ echo 'primary'; } else {echo 'danger';} ?>"><?= $info[16] ?></span>
                     </p> -->
                     <p>
- <strong>Cluster entries: </strong><span><a href=""><?= quebra($info[15]) ?></a></span>
+ <strong>Cluster entries: </strong><br><span><a href=""><?= quebra($info[15]) ?></a></span>
                     </p>
                     <p>
  <strong>PDB classification: </strong><span><?= $info[4] ?></span>
