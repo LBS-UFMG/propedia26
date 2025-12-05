@@ -768,9 +768,9 @@
             resi: res1,
             chain: chain1
         }, {
-            cartoon: {
-                opacity: 0.7
-            },
+            // cartoon: {
+            //     opacity: 0.7
+            // },
             stick: {
                 colorscheme: 'whiteCarbon'
             }
@@ -780,9 +780,9 @@
             resi: res2,
             chain: chain2
         }, {
-            cartoon: {
-                opacity: 0.7
-            },
+            // cartoon: {
+            //     opacity: 0.7
+            // },
             stick: {
                 colorscheme: 'whiteCarbon'
             }
