@@ -157,18 +157,18 @@
                             </tr>
                             <tr>
                                 <th>Hydrophobic (%)</th>
-                                <td><?= quebra($info[42]) ?></td>
-                                <td><?= $info[24] ?></td>
+                                <td><?= quebra($info[36]) ?></td>
+                                <td><?= $info[23] ?></td>
                             </tr>
                             <tr>
                                 <th>Positive Residues</th>
-                                <td><?= quebra($info[43]) ?></td>
-                                <td><?= $info[25] ?></td>
+                                <td><?= quebra($info[37]) ?></td>
+                                <td><?= $info[24] ?></td>
                             </tr>
                             <tr>
                                 <th>Negative Residues</th>
-                                <td><?= quebra($info[44]) ?></td>
-                                <td><?= $info[26] ?></td>
+                                <td><?= quebra($info[38]) ?></td>
+                                <td><?= $info[25] ?></td>
                             </tr>
                             <tr>
                                 <th>Atomic Formula</th>
@@ -177,8 +177,8 @@
                             </tr>
                             <tr>
                                 <th>Total Atoms</th>
-                                <td><?= quebra($info[51]) ?></td>
-                                <td><?= $info[33] ?></td>
+                                <td><?= quebra($info[40]) ?></td>
+                                <td><?= $info[27] ?></td>
                             </tr>                           
                             <tr>
                                 <th>Sequence</th>
