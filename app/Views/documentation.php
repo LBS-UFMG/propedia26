@@ -96,20 +96,20 @@ Table 1. News in Propedia's property
 
 <h3 class="pt-4 pb-1"> How to cite and license</h3>
 To cite PROPEDIA, we recommend referencing both the original article and the most recent publication in the database. If specific features or previous versions are used, the respective publications may also be cited. The original 2021 article presents the first description of the database:<br>
-<code>Martins, P.M., Santos, L.H., Mariano, D. et al. Propedia: a database for protein–peptide identification based on a hybrid clustering algorithm. BMC Bioinformatics 22, 1 (2021). doi: 10.1186/s12859-020-03881-z.</code><br>
+<code>Martins, P.M., Santos, L.H., Mariano, D. et al. Propedia: a database for protein–peptide identification based on a hybrid clustering algorithm. BMC Bioinformatics 22, 1 (2021). doi: 10.1186/s12859-020-03881-z.</code><br><br>
 Version 2.3, published in 2023, introduces a new representation approach based on structural signatures:<br>
-<code>Martins P, Mariano D, Carvalho FC, Bastos LL, Moraes L, Paixão V, and Cardoso de Melo-Minardi R (2023). Propedia v2.3: A novel representation approach for the peptide-protein interaction database using graph-based structural signatures. Front. Bioinform. 3:1103103. doi: 10.3389/fbinf.2023.1103103.</code><br>
+<code>Martins P, Mariano D, Carvalho FC, Bastos LL, Moraes L, Paixão V, and Cardoso de Melo-Minardi R (2023). Propedia v2.3: A novel representation approach for the peptide-protein interaction database using graph-based structural signatures. Front. Bioinform. 3:1103103. doi: 10.3389/fbinf.2023.1103103.</code><br><br>
 Propedia v26 is derived from data originally published in articles from 2021 and 2023, both available under Creative Commons licenses that allow for redistribution and broad reuse, provided that the attribution requirements defined by the original authors are met. Below we detail each license to ensure transparency and legal compliance.
 
 <h3 class="pt-4 pb-1">Introduction to using the platform</h3>
 PROPEDIA v26 can be accessed directly through the official website at:
-https://bioinfo.dcc.ufmg.br/propedia26/<br><br><br><br>
+https://bioinfo.dcc.ufmg.br/propedia26/<br><br>
 Upon accessing the home page, users will find an intuitive navigation panel that allows them to quickly explore the main features of the database, including complex search, structural visualization, interaction analysis, and access to download tools. The initial interface features a top navigation bar that directs users to the Home, About, Browse, Clusters, Downloads, and Help pages. In addition, there is a quick search field that allows users to directly search for PDB IDs, peptides, or proteins. The page also includes a highlights panel with information about new features and updates incorporated into version 26. These details are shown in Figure 5.<br><br>
 In addition, the home page features a highlights/statistics panel that displays, in a visual and objective manner, the main figures from the database, such as the number of complexes available, the number of clusters, and the total size of the database. This section gives users an immediate perception of the scale and informational value of Propedia, allowing them to understand the magnitude of the repository upon their first visit. The page features a section dedicated to the credibility and authorship of the project, which identifies the developers responsible for Propedia. In a further step, the page includes an area dedicated to use cases and practical examples, illustrating how the user can search using an input code. Users can enter the code for a protein-peptide complex, also known as a “Propeedia code” (e.g., 1WRZ-B-A, where the first four characters correspond to the PDB code, the fifth character corresponds to the peptide chain, and the sixth character corresponds to the protein chain) or a multicomplex (e.g., 1MT1-A), which does not specify the protein chain.
 
 <img src="<?= base_url('img/docs/fig5.png') ?>" class="border mx-5 mt-4 mb-2 p-2 border-1 rounded w-75 shadow"><br><br>
 
-Figure 5. Propedia home page.<br><br><br><br>
+Figure 5. Propedia home page.<br><br>
 At the bottom of the page, institutional support and funding sources linked to the development of Propedia are also indicated, such as the Bioinformatics and Systems Laboratory (LBS), the Department of Computer Science (DCC), and the Federal University of Minas Gerais (UFMG), reinforcing the transparency and academic origin of the platform.
 
 <h3 class="pt-4 pb-1"> BLAST tool</h3>
