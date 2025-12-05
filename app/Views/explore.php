@@ -392,9 +392,10 @@
                             <th class="dt-center">Download</th>
                         </tr>
                     </thead>
-                    <tbody>Wait... loading data...
+                    <tbody>
                     </tbody>
                 </table>
+                <p id="loading-data" class="text-center text-muted small">Wait... loading data...</p>
             </div>
         </div>
     </div>
@@ -478,11 +479,6 @@
                 $('#table_explore tbody').empty();
             }
 
-            // coloca mensagem temporária no <tbody>
-            $('#table_explore tbody').html(`
-                <tr><td colspan="100%" class="text-center p-2 text-muted">Wait... loading data</td></tr>
-            `);
-
             // inicializa DataTable
             const table = $("#table_explore").DataTable({
                 data: dados,
@@ -495,6 +491,9 @@
                 "buttons": [
                     'csv', 'excel',
                 ],
+                initComplete: function () {
+                    $('#loading-data').hide(); // remove "Wait..."
+                }
             });
 
             // aplica busca inicial se tiver query na URL
