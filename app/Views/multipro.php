@@ -125,7 +125,7 @@
         # [50] protein_TotalAtoms;protein_ExtCoeff_Disulfide;protein_ExtCoeff_NoDisulfide -->
                 <div class="table-responsive">
 
-                    <table class="table table-striped">
+                    <table class="table table-striped small">
                         <thead>
                             <tr>
                                 <th style="width: 20%;"></th>
