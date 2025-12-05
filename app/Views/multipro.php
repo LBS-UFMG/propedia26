@@ -68,7 +68,7 @@
                     <div class="col">
                         <strong>PDB ID: </strong><span><?= $info[2] ?></span>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col">
                         <strong>Classification: </strong><span><?= $info[5] ?></span>
                     </div>
                     <div class="col">
@@ -78,9 +78,6 @@
                     <div class="col">
                         <strong>Structure method: </strong><span><?= $info[7] ?></span>
                     </div>
-                    <!-- <div class="col">
-                        <strong>Cluster leader: </strong><span><?= $info[15] ?></span>
-                    </div> -->
                 </div>
                 <div class="row mb-1">
                     <div class="col">
@@ -98,7 +95,7 @@
                 </div>
 
                 <div class="row mb-4">
-                    <div class="col-12 col-md-8">
+                    <div class="col-12">
                         <p><strong>Description: </strong>  <?= $info[3] ?></p>
                     </div>
                     
