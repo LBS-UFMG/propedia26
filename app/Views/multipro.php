@@ -33,8 +33,8 @@
                             <ul class="dropdown-menu">
                                 <li><b class="ms-3">Download</b></li>
                                 <hr>
-                                <li><a class="dropdown-item mt-2" href="<?php echo base_url(); ?>data/pdb/<?= substr($id, 0, 1) ?>/<?= $id ?>/<?= $id ?>_contacts.csv">Contacts</a></li>
-                                <li><a class="dropdown-item" href="https://files.rcsb.org/download/<?php echo $id; ?>.cif">PDB file</a></li>
+                                <li><a class="dropdown-item mt-2" href="<?php echo base_url(); ?>data/db/multipro/contacts/<?= $id ?>/<?= $id ?>_contacts.csv">Contacts</a></li>
+                                <li><a class="dropdown-item" href="https://files.rcsb.org/download/<?= substr($id,0,-2) ?> $id; ?>.cif">PDB file</a></li>
                                 <hr>
                                 <!-- <li><a class="dropdown-item" href="<?= base_url("/export/pdb-to-pymol/$id") ?>">Export to PyMOL</a></li> -->
                             </ul>
