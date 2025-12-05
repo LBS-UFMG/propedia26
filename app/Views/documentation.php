@@ -62,19 +62,23 @@ Propedia 26 introduces major updates that significantly expand the database and 
 Increased complex count: The updated version of Propedia now includes 78,148 protein-peptide complexes, representing nearly a fourfold increase in data coverage compared to the previous release (19,813 complexes), an increase of approximately 3.9-fold, as shown in Figure 1.
 Updated PDB sources: Includes structures from the Protein Data Bank up to 2023, ensuring researchers have access to the most recent structural data.
 
+<img src="<?= base_url('img/docs/fig1.png') ?>">
+
 Figure 1. Expanding the dataset. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2021, Propedia-legacy). 
-1.2.2 Redesigned user interface
+
+<h3 class="pt-4 pb-1">Redesigned user interface</h3>
 Modernized layout: Complete visual overhaul with improved navigation and responsive design (Figure 2).
 Enhanced search page: More intuitive organization of search options and filters.
 Advanced results page: Redesigned results table with better sorting capabilities and immediate access to key complex information.
 
 
 Figure 2. Propedia user interface. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2021, Propedia-legacy). 
-1.2.3 New analytical tools
+<h3 class="pt-4 pb-1">New analytical tools</h3>
 Peptide clustering: Implementation of a novel peptide similarity clustering algorithm that groups complexes based on peptide sequence similarity, enabling evolutionary and functional analysis (Figure 3), more details in section X.
      
 Figure 3. Propedia peptide clustering. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2021, Propedia-legacy). 
-1.2.4 Improved search capabilities
+
+<h3 class="pt-4 pb-1">Improved search capabilities</h3>
 BLAST Search: Updated sequence search with better performance and more configurable parameters (Figure 4).
 
 Figure 4. New tool in Propedia v26: BLAST.
