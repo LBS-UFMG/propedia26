@@ -197,7 +197,7 @@
                             <tr>
                                 <th>Atomic Formula</th>
                                 <td><?= quebra(formata_formula($info[49])) ?></td>
-                                <td><?= $info[31] ?></td>
+                                <td><?= formata_formula($info[31]) ?></td>
                             </tr>
                             <tr>
                                 <th>Total Atoms</th>
