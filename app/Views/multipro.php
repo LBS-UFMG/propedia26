@@ -99,7 +99,7 @@
 
                 <div class="row mb-4">
                     <div class="col-12 col-md-8">
-                        <p><strong>Description: </strong> Calmodulin complexed with a peptide from a human death-associated protein kinase <?= $info[1] ?></p>
+                        <p><strong>Description: </strong>  <?= $info[3] ?></p>
                     </div>
                     
                 </div>
@@ -142,87 +142,87 @@
                         <tbody>
                             <tr>
                                 <th>Chain</th>
-                                <td><?= quebra($info[7]) ?></td>
-                                <td><?= $info[8] ?></td>
+                                <td><?= quebra($info[8]) ?></td>
+                                <td><?= $info[9] ?></td>
                             </tr>
                             <tr>
                                 <th>Description</th>
-                                <td><?= $info[11] ?></td>
                                 <td><?= $info[12] ?></td>
+                                <td><?= $info[13] ?></td>
                             </tr>
                             <tr>
                                 <th>Length (residues)</th>
-                                <td><?= quebra($info[9]) ?></td>
-                                <td><?= $info[10] ?></td>
+                                <td><?= quebra($info[10]) ?></td>
+                                <td><?= $info[11] ?></td>
                             </tr>
                             <tr>
                                 <th>Molecular Weight (Da)</th>
-                                <td><?= quebra($info[36]) ?></td>
-                                <td><?= $info[18] ?></td>
-                            </tr>
-                            <tr>
-                                <th>Isoelectric Point (pI)</th>
                                 <td><?= quebra($info[37]) ?></td>
                                 <td><?= $info[19] ?></td>
                             </tr>
                             <tr>
-                                <th>Instability Index</th>
+                                <th>Isoelectric Point (pI)</th>
                                 <td><?= quebra($info[38]) ?></td>
                                 <td><?= $info[20] ?></td>
                             </tr>
                             <tr>
-                                <th>Aliphatic Index</th>
+                                <th>Instability Index</th>
                                 <td><?= quebra($info[39]) ?></td>
                                 <td><?= $info[21] ?></td>
                             </tr>
                             <tr>
-                                <th>GRAVY</th>
+                                <th>Aliphatic Index</th>
                                 <td><?= quebra($info[40]) ?></td>
                                 <td><?= $info[22] ?></td>
                             </tr>
                             <tr>
-                                <th>Hydrophobic (%)</th>
+                                <th>GRAVY</th>
                                 <td><?= quebra($info[41]) ?></td>
                                 <td><?= $info[23] ?></td>
                             </tr>
                             <tr>
-                                <th>Positive Residues</th>
+                                <th>Hydrophobic (%)</th>
                                 <td><?= quebra($info[42]) ?></td>
                                 <td><?= $info[24] ?></td>
                             </tr>
                             <tr>
-                                <th>Negative Residues</th>
+                                <th>Positive Residues</th>
                                 <td><?= quebra($info[43]) ?></td>
                                 <td><?= $info[25] ?></td>
+                            </tr>
+                            <tr>
+                                <th>Negative Residues</th>
+                                <td><?= quebra($info[44]) ?></td>
+                                <td><?= $info[26] ?></td>
                             </tr>
                            
                             <tr>
                                 <th>Atomic Formula</th>
-                                <td><?= quebra(formata_formula($info[49])) ?></td>
-                                <td><?= formata_formula($info[31]) ?></td>
+                                <td><?= quebra(formata_formula($info[50])) ?></td>
+                                <td><?= formata_formula($info[32]) ?></td>
                             </tr>
                             <tr>
                                 <th>Total Atoms</th>
-                                <td><?= quebra($info[50]) ?></td>
-                                <td><?= $info[32] ?></td>
-                            </tr>
-                            <tr>
-                                <th>Extinction Coeff. (with disulfide)</th>
                                 <td><?= quebra($info[51]) ?></td>
                                 <td><?= $info[33] ?></td>
                             </tr>
                             <tr>
-                                <th>Extinction Coeff. (no disulfide)</th>
+                                <th>Extinction Coeff. (with disulfide)</th>
                                 <td><?= quebra($info[52]) ?></td>
                                 <td><?= $info[34] ?></td>
                             </tr>
                             <tr>
+                                <th>Extinction Coeff. (no disulfide)</th>
+                                <td><?= quebra($info[53]) ?></td>
+                                <td><?= $info[35] ?></td>
+                            </tr>
+                            <tr>
                                 <th>Sequence</th>
                                 <td>
-                                    <pre><?= quebra2($info[13]) ?></pre>
+                                    <pre><?= quebra2($info[15]) ?></pre>
                                 </td>
                                 <td>
-                                    <pre><?= $info[14] ?></pre>
+                                    <pre><?= $info[16] ?></pre>
                                 </td>
                             </tr>
                         </tbody>
