@@ -156,31 +156,6 @@
                                 <td><?= $info[17] ?></td>
                             </tr>
                             <tr>
-                                <th>Molecular Weight (Da)</th>
-                                <td><?= quebra($info[37]) ?></td>
-                                <td><?= $info[19] ?></td>
-                            </tr>
-                            <tr>
-                                <th>Isoelectric Point (pI)</th>
-                                <td><?= quebra($info[38]) ?></td>
-                                <td><?= $info[20] ?></td>
-                            </tr>
-                            <tr>
-                                <th>Instability Index</th>
-                                <td><?= quebra($info[39]) ?></td>
-                                <td><?= $info[21] ?></td>
-                            </tr>
-                            <tr>
-                                <th>Aliphatic Index</th>
-                                <td><?= quebra($info[40]) ?></td>
-                                <td><?= $info[22] ?></td>
-                            </tr>
-                            <tr>
-                                <th>GRAVY</th>
-                                <td><?= quebra($info[41]) ?></td>
-                                <td><?= $info[23] ?></td>
-                            </tr>
-                            <tr>
                                 <th>Hydrophobic (%)</th>
                                 <td><?= quebra($info[42]) ?></td>
                                 <td><?= $info[24] ?></td>
@@ -195,7 +170,6 @@
                                 <td><?= quebra($info[44]) ?></td>
                                 <td><?= $info[26] ?></td>
                             </tr>
-                           
                             <tr>
                                 <th>Atomic Formula</th>
                                 <td><?= quebra(formata_formula($info[39])) ?></td>
@@ -205,17 +179,7 @@
                                 <th>Total Atoms</th>
                                 <td><?= quebra($info[51]) ?></td>
                                 <td><?= $info[33] ?></td>
-                            </tr>
-                            <tr>
-                                <th>Extinction Coeff. (with disulfide)</th>
-                                <td><?= quebra($info[52]) ?></td>
-                                <td><?= $info[34] ?></td>
-                            </tr>
-                            <tr>
-                                <th>Extinction Coeff. (no disulfide)</th>
-                                <td><?= quebra($info[53]) ?></td>
-                                <td><?= $info[35] ?></td>
-                            </tr>
+                            </tr>                           
                             <tr>
                                 <th>Sequence</th>
                                 <td>
