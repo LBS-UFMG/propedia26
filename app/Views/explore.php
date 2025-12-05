@@ -392,7 +392,7 @@
                             <th class="dt-center">Download</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody>Wait... loading data...
                     </tbody>
                 </table>
             </div>
