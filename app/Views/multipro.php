@@ -198,8 +198,8 @@
                            
                             <tr>
                                 <th>Atomic Formula</th>
-                                <td><?= quebra(formata_formula($info[50])) ?></td>
-                                <td><?= formata_formula($info[32]) ?></td>
+                                <td><?= quebra(formata_formula($info[39])) ?></td>
+                                <td><?= formata_formula($info[26]) ?></td>
                             </tr>
                             <tr>
                                 <th>Total Atoms</th>
@@ -219,10 +219,10 @@
                             <tr>
                                 <th>Sequence</th>
                                 <td>
-                                    <pre><?= quebra2($info[15]) ?></pre>
+                                    <pre><?= quebra2($info[14]) ?></pre>
                                 </td>
                                 <td>
-                                    <pre><?= $info[16] ?></pre>
+                                    <pre><?= $info[15] ?></pre>
                                 </td>
                             </tr>
                         </tbody>
@@ -233,18 +233,38 @@
             </div>
             <div class="row mt-5">
                 <div class="col-12">
+                    <h4>Surface (calculated using Naccess) <sup><a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="We used naccess to calculate the protein-peptide interaction interface. To more details, see https://www.bioinf.manchester.ac.uk/naccess/nac_intro.html"><i class="bi bi-question-circle-fill opacity-25"></i></a></sup></h4>
+            <ul class="bg-light p-3 rounded small">
+
+                <li class="ms-4"><strong>ASA (complex)<a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ASA: Accessible Surface Area (ASA) is the measure of the entire surface area of the molecule that is exposed and can come into contact with the solvent (usually water)."><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[57] ?></span></li>
+
+                <li class="ms-4"><strong>ASA (protein) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA (protein): ΔASA_protein represents the surface area that is no longer exposed to the solvent upon complex formation and is calculated by the equation: ΔASA = ASA_unbound - ASA_bound."><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[58] ?></span></li>
+
+                <li class="ms-4"><strong>ASA (peptide) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA (peptide): ΔASA_peptide represents the surface area that is no longer exposed to the solvent upon complex formation and is calculated by the equation: ΔASA = ASA_unbound - ASA_bound."><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[59] ?></span></li>
+                
+                <li class="ms-4"><strong>BProA <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried protein area"><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[60] ?></span></li>
+
+                <li class="ms-4"><strong>BPepA <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried peptide area"><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[61] ?></span></li>
+
+                <li class="ms-4"><strong>BPP% <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried Peptide Percentage"><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[62] ?>%</span></li>
+
+                <li class="ms-4"><strong>BSA <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried Surface Area represents the area effectively shared at the binding interface and was calculated according to the expression. It can be calculated using the formula: BSA = (ASA_protein + ASA_peptide − ASA_complex) / 2"><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[63] ?></span></li>
+            </ul>
+                </div>
+                
+            </div>
+            <div class="row mt-5">
+                <div class="col-12">
                     <h2>Clustering classification</h2>
                 </div>
                 <hr>
                 <div class="col-12">
-                    <!-- <p>
- <strong>Unique: </strong><span><label class="badge bg-<?php if($info[16]=='yes'){ echo 'primary'; } else {echo 'danger';} ?>"><?= $info[16] ?></span>
-                    </p> -->
+                  
                     <p>
- <strong>Cluster entries: </strong><br><span><a href=""><?= quebra($info[15]) ?></a></span>
+ <strong>Cluster entries: </strong><br><span><a href=""><?= quebra($info[1]) ?></a></span>
                     </p>
                     <p>
- <strong>PDB classification: </strong><span><?= $info[4] ?></span>
+ <strong>PDB classification: </strong><span><?= $info[5] ?></span>
                     </p>
                 </div>
             </div>
