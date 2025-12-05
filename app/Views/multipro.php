@@ -147,13 +147,13 @@
                             </tr>
                             <tr>
                                 <th>Description</th>
-                                <td><?= $info[12] ?></td>
+                                <td><?= quebra($info[12]) ?></td>
                                 <td><?= $info[13] ?></td>
                             </tr>
                             <tr>
                                 <th>Length (residues)</th>
-                                <td><?= quebra($info[10]) ?></td>
-                                <td><?= $info[11] ?></td>
+                                <td><?= quebra($info[30]) ?></td>
+                                <td><?= $info[17] ?></td>
                             </tr>
                             <tr>
                                 <th>Molecular Weight (Da)</th>
