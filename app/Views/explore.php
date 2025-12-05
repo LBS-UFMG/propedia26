@@ -478,6 +478,11 @@
                 $('#table_explore tbody').empty();
             }
 
+            // coloca mensagem temporária no <tbody>
+            $('#table_explore tbody').html(`
+                <tr><td colspan="100%" class="text-center p-2 text-muted">Wait... loading data</td></tr>
+            `);
+
             // inicializa DataTable
             const table = $("#table_explore").DataTable({
                 data: dados,
