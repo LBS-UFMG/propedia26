@@ -362,7 +362,7 @@
             <h4>Interface residues (dist<sub>max</sub> ≤ 6 Å) <sup><a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Interface Residues (distmax ≤ 6 Å): List of residues located within 6 Å of the interacting partner, defining the binding interface between the protein and peptide."><i class="bi bi-question-circle-fill opacity-25"></i></a></sup></h4>
 
             <p class="bg-light p-3 rounded small">
-                <label class="badge bg-dark">Interface: <?= substr_count($info[70],",")+1 ?> residues</label><br>
+                <label class="badge bg-dark">Interface: <?= substr_count($info[70],",")+1 ?> residues</label>
                 <label class="badge bg-secondary">Chain: <?= $info[7] ?></label><br>
                 <?= str_replace(',', ', ', $info[70]) ?></span>
             </p>
