@@ -756,14 +756,14 @@
         var res1 = residues[0].substr(1);
         var res2 = residues[1].substr(1);
 
-        glviewer.setStyle({}, {
-            line: {
-                color: 'grey'
-            },
-            cartoon: {
-                color: 'white'
-            }
-        }); /* Cartoon multi-color */
+        // glviewer.setStyle({}, {
+        //     line: {
+        //         color: 'grey'
+        //     },
+        //     cartoon: {
+        //         color: 'white'
+        //     }
+        // }); /* Cartoon multi-color */
         glviewer.setStyle({
             resi: res1,
             chain: chain1
