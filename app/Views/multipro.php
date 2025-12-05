@@ -66,17 +66,17 @@
 
                 <div class="row mb-1">
                     <div class="col">
-                        <strong>PDB ID: </strong><span><?= $info[1] ?></span>
+                        <strong>PDB ID: </strong><span><?= $info[2] ?></span>
                     </div>
                     <div class="col-12 col-md-4">
-                        <strong>Classification: </strong><span><?= $info[4] ?></span>
+                        <strong>Classification: </strong><span><?= $info[5] ?></span>
                     </div>
                     <div class="col">
-                        <strong>Resolution: </strong><span><?= $info[3] ?></span>
+                        <strong>Resolution: </strong><span><?= $info[4] ?></span>
                     </div>
                     
                     <div class="col">
-                        <strong>Structure method: </strong><span><?= $info[6] ?></span>
+                        <strong>Structure method: </strong><span><?= $info[7] ?></span>
                     </div>
                     <!-- <div class="col">
                         <strong>Cluster leader: </strong><span><?= $info[15] ?></span>
@@ -84,16 +84,16 @@
                 </div>
                 <div class="row mb-1">
                     <div class="col">
-                        <strong>Peptide chain: </strong><span><?= $info[8] ?></span>
+                        <strong>Peptide chain: </strong><span><?= $info[9] ?></span>
                     </div>
                     <div class="col">
-                        <strong>Peptide length: </strong><span><?= $info[10] ?></span>
+                        <strong>Peptide length: </strong><span><?= $info[11] ?></span>
                     </div>
                     <div class="col">
-                        <strong>Protein chain: </strong><span><?= soma($info[7]) ?></span>
+                        <strong>Protein chain: </strong><span><?= soma($info[8]) ?></span>
                     </div>
                     <div class="col">
-                        <strong>Protein length: </strong><span><?= soma($info[9]) ?></span>
+                        <strong>Protein length: </strong><span><?= soma($info[10]) ?></span>
                     </div>
                 </div>
 
