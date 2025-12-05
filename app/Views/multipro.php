@@ -222,7 +222,7 @@
                 <div class="col-12">
                   
                     <p>
- <strong>Cluster entries: </strong><br><span><a href=""><?= quebra($info[1]) ?></a></span>
+ <strong>Cluster entries: </strong><br><span><?= quebra($info[1]) ?></span>
                     </p>
                     <p>
  <strong>PDB classification: </strong><span><?= $info[5] ?></span>
