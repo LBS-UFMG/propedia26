@@ -2,6 +2,8 @@
 <?= $this->section('conteudo') ?>
 <!-- Conteúdo personalizado -->
 
+<?php function quebra($x){ return str_replace(":","<br>",$x); }?>
+<?php function soma($x){ return str_replace(":","+",$x); }?>
 <link rel="stylesheet" href="<?php echo base_url('/css/dt.css'); ?>">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -67,9 +69,12 @@
                     <div class="col">
                         <strong>Resolution: </strong><span><?= $info[3] ?></span>
                     </div>
-                    <div class="col">
-                        <strong>Cluster leader: </strong><span><?= $info[15] ?></span>
+                    <div class="col-12 col-md-4">
+                        <strong>Classification: </strong><span><?= $info[4] ?></span>
                     </div>
+                    <!-- <div class="col">
+                        <strong>Cluster leader: </strong><span><?= $info[15] ?></span>
+                    </div> -->
                 </div>
                 <div class="row mb-1">
                     <div class="col">
@@ -79,10 +84,10 @@
                         <strong>Peptide length: </strong><span><?= $info[10] ?></span>
                     </div>
                     <div class="col">
-                        <strong>Protein chain: </strong><span><?= $info[7] ?></span>
+                        <strong>Protein chain: </strong><span><?= soma($info[7]) ?></span>
                     </div>
                     <div class="col">
-                        <strong>Protein length: </strong><span><?= $info[9] ?></span>
+                        <strong>Protein length: </strong><span><?= soma($info[9]) ?></span>
                     </div>
                 </div>
 
@@ -90,9 +95,7 @@
                     <div class="col-12 col-md-8">
                         <p><strong>Description: </strong> Calmodulin complexed with a peptide from a human death-associated protein kinase <?= $info[1] ?></p>
                     </div>
-                    <div class="col-12 col-md-4">
-                        <strong>Classification: </strong><span><?= $info[4] ?></span>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -143,78 +146,74 @@
                             </tr>
                             <tr>
                                 <th>Length (residues)</th>
-                                <td><?= $info[9] ?></td>
+                                <td><?= quebra($info[9]) ?></td>
                                 <td><?= $info[10] ?></td>
                             </tr>
                             <tr>
                                 <th>Molecular Weight (Da)</th>
-                                <td><?= $info[36] ?></td>
+                                <td><?= quebra($info[36]) ?></td>
                                 <td><?= $info[18] ?></td>
                             </tr>
                             <tr>
                                 <th>Isoelectric Point (pI)</th>
-                                <td><?= $info[37] ?></td>
+                                <td><?= quebra($info[37]) ?></td>
                                 <td><?= $info[19] ?></td>
                             </tr>
                             <tr>
                                 <th>Instability Index</th>
-                                <td><?= $info[38] ?></td>
+                                <td><?= quebra($info[38]) ?></td>
                                 <td><?= $info[20] ?></td>
                             </tr>
                             <tr>
                                 <th>Aliphatic Index</th>
-                                <td><?= $info[39] ?></td>
+                                <td><?= quebra($info[39]) ?></td>
                                 <td><?= $info[21] ?></td>
                             </tr>
                             <tr>
                                 <th>GRAVY</th>
-                                <td><?= $info[40] ?></td>
+                                <td><?= quebra($info[40]) ?></td>
                                 <td><?= $info[22] ?></td>
                             </tr>
                             <tr>
                                 <th>Hydrophobic (%)</th>
-                                <td><?= $info[41] ?></td>
+                                <td><?= quebra($info[41]) ?></td>
                                 <td><?= $info[23] ?></td>
                             </tr>
                             <tr>
                                 <th>Positive Residues</th>
-                                <td><?= $info[42] ?></td>
+                                <td><?= quebra($info[42]) ?></td>
                                 <td><?= $info[24] ?></td>
                             </tr>
                             <tr>
                                 <th>Negative Residues</th>
-                                <td><?= $info[43] ?></td>
+                                <td><?= quebra($info[43]) ?></td>
                                 <td><?= $info[25] ?></td>
                             </tr>
-                            <tr>
-                                <th>C, H, N, O, S</th>
-                                <td><?= $info[44] ?>, <?= $info[45] ?>, <?= $info[46] ?>, <?= $info[47] ?>, <?= $info[48] ?></td>
-                                <td><?= $info[26] ?>, <?= $info[27] ?>, <?= $info[28] ?>, <?= $info[29] ?>, <?= $info[30] ?></td>
-                            </tr>
+                           
                             <tr>
                                 <th>Atomic Formula</th>
-                                <td><?= $info[49] ?></td>
+                                <td><?= quebra($info[49]) ?></td>
                                 <td><?= $info[31] ?></td>
                             </tr>
                             <tr>
                                 <th>Total Atoms</th>
-                                <td><?= $info[50] ?></td>
+                                <td><?= quebra($info[50]) ?></td>
                                 <td><?= $info[32] ?></td>
                             </tr>
                             <tr>
                                 <th>Extinction Coeff. (with disulfide)</th>
-                                <td><?= $info[51] ?></td>
+                                <td><?= quebra($info[51]) ?></td>
                                 <td><?= $info[33] ?></td>
                             </tr>
                             <tr>
                                 <th>Extinction Coeff. (no disulfide)</th>
-                                <td><?= $info[52] ?></td>
+                                <td><?= quebra($info[52]) ?></td>
                                 <td><?= $info[34] ?></td>
                             </tr>
                             <tr>
                                 <th>Sequence</th>
                                 <td>
-                                    <pre><?= $info[13] ?></pre>
+                                    <pre><?= quebra($info[13]) ?></pre>
                                 </td>
                                 <td>
                                     <pre><?= $info[14] ?></pre>
@@ -236,7 +235,7 @@
  <strong>Unique: </strong><span><label class="badge bg-<?php if($info[16]=='yes'){ echo 'primary'; } else {echo 'danger';} ?>"><?= $info[16] ?></span>
                     </p>
                     <p>
- <strong>Cluster leader: </strong><span><a href=""><?= $info[15] ?></a></span>
+ <strong>Cluster entries: </strong><span><a href=""><?= quebra($info[15]) ?></a></span>
                     </p>
                     <p>
  <strong>PDB classification: </strong><span><?= $info[4] ?></span>
