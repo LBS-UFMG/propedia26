@@ -31,16 +31,16 @@
       <tr>
         <th scope="row">Duplicated entries</th>
         <td>27,066</td>
-        <td>20,632</td>
-        <td>47,698</td>
+        <td>20,631</td>
+        <td>47,697</td>
       </tr>
     </tbody>
     <tfoot class="table-light">
       <tr>
         <th scope="row">Total</th>
         <td>78,148</td>
-        <td>20,632</td>
-        <td><strong>98,780</strong></td>
+        <td>20,631</td>
+        <td><strong>98,779</strong></td>
       </tr>
     </tfoot>
   </table>
