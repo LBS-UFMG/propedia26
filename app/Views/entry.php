@@ -323,9 +323,9 @@
 
                 <li class="ms-4"><strong>ASA (complex)<a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ASA: Accessible Surface Area (ASA) is the measure of the entire surface area of the molecule that is exposed and can come into contact with the solvent (usually water)."><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[81] ?></span></li>
 
-                <li class="ms-4"><strong>ΔASA (protein) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA (protein): ΔASA_protein represents the surface area that is no longer exposed to the solvent upon complex formation and is calculated by the equation: ΔASA = ASA_unbound - ASA_bound."><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[82] ?></span></li>
+                <li class="ms-4"><strong>ASA (protein) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA (protein): ΔASA_protein represents the surface area that is no longer exposed to the solvent upon complex formation and is calculated by the equation: ΔASA = ASA_unbound - ASA_bound."><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[82] ?></span></li>
 
-                <li class="ms-4"><strong>ΔASA (peptide) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA (peptide): ΔASA_peptide represents the surface area that is no longer exposed to the solvent upon complex formation and is calculated by the equation: ΔASA = ASA_unbound - ASA_bound."><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[83] ?></span></li>
+                <li class="ms-4"><strong>ASA (peptide) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA (peptide): ΔASA_peptide represents the surface area that is no longer exposed to the solvent upon complex formation and is calculated by the equation: ΔASA = ASA_unbound - ASA_bound."><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[83] ?></span></li>
                 
                 <li class="ms-4"><strong>BProA <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried protein area"><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[84] ?></span></li>
 
@@ -362,7 +362,7 @@
             <h4>Interface residues (dist<sub>max</sub> ≤ 6 Å) <sup><a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Interface Residues (distmax ≤ 6 Å): List of residues located within 6 Å of the interacting partner, defining the binding interface between the protein and peptide."><i class="bi bi-question-circle-fill opacity-25"></i></a></sup></h4>
 
             <p class="bg-light p-3 rounded small">
-                <label class="badge bg-dark">Chain: <?= $info[7] ?></label><br>
+                <label class="badge bg-dark">Chain: <?= $info[7] ?></label><label class="badge bg-secondary">Interface: <?= substr_count($info[70],",")+1 ?> residues</label><br>
                 <?= str_replace(',', ', ', $info[70]) ?></span>
             </p>
 
