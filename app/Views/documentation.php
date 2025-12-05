@@ -95,10 +95,10 @@ Table 1. News in Propedia's property
 
 
 <h3 class="pt-4 pb-1"> How to cite and license</h3>
-To cite PROPEDIA, we recommend referencing both the original article and the most recent publication in the database. If specific features or previous versions are used, the respective publications may also be cited. The original 2021 article presents the first description of the database:<br><br><br><br>
-Martins, P.M., Santos, L.H., Mariano, D. et al. Propedia: a database for protein–peptide identification based on a hybrid clustering algorithm. BMC Bioinformatics 22, 1 (2021). doi: 10.1186/s12859-020-03881-z.<br><br><br><br>
-Version 2.3, published in 2023, introduces a new representation approach based on structural signatures:<br><br><br><br>
-Martins P, Mariano D, Carvalho FC, Bastos LL, Moraes L, Paixão V, and Cardoso de Melo-Minardi R (2023). Propedia v2.3: A novel representation approach for the peptide-protein interaction database using graph-based structural signatures. Front. Bioinform. 3:1103103. doi: 10.3389/fbinf.2023.1103103.<br><br><br><br>
+To cite PROPEDIA, we recommend referencing both the original article and the most recent publication in the database. If specific features or previous versions are used, the respective publications may also be cited. The original 2021 article presents the first description of the database:<br>
+<code>Martins, P.M., Santos, L.H., Mariano, D. et al. Propedia: a database for protein–peptide identification based on a hybrid clustering algorithm. BMC Bioinformatics 22, 1 (2021). doi: 10.1186/s12859-020-03881-z.</code><br>
+Version 2.3, published in 2023, introduces a new representation approach based on structural signatures:<br>
+<code>Martins P, Mariano D, Carvalho FC, Bastos LL, Moraes L, Paixão V, and Cardoso de Melo-Minardi R (2023). Propedia v2.3: A novel representation approach for the peptide-protein interaction database using graph-based structural signatures. Front. Bioinform. 3:1103103. doi: 10.3389/fbinf.2023.1103103.</code><br>
 Propedia v26 is derived from data originally published in articles from 2021 and 2023, both available under Creative Commons licenses that allow for redistribution and broad reuse, provided that the attribution requirements defined by the original authors are met. Below we detail each license to ensure transparency and legal compliance.
 
 <h3 class="pt-4 pb-1">Introduction to using the platform</h3>
