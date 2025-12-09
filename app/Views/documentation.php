@@ -160,8 +160,10 @@
           </p>
         </div>
 
-        <h3 class="pt-4 pb-1">What is Propedia?</h3>
-        <p>PROPEDIA is a database of peptide-protein complexes clusterized in three methodologies: based on peptide sequences; based on structure interface; and based on binding sites. PROPEDIA main goal is to give new insights into peptide design of biotechnological interests.</p>
+        <div class="bordered bg-light p-4 my-2">
+          <h3 class="pt-4 pb-1">What is Propedia?</h3>
+          <p>PROPEDIA is a database of peptide-protein complexes clusterized in three methodologies: based on peptide sequences; based on structure interface; and based on binding sites. PROPEDIA main goal is to give new insights into peptide design of biotechnological interests.</p>
+        </div>
 
         <h3 class="pt-4 pb-1">Propedia 26 stats</h3>
 
