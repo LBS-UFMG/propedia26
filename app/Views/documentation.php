@@ -31,7 +31,7 @@
       font-weight: 600
     }
 
-    section.card {
+    section.docs-card {
       background: rgba(255, 255, 255, .02);
       padding: 18px;
       border-radius: 12px;
@@ -139,7 +139,7 @@
         </ul>
       </nav>
 
-      <div class="card" style="margin-top:12px">
+      <div class="docs-card" style="margin-top:12px">
         <div class="muted" style="font-size:.9rem">Useful links</div>
         <div style="margin-top:8px">
           <a class="small-btn" href="https://bioinfo.dcc.ufmg.br/propedia26/public/" target="_blank">
@@ -151,7 +151,7 @@
 
     <article class="text-muted">
 
-      <section id="intro" class="card">
+      <section id="intro" class="docs-card">
         <h1>1. Introduction</h1>
 
         <div style="text-align: center; margin-top: 20px;">
@@ -227,12 +227,12 @@
       </section>
   </div>
 
-  <section id="whats-new" class="card">
+  <section id="whats-new" class="docs-card">
     <h2>1.2 What's new in version 26</h2>
     <p>Propedia v26 introduces major updates that significantly expand the database and enhance its analytical power.</p>
   </section>
 
-  <section id="expanded-data" class="card">
+  <section id="expanded-data" class="docs-card">
     <h3><em>1.2.1 Expanded dataset</em></h3>
     <ul>
       <li><b> Increased complex count: </b> The updated version of Propedia now includes 78,148 protein-peptide complexes, representing nearly a fourfold increase in data coverage compared to the previous release (19,813 complexes), an increase of approximately 3.9-fold, as shown in figure 1.</li>
@@ -250,7 +250,7 @@
 
   </section>
 
-  <section id="redesigned" class="card">
+  <section id="redesigned" class="docs-card">
     <h3><em>1.2.2 Redesigned user interface</em></h3>
 
     <ul>
@@ -268,7 +268,7 @@
 
   </section>
 
-  <section id="analytical-tool" class="card">
+  <section id="analytical-tool" class="docs-card">
     <h3><em>1.2.3 New analytical tools</em></h3>
     <ul>
       <li><b>Peptide clustering: </b> Implementation of a novel peptide similarity clustering algorithm that groups complexes based on peptide sequence similarity, enabling evolutionary and functional analysis (Figure 3), more details in section 2.3 and 2.4.</li>
@@ -284,7 +284,7 @@
 
   </section>
 
-  <section id="improved" class="card">
+  <section id="improved" class="docs-card">
     <h3><em>1.2.4 Improved search capabilities</em></h3>
     <ul>
       <li><b>BLAST Search: </b> Updated sequence search with better performance and more configurable parameters (Figure 4).</li>
@@ -300,7 +300,7 @@
 
   </section>
 
-  <section id="technical" class="card">
+  <section id="technical" class="docs-card">
     <h3><em>1.2.5 Technical improvements</em></h3>
     <p>
       In version 26, the complex details page has been extensively redesigned to offer a much deeper interaction analysis: it now displays atomic data with precise distance measurements and clear categorization of interaction types (hydrogen bonds, hydrophobic contacts, etc.). In addition, complete structural metrics, such as interface area and interaction energy, which were previously absent or very basic, have been incorporated. The presentation of the data has also been reorganized: in v26, the information is distributed across tabs (structure, energy, sequence) for greater clarity; in the old version, everything was on a single page with less organization. From a computational standpoint, energy calculations have been improved with updated algorithms (e.g., NACCESS or equivalents) with more refined parameterization, while the previous version applied basic calculations with limited validation. These topics are shown in Table 1, and they will be discussed in more detail in the following sections.
@@ -676,7 +676,7 @@
 
   </section>
 
-  <section id="how-to-cite" class="card">
+  <section id="how-to-cite" class="docs-card">
     <h1>1.3 How to Cite & Licenses</h1>
     <p>To cite PROPEDIA, we recommend referencing both the original article and the most recent publication in the database. If specific features or previous versions are used, the respective publications may also be cited. The original 2021 article presents the first description of the database:</p>
 
@@ -687,14 +687,14 @@
     <p>Version 2.3, published in 2023, introduces a new representation approach based on structural signatures:</p>
 
     <div style="text-align: center; font-size: 0.9em;">
-      Martins P, Mariano D, Carvalho FC, Bastos LL, Moraes L, Paixão V, and Cardoso de Melo-Minardi R (2023). <i>Propedia v2.3: A novel representation approach for the peptide-protein interaction database using graph-based structural signatures.</i> Front. Bioinform. 3:1103103. doi: 10.3389/fbinf.2023.1103103.
+      Martins P, Mariano D, Carvalho FC, Bastos LL, Moraes L, Paixão V, and docs-cardoso de Melo-Minardi R (2023). <i>Propedia v2.3: A novel representation approach for the peptide-protein interaction database using graph-based structural signatures.</i> Front. Bioinform. 3:1103103. doi: 10.3389/fbinf.2023.1103103.
     </div>
 
     <p>An article for Propedia v26 is currently under development.</p>
 
   </section>
 
-  <section id="license1" class="card">
+  <section id="license1" class="docs-card">
     <h2><em>1.3.1 License: Creative Commons Attribution 4.0 International (CC-BY ND 4.0)</em></h2>
 
     <p>Propedia v26 data is available under the Creative Commons Attribution 4.0 International (CC BY ND 4.0) license. This license allows:</p>
@@ -729,7 +729,7 @@
   </section>
 
 
-  <section id="using-platform" class="card">
+  <section id="using-platform" class="docs-card">
     <h1>2. How to use the platform</h1>
     <div style="text-align: center; margin-bottom: 20px;">
       <p><strong>Propedia v26 can be accessed directly through the official website at:</strong></p>
@@ -769,7 +769,7 @@
 
   </section>
 
-  <section id="entry" class="card">
+  <section id="entry" class="docs-card">
     <h2>2.1 Entry page</h2>
 
     <p>
@@ -786,7 +786,7 @@
     </ul>
   </section>
 
-  <section id="edescription" class="card">
+  <section id="edescription" class="docs-card">
     <h3><em>2.1.1 Entry description</em></h3>
 
     <p>
@@ -827,7 +827,7 @@
     </p>
   </section>
 
-  <section id="ephysical" class="card">
+  <section id="ephysical" class="docs-card">
     <h3><em>2.1.2 Physicochemical parameters</em></h3>
 
     <figure>
@@ -872,7 +872,7 @@
     </ul>
   </section>
 
-  <section id="einteractive" class="card">
+  <section id="einteractive" class="docs-card">
 
     <h2><em>2.1.3 Interactive 3D structure visualization panel</em></h2>
     <p>
@@ -888,7 +888,7 @@
 
   </section>
 
-  <section id="ecluster" class="card">
+  <section id="ecluster" class="docs-card">
 
     <h2><em>2.1.4 Clustering information</em></h2>
 
@@ -947,7 +947,7 @@
     </ul>
   </section>
 
-  <section id="eprotein" class="card">
+  <section id="eprotein" class="docs-card">
 
     <h2><em>2.1.5 Protein-peptide interaction information</em></h2>
 
@@ -1108,7 +1108,7 @@
   </section>
 
 
-  <section id="blast" class="card">
+  <section id="blast" class="docs-card">
     <h2>2.2 BLAST tool</h2>
     <p>
       The BLAST (Basic Local Alignment Search Tool) identifies local similarities between protein sequences. It compares a query sequence with sequences stored in a database, evaluating the statistical relevance of the matches found (Mariano et al., 2015; Wheeler; Bhagwat, 2016). The BLAST tool available in PROPEDIA allows users to search for peptides or proteins similar to those present in the database, using local alignment based on sequence similarity. This functionality is essential for identifying structurally or functionally related complexes, locating similar peptides already described in the database, and facilitating comparative studies, evolutionary analyses, and functional inference.
@@ -1124,7 +1124,7 @@
 
   </section>
 
-  <section id="parameters-config" class="card">
+  <section id="parameters-config" class="docs-card">
     <h3><em>2.2.1 Parameters and Configuration</em></h3>
 
     <p>
@@ -1168,7 +1168,7 @@
     </ul>
 
     <p>
-      The E-value represents the probability that an observed alignment arose by chance. Under normal conditions, values close to zero indicate highly significant alignments, while high values tend to be discarded because they represent statistical noise. However, the behavior of the E-value changes dramatically for short sequences, such as peptides, which is exactly the case with Propedia. These settings allow minimal peptides, including fragments with only 5-10 amino acids, to find significant matches in the database.
+      The E-value represents the probability that an observed alignment arose by chance. Under normal conditions, values close to zero indicate highly significant alignments, while high values tend to be disdocs-carded because they represent statistical noise. However, the behavior of the E-value changes dramatically for short sequences, such as peptides, which is exactly the case with Propedia. These settings allow minimal peptides, including fragments with only 5-10 amino acids, to find significant matches in the database.
     </p>
 
     <p>
@@ -1200,7 +1200,7 @@
 
   </section>
 
-  <section id="blast-use" class="card">
+  <section id="blast-use" class="docs-card">
     <h3><em>2.2.2 How to use Propedia BLAST?</em></h3>
     <p>
       When you access the Propedia website, the home page displays “BLAST” in the navigation bar (Figure 5, 3). Clicking on it will open a window where you can enter your peptide or protein sequence (Figure 4). Before running BLAST, you must indicate whether your sequence is peptide or protein, because, as seen in section 2.1.1, the parameters for alignment are different for each type of sequence. To start, simply click on the “Run Blast” button and wait a few seconds for the result.
@@ -1208,7 +1208,7 @@
 
   </section>
 
-  <section id="other" class="card">
+  <section id="other" class="docs-card">
 
     <h4><em>2.2.3 Other search tools</em></h4>
     <p>
@@ -1218,7 +1218,7 @@
 
   </section>
 
-  <section id="clusters" class="card">
+  <section id="clusters" class="docs-card">
     <h2>2.3 Clusters</h2>
     <p>
       The Clusters page of Propedia v26 presents an organized view of clusters obtained from different methods of similarity between proteins, peptides, and interaction interfaces. These clusters are fundamental for exploratory navigation, redundancy identification, structural comparison, and functional inference.
@@ -1295,7 +1295,7 @@
   </section>
 
 
-  <section id="History" class="card">
+  <section id="History" class="docs-card">
     <h3><em>2.3.1 History and evolution of clustering in Propedia</em></h3>
     <p>Early versions of Propedia used three main clustering approaches:</p>
 
@@ -1315,7 +1315,7 @@
       These methods allowed the user to identify peptides that could interact with the same site or exhibit similar structural properties. Propedia 2.3 introduced the use of structural signatures to detect similarity patterns. However, this was not used for clustering; it was only used to evaluate previous results.
     </p>
 
-    <section id="Redundancy" class="card">
+    <section id="Redundancy" class="docs-card">
       <h3><em>2.3.2 Redundancy and cluster formation in version 26</em></h3>
       <p>In version 26 of Propedia, the pipeline has been expanded and modernized. The main steps include:</p>
 
@@ -1339,7 +1339,7 @@
     </section>
 
 
-    <section id="Practical-app" class="card">
+    <section id="Practical-app" class="docs-card">
       <h3><em>2.2.3 Practical applications of clusters</em></h3>
       <p>
         The clusters provided by Propedia v26 are a central tool for exploring, comparing, and selecting protein-peptide complexes. In the Clusters tab, users can browse clusters organized by three complementary criteria: peptide sequence similarity, interface structural similarity, and binding site similarity. For each cluster, the interface displays the group size, its members, and similarity metrics. It is also possible to directly access the page for each complex, where relevant structural, physicochemical, and functional properties are available.
@@ -1367,7 +1367,7 @@
 
     </section>
 
-    <section id="downloads" class="card">
+    <section id="downloads" class="docs-card">
       <h2>2.4 Available downloads</h2>
 
       <p>The Downloads section provides access to key files and resources derived from the database. The main list (Propedia v26 - New) is illustrated in the Figure below.</p>
@@ -1389,7 +1389,7 @@
 
     </section>
 
-    <section id="quick" class="card">
+    <section id="quick" class="docs-card">
       <h2><em>2.4.1 Quick usage recommendations</em></h2>
       <ul>
         <li>For tabular analysis and subset selection: download propedia_26.csv and open with pandas/R.</li>
@@ -1411,7 +1411,7 @@
 
     </section>
 
-    <section id="explore" class="card">
+    <section id="explore" class="docs-card">
       <h2>2.5 Explore Page</h2>
       <p>
         The Explore page is the main interface for browsing and filtering Propedia protein-peptide complexes. It brings together interactive filters, options to reduce redundancy, and a table of entries that allows quick inspection and direct download of associated files. A quick tutorial is illustrated in the figure below.
@@ -1425,7 +1425,7 @@
       </figure>
     </section>
 
-    <section id="practical-ex" class="card">
+    <section id="practical-ex" class="docs-card">
       <h3><em>2.5.1 Practical search examples, tips and best practices</em></h3>
       <p>In the table below, we list some examples for you to practice different ways of exploring in Propedia v26.</p>
       <table class="table table-hover table-condensed table-striped">
@@ -1458,7 +1458,7 @@
 
     </section>
 
-    <section id="Troubleshooting1" class="card">
+    <section id="Troubleshooting1" class="docs-card">
       <h3><em>2.5.2 Troubleshooting</em></h3>
       <p>
         If no results are displayed after applying filters, check that the size range or combination of classifications is not too restrictive; if necessary, remove some filters and try again. If the list displayed is too long or the page appears slow, consider reducing the filters or using the local CSV file to perform the filtering, especially on slower connections where downloading individual PDB files may take time. If the download does not work, check the Download link corresponding to the selected row and, if the problem persists, use the Downloads section to obtain the files in batches. Finally, discrepancies observed in the “Unique?” field are expected, as this attribute reflects the internal methodology for removing redundancy, based on the concatenation of protein and peptide sequences,whose details and criteria can be found in the Clusters area or in the technical documentation.
@@ -1466,7 +1466,7 @@
 
     </section>
 
-    <section id="id-page" class="card">
+    <section id="id-page" class="docs-card">
       <h3><em>2.5.3 ID page: e.g.: 1A0N-A-B</em></h3>
 
       <p>The ID page (Figure 10) displays all available data and analyses for a specific protein-peptide complex: metadata (PDB, experimental method, description), sequences, calculated physicochemical properties, cluster classification, surface and energy metrics, atomic contact table, contact map, and 3D viewer. It also provides download links and shortcuts to external resources (RCSB PDB, UniProt, PubMed).</p>
@@ -1480,7 +1480,7 @@
         </figcaption>
       </figure>
 
-      <section id="interpreted" class="card">
+      <section id="interpreted" class="docs-card">
         <h3><em>2.5.3.1 How should it be interpreted?</em></h3>
         <p>
           In section 2.1, you saw the description of all items in the column that biochemically characterize the protein-peptide complex. The “Classification and Clusters” section presents information on structural similarities and the classification generated by clustering, indicating whether the complex is considered unique and listing other similar complexes or peptides identified by sequence, interface, or binding site grouping methods. It also includes CSM-peptides classes, which provide predictive scores for different functional categories, such as antibacterial, anticancer, or quorum sensing activities, accompanied by their respective confidence values. In practice, this section can be used to locate related complexes, for example, to identify alternative candidates that share the same binding site.
@@ -1501,14 +1501,14 @@
 
       </section>
 
-      <section id="Troubleshooting2" class="card">
+      <section id="Troubleshooting2" class="docs-card">
         <h3><em>2.5.3.2 Troubleshooting</em></h3>
         <p>Some energy fields or contact counts may appear empty. This can occur when the calculation failed or was not applicable to the input (e.g., NMR ensemble without a standard model). Check for the presence of expected atomic coordinates in the PDB.</p>
         <p>Legends/abbreviations in the contact table may vary; if there is no explicit legend, use the website documentation or inspect the names to infer (HB → Hydrogen Bond, HY → Hydrophobic, etc.).</p>
 
       </section>
 
-      <section id="binding-sites" class="card">
+      <section id="binding-sites" class="docs-card">
         <h2>2.6 Search for Similar Binding Sites (ProBiS)</h2>
         <p>
           The Search for Similar Binding Sites tool allows you to identify binding sites that are structurally similar to the one you specify. This feature is handy for:
@@ -1534,7 +1534,7 @@
 
       </section>
 
-      <section id="example" class="card">
+      <section id="example" class="docs-card">
         <h3><em>2.6.1 Example (ProBiS)</em></h3>
         <p>
           To perform a search for binding sites, click the option in the top menu. Enter the PDB ID used in the search, including the chain, and the residues that compose the desired binding site. The figure below shows an example for the 1a1m (chain A) structure and their binding site: 60,62-82,146-171.
@@ -1560,7 +1560,7 @@
           </figcaption>
         </figure>
       </section>
-      <section id="final" class="card">
+      <section id="final" class="docs-card">
         <h2>3. Final Considerations</h2>
         <p>This documentation presented the structure, functionalities, and usage flows of Propedia v26, including navigation, data models, structural analyses, algorithms employed, and search methods by interaction and binding sites.</p>
         <p>As a database dedicated to protein-peptide complexes, Propedia remains in active development, maintaining its commitment to transparency, reproducibility, and continuous updating. We hope that this tool will provide solid support for research in structural bioinformatics, peptide design, biomolecular interaction mining, and the development of computational methods.</p>
@@ -1569,7 +1569,7 @@
 
       </section>
 
-      <section id="reference" class="card">
+      <section id="reference" class="docs-card">
         <h2>4. References</h2>
 
         <p>ALTSCHUL, S. F., GISH, W., MILLER, W., MYERS, E. W. & LIPMAN, D. J. Basic local alignment search tool. <em>J. Mol. Biol.</em> v. 215, p. 403-410, 1990.</p>
