@@ -227,7 +227,7 @@
         <p>Propedia v26 introduces major updates that significantly expand the database and enhance its analytical power.</p>
       </section>
 
-      <section id="expanded-data" class="docs-card">
+      <section id="expanded" class="docs-card">
         <h3><em>1.2.1 Expanded dataset</em></h3>
         <ul>
           <li><b> Increased complex count: </b> The updated version of Propedia now includes 78,148 protein-peptide complexes, representing nearly a fourfold increase in data coverage compared to the previous release (19,813 complexes), an increase of approximately 3.9-fold, as shown in figure 1.</li>
@@ -263,7 +263,7 @@
 
       </section>
 
-      <section id="analytical-tool" class="docs-card">
+      <section id="analytical" class="docs-card">
         <h3><em>1.2.3 New analytical tools</em></h3>
         <ul>
           <li><b>Peptide clustering: </b> Implementation of a novel peptide similarity clustering algorithm that groups complexes based on peptide sequence similarity, enabling evolutionary and functional analysis (Figure 3), more details in section 2.3 and 2.4.</li>
