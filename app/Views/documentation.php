@@ -99,11 +99,11 @@
           <li><a href="#intro">1. Introduction</a></li>
           <li><a href="#overview">1.1 Overview</a></li>
           <li><a href="#whats-new">1.2 What's New (v26)</a></li>
-          <li><a href="#expanded-data">1.2.1 Expanded dataset</a></li>
-          <li><a href="#redesigned-ui">1.2.2 Redesigned user interface</a></li>
-          <li><a href="#analytical-tools">1.2.3 New analytical tools</a></li>
-          <li><a href="#improved-search">1.2.4 Improved search capabilities</a></li>
-          <li><a href="#technical-improvements">1.2.5 Technical improvements</a></li>
+          <li><a href="#expanded">1.2.1 Expanded dataset</a></li>
+          <li><a href="#redesigned">1.2.2 Redesigned user interface</a></li>
+          <li><a href="#analytical">1.2.3 New analytical tools</a></li>
+          <li><a href="#improved">1.2.4 Improved search capabilities</a></li>
+          <li><a href="#technical">1.2.5 Technical improvements</a></li>
           <li><a href="#how-to-cite">1.3 How to Cite & License</a></li>
           <li><a href="#license1">1.3.1 Article License (2021): CC BY 4.0</a></li>
           <li><a href="#using-platform">2. How to Use the Platform</a></li>
