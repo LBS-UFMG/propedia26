@@ -49,38 +49,12 @@
   <!-- conteudo milenna -->
 
   <style>
-    :root {
-      --bg: #0f1724;
-      --card: #0b1220;
-      --muted: #94a3b8;
-      --accent: #60a5fa;
-      --txt: #e6eef6
-    }
-
-    body {
-      font-family: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial;
-      color: var(--txt);
-      background: linear-gradient(180deg, #071024 0%, #08122a 100%);
-      margin: 0;
-      padding: 0
-    }
-
-    header {
-      background: linear-gradient(90deg, rgba(10, 20, 40, .6), rgba(6, 12, 20, .6));
-      backdrop-filter: blur(6px);
-      padding: 18px 26px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .5)
-    }
+    
 
     .container {
       max-width: 1100px;
       margin: 28px auto;
       padding: 18px
-    }
-
-    h1 {
-      font-size: 1.6rem;
-      margin: 0 0 6px
     }
 
     .meta {
@@ -125,39 +99,6 @@
       margin: 12px 0;
       color: var(--muted);
       text-align: center
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 12px 0;
-      background: rgba(255, 255, 255, .01)
-    }
-
-    th,
-    td {
-      padding: 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, .03);
-      text-align: left;
-      font-size: .95rem
-    }
-
-    th {
-      color: var(--muted);
-      font-weight: 700
-    }
-
-    pre {
-      white-space: pre-wrap;
-      color: var(--muted);
-      font-size: .92rem
-    }
-
-    footer {
-      color: var(--muted);
-      font-size: .9rem;
-      text-align: center;
-      padding: 18px 0
     }
 
     .muted {
