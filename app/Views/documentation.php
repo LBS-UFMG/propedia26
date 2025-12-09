@@ -253,7 +253,7 @@
       </ul>
 
       <figure>
-        <img src="fig1prop.svg" alt="Expanding the dataset">
+        <img src="<?= base_url('/img/docs/fig1prop.svg') ?>" alt="Expanding the dataset">
         <figcaption>
           <b>Figure 1.</b> Expanding the dataset. (A) Latest version of Propedia (2026, Propedia v26);
           (B) Original version of Propedia (2020).
@@ -272,7 +272,7 @@
       </ul>
 
       <figure>
-        <img src="fig2prop.svg" alt="Interface">
+        <img src="<?= base_url('/img/docs/fig2prop.svg') ?>" alt="Interface">
         <figcaption>
           <b>Figure 2.</b> Propedia user interface. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2020, Propedia-legacy).
         </figcaption>
@@ -288,7 +288,7 @@
       </ul>
 
       <figure>
-        <img src="fig3prop.svg" alt="Interface">
+        <img src="<?= base_url('/img/docs/fig3prop.svg') ?>" alt="Interface">
         <figcaption>
           <b>Figure 3.</b> Propedia peptide clustering. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2020).
         </figcaption>
@@ -304,7 +304,7 @@
       </ul>
 
       <figure>
-        <img src="fig4prop.svg" alt="Interface">
+        <img src="<?= base_url('/img/docs/fig4prop.svg') ?>" alt="Interface">
         <figcaption>
           <b>Figure 4.</b> New tool in Propedia v26: BLAST.
         </figcaption>
@@ -765,7 +765,7 @@
       </p>
 
       <figure>
-        <img src="fig5prop.svg" alt="Interface">
+        <img src="<?= base_url('/img/docs/fig5prop.svg') ?>" alt="Interface">
         <figcaption>
           <b>Figure 5.</b> Propedia home page.
         </figcaption>
@@ -806,7 +806,7 @@
       </p>
 
       <figure>
-        <img src="figaprop.png" alt="Interface">
+        <img src="<?= base_url('/img/docs/figaprop.png') ?>" alt="Interface">
         <figcaption>
           <b>Figure 6.</b> Example of an entry page.
         </figcaption>
@@ -817,7 +817,7 @@
       </p>
 
       <figure>
-        <img src="figbprop.png" alt="Interface">
+        <img src="<?= base_url('/img/docs/figbprop.png') ?>" alt="Interface">
         <figcaption>
           <b>Figure 7.</b> Example of an entry page. Physical/chemical parameters are shown below the description section.
         </figcaption>
@@ -828,7 +828,7 @@
       </p>
 
       <figure>
-        <img src="figcprop.png" alt="Interface">
+        <img src="<?= base_url('/img/docs/figcprop.png') ?>" alt="Interface">
         <figcaption>
           <b>Figure 8.</b> Contact map.
         </figcaption>
@@ -843,7 +843,7 @@
       <h3><em>2.1.2 Physicochemical parameters</em></h3>
 
       <figure>
-        <img src="figdprop.png" alt="Interface">
+        <img src="<?= base_url('/img/docs/figdprop.png') ?>" alt="Interface">
         <figcaption>
           <b>Figure 9.</b> Physical-chemical parameters calculated using ProtParam.
         </figcaption>
@@ -892,7 +892,7 @@
       </p>
 
       <figure>
-        <img src="figeprop.png" alt="Interface">
+        <img src="<?= base_url('/img/docs/figeprop.png') ?>" alt="Interface">
         <figcaption>
           <b>Figure 10.</b> Complex 3D view.
         </figcaption>
@@ -905,7 +905,7 @@
       <h2><em>2.1.4 Clustering information</em></h2>
 
       <figure>
-        <img src="figfprop.png" alt="Interface">
+        <img src="<?= base_url('/img/docs/figfprop.png') ?>" alt="Interface">
         <figcaption>
           <b>Figure 11.</b> Clustering box.
         </figcaption>
@@ -964,7 +964,7 @@
       <h2><em>2.1.5 Protein-peptide interaction information</em></h2>
 
       <figure>
-        <img src="figgprop.png" alt="Interface">
+        <img src="<?= base_url('/img/docs/figgprop.png') ?>" alt="Interface">
         <figcaption>
           <b>Figure 12.</b> Protein-petide interaction.
         </figcaption>
@@ -995,7 +995,7 @@
       </ul>
 
       <figure>
-        <img src="fighprop.png" alt="Interface">
+        <img src="<?= base_url('/img/docs/fighprop.png') ?>" alt="Interface">
         <figcaption>
           <b>Figure 13.</b> Interaction energy.
         </figcaption>
@@ -1029,7 +1029,7 @@
       </ul>
 
       <figure>
-        <img src="figiprop.png" alt="Interface">
+        <img src="<?= base_url('/img/docs/figiprop.png') ?>" alt="Interface">
         <figcaption>
           <b>Figure 14.</b> Interface residue.
         </figcaption>
@@ -1041,7 +1041,7 @@
       </ul>
 
       <figure>
-        <img src="figjprop.png" alt="Interface">
+        <img src="<?= base_url('/img/docs/figjprop.png') ?>" alt="Interface">
         <figcaption>
           <b>Figure 15.</b> Contacts (calculated using COCaDA).
         </figcaption>
@@ -1204,7 +1204,7 @@
       </p>
 
       <figure>
-        <img src="fig6prop.svg" alt="Interface">
+        <img src="<?= base_url('/img/docs/fig6prop.svg') ?>" alt="Interface">
         <figcaption>
           <b>Figure 16.</b> Parameters used for the development of the BLAST tool. On the left are examples of peptide sequence algorithms. The peptide sequence of 9VEI-F-A (available in the Propedia database) was used as input, and the sequence used as a response is a real example of a BLAST run performed by Propedia. The right side shows an example of the protein sequence algorithm (the total sequence has been omitted for better image visualization). The protein sequence 9VEI-F-A was used as input, and the sequence used as a response is a real example of a BLAST run performed by Propedia.
         </figcaption>
@@ -1237,7 +1237,7 @@
       </p>
 
       <figure>
-        <img src="figkprop.png" alt="Interface">
+        <img src="<?= base_url('/img/docs/figkprop.png') ?>" alt="Interface">
         <figcaption>
           <b>Figure 17.</b> Propedia's v26 clusters.
         </figcaption>
@@ -1385,7 +1385,7 @@
         <p>The Downloads section provides access to key files and resources derived from the database. The main list (Propedia v26 - New) is illustrated in the Figure below.</p>
 
         <figure>
-          <img src="fig7prop.svg" alt="Interface">
+          <img src="<?= base_url('/img/docs/fig7prop.svg') ?>" alt="Interface">
           <figcaption>
             <b>Figure 18.</b> Available downloads of Propedia v26.
           </figcaption>
@@ -1411,7 +1411,7 @@
         </ul>
 
         <figure>
-          <img src="fig8prop.png" alt="Interface">
+          <img src="<?= base_url('/img/docs/fig8prop.png') ?>" alt="Interface">
           <figcaption>
             <b>Figure 19.</b> Downloads available on Propedia Legacy.
           </figcaption>
@@ -1430,7 +1430,7 @@
         </p>
 
         <figure>
-          <img src="fig9prop.svg" alt="Interface">
+          <img src="<?= base_url('/img/docs/fig9prop.svg') ?>" alt="Interface">
           <figcaption>
             <b>Figure 20.</b> Quick step-by-step guide: how to use the Explore page. When you open the Explore page, you will: (1, Optional) Set the length range in Min peptide size and Max peptide size. (2) Select one or more categories in PDB Classification to filter by function/structure. (3) Check Only canonical amino acids if you want only canonical sequences. (4) Check Remove redundancy to get only non-redundant entries. (5) Click Apply filters. The table will be updated with entries that meet the criteria. For a specific entry, click ID to open the complex details page or use Download to obtain the PDB.
           </figcaption>
@@ -1486,7 +1486,7 @@
         <p>The header and metadata include the Identifier (ID), for example, 1A0N-A-B, which indicates the PDB code accompanied by the peptide and protein chains, as well as external links that provide direct access to the corresponding entries in RCSB PDB, UniProt, and PubMed. The structural method is also presented, containing the experimental technique used (such as SOLUTION NMR) and, when available, the resolution of the structure, as well as a concise description of the complex, such as in “Calmodulin complexed with a peptide...”. The page shows two columns (Protein/Peptide) with automatically calculated sequences and properties, for example: sequence (complete receptor chain and peptide sequence), length, molecular weight, isoelectric point (pI), instability index, aliphatic index, GRAVY, % Hydrophobicity, Residues + / -, atomic formula, total atoms and extinction coefficient. All of these properties are shown in Figure 10. These values are useful for rapid assessment of physicochemical properties and for filtering in pipelines.</p>
 
         <figure>
-          <img src="fig10prop.png" alt="Interface">
+          <img src="<?= base_url('/img/docs/fig10prop.png') ?>" alt="Interface">
           <figcaption>
             <b>Figure 21.</b> Propedia v26 ID page.
           </figcaption>
@@ -1503,7 +1503,7 @@
           </p>
 
           <figure>
-            <img src="fig11prop.svg" alt="Interface">
+            <img src="<?= base_url('/img/docs/fig11prop.svg') ?>" alt="Interface">
             <figcaption>
               <b>Figure 21.</b> Graphical summary of protein-peptide complex interaction analyses.
             </figcaption>
@@ -1536,7 +1536,7 @@
 
 
           <figure>
-            <img src="fig12prop.png" alt="Interface">
+            <img src="<?= base_url('/img/docs/fig12prop.png') ?>" alt="Interface">
             <figcaption>
               <b>Figure 22.</b> Graphical tutorial of Propedia v26 search for similar binding sites.
             </figcaption>
@@ -1553,7 +1553,7 @@
           </p>
 
           <figure>
-            <img src="figlprop.png" alt="Interface">
+            <img src="<?= base_url('/img/docs/figlprop.png') ?>" alt="Interface">
             <figcaption>
               <b>Figure 23.</b> ProBiS example.
             </figcaption>
@@ -1566,7 +1566,7 @@
             At the end, Propedia returns a list of structures with similar binding sites. Note that similar regions are highlighted in green (the input is displayed on the left, and the result is displayed on the right). Click on the radio input fields to change the structure shown on the right.
           </p>
           <figure>
-            <img src="figmprop.png" alt="Interface">
+            <img src="<?= base_url('/img/docs/figmprop.png') ?>" alt="Interface">
             <figcaption>
               <b>Figure 24.</b> Second example of ProBiS.
             </figcaption>
