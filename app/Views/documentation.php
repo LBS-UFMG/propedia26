@@ -105,8 +105,7 @@
           <li><a href="#improved-search">1.2.4 Improved search capabilities</a></li>
           <li><a href="#technical-improvements">1.2.5 Technical improvements</a></li>
           <li><a href="#how-to-cite">1.3 How to Cite & License</a></li>
-          <li><a href="#license1">1.3.1 Article License (2021): Creative Commons Attribution 4.0 International (CC BY 4.0)</a></li>
-          <li><a href="#license2">1.3.2 Article License (2023): Creative Commons Attribution (CC BY)</a></li>
+          <li><a href="#license1">1.3.1 Article License (2021): CC BY 4.0</a></li>
           <li><a href="#using-platform">2. How to Use the Platform</a></li>
           <li><a href="#using-platform">2. How to Use the Platform</a></li>
           <li><a href="#entry">2.1 Entry Page</a></li>
@@ -688,7 +687,7 @@
       </section>
 
       <section id="license1" class="docs-card">
-        <h2><em>1.3.1 License: Creative Commons Attribution 4.0 International (CC-BY ND 4.0)</em></h2>
+        <h2><em>1.3.1 License: CC-BY ND 4.0</em></h2>
 
         <p>Propedia v26 data is available under the Creative Commons Attribution 4.0 International (CC BY ND 4.0) license. This license allows:</p>
 
