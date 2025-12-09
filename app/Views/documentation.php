@@ -5,52 +5,10 @@
 
   <h1 class="pb-2 text-dark"><strong>Documentation</strong></h1>
   <hr>
-  <h3 class="pt-4 pb-1">What is Propedia?</h3>
-  <p>PROPEDIA is a database of peptide-protein complexes clusterized in three methodologies: based on peptide sequences; based on structure interface; and based on binding sites. PROPEDIA main goal is to give new insights into peptide design of biotechnological interests.</p>
-
-  <h3 class="pt-4 pb-1">Propedia 26 stats</h3>
-
-  <div class="table-responsive">
-    <table class="table table-hover table-condensed table-striped" class="table table-striped table-bordered table-hover table-sm align-middle text-end">
-      <caption class="text-muted">Entries summary</caption>
-      <thead class="table-light">
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">pep-pro complexes</th>
-          <th scope="col">multipro</th>
-          <th scope="col">Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Unique entries</th>
-          <td>51,082</td>
-          <td>0</td>
-          <td>51,082</td>
-        </tr>
-        <tr>
-          <th scope="row">Duplicated entries</th>
-          <td>27,066</td>
-          <td>20,631</td>
-          <td>47,697</td>
-        </tr>
-      </tbody>
-      <tfoot class="table-light">
-        <tr>
-          <th scope="row">Total</th>
-          <td>78,148</td>
-          <td>20,631</td>
-          <td><strong>98,779</strong></td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
 
   <!-- conteudo milenna -->
 
   <style>
-    
-
     .container {
       max-width: 1100px;
       margin: 28px auto;
@@ -218,6 +176,48 @@
             <a href="https://bioinfo.dcc.ufmg.br/propedia26">https://bioinfo.dcc.ufmg.br/propedia26</a>
           </p>
         </div>
+
+        <h3 class="pt-4 pb-1">What is Propedia?</h3>
+        <p>PROPEDIA is a database of peptide-protein complexes clusterized in three methodologies: based on peptide sequences; based on structure interface; and based on binding sites. PROPEDIA main goal is to give new insights into peptide design of biotechnological interests.</p>
+
+        <h3 class="pt-4 pb-1">Propedia 26 stats</h3>
+
+        <div class="table-responsive">
+          <table class="table table-hover table-condensed table-striped" class="table table-striped table-bordered table-hover table-sm align-middle text-end">
+            <caption class="text-muted">Entries summary</caption>
+            <thead class="table-light">
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">pep-pro complexes</th>
+                <th scope="col">multipro</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Unique entries</th>
+                <td>51,082</td>
+                <td>0</td>
+                <td>51,082</td>
+              </tr>
+              <tr>
+                <th scope="row">Duplicated entries</th>
+                <td>27,066</td>
+                <td>20,631</td>
+                <td>47,697</td>
+              </tr>
+            </tbody>
+            <tfoot class="table-light">
+              <tr>
+                <th scope="row">Total</th>
+                <td>78,148</td>
+                <td>20,631</td>
+                <td><strong>98,779</strong></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
 
         <h2 id="overview">1.1 Overview</h2>
 
