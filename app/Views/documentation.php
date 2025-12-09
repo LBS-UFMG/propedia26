@@ -672,13 +672,13 @@
         <h1>1.3 How to Cite & Licenses</h1>
         <p>To cite PROPEDIA, we recommend referencing both the original article and the most recent publication in the database. If specific features or previous versions are used, the respective publications may also be cited. The original 2021 article presents the first description of the database:</p>
 
-        <code>
+        <code class="text-black rounded bg-light p-4">
           Martins, P.M., Santos, L.H., Mariano, D. et al. <i>Propedia: a database for protein–peptide identification based on a hybrid clustering algorithm.</i> BMC Bioinformatics 22, 1 (2021). doi: 10.1186/s12859-020-03881-z.
         </code>
         
         <p><br>Version 2.3, published in 2023, introduces a new representation approach based on structural signatures:</p>
 
-        <code>
+        <code class="text-black rounded bg-light p-4">
           Martins P, Mariano D, Carvalho FC, Bastos LL, Moraes L, Paixão V, and docs-cardoso de Melo-Minardi R (2023). <i>Propedia v2.3: A novel representation approach for the peptide-protein interaction database using graph-based structural signatures.</i> Front. Bioinform. 3:1103103. doi: 10.3389/fbinf.2023.1103103.
         </code>
 
