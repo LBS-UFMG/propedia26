@@ -11,7 +11,7 @@
   <h3 class="pt-4 pb-1">Propedia 26 stats</h3>
 
   <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover table-sm align-middle text-end">
+    <table class="table table-hover table-condensed table-striped" class="table table-striped table-bordered table-hover table-sm align-middle text-end">
       <caption class="text-muted">Entries summary</caption>
       <thead class="table-light">
         <tr>
@@ -145,7 +145,7 @@
   </style>
   </style>
   <div>
-    <div class="layout">
+    <div class="layout text-muted">
       <aside class="sidebar">
         <div class="docs-search">
           <strong class="muted">Quick index</strong>
@@ -318,7 +318,7 @@
         In version 26, the complex details page has been extensively redesigned to offer a much deeper interaction analysis: it now displays atomic data with precise distance measurements and clear categorization of interaction types (hydrogen bonds, hydrophobic contacts, etc.). In addition, complete structural metrics, such as interface area and interaction energy, which were previously absent or very basic, have been incorporated. The presentation of the data has also been reorganized: in v26, the information is distributed across tabs (structure, energy, sequence) for greater clarity; in the old version, everything was on a single page with less organization. From a computational standpoint, energy calculations have been improved with updated algorithms (e.g., NACCESS or equivalents) with more refined parameterization, while the previous version applied basic calculations with limited validation. These topics are shown in Table 1, and they will be discussed in more detail in the following sections.
       </p>
 
-      <table>
+      <table class="table table-hover table-condensed table-striped">
         <caption style="text-align: left;"><em>Table 1. News in Propedia's property</em></caption>
 
         <thead>
@@ -1061,7 +1061,7 @@
 
       <p><strong>Criteria for defining contacts:</strong></p>
 
-      <table>
+      <table class="table table-hover table-condensed table-striped">
         <thead>
           <tr>
             <th>Contact Type</th>
@@ -1261,7 +1261,7 @@
         }
       </style>
 
-      <table>
+      <table class="table table-hover table-condensed table-striped">
         <caption class="table-caption-left">Table. Propedia's v26 clusters.</caption>
         <thead>
           <tr>
@@ -1440,7 +1440,7 @@
       <section id="practical-ex" class="card">
         <h3><em>2.5.1 Practical search examples, tips and best practices</em></h3>
         <p>In the table below, we list some examples for you to practice different ways of exploring in Propedia v26.</p>
-        <table>
+        <table class="table table-hover table-condensed table-striped">
           <caption style="text-align: left; font-weight: bold;">Table 3. Practical examples to explore in Propedia v26.</caption>
           <thead>
             <tr>
