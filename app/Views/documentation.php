@@ -107,7 +107,6 @@
           <li><a href="#how-to-cite">1.3 How to Cite & License</a></li>
           <li><a href="#license1">1.3.1 Article License (2021): CC BY 4.0</a></li>
           <li><a href="#using-platform">2. How to Use the Platform</a></li>
-          <li><a href="#using-platform">2. How to Use the Platform</a></li>
           <li><a href="#entry">2.1 Entry Page</a></li>
           <li><a href="#edescription">2.1.1 Entry description</a></li>
           <li><a href="#ephysical">2.1.2 Physicochemical parameters</a></li>
@@ -133,7 +132,7 @@
           <li><a href="#binding-sites">2.6 Search for Similar Binding Sites (ProBiS)</a></li>
           <li><a href="#example">2.6.1 Example</a></li>
           <li><a href="#final">3. Final Considerations</a></li>
-          <li><a href="reference">4. References</a></li>
+          <li><a href="#reference">4. References</a></li>
         </ul>
       </nav>
 
@@ -1416,7 +1415,7 @@
           </figure>
         </section>
 
-        <section id="practical-ex" class="docs-card">
+        <section id="practical-examples" class="docs-card">
           <h3><em>2.5.1 Practical search examples, tips and best practices</em></h3>
           <p>In the table below, we list some examples for you to practice different ways of exploring in Propedia v26.</p>
           <table class="table table-hover table-condensed table-striped">
@@ -1449,7 +1448,7 @@
 
         </section>
 
-        <section id="Troubleshooting1" class="docs-card">
+        <section id="troubleshooting1" class="docs-card">
           <h3><em>2.5.2 Troubleshooting</em></h3>
           <p>
             If no results are displayed after applying filters, check that the size range or combination of classifications is not too restrictive; if necessary, remove some filters and try again. If the list displayed is too long or the page appears slow, consider reducing the filters or using the local CSV file to perform the filtering, especially on slower connections where downloading individual PDB files may take time. If the download does not work, check the Download link corresponding to the selected row and, if the problem persists, use the Downloads section to obtain the files in batches. Finally, discrepancies observed in the “Unique?” field are expected, as this attribute reflects the internal methodology for removing redundancy, based on the concatenation of protein and peptide sequences,whose details and criteria can be found in the Clusters area or in the technical documentation.
