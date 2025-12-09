@@ -4,7 +4,6 @@
   <!-- Conteúdo personalizado -->
 
   <h1 class="pb-2 text-dark"><strong>Documentation</strong></h1>
-  <hr>
 
   <!-- conteudo milenna -->
   <style>
