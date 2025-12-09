@@ -885,7 +885,7 @@
     </p>
 
     <figure>
-      <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figeprop.png') ?>" alt="Interface">
+      <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/figeprop.png') ?>" alt="Interface">
       <figcaption>
         <b>Figure 10.</b> Complex 3D view.
       </figcaption>
@@ -898,7 +898,7 @@
     <h2><em>2.1.4 Clustering information</em></h2>
 
     <figure>
-      <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figfprop.png') ?>" alt="Interface">
+      <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/figfprop.png') ?>" alt="Interface">
       <figcaption>
         <b>Figure 11.</b> Clustering box.
       </figcaption>
@@ -957,7 +957,7 @@
     <h2><em>2.1.5 Protein-peptide interaction information</em></h2>
 
     <figure>
-      <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figgprop.png') ?>" alt="Interface">
+      <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/figgprop.png') ?>" alt="Interface">
       <figcaption>
         <b>Figure 12.</b> Protein-petide interaction.
       </figcaption>
@@ -988,7 +988,7 @@
     </ul>
 
     <figure>
-      <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fighprop.png') ?>" alt="Interface">
+      <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/fighprop.png') ?>" alt="Interface">
       <figcaption>
         <b>Figure 13.</b> Interaction energy.
       </figcaption>
@@ -1529,7 +1529,7 @@
 
 
         <figure>
-          <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig12prop.png') ?>" alt="Interface">
+          <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figmprop.png') ?>" alt="Interface">
           <figcaption>
             <b>Figure 22.</b> Graphical tutorial of Propedia v26 search for similar binding sites.
           </figcaption>
