@@ -8,54 +8,7 @@
 
   <!-- conteudo milenna -->
   <style>
-    .meta {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 14px
-    }
-
-    nav.toc {
-      background: rgba(255, 255, 255, .03);
-      padding: 14px;
-      border-radius: 12px;
-      margin-bottom: 18px
-    }
-
-    nav.toc ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px
-    }
-
-    nav.toc a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600
-    }
-
-    section.card {
-      background: rgba(255, 255, 255, .02);
-      padding: 18px;
-      border-radius: 12px;
-      margin-bottom: 16px
-    }
-
-    .fig {
-      border: 1px dashed rgba(255, 255, 255, .03);
-      padding: 12px;
-      border-radius: 10px;
-      margin: 12px 0;
-      color: var(--muted);
-      text-align: center
-    }
-
-    .muted {
-      color: var(--muted)
-    }
-
+  
     @media (min-width:900px) {
       .layout {
         display: grid;
@@ -89,10 +42,6 @@
       font-weight: 600
     }
 
-    .anchor {
-      color: var(--muted);
-      font-size: .9rem
-    }
   </style>
   <div class="layout">
     <aside class="sidebar">
@@ -246,7 +195,7 @@
     </ul>
 
     <figure>
-      <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig1prop.svg') ?>" alt="Expanding the dataset">
+      <img class="w-75" src="<?= base_url('/img/docs/fig1prop.svg') ?>" alt="Expanding the dataset">
       <figcaption>
         <b>Figure 1.</b> Expanding the dataset. (A) Latest version of Propedia (2026, Propedia v26);
         (B) Original version of Propedia (2020).
@@ -265,7 +214,7 @@
     </ul>
 
     <figure>
-      <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig2prop.svg') ?>" alt="Interface">
+      <img class="w-50" src="<?= base_url('/img/docs/fig2prop.svg') ?>" alt="Interface">
       <figcaption>
         <b>Figure 2.</b> Propedia user interface. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2020, Propedia-legacy).
       </figcaption>
@@ -281,7 +230,7 @@
     </ul>
 
     <figure>
-      <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig3prop.svg') ?>" alt="Interface">
+      <img class="w-75" src="<?= base_url('/img/docs/fig3prop.svg') ?>" alt="Interface">
       <figcaption>
         <b>Figure 3.</b> Propedia peptide clustering. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2020).
       </figcaption>
