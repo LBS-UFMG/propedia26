@@ -8,7 +8,49 @@
 
   <!-- conteudo milenna -->
   <style>
-  
+
+    nav.toc {
+      background: rgba(255, 255, 255, .03);
+      padding: 14px;
+      border-radius: 12px;
+      margin-bottom: 18px
+    }
+
+    nav.toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    nav.toc a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600
+    }
+
+    section.card {
+      background: rgba(255, 255, 255, .02);
+      padding: 18px;
+      border-radius: 12px;
+      margin-bottom: 16px
+    }
+
+    .fig {
+      border: 1px dashed rgba(255, 255, 255, .03);
+      padding: 12px;
+      border-radius: 10px;
+      margin: 12px 0;
+      color: var(--muted);
+      text-align: center
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
     @media (min-width:900px) {
       .layout {
         display: grid;
@@ -42,6 +84,10 @@
       font-weight: 600
     }
 
+    .anchor {
+      color: var(--muted);
+      font-size: .9rem
+    }
   </style>
   <div class="layout">
     <aside class="sidebar">
