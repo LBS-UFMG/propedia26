@@ -352,7 +352,7 @@
             <p class="bg-light p-3 rounded small">
                 <label class="badge bg-dark">Interface: <?= substr_count($info[14],",")+1 ?> residues</label>
                 <label class="badge bg-secondary">Chain: <?= $info[27] ?></label>
-                <span class="pt-2"><?= str_replace(',', ', ', $info[14]) ?></span>
+                <span class="pt-2"><?= str_replace(',', ', ', str_replace('<br>','',$info[14])) ?></span>
             </p>
 
             <h4>Contacts (calculated using COCaDA)  <sup><a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Contacts (calculated using COCaDA): Number and type of interatomic contacts calculated by the COCaDA tool (https://bioinfo.dcc.ufmg.br/cocada-web), used to characterize specific atom–atom interactions across the interface."><i class="bi bi-question-circle-fill opacity-25"></i></a></sup></h4>
