@@ -96,7 +96,7 @@
                 </div>
                 <div class="row mb-4">
                     <div class="col-12">
-                        <strong>Organism: </strong><span><?= $info[44] ?></span>
+                        <strong>Organism: </strong><span><em><?= $info[44] ?></em></span>
                     </div>
                 </div>
             </div>
