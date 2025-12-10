@@ -90,10 +90,10 @@
                 </div>
 
                 <div class="row mb-4">
-                    <div class="col-12 col-md-8">
+                    <div class="col-12">
                         <p><strong>Description: </strong> <?= $info[39] ?></p>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-12">
                         <strong>Organism: </strong><span><?= $info[44] ?></span>
                     </div>
                 </div>
