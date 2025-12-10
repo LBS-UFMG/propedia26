@@ -91,7 +91,7 @@
 
                 <div class="row mb-1">
                     <div class="col-12">
-                        <p><strong>Description: </strong> <?= $info[39] ?></p>
+                        <strong>Description: </strong> <?= $info[39] ?>
                     </div>
                 </div>
                 <div class="row mb-4">
