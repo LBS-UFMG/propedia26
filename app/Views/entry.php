@@ -248,15 +248,16 @@
                                 <td><?= $info[59] ?></td>
                                 <td><?= $info[47] ?></td>
                             </tr>
+                            <?php function quebra40($text) { return wordwrap($text, 40, "\n", true); } ?>
                             <tr>
                                 <th>Sequence
                                     <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Sequence: The primary amino acid structure of the protein or peptide, defining its linear arrangement of residues."><i class="bi bi-question-circle-fill opacity-25"></i></a>
                                 </th>
                                 <td>
-                                    <pre><?= $info[29] ?></pre>
+                                    <pre><?= quebra40($info[29]) ?></pre>
                                 </td>
                                 <td>
-                                    <pre><?= $info[25] ?></pre>
+                                    <pre><?= quebra40($info[25]) ?></pre>
                                 </td>
                             </tr>
                         </tbody>
