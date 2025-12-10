@@ -351,7 +351,7 @@
 
             <p class="bg-light p-3 rounded small">
                 <label class="badge bg-dark">Interface: <?= substr_count($info[14],",")+1 ?> residues</label>
-                <label class="badge bg-secondary">Chain: <?= $info[27] ?></label>
+                <label class="badge bg-secondary">Chain: <?= $info[27] ?></label><br class="mb-2">
                 <span class="pt-2"><?= str_replace(',', ', ', str_replace('<br>','',$info[14])) ?></span>
             </p>
 
