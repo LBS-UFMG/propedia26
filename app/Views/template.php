@@ -3,7 +3,7 @@
 
 <head>
     <title>Propedia – The Protein-Peptide Interaction Database</title>
-    <?php $version = "25.1205"; // 5-dez-2025 
+    <?php $version = "25.1210"; // 10-dez-2025 
     ?>
 
     <meta charset="utf-8">
