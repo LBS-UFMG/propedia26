@@ -270,7 +270,7 @@
             </div>
             <div class="row mt-5">
                 <div class="col-12">
-                    <h2>Clustering classification</h2>
+                    <h2>Classifications</h2>
                 </div>
                 <hr>
                 <div class="col-12">
