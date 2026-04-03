@@ -23,42 +23,42 @@
          <tbody>
             <tr style="font-weight: bold">
                <td>Propedia 26 - PDB complexes</td>
-               <td class="text-end">78,148</td>
+               <td class="text-end">73,650</td>
                <td>ZIP</td>
                <td>3.4GB</td>
                <td><a target="_blank" href="<?=base_url('/data/db/propedia26_v6.zip')?>">propedia_26.zip</a></td>
             </tr> 
             <tr>
                <td>Propedia 26 - descriptions</td>
-               <td class="text-end">78,148</td>
+               <td class="text-end">73,650</td>
                <td>CSV</td>
                <td>53MB</td>
-               <td><a target="_blank" href="<?=base_url('/data/propedia26_v12.csv')?>">propedia_26.csv</a></td>
+               <td><a target="_blank" href="<?=base_url('/data/propedia26_v13.csv')?>">propedia_26.csv</a></td>
             </tr>  
-            <tr>
+            <!-- <tr>
                <td>Propedia 26 - PDBs only peptide</td>
                <td class="text-end">15,676</td>
                <td>ZIP</td>
                <td>57MB</td>
                <td><a target="_blank" href="<?=base_url('/data/db/peptides_pdb.zip')?>">peptides_pdb.zip</a></td>
-            </tr> 
+            </tr>  -->
             
             <tr>
                <td>Propedia26 Multipro - PDB files</td>
-               <td class="text-end">20,632</td>
+               <td class="text-end">19,827</td>
                <td>ZIP</td>
                <td>2.4GB</td>
                <td><a target="_blank" href="<?=base_url('/data/db/multipro_v6.zip')?>">multipro.zip</a></td>
             </tr>  
             <tr>
                <td>Propedia26 Multipro - descriptions</td>
-               <td class="text-end">20,631</td>
+               <td class="text-end">19,827</td>
                <td>CSV</td>
                <td>35MB</td>
                <td><a target="_blank" href="<?=base_url('/data/multipro_v2.csv')?>">multipro.csv</a></td>
             </tr>  
 
-            <tr>
+            <!-- <tr>
                <td>Sequence signatures</td>
                <td class="text-end">17,509</td>
                <td>ZIP</td>
@@ -79,11 +79,11 @@
                <td>ZIP</td>
                <td>2MB</td>
                <td><a target="_blank" href="<?=base_url('/data/clusters.zip')?>">clusters.zip</a></td>
-            </tr>  
+            </tr>   -->
          </tbody>
     </table>
     
-    <br class="my-5">
+    <br class="my-5 py-5">
     <hr class="my-5 py-5">
 
     <div id="download" class="bg-light p-5 border rounded">
