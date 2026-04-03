@@ -180,23 +180,23 @@
             <tbody>
               <tr>
                 <th scope="row">Unique entries</th>
-                <td>51,082</td>
+                <td>48,822</td>
                 <td>0</td>
-                <td>51,082</td>
+                <td>48,822</td>
               </tr>
               <tr>
                 <th scope="row">Duplicated entries</th>
-                <td>27,066</td>
-                <td>20,631</td>
-                <td>47,697</td>
+                <td>24,828</td>
+                <td>19,827</td>
+                <td>44,655</td>
               </tr>
             </tbody>
             <tfoot class="table-light">
               <tr>
                 <th scope="row">Total</th>
-                <td>78,148</td>
-                <td>20,631</td>
-                <td><strong>98,779</strong></td>
+                <td>73,650</td>
+                <td>19,827</td>
+                <td><strong>93,477</strong></td>
               </tr>
             </tfoot>
           </table>
