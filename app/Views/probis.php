@@ -38,6 +38,9 @@
                         </style>
 
                         <?php if ($status == 1) { ?>
+                           <?php if ($is_running !== "ready"): ?>
+                              <meta http-equiv="refresh" content="60">
+                           <?php endif; ?>
                            <p class="mb-0 text-muted" style="width: 600px; display: inline-block; word-wrap:break-word;">
                               <strong>PDB: </strong><?= $pdb ?><br>
                               <strong>Chain: </strong><?= $chain ?>

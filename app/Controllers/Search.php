@@ -107,9 +107,21 @@ class Search extends BaseController
             fclose($fp);
         }
 
-        $resultcsv = $save_dir . "result.csv";
-        system("python ../app/ThirdParty/nosql_to_csv.py {$save_dir}result.nosql {$save_dir}"); # recria o arquivo a cada refresh
+        $ini_time = filemtime($save_dir . 'busca.log');
+        $data['created'] = date('Y-m-d H:i', $ini_time);
+        if ((time() - $ini_time) > 600) {
+            $data['is_running'] = 'ready';
+        }
+        else{
+            $data['is_running'] = '<i class="bi bi-gear-fill spin text-primary"></i><span class="ms-1">running</span>';
+        }
 
+        $resultcsv = $save_dir . "result.csv";
+
+        if($data['is_running'] != 'ready'){
+            system("python ../app/ThirdParty/nosql_to_csv.py {$save_dir}result.nosql {$save_dir}"); # recria o arquivo a cada refresh
+        }
+        
         $result = [];
         if (($fp = fopen($resultcsv, 'r')) !== false) {
             // Lê o cabeçalho (primeira linha)
@@ -129,19 +141,10 @@ class Search extends BaseController
         $data['log'] = 'ok';
         $data['results'] = $result;
 
-        $ini_time = filemtime($save_dir . 'busca.log');
-        $fim_time = filemtime($save_dir . 'result.nosql');
-        $data['created'] = date('Y-m-d H:i', $ini_time);
-
         $cont_results = count(file($save_dir . 'result.csv'));
         $data['cont_results'] = $cont_results;
 
-        if ((time() - $ini_time) > 600) {
-            $data['is_running'] = 'ready';
-        }
-        else{
-            $data['is_running'] = '<i class="bi bi-gear-fill spin text-primary"></i><span class="ms-1">running</span>';
-        }
+        
 
         return view("probis",$data);
     }
