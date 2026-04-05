@@ -82,6 +82,7 @@ class Search extends BaseController
 
         $pid = shell_exec($comando2);
         $pid = trim($pid);
+        dd($pid);exit();
         system("echo $pid > {$save_dir}pid.log");
 
         // muda as permissões de segurança
