@@ -134,10 +134,10 @@ class Search extends BaseController
         $data['created'] = date('Y-m-d H:i', $ini_time);
 
         if ((time() - $ini_time) > 600) {
-            $data['status'] = 'ready';
+            $data['is_running'] = 'ready';
         }
         else{
-            $data['status'] = 'running';
+            $data['is_running'] = 'running';
         }
 
         return view("probis",$data);
