@@ -107,8 +107,6 @@ class Search extends BaseController
             fclose($fp);
         }
 
-        dd($dados);
-
         $resultcsv = $save_dir . "result.csv";
         if (!file_exists($resultcsv)) {
             system("python ../app/ThirdParty/nosql_to_csv.py {$save_dir}result.nosql {$save_dir}");
