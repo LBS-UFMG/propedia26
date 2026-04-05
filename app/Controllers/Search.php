@@ -80,10 +80,21 @@ class Search extends BaseController
         $probis_db = "/home/liase/www/propedia26/public/data/db/probis/propedia26_srf.csv";
         $comando2 = "nohup probis -ncpu 4 -longnames -surfdb -local -sfile {$probis_db} -f1 {$save_dir}query.srf -c1 A -nosql {$save_dir}result.nosql > {$save_dir}busca.log &";
 
-        $pid = shell_exec($comando2);
-        $pid = trim($pid);
-        dd($pid);exit();
-        system("echo $pid > {$save_dir}pid.log");
+        $comando2 = "
+        bash -c '
+        nohup probis -ncpu 4 -longnames -surfdb -local \
+        -sfile {$probis_db} \
+        -f1 {$save_dir}query.srf \
+        -c1 A \
+        -nosql {$save_dir}result.nosql \
+        > {$save_dir}busca.log 2>&1 &
+
+        echo \$! > {$save_dir}pid.log
+        '
+        ";
+
+        exec($comando2);
+        exit();
 
         // muda as permissões de segurança
         chmod("../../../public/data/projects/$id", 0755);
