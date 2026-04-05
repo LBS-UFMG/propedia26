@@ -28,7 +28,7 @@
                         <style>
                         .spin {
                            display: inline-block;
-                           animation: spin 5s linear infinite;
+                           animation: spin 2s linear infinite;
                         }
 
                         @keyframes spin {
@@ -43,8 +43,9 @@
                               <strong>Chain: </strong><?= $chain ?>
                               <br>
                               <strong>Created: </strong><?= $created ?><br>
-                              <strong>Status: </strong><?= $is_running ?><br>
-                              <strong>Residues: </strong><span class="small"><?= $residues ?></span>
+                              <strong>Residues: </strong><span class="small"><?= $residues ?></span><br>
+                              <strong>Results: </strong><?= $cont_results ?><br>
+                              <strong>Status: </strong><?= $is_running ?>
                            </p>
 
                         <?php } ?>

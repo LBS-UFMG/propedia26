@@ -133,6 +133,9 @@ class Search extends BaseController
         $fim_time = filemtime($save_dir . 'result.nosql');
         $data['created'] = date('Y-m-d H:i', $ini_time);
 
+        $cont_results = count(file($save_dir . 'result.csv'));
+        $data['cont_results'] = $cont_results;
+
         if ((time() - $ini_time) > 600) {
             $data['is_running'] = 'ready';
         }
