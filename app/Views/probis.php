@@ -25,6 +25,18 @@
                            <p style="width: 400px; display: inline-block; word-wrap:break-word;" class="text-muted"><?= $log ?></p>
                         <?php } ?>
 
+                        <style>
+                        .spin {
+                           display: inline-block;
+                           animation: spin 1s linear infinite;
+                        }
+
+                        @keyframes spin {
+                           from { transform: rotate(0deg); }
+                           to { transform: rotate(360deg); }
+                        }
+                        </style>
+
                         <?php if ($status == 1) { ?>
                            <p class="mb-0 text-muted" style="width: 600px; display: inline-block; word-wrap:break-word;">
                               <strong>PDB: </strong><?= $pdb ?><br>
