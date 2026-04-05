@@ -142,8 +142,6 @@ class Search extends BaseController
         else{
             $data['is_running'] = '<i class="bi bi-gear-fill spin text-primary"></i><span class="ms-1">running</span>';
         }
-        d($ini_time);
-        dd(time() - $ini_time);
 
         return view("probis",$data);
     }
