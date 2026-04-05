@@ -78,7 +78,7 @@ class Search extends BaseController
 
         // passo 2 - roda o probis para buscar proteínas com sítio de ligação similar
         $probis_db = "/home/liase/www/propedia26/public/data/db/probis/propedia26_srf.csv";
-        $comando2 = "nohup probis -ncpu 8 -longnames -surfdb -local -sfile {$probis_db} -f1 {$save_dir}query.srf -c1 A -nosql {$save_dir}result.nosql -verbose > {$save_dir}busca.log &";
+        $comando2 = "nohup probis -ncpu 8 -longnames -surfdb -local -sfile {$probis_db} -f1 {$save_dir}query.srf -c1 A -nosql {$save_dir}result.nosql > {$save_dir}busca.log &";
 
         system($comando2);
 
@@ -106,6 +106,8 @@ class Search extends BaseController
             $dados = fgetcsv($fp, 0, ';');
             fclose($fp);
         }
+
+        dd($dados);
 
         $resultcsv = $save_dir . "result.csv";
         if (!file_exists($resultcsv)) {
