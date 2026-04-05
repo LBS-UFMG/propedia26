@@ -78,23 +78,9 @@ class Search extends BaseController
 
         // passo 2 - roda o probis para buscar proteínas com sítio de ligação similar
         $probis_db = "/home/liase/www/propedia26/public/data/db/probis/propedia26_srf.csv";
-        $comando2 = "nohup probis -ncpu 4 -longnames -surfdb -local -sfile {$probis_db} -f1 {$save_dir}query.srf -c1 A -nosql {$save_dir}result.nosql > {$save_dir}busca.log &";
+        $comando2 = "nohup probis -ncpu 8 -longnames -surfdb -local -sfile {$probis_db} -f1 {$save_dir}query.srf -c1 A -nosql {$save_dir}result.nosql -verbose > {$save_dir}busca.log &";
 
-        $comando2 = "
-        bash -c '
-        nohup probis -ncpu 4 -longnames -surfdb -local \
-        -sfile {$probis_db} \
-        -f1 {$save_dir}query.srf \
-        -c1 A \
-        -nosql {$save_dir}result.nosql \
-        > {$save_dir}busca.log 2>&1 &
-
-        echo \$! > {$save_dir}pid.log
-        '
-        ";
-
-        exec($comando2);
-        exit();
+        system($comando2);
 
         // muda as permissões de segurança
         chmod("../../../public/data/projects/$id", 0755);
@@ -108,13 +94,6 @@ class Search extends BaseController
 
         $save_dir = FCPATH . "data/projects/{$id}/";
         $fileinfo = $save_dir . "info.csv";
-
-        $pid = trim(file_get_contents($save_dir.'pid.log'));
-        d($pid);
-        if(file_exists("/proc/$pid")){
-            dd('rodando');
-        }
-        exit();
 
         chmod("./data/projects/{$id}/result.nosql", 0755);
 
