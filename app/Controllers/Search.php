@@ -137,7 +137,7 @@ class Search extends BaseController
             $data['is_running'] = 'ready';
         }
         else{
-            $data['is_running'] = '<i class="bi bi-gear-fill spin"></i><span class="ms-2">running</span>';
+            $data['is_running'] = '<i class="bi bi-gear-fill spin text-primary"></i><span class="ms-1">running</span>';
         }
 
         return view("probis",$data);

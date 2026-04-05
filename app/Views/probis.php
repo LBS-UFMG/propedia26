@@ -28,7 +28,7 @@
                         <style>
                         .spin {
                            display: inline-block;
-                           animation: spin 1s linear infinite;
+                           animation: spin 5s linear infinite;
                         }
 
                         @keyframes spin {
