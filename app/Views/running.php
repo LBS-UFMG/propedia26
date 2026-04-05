@@ -7,8 +7,9 @@
         <div class="col">
         <p class="mt-4 alert alert-success"><b>Project created – </b>ID: <a href="<?=base_url('/project/'.$id)?>"><?=$id?></a></p>
 
-        <h1>Running</h1>
-        <p>You will be redirected to the project page in <br><span id="contador" style="font-size: 50px;">1000</span></h1>
+        <h1>Project created</h1>
+        <h3>Running now...</h3>
+        <p>You will be redirected to the project page in <br><span id="contador" style="font-size: 50px;">10</span></h1>
 
         </div>
     </div>
@@ -24,7 +25,7 @@
 
     // Função para o contador
     function iniciarContagem() {
-        let tempoRestante = 1000; // 5 segundos
+        let tempoRestante = 10; // 5 segundos
         const contadorElemento = document.getElementById("contador");
 
         const intervalo = setInterval(() => {
