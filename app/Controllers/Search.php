@@ -113,7 +113,7 @@ class Search extends BaseController
             $data['is_running'] = 'ready';
         }
         else{
-            $data['is_running'] = '<i class="bi bi-gear-fill spin text-primary"></i><span class="ms-1">running</span>';
+            $data['is_running'] = '<i class="bi bi-gear-fill spin text-primary"></i><span class="ms-1 text-primary">running</span>';
         }
 
         $resultcsv = $save_dir . "result.csv";
@@ -121,7 +121,7 @@ class Search extends BaseController
         if($data['is_running'] != 'ready'){
             system("python ../app/ThirdParty/nosql_to_csv.py {$save_dir}result.nosql {$save_dir}"); # recria o arquivo a cada refresh
         }
-        
+
         $result = [];
         if (($fp = fopen($resultcsv, 'r')) !== false) {
             // Lê o cabeçalho (primeira linha)
