@@ -30,6 +30,8 @@
                               <strong>PDB: </strong><?= $pdb ?><br>
                               <strong>Chain: </strong><?= $chain ?>
                               <br>
+                              <strong>Created: </strong><?= $created ?><br>
+                              <strong>Status: </strong><?= $status ?><br>
                               <strong>Residues: </strong><span class="small"><?= $residues ?></span>
                            </p>
 

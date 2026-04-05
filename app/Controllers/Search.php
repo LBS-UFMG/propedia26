@@ -108,9 +108,7 @@ class Search extends BaseController
         }
 
         $resultcsv = $save_dir . "result.csv";
-        if (!file_exists($resultcsv)) {
-            system("python ../app/ThirdParty/nosql_to_csv.py {$save_dir}result.nosql {$save_dir}");
-        }
+        system("python ../app/ThirdParty/nosql_to_csv.py {$save_dir}result.nosql {$save_dir}"); # recria o arquivo a cada refresh
 
         $result = [];
         if (($fp = fopen($resultcsv, 'r')) !== false) {
@@ -130,6 +128,17 @@ class Search extends BaseController
         $data['status'] = 1;
         $data['log'] = 'ok';
         $data['results'] = $result;
+
+        $ini_time = filemtime($save_dir . 'busca.log');
+        $fim_time = filemtime($save_dir . 'result.nosql');
+        $data['created'] = date('Y-m-d H:i', $ini_time);
+
+        if ((time() - $ini_time) > 600) {
+            $data['status'] = 'ready';
+        }
+        else{
+            $data['status'] = 'running';
+        }
 
         return view("probis",$data);
     }
