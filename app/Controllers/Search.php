@@ -80,7 +80,9 @@ class Search extends BaseController
         $probis_db = "/home/liase/www/propedia26/public/data/db/probis/propedia26_srf.csv";
         $comando2 = "nohup probis -ncpu 4 -longnames -surfdb -local -sfile {$probis_db} -f1 {$save_dir}query.srf -c1 A -nosql {$save_dir}result.nosql > {$save_dir}busca.log &";
 
-        system($comando2);
+        $pid = shell_exec($comando2);
+        $pid = trim($pid);
+        system("echo $pid > {$save_dir}pid.log");
 
         // muda as permissões de segurança
         chmod("../../../public/data/projects/$id", 0755);
@@ -94,6 +96,13 @@ class Search extends BaseController
 
         $save_dir = FCPATH . "data/projects/{$id}/";
         $fileinfo = $save_dir . "info.csv";
+
+        $pid = trim(file_get_contents($save_dir.'pid.log'));
+        d($pid);
+        if(file_exists("/proc/$pid")){
+            dd('rodando');
+        }
+        exit();
 
         chmod("./data/projects/{$id}/result.nosql", 0755);
 
