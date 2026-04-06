@@ -33,15 +33,15 @@
                <td class="text-end">73,650</td>
                <td>CSV</td>
                <td>53MB</td>
-               <td><a target="_blank" href="<?=base_url('/data/propedia26_v13.csv')?>">propedia_26.csv</a></td>
+               <td><a target="_blank" href="<?=base_url('/data/propedia26_v14.csv')?>">propedia_26.csv</a></td>
             </tr>  
-            <!-- <tr>
+            <tr>
                <td>Propedia 26 - PDBs only peptide</td>
                <td class="text-end">15,676</td>
                <td>ZIP</td>
                <td>57MB</td>
                <td><a target="_blank" href="<?=base_url('/data/db/peptides_pdb.zip')?>">peptides_pdb.zip</a></td>
-            </tr>  -->
+            </tr> 
             
             <tr>
                <td>Propedia26 Multipro - PDB files</td>
@@ -55,7 +55,7 @@
                <td class="text-end">19,827</td>
                <td>CSV</td>
                <td>35MB</td>
-               <td><a target="_blank" href="<?=base_url('/data/multipro_v2.csv')?>">multipro.csv</a></td>
+               <td><a target="_blank" href="<?=base_url('/data/multipro_v4.csv')?>">multipro.csv</a></td>
             </tr>  
 
             <!-- <tr>
