@@ -25,7 +25,7 @@
                <td>Propedia 26 - PDB complexes</td>
                <td class="text-end">73,392</td>
                <td>ZIP</td>
-               <td>3.4GB</td>
+               <td>3.2GB</td>
                <td><a target="_blank" href="<?=base_url('/data/db/propedia26_v7.zip')?>">propedia_26.zip</a></td>
             </tr> 
             <tr>
@@ -34,13 +34,21 @@
                <td>CSV</td>
                <td>53MB</td>
                <td><a target="_blank" href="<?=base_url('/data/propedia26_v14.csv')?>">propedia_26.csv</a></td>
-            </tr>  
+            </tr>
+
+            <tr>
+               <td>Propedia 26 - only peptides</td>
+               <td class="text-end">15,356</td>
+               <td>ZIP</td>
+               <td>52MB</td>
+               <td><a target="_blank" href="<?=base_url('/data/db/peptides_pdb.zip')?>">peptides_pdb.zip</a></td>
+            </tr>
             
             <tr>
                <td>Propedia26 Multipro - PDB files</td>
                <td class="text-end">19,759</td>
                <td>ZIP</td>
-               <td>2.4GB</td>
+               <td>2.3GB</td>
                <td><a target="_blank" href="<?=base_url('/data/db/multipro_v7.zip')?>">multipro.zip</a></td>
             </tr>  
             <tr>
@@ -58,7 +66,6 @@
                <td>10MB</td>
                <td><a target="_blank" href="<?=base_url('/data/sequence_signature.zip')?>">sequence_signature.zip</a></td>
             </tr>  
-
             <tr>
                <td>Structural signatures</td>
                <td class="text-end">15,344</td>
@@ -66,6 +73,7 @@
                <td>16MB</td>
                <td><a target="_blank" href="<?=base_url('/data/structural_signature.zip')?>">structural_signature.zip</a></td>
             </tr>  
+
             <tr>
                <td>Clusters</td>
                <td class="text-end">12</td>
