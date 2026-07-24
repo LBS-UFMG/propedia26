@@ -95,11 +95,13 @@ class Search extends BaseController
         $save_dir = FCPATH . "data/projects/{$id}/";
         $fileinfo = $save_dir . "info.csv";
 
-        chmod("./data/projects/{$id}/result.nosql", 0755);
-
         if (!file_exists($fileinfo)) {
             throw new \RuntimeException("Arquivo não encontrado: {$fileinfo}");
         }
+
+        # o probis so grava o nosql ao final da busca - pode nao existir ainda
+        $nosql = $save_dir . "result.nosql";
+        if (file_exists($nosql)) { chmod($nosql, 0755); }
 
         $dados = [];
         if (($fp = fopen($fileinfo, 'r')) !== false) {
@@ -107,7 +109,8 @@ class Search extends BaseController
             fclose($fp);
         }
 
-        $ini_time = filemtime($save_dir . 'busca.log');
+        $logfile = $save_dir . 'busca.log';
+        $ini_time = file_exists($logfile) ? filemtime($logfile) : filemtime($fileinfo);
         $data['created'] = date('Y-m-d H:i', $ini_time);
         if ((time() - $ini_time) > 1000) {
             $data['is_running'] = 'ready';
@@ -123,28 +126,34 @@ class Search extends BaseController
         }
 
         $result = [];
-        if (($fp = fopen($resultcsv, 'r')) !== false) {
+        if (file_exists($resultcsv) && ($fp = fopen($resultcsv, 'r')) !== false) {
             // Lê o cabeçalho (primeira linha)
             $cabecalho = fgetcsv($fp, 0, ';');
             // Lê cada linha e monta array associativo
             while (($linha = fgetcsv($fp, 0, ';')) !== false) {
-                $result[] = array_combine($cabecalho, $linha);
+                if ($cabecalho !== false && count($cabecalho) === count($linha)) {
+                    $result[] = array_combine($cabecalho, $linha);
+                }
             }
             fclose($fp);
         }
 
         $data['id'] = $id;
-        $data['pdb'] = $dados[0];
-        $data['chain'] = $dados[1];
-        $data['residues'] = $dados[2];
+        $data['pdb'] = $dados[0] ?? '';
+        $data['chain'] = $dados[1] ?? '';
+        $data['residues'] = $dados[2] ?? '';
         $data['status'] = 1;
         $data['log'] = 'ok';
         $data['results'] = $result;
 
-        $cont_results = count(file($save_dir . 'result.csv'));
-        $data['cont_results'] = $cont_results;
+        # conta os complexos encontrados (antes contava as linhas do arquivo, incluindo o cabeçalho)
+        $data['cont_results'] = count($result);
 
-        
+        # sem nenhum complexo: a busca terminou sem resultados ou ainda esta rodando.
+        # a view probis espera ao menos um resultado ($results[0]) para montar os visualizadores.
+        if ($data['cont_results'] === 0) {
+            return view("probis_empty", $data);
+        }
 
         return view("probis",$data);
     }
