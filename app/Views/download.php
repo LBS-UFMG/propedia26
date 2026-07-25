@@ -26,7 +26,7 @@
                <td class="text-end">73,392</td>
                <td>ZIP</td>
                <td>3.2GB</td>
-               <td><a target="_blank" href="<?=base_url('/data/db/propedia26_v7.zip')?>">propedia_26.zip</a></td>
+               <td><a target="_blank" href="https://doi.org/10.5281/zenodo.21558188">propedia_26.zip</a></td>
             </tr> 
             <tr>
                <td>Propedia 26 - descriptions</td>
