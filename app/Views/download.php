@@ -33,7 +33,7 @@
                <td class="text-end">73,392</td>
                <td>CSV</td>
                <td>53MB</td>
-               <td><a target="_blank" href="<?=base_url('/data/propedia26_v14.csv')?>">propedia_26.csv</a></td>
+               <td><a target="_blank" href="<?=base_url('/data/propedia26_v15.csv')?>">propedia_26.csv</a></td>
             </tr>
 
             <tr>

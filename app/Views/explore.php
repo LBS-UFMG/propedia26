@@ -410,7 +410,7 @@
 
 <?= $this->section('scripts') ?>
 
-<?php $entrada = 'data/propedia26_v14.tsv'; ?>
+<?php $entrada = 'data/propedia26_v15.tsv'; ?>
 
 
 <script>
