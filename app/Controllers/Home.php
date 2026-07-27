@@ -13,7 +13,7 @@ class Home extends BaseController
 
         $data['h1'] = "93,151";
         $data['h2'] = "73,392";
-        $data['h3'] = "48,685";
+        $data['h3'] = "38,218";
         $data['h4'] = "19,759";
 
         $data['update'] = 'Apr 6, 2026';

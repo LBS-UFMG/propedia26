@@ -180,15 +180,15 @@
             <tbody>
               <tr>
                 <th scope="row">Unique entries</th>
-                <td>48,685</td>
+                <td>38.218</td>
                 <td>0</td>
-                <td>48,685</td>
+                <td>38.218</td>
               </tr>
               <tr>
                 <th scope="row">Duplicated entries</th>
-                <td>24,707</td>
+                <td>35.174</td>
                 <td>19,759</td>
-                <td>44,466</td>
+                <td>54.933</td>
               </tr>
             </tbody>
             <tfoot class="table-light">
