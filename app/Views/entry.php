@@ -590,7 +590,7 @@
 
             // Adiciona modelo
             $.get('<?php echo base_url('/data/' . $db . '/pdb/' . $id[0] . '/' . $id . '.pdb'); ?>', function(data) {
-                const m2 = glviewerModal.addModel(data, "pqr");
+                const m2 = glviewerModal.addModel(data, "pdb");
                 glviewerModal.setBackgroundColor(0xffffff);
 
                 glviewerModal.setStyle({}, {
@@ -907,7 +907,7 @@
             glviewer.setBackgroundColor(0xffffff);
 
             // Adiciona modelo
-            const m = glviewer.addModel(data, "pqr");
+            const m = glviewer.addModel(data, "pdb");
 
             // Cores e cadeias
             const colors = ["grey", "orangered", "deepskyblue", "green", "purple", "cyan"];
