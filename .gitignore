@@ -75,3 +75,5 @@ Thumbs.db
 *.bak
 *.swp
 public/data/peptides.tsv
+CLAUDE.md
+HANDOFF.md
