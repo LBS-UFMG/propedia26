@@ -1511,7 +1511,7 @@
               <li>Exploring possible molecular recognition mechanisms in distant families.</li>
             </ul>
 
-            <p>The search is based on the ProBiS (Protein Binding Sites) algorithm, which performs local structural alignment between protein surfaces. Unlike global methods, ProBiS searches for local three-dimensional patterns of physicochemical properties, including geometry, functional groups, curvature, and electrostatic characteristics. A tutorial is shown in Figure 12.</p>
+            <p>The search is based on the ProBiS (Protein Binding Sites) algorithm, which performs local structural alignment between protein surfaces. Unlike global methods, ProBiS searches for local 3D patterns of physicochemical properties, including geometry, functional groups, curvature, and electrostatic characteristics. A tutorial is shown in Figure 12.</p>
 
 
             <figure>

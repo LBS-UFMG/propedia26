@@ -126,28 +126,92 @@
             <div class="row">
               <div class="col">
                 <p class="small text-muted">
-                  The search for similar binding sites in Propedia employs the <a class="link-dark" href="#" data-bs-placement="bottom" data-bs-toggle="tooltip" data-bs-title="ProBiS achieves this by aligning surface patches based on geometric and physicochemical properties, followed by statistical scoring of the alignments, thereby enabling the identification of proteins that share structurally conserved binding sites with the protein indicated here."><strong>ProBiS algorithm</strong></a>, which detects local structural similarities by comparing the three-dimensional surface of the queried protein binding site with those of proteins stored in the database.
+                  The search for similar binding sites in Propedia employs the <a class="link-dark" href="#" data-bs-placement="bottom" data-bs-toggle="tooltip" data-bs-title="ProBiS achieves this by aligning surface patches based on geometric and physicochemical properties, followed by statistical scoring of the alignments, thereby enabling the identification of proteins that share structurally conserved binding sites with the protein indicated here."><strong>ProBiS algorithm</strong></a>, which detects local structural similarities by comparing the 3D surface of the queried protein binding site with those of proteins stored in the database.
                 </p>
-                <p class="small text-muted"><strong>Enter the PDB code, target protein chain, and binding site residue numbers separated by commas (use hyphens to indicate ranges) <a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="E.g.: 100,101,105-110 (i.e.: 100,101,105,106,107,108,109,110)">?</a>.</strong></p>
+                <!-- Formulario da busca, em uma caixa -->
+                <div class="border rounded-3 bg-light p-3">
+                  <p class="small text-muted"><strong>Enter the PDB code, target protein chain, and binding site residue numbers separated by commas (use hyphens to indicate ranges) <a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="E.g.: 100,101,105-110 (i.e.: 100,101,105,106,107,108,109,110)">?</a>.</strong></p>
 
-                <p>
-                  <label class="badge bg-secondary">PDB ID</label>
-                  <input name="pdb" type="text" class="form-control" placeholder="e.g.: 1a1m" required>
-                </p>
-                <p>
-                  <label class="badge bg-secondary">Chain</label>
-                  <input name="chain" type="text" class="form-control" placeholder="e.g.: A" required>
-                </p>
-                <p>
-                  <label class="badge bg-secondary">Binding site residues</label>
-                  <textarea name="residues" class="form-control" placeholder="e.g.: 60,62-82,146-171" rows="3" required></textarea>
-                </p>
+                  <style>
+                    /* textos de apoio do formulario e do viewer */
+                    #probis .probis-hint { font-size: 0.72rem; line-height: 1.3; }
+                  </style>
 
-                <input name="search_binding_sites" type="submit" value="Search for proteins with similar binding sites" class="btn w-100 btn-primary mb-5 mt-3 btn-lg">
+                  <!-- Estrutura da consulta: codigo do PDB OU arquivo do usuario -->
+                  <div class="row g-2 align-items-end">
+                    <div class="col-5">
+                      <label class="badge bg-secondary" for="probis_pdb">PDB ID</label>
+                      <input id="probis_pdb" name="pdb" type="text" class="form-control" placeholder="e.g.: 1a1m">
+                    </div>
+                    <div class="col-2 text-center text-muted fw-bold pb-2">or</div>
+                    <div class="col-5">
+                      <label class="badge bg-secondary" for="probis_file">Your structure</label>
+                      <input id="probis_file" name="pdb_file" type="file" class="form-control" accept=".pdb,.ent">
+                    </div>
+                  </div>
+                  <p class="form-text probis-hint mb-3">
+                    Use <strong>one or the other</strong>: a PDB code, which Propedia downloads from the RCSB PDB, or your own structure in PDB format (up to 20 MB), used only for this search and not added to the database.
+                  </p>
+                  <p>
+                    <label class="badge bg-secondary" for="probis_chain">Chain</label>
+                    <select id="probis_chain" name="chain" class="form-select" required>
+                      <option value="">Load a structure to choose the chain</option>
+                    </select>
+                    <span class="form-text probis-hint">Only the selected chain is displayed in the viewer.</span>
+                  </p>
+
+                  <!-- Cadeia de referencia: dispensa digitar a lista de residuos -->
+                  <div class="form-check form-switch mb-2">
+                    <input class="form-check-input" type="checkbox" id="probis_use_ref" name="use_reference" value="1">
+                    <label class="form-check-label small" for="probis_use_ref">
+                      Use a reference chain to define the binding site
+                      <a class="badge bg-dark" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Instead of typing the residue numbers, indicate a chain bound to the target protein — typically a peptide. Propedia reads the structure and uses as the binding site every residue of the target chain within 6 Å of that reference chain, the same criterion used for the interface residues listed in each entry.">?</a>
+                    </label>
+                  </div>
+
+                  <p id="probis_ref_field" hidden>
+                    <label class="badge bg-secondary" for="probis_ref_chain">Reference chain</label>
+                    <select id="probis_ref_chain" name="ref_chain" class="form-select">
+                      <option value="">Load a structure to choose the chain</option>
+                    </select>
+                    <span class="form-text probis-hint">Shown with a surface in the viewer. The binding site will be the residues of the target chain within 6 Å of this chain.</span>
+                  </p>
+
+                  <p id="probis_residues_field">
+                    <label class="badge bg-secondary">Binding site residues</label>
+                    <textarea id="probis_residues" name="residues" class="form-control" placeholder="e.g.: 60,62-82,146-171" rows="3" required></textarea>
+                  </p>
+
+                  <input name="search_binding_sites" type="submit" value="Search for proteins with similar binding sites" class="btn w-100 btn-primary mb-4 mt-3 btn-lg">
+                </div>
 
               </div>
-              <div class="col text-end">
-                <img src="<?= base_url('/img/bindingsite.png') ?>" class="w-75 ">
+              <div class="col">
+                <img id="probis_img" src="<?= base_url('/img/bindingsite.png') ?>" class="w-75 float-end">
+
+                <!-- Visualizacao da estrutura informada (substitui a figura) -->
+                <div id="probis_viewer_box" hidden>
+                  <div class="d-flex flex-wrap align-items-center gap-3 mb-1 small">
+                    <div class="form-check form-switch mb-0">
+                      <input class="form-check-input" type="checkbox" id="probis_lines">
+                      <label class="form-check-label" for="probis_lines">Show lines</label>
+                    </div>
+                    <div class="form-check form-switch mb-0">
+                      <input class="form-check-input" type="checkbox" id="probis_sticks">
+                      <label class="form-check-label" for="probis_sticks">Sticks</label>
+                    </div>
+                    <div class="form-check form-switch mb-0">
+                      <input class="form-check-input" type="checkbox" id="probis_labels">
+                      <label class="form-check-label" for="probis_labels">Labels</label>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-secondary ms-auto" id="probis_clear_sel">Clear selection</button>
+                  </div>
+
+                  <div id="probis_viewer" style="height: 520px; width: 100%; position: relative;"></div>
+
+                  <div id="probis_legend" class="small mt-1"></div>
+                  <div id="probis_viewer_msg" class="form-text probis-hint">Click a residue to add its number to the binding site list.</div>
+                </div>
               </div>
             </div>
             <div id="feedback_upload" class="alert" role="alert" hidden></div>
@@ -194,6 +258,457 @@
     </div>
   </div>
 </div>
+
+<script>
+  // Modal "Search for similar binding sites": ao marcar a cadeia de referencia,
+  // o campo de residuos some (e deixa de ser obrigatorio) e aparece o campo da
+  // cadeia de referencia — quem monta a lista e o servidor, lendo a estrutura.
+  (function() {
+    const marcador = document.getElementById('probis_use_ref');
+    if (!marcador) {
+      return;
+    }
+    const campoResiduos = document.getElementById('probis_residues_field');
+    const texto = document.getElementById('probis_residues');
+    const campoRef = document.getElementById('probis_ref_field');
+    const ref = document.getElementById('probis_ref_chain');
+
+    marcador.addEventListener('change', function() {
+      campoResiduos.hidden = this.checked;
+      texto.required = !this.checked;
+      campoRef.hidden = !this.checked;
+      ref.required = this.checked;
+    });
+  })();
+
+  // Visualizacao da estrutura informada: substitui a figura por um 3Dmol e
+  // permite montar a lista de residuos clicando na propria estrutura.
+  (function() {
+    const campoPdb = document.getElementById('probis_pdb');
+    const campoArquivo = document.getElementById('probis_file');
+    if (!campoPdb || !campoArquivo) {
+      return;
+    }
+
+    const campoChain = document.getElementById('probis_chain');
+    const campoRef = document.getElementById('probis_ref_chain');
+    const campoResiduos = document.getElementById('probis_residues');
+    const figura = document.getElementById('probis_img');
+    const caixa = document.getElementById('probis_viewer_box');
+    const legenda = document.getElementById('probis_legend');
+    const aviso = document.getElementById('probis_viewer_msg');
+
+    // Clicar em uma LINHA exige precisao de 0.2 Å no 3Dmol, o que na pratica
+    // torna o clique impossivel. Como a estrutura e exibida em linhas, afrouxa
+    // essa tolerancia.
+    if (window.$3Dmol && $3Dmol.Raycaster && $3Dmol.Raycaster.prototype.linePrecision < 0.6) {
+      $3Dmol.Raycaster.prototype.linePrecision = 0.6;
+    }
+
+    // Uma cor por cadeia
+    const cores = ['grey', 'orangered', 'deepskyblue', 'green', 'purple',
+      'cyan', 'magenta', 'gold', 'teal', 'salmon'];
+
+    let viewer = null;
+    let corDaCadeia = {};
+    let residuosDaCadeia = {}; // quantos residuos cada cadeia tem
+    let selecionados = [];
+    let rotulos = [];
+    let superficies = [];
+
+    function mostraViewer() {
+      figura.hidden = true;
+      caixa.hidden = false;
+    }
+
+    function cor(chain) {
+      return corDaCadeia[chain] || 'grey';
+    }
+
+    // Cadeias exibidas: a alvo e a de referencia. Sem escolha, mostra todas.
+    function cadeiasVisiveis() {
+      const alvo = campoChain.value;
+      const ref = campoRef ? campoRef.value : '';
+      if (!alvo && !ref) {
+        return Object.keys(corDaCadeia);
+      }
+      const lista = [];
+      if (alvo) {
+        lista.push(alvo);
+      }
+      if (ref && ref !== alvo) {
+        lista.push(ref);
+      }
+      return lista;
+    }
+
+    // ---- rotulos ----
+    function limpaRotulos() {
+      rotulos.forEach(function(l) {
+        viewer.removeLabel(l);
+      });
+      rotulos = [];
+    }
+
+    function aplicaRotulos() {
+      limpaRotulos();
+
+      const visiveis = cadeiasVisiveis();
+      let atomos = [];
+
+      if (document.getElementById('probis_labels').checked) {
+        // rotula os residuos das cadeias exibidas
+        let total = 0;
+        visiveis.forEach(function(chain) {
+          total += (residuosDaCadeia[chain] || 0);
+        });
+
+        if (total > 500) {
+          aviso.textContent = 'Too many residues to label them all (' + total +
+            '); only the selected ones are labelled.';
+        } else {
+          visiveis.forEach(function(chain) {
+            atomos = atomos.concat(viewer.selectedAtoms({ chain: chain, atom: 'CA' }));
+          });
+        }
+      }
+
+      // os escolhidos ficam sempre rotulados
+      if (selecionados.length && campoChain.value) {
+        const marcados = viewer.selectedAtoms({
+          chain: campoChain.value,
+          resi: selecionados,
+          atom: 'CA'
+        });
+        marcados.forEach(function(a) {
+          if (atomos.indexOf(a) === -1) {
+            atomos.push(a);
+          }
+        });
+      }
+
+      atomos.forEach(function(a) {
+        rotulos.push(viewer.addLabel(a.resn + a.resi, {
+          position: { x: a.x, y: a.y, z: a.z },
+          fontSize: 10,
+          fontColor: 'black',
+          backgroundColor: 'white',
+          backgroundOpacity: 0.6,
+          inFront: true
+        }));
+      });
+    }
+
+    // ---- superficie da cadeia de referencia ----
+    function limpaSuperficies() {
+      if (typeof viewer.removeAllSurfaces === 'function') {
+        viewer.removeAllSurfaces();
+      } else {
+        superficies.forEach(function(sup) {
+          try {
+            viewer.removeSurface(sup);
+          } catch (err) {
+            console.warn('removeSurface falhou', err);
+          }
+        });
+      }
+      superficies = [];
+    }
+
+    function aplicaSuperficie() {
+      limpaSuperficies();
+      const ref = campoRef ? campoRef.value : '';
+      if (ref) {
+        superficies.push(viewer.addSurface($3Dmol.SurfaceType.VDW, {
+          opacity: 1.0,
+          color: cor(ref)
+        }, {
+          chain: ref
+        }));
+      }
+    }
+
+    // ---- estilo ----
+    function aplicaEstilo() {
+      if (!viewer) {
+        return;
+      }
+
+      const comSticks = document.getElementById('probis_sticks').checked;
+      const comLinhas = document.getElementById('probis_lines').checked;
+      const visiveis = cadeiasVisiveis();
+
+      // esconde tudo e mostra apenas as cadeias visiveis: cartoon, mais as
+      // linhas quando o usuario pedir
+      viewer.setStyle({}, {});
+      visiveis.forEach(function(chain) {
+        const estilo = { cartoon: { color: cor(chain) } };
+        if (comLinhas) {
+          estilo.line = { color: cor(chain) };
+        }
+        viewer.setStyle({ chain: chain }, estilo);
+
+        if (comSticks) {
+          viewer.addStyle({ chain: chain }, {
+            stick: { radius: 0.1, colorscheme: cor(chain) + 'Carbon' }
+          });
+        }
+      });
+
+      // residuos escolhidos viram sticks
+      if (selecionados.length && campoChain.value) {
+        viewer.addStyle({
+          chain: campoChain.value,
+          resi: selecionados
+        }, {
+          stick: { colorscheme: 'yellowCarbon', radius: 0.25 }
+        });
+      }
+
+      aplicaRotulos();
+      viewer.render();
+    }
+
+    // ---- selecao ----
+    // Le o que estiver escrito no campo (aceita "7, 10-15") para destacar no 3D
+    function leResiduosDoCampo() {
+      const lista = [];
+      String(campoResiduos.value).split(/[,;\s]+/).forEach(function(parte) {
+        if (!parte) {
+          return;
+        }
+        const faixa = parte.match(/^(\d+)\s*-\s*(\d+)$/);
+        if (faixa) {
+          for (let i = parseInt(faixa[1], 10); i <= parseInt(faixa[2], 10); i++) {
+            lista.push(i);
+          }
+        } else if (/^\d+$/.test(parte)) {
+          lista.push(parseInt(parte, 10));
+        }
+      });
+      return lista;
+    }
+
+    function cliqueEmResiduo(atom) {
+      const alvo = campoChain.value;
+
+      if (!alvo) {
+        campoChain.value = atom.chain; // primeiro clique define a cadeia alvo
+      } else if (alvo !== atom.chain) {
+        aviso.textContent = 'Residue ignored: it belongs to chain ' + atom.chain +
+          ', and the target chain is ' + alvo + '.';
+        return;
+      }
+
+      const pos = selecionados.indexOf(atom.resi);
+      if (pos >= 0) {
+        selecionados.splice(pos, 1); // clicar de novo remove
+      } else {
+        selecionados.push(atom.resi);
+      }
+      selecionados.sort(function(a, b) {
+        return a - b;
+      });
+
+      // O campo espera numeros separados por virgula
+      campoResiduos.value = selecionados.join(', ');
+      aviso.textContent = selecionados.length +
+        ' residue(s) selected in chain ' + campoChain.value +
+        '. Click a residue again to remove it.';
+
+      aplicaEstilo();
+    }
+
+    // ---- seletores de cadeia ----
+    function preencheSeletores() {
+      const cadeias = Object.keys(corDaCadeia);
+
+      [campoChain, campoRef].forEach(function(seletor, i) {
+        if (!seletor) {
+          return;
+        }
+        const anterior = seletor.dataset.pendente || seletor.value;
+        seletor.innerHTML = '';
+
+        const vazia = document.createElement('option');
+        vazia.value = '';
+        vazia.textContent = (i === 0) ? 'Select a chain' : 'None';
+        seletor.appendChild(vazia);
+
+        cadeias.forEach(function(chain) {
+          const op = document.createElement('option');
+          op.value = chain;
+          op.textContent = 'Chain ' + chain + ' (' + (residuosDaCadeia[chain] || 0) + ' residues)';
+          seletor.appendChild(op);
+        });
+
+        // mantem a escolha anterior, quando ela existe nesta estrutura
+        seletor.value = (cadeias.indexOf(anterior) >= 0) ? anterior : '';
+        delete seletor.dataset.pendente;
+      });
+    }
+
+    // ---- carga da estrutura ----
+    function carrega(texto, rotulo) {
+      if (!texto || texto.indexOf('ATOM') === -1) {
+        aviso.textContent = 'Could not read coordinates from ' + rotulo + '.';
+        return;
+      }
+
+      mostraViewer();
+
+      if (!viewer) {
+        viewer = $3Dmol.createViewer('probis_viewer', {
+          defaultcolors: $3Dmol.rasmolElementColors
+        });
+        viewer.setBackgroundColor(0xffffff);
+      }
+
+      viewer.clear();
+      rotulos = [];
+      superficies = [];
+
+      const modelo = viewer.addModel(texto, 'pdb');
+      const atomos = modelo.selectedAtoms({});
+
+      // cadeias, cores e numero de residuos de cada uma
+      corDaCadeia = {};
+      residuosDaCadeia = {};
+      const vistos = {};
+      let i = 0;
+      atomos.forEach(function(a) {
+        if (corDaCadeia[a.chain] === undefined) {
+          corDaCadeia[a.chain] = cores[i % cores.length];
+          residuosDaCadeia[a.chain] = 0;
+          i++;
+        }
+        const chave = a.chain + ':' + a.resi;
+        if (!vistos[chave]) {
+          vistos[chave] = true;
+          residuosDaCadeia[a.chain]++;
+        }
+      });
+
+      legenda.innerHTML = Object.keys(corDaCadeia).map(function(chain) {
+        return '<span class="me-2"><span style="display:inline-block;width:10px;height:10px;background:' +
+          cor(chain) + ';border:1px solid #adb5bd"></span> ' + chain + '</span>';
+      }).join('');
+
+      preencheSeletores();
+
+      // clique em qualquer atomo escolhe o residuo
+      viewer.setClickable({}, true, function(atom) {
+        cliqueEmResiduo(atom);
+      });
+
+      // mantem o que ja estiver escrito no campo (ex.: vindo de uma entrada)
+      selecionados = leResiduosDoCampo();
+
+      aplicaSuperficie();
+      aplicaEstilo();
+      viewer.zoomTo();
+      viewer.render();
+
+      aviso.textContent = rotulo + ': ' + Object.keys(corDaCadeia).length +
+        ' chain(s). Click a residue to add it to the binding site list.';
+    }
+
+    function carregaDoRcsb(codigo) {
+      aviso.textContent = 'Loading ' + codigo.toUpperCase() + ' from the RCSB PDB…';
+      mostraViewer();
+
+      fetch('https://files.rcsb.org/download/' + codigo.toUpperCase() + '.pdb')
+        .then(function(r) {
+          if (!r.ok) {
+            throw new Error('not found');
+          }
+          return r.text();
+        })
+        .then(function(texto) {
+          carrega(texto, codigo.toUpperCase());
+        })
+        .catch(function() {
+          aviso.textContent = 'Could not download ' + codigo.toUpperCase() +
+            ' from the RCSB PDB. Check the code or upload the structure.';
+        });
+    }
+
+    // ---- eventos ----
+    let espera = null;
+    campoPdb.addEventListener('input', function() {
+      const codigo = campoPdb.value.trim();
+      clearTimeout(espera);
+      if (codigo.length !== 4) {
+        return;
+      }
+      campoArquivo.value = ''; // um ou outro
+      espera = setTimeout(function() {
+        carregaDoRcsb(codigo);
+      }, 400);
+    });
+
+    campoArquivo.addEventListener('change', function() {
+      const arquivo = this.files && this.files[0];
+      if (!arquivo) {
+        return;
+      }
+      campoPdb.value = ''; // um ou outro
+      const leitor = new FileReader();
+      leitor.onload = function(e) {
+        carrega(e.target.result, arquivo.name);
+      };
+      leitor.readAsText(arquivo);
+    });
+
+    // Trocar a cadeia alvo muda o que e exibido e zera a selecao anterior
+    campoChain.addEventListener('change', function() {
+      selecionados = [];
+      campoResiduos.value = '';
+      if (viewer) {
+        aplicaEstilo();
+        viewer.zoomTo({ chain: this.value || undefined });
+        viewer.render();
+      }
+    });
+
+    if (campoRef) {
+      campoRef.addEventListener('change', function() {
+        if (viewer) {
+          aplicaSuperficie();
+          aplicaEstilo();
+        }
+      });
+    }
+
+    document.getElementById('probis_lines').addEventListener('change', aplicaEstilo);
+    document.getElementById('probis_sticks').addEventListener('change', aplicaEstilo);
+    document.getElementById('probis_labels').addEventListener('change', aplicaEstilo);
+
+    document.getElementById('probis_clear_sel').addEventListener('click', function() {
+      selecionados = [];
+      campoResiduos.value = '';
+      aviso.textContent = 'Click a residue to add its number to the binding site list.';
+      aplicaEstilo();
+    });
+
+    // Editar o campo na mao tambem atualiza o destaque no 3D
+    campoResiduos.addEventListener('input', function() {
+      selecionados = leResiduosDoCampo();
+      aplicaEstilo();
+    });
+
+    // O canvas precisa ser redimensionado quando o modal aparece
+    const modalProbis = document.getElementById('probis');
+    if (modalProbis) {
+      modalProbis.addEventListener('shown.bs.modal', function() {
+        if (viewer) {
+          viewer.resize();
+          viewer.render();
+        }
+      });
+    }
+  })();
+</script>
 
 <!-- MODAL: CITE -->
 <div class="modal fade" tabindex="-1" id="cite-propedia" role="dialog">
