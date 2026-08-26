@@ -112,7 +112,7 @@
           <li><a href="#einteractive">2.1.3 Interactive 3D structure visualization panel</a></li>
           <li><a href="#ecluster">2.1.4 Clustering information</a></li>
           <li><a href="#eprotein">2.1.5 Protein-peptide interaction information</a></li>
-          <li><a href="#blast">2.2 BLAST tool</a></li>
+          <li><a href="#blast-tool">2.2 BLAST tool</a></li>
           <li><a href="#parameters-config">2.1.1 Parameters and Configuration</a></li>
           <li><a href="#blast-use">2.1.2 How to use Propedia BLAST?</a></li>
           <li><a href="#other">2.2.3 Other search tools</a></li>
@@ -1099,7 +1099,7 @@
       </section>
 
 
-      <section id="blast" class="docs-card">
+      <section id="blast-tool" class="docs-card">
         <h2>2.2 BLAST tool</h2>
         <p>
           The BLAST (Basic Local Alignment Search Tool) identifies local similarities between protein sequences. It compares a query sequence with sequences stored in a database, evaluating the statistical relevance of the matches found (Mariano et al., 2015; Wheeler; Bhagwat, 2016). The BLAST tool available in PROPEDIA allows users to search for peptides or proteins similar to those present in the database, using local alignment based on sequence similarity. This functionality is essential for identifying structurally or functionally related complexes, locating similar peptides already described in the database, and facilitating comparative studies, evolutionary analyses, and functional inference.
