@@ -1,6 +1,7 @@
 /public/data/db/*
 !/public/data/db/index.html
 /public/data/protparam/*
+/public/data/propedia26_v15.tsv
 
 /public/data/projects/*
 !/public/data/projects/index.html
