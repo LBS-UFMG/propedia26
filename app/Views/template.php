@@ -98,7 +98,7 @@
 
                 <div class="col-12 col-md-6">
                     <div class="row pt-5">
-                        <div class="col"><a href="http://bioinfo.dcc.ufmg.br" target="_blank"><img src="<?= base_url('/img/lbs.svg') ?>" width="220px"></a></div>
+                        <div class="col me-4"><a href="http://bioinfo.dcc.ufmg.br" target="_blank"><img src="<?= base_url('/img/lbs-new-logo.svg') ?>" width="240px"></a></div>
                         <div class="col"><img src="<?= base_url('/img/dcc_w.svg') ?>" width="170px"></div>
                         <div class="col"><img src="<?= base_url('/img/ufmg_w.svg') ?>" width="200px"></div>
                     </div>

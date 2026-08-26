@@ -697,6 +697,37 @@
       aplicaEstilo();
     });
 
+    // API usada por outras paginas (ex.: o botao da pagina de uma entrada) para
+    // abrir a busca ja preenchida. Chamada direta de proposito: eventos
+    // sinteticos do jQuery (.trigger('input')) nao acionam listeners nativos.
+    //   dados = {pdb, chain, residues, pdbText}
+    window.probisPreencher = function(dados) {
+      dados = dados || {};
+
+      campoPdb.value = dados.pdb || '';
+      campoArquivo.value = '';
+      campoResiduos.value = dados.residues || '';
+
+      // a cadeia so pode ser escolhida quando o select for preenchido, ao fim
+      // da carga da estrutura
+      if (dados.chain) {
+        campoChain.dataset.pendente = dados.chain;
+      }
+
+      // modo "lista de residuos": desliga a cadeia de referencia
+      const marcadorRef = document.getElementById('probis_use_ref');
+      if (marcadorRef && marcadorRef.checked) {
+        marcadorRef.checked = false;
+        marcadorRef.dispatchEvent(new Event('change'));
+      }
+
+      if (dados.pdbText) {
+        carrega(dados.pdbText, dados.pdb || 'structure'); // estrutura ja em maos
+      } else if ((dados.pdb || '').length === 4) {
+        carregaDoRcsb(dados.pdb);
+      }
+    };
+
     // O canvas precisa ser redimensionado quando o modal aparece
     const modalProbis = document.getElementById('probis');
     if (modalProbis) {

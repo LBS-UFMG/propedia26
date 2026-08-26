@@ -48,25 +48,24 @@
                         data-pdb="<?= esc($pdb_id, 'attr') ?>"
                         data-chain="<?= esc($info[27], 'attr') ?>"
                         data-residues="<?= esc(str_replace('<br>', '', $info[14]), 'attr') ?>">
-                        Similar binding sites <i class="bi bi-search"></i>
+                        Find a similar binding site <i class="bi bi-search"></i>
                     </button>
                 </h1>
 
                 <script>
-                    // Preenche o formulario do ProBiS com os dados desta entrada,
-                    // para o usuario nao ter que redigitar os residuos da interface.
-                    $(function() {
-                        $('#btn_binding_site').on('click', function() {
-                            // A cadeia e um select preenchido so quando a estrutura
-                            // termina de carregar: deixa a escolha pendente
-                            $('#probis_chain').attr('data-pendente', this.dataset.chain);
-                            $('#probis_residues').val(this.dataset.residues);
-                            // 'input' dispara a carga da estrutura no 3Dmol do modal,
-                            // que destaca os residuos ja listados no campo
-                            $('#probis_pdb').val(this.dataset.pdb).trigger('input');
-                            // volta ao modo "lista de residuos", caso o usuario
-                            // tenha marcado a cadeia de referencia em uma busca anterior
-                            $('#probis_use_ref').prop('checked', false).trigger('change');
+                    // Abre a busca por sitio de ligacao ja preenchida com esta
+                    // entrada, para o usuario nao redigitar os residuos da interface.
+                    document.getElementById('btn_binding_site').addEventListener('click', function() {
+                        if (typeof window.probisPreencher !== 'function') {
+                            return;
+                        }
+                        window.probisPreencher({
+                            pdb: this.dataset.pdb,
+                            chain: this.dataset.chain,
+                            residues: this.dataset.residues,
+                            // o PDB desta entrada ja esta carregado na pagina:
+                            // evita baixar de novo do RCSB
+                            pdbText: (typeof moldata !== 'undefined' && moldata) ? moldata : null
                         });
                     });
                 </script>
