@@ -482,11 +482,11 @@
                             <td><span><?= $info[32] ?>%</span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;"><?php aviso_predicao('Predicted value: estimated by the PRODIGY model from the structure of the complex, not measured experimentally. Confirm it before drawing conclusions.'); ?> Binding affinity (kcal/mol) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Predicted Binding Affinity (kcal·mol⁻¹): Estimated Gibbs free energy of binding (ΔG), in kilocalories per mole. More negative values indicate stronger predicted binding between the protein and peptide."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 20%;"><?php aviso_predicao('Predicted value: estimated by the PRODIGY model from the structure of the complex, not measured experimentally. Confirm it before drawing conclusions.'); ?> Predicted binding affinity (kcal/mol) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Predicted Binding Affinity (kcal·mol⁻¹): Estimated Gibbs free energy of binding (ΔG), in kilocalories per mole. More negative values indicate stronger predicted binding between the protein and peptide."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= $info[33] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;"><?php aviso_predicao('Predicted value: estimated by the PRODIGY model from the structure of the complex, not measured experimentally. Confirm it before drawing conclusions.'); ?> Dissociation constant (M, 25 ˚C) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Predicted Dissociation Constant (M) at 25.0 °C: Predicted equilibrium dissociation constant (K_d), expressed in molar units (M), at 25 °C. It represents the expected concentration of the complex at which half of the binding sites are occupied. Lower values correspond to higher binding affinity."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 20%;"><?php aviso_predicao('Predicted value: estimated by the PRODIGY model from the structure of the complex, not measured experimentally. Confirm it before drawing conclusions.'); ?> Predicted dissociation constant (M, 25 ˚C) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Predicted Dissociation Constant (M) at 25.0 °C: Predicted equilibrium dissociation constant (K_d), expressed in molar units (M), at 25 °C. It represents the expected concentration of the complex at which half of the binding sites are occupied. Lower values correspond to higher binding affinity."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= $info[34] ?></span></td>
                         </tr>
                         </tbody>
@@ -531,7 +531,10 @@
                                 'Dissociation Area: Interface area that is broken when the complex dissociates, given in Å². It usually coincides with the interface area.',
                                 92],
                         ]],
-                        ['Energy', [
+                        ['Energy (predicted)', [
+                            ['Dissociation free energy ΔGdiss (kcal/mol)',
+                                'Dissociation Free Energy (ΔGdiss): Free energy required to dissociate the complex, in kcal/mol. Positive values indicate a thermodynamically stable complex. It is the PISA counterpart of the binding affinity predicted by PRODIGY, reported in the Interaction energy section above with the opposite sign.',
+                                87],
                             ['Solvation energy gain ΔiG (kcal/mol)',
                                 'Solvation Energy Gain (ΔiG): Free energy gain, in kcal/mol, obtained on formation of the interface. Negative values indicate a hydrophobic interface, which favours the association. It does not include the contribution of hydrogen bonds and salt bridges across the interface.',
                                 75],
@@ -547,9 +550,6 @@
                             ['Total interaction energy ΔiG (kcal/mol)',
                                 'Total Interaction Energy: Solvation energy gain summed over all the interfaces of the structure, in kcal/mol. It is equal to the interface ΔiG when the structure has a single interface.',
                                 89],
-                            ['Dissociation free energy ΔGdiss (kcal/mol)',
-                                'Dissociation Free Energy (ΔGdiss): Free energy required to dissociate the complex, in kcal/mol. Positive values indicate a thermodynamically stable complex. It is the PISA counterpart of the binding affinity predicted by PRODIGY, reported in the Interaction energy section above with the opposite sign.',
-                                87],
                             ['Dissociation entropy TΔS (kcal/mol)',
                                 'Dissociation Entropy (TΔS): Entropic cost of the association, in kcal/mol. It always opposes the formation of the complex and is taken into account in the calculation of ΔGdiss.',
                                 88],
@@ -2295,9 +2295,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
 
 <script>
-    // tooltips
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
     // MAPA DE CONTATOS
     let allChains = new Set();

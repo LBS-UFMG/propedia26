@@ -129,6 +129,18 @@
             });
         };
         loadPopover();
+
+        // Tooltips: o modal (e outros trechos do template) tem tooltips em
+        // qualquer pagina, entao a inicializacao precisa morar aqui. As views
+        // entry/multipro/project inicializam as suas antes; o Bootstrap aceita
+        // apenas uma instancia por elemento, por isso o getInstance.
+        function loadTooltip() {
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return bootstrap.Tooltip.getInstance(tooltipTriggerEl) || new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        };
+        loadTooltip();
     </script>
 
 </body>
