@@ -91,9 +91,9 @@
             <div class="row">
                 <div class="col-12 col-md-6 ps-4">
                     <img src="<?= base_url('/img/logo_propedia.svg') ?>" width="200px">
-                    <p class="text-light small pt-3 col-9">PROPEDIA is a database of protein-peptide interactions. PROPEDIA main goal is to give new insights into peptide design of biotechnological interests. <a href="https://bioinfo.dcc.ufmg.br/propedia1">Propedia v1</a> | <a href="https://bioinfo.dcc.ufmg.br/propedia2">Propedia v2</a></p>
+                    <p class="text-light small pt-3 col-9">PROPEDIA is a database of protein-peptide interactions. PROPEDIA main goal is to give new insights into peptide design of biotechnological interests. </p>
 
-                    <p style="font-size: 0.6em;color:#ccc">©<?= date('Y') ?> Propedia v<?= $version ?> | Laboratory of Bioinformatics and Systems, UFMG (Brazil) | <a class="text-white" href="https://github.com/LBS-UFMG/propedia26">GitHub</a>
+                    <p style="font-size: 0.6em;color:#ccc">©<?= date('Y') ?> Propedia v<?= $version ?> | Laboratory of Bioinformatics and Systems, UFMG (Brazil) | <a class="text-white" href="https://github.com/LBS-UFMG/propedia26">GitHub</a> | <a class="text-white" href="https://bioinfo.dcc.ufmg.br/propedia1">Propedia v1</a> | <a class="text-white" href="https://bioinfo.dcc.ufmg.br/propedia2">Propedia v2</a>
                 </div>
 
                 <div class="col-12 col-md-6">
