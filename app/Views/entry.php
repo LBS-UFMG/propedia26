@@ -532,7 +532,7 @@
                     $pisa_grupos = [
                         ['Interface significance', [
                             ['Interface evidence',
-                                'Interface Evidence: reading of the Complexation Significance Score. High means the interface is essential to the assembly (CSS = 1), moderate means it contributes to it (CSS between 0 and 1) and weak means it plays no role in the assembly (CSS = 0). Not assessed means PISA could not evaluate the structure.',
+                                'Interface Evidence: reading of the Complexation Significance Score. Strong means the interface is essential to the assembly (CSS = 1), moderate means it contributes to it (CSS between 0 and 1) and weak means it plays no role in the assembly (CSS = 0). Not assessed means PISA could not evaluate the structure.',
                                 94, true],
                             ['Complexation significance score (CSS)',
                                 'Complexation Significance Score (CSS): how much this interface contributes to the formation of the assembly, from 0 to 1. A score of 1 means the interface is essential to the assembly, 0 means it plays no role in it. PISA computes it only for diffraction structures, so it is empty for entries solved by electron microscopy, NMR and other methods.',
