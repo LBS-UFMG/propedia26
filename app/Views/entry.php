@@ -71,17 +71,11 @@
                 </script>
 
                 <div class="mb-3">
-                    <a target="_blank" style="text-decoration:none" title="Search in PDB" href="https://www.rcsb.org/structure/<?= $pdb_id ?>">
-                        <span class="badge bg-dark text-light">PDB</span>
-                    </a>
+                    <a target="_blank" class="badge link-multipro text-light" title="Search in PDB" href="https://www.rcsb.org/structure/<?= $pdb_id ?>">PDB</a>
 
-                    <a target="_blank" style="text-decoration:none" title="Search in UniProt" href="https://www.uniprot.org/uniprot/?query=<?= $pdb_id ?>+database:pdb">
-                        <span class="badge bg-dark">UniProt</span>
-                    </a>
+                    <a target="_blank" class="badge link-multipro text-light" title="Search in UniProt" href="https://www.uniprot.org/uniprot/?query=<?= $pdb_id ?>+database:pdb">UniProt</a>
 
-                    <a target="_blank" style="text-decoration:none" title="Search in PubMed" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=<?= $pdb_id ?>">
-                        <span class="badge bg-dark">PubMed</span>
-                    </a>
+                    <a target="_blank" class="badge link-multipro text-light" title="Search in PubMed" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=<?= $pdb_id ?>">PubMed</a>
                 </div>
 
                 <div class="row mb-1">
@@ -95,9 +89,9 @@
                         <strong>Resolution: </strong><span><?= $info[36] ?></span>
                     </div>
                     <div class="col">
-                        <strong>Complex: </strong>
+                        <strong>Multipro: </strong>
                         <span>
-                            <a class="badge bg-primary" href="<?=base_url('/multipro/'.substr($info[0],0,6))?>">
+                            <a class="badge bg-primary link-multipro" href="<?=base_url('/multipro/'.substr($info[0],0,6))?>" title="See this peptide with every protein chain it binds">
                                 <?= substr($info[0],0,6) ?>
                             </a>
                         </span>
@@ -160,7 +154,7 @@
                     <table class="table table-striped small">
                         <thead>
                             <tr>
-                                <th style="width: 20%;"></th>
+                                <th style="width: 25%;"></th>
                                 <th style="width: 40%;">
                                     <h2>Protein</h2>
                                 </th>
@@ -308,19 +302,19 @@
                     <table class="table table-striped small">
                         <tbody>
                         <tr>
-                            <th style="width: 20%;">Unique complex <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Unique complex: Indicates whether or not a protein-peptide pair exists with both sequences identical."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
-                            <td><span><label class="badge bg-<?php if ($info[42] == 'yes') { echo 'primary'; } else { echo 'danger'; } ?>"><?= $info[42] ?></span></td>
+                            <th style="width: 25%;">Cluster leader <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Cluster leader: structures with similar sequences are clustered together, and one of them represents the cluster. "Yes" means this entry is the leader of its cluster; "no" points to the entry that is."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <td><label class="badge bg-<?php echo ($info[42] == 'yes') ? 'propedia' : 'danger'; ?>"><?= $info[42] ?></label></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">Similar complex <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Similar complex: If there is an identical sequence, it indicates which is the main entry with an exact sequence (if the sequence is unique, the entry itself will be considered the leader)."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
-                            <td><a href=""><?= $info[43] ?></a></td>
+                            <th style="width: 25%;">Similar complex <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Similar complex: If there is an identical sequence, it indicates which is the main entry with an exact sequence (if the sequence is unique, the entry itself will be considered the leader)."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <td><a class="badge link-multipro text-light" href="<?= base_url('/entry/' . $info[43]) ?>"><?= $info[43] ?></a></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">Similar peptide <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Similar peptide: Indicates a complex that has a peptide with the exact same sequence."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
-                            <td><a href=""><?= $info[69] ?></a></td>
+                            <th style="width: 25%;">Similar peptide <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Similar peptide: Indicates a complex that has a peptide with the exact same sequence."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <td><a class="badge link-multipro text-light" href="<?= base_url('/entry/' . $info[69]) ?>"><?= $info[69] ?></a></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">PDB classification <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="PDB classification: Molecular classification according to PDB."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">PDB classification <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="PDB classification: Molecular classification according to PDB."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= $info[12] ?></span></td>
                         </tr>
                         </tbody>
@@ -340,41 +334,48 @@
                     }
                     ?>
 
-                    <?php function avalia($valor) {
-                        // Se for maior ou igual a 0.9 → sucesso
-                        if ($valor >= 0.9) {
-                            echo "✅";
-                        } else {
-                            echo "❌";
+                    <?php
+                    // Marca da classe terapeutica: so o simbolo aparece na tabela;
+                    // a probabilidade prevista fica no tooltip.
+                    function avalia($valor)
+                    {
+                        $marca = ($valor >= 0.9) ? '✅' : '❌';
+                        $probabilidade = trim((string) $valor);
+                        if ($probabilidade === '') {
+                            $probabilidade = 'not available';
                         }
-                    }?>
+
+                        return '<span data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="'
+                            . esc('Predicted probability: ' . $probabilidade, 'attr') . '">' . $marca . '</span>';
+                    }
+                    ?>
                     <h4 class="mt-3">Therapeutic classes <sup><a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="CSM-peptides classes: CSM-peptides (https://biosig.lab.uq.edu.au/csm_peptides) is a web tool and machine learning model that predicts peptide classes based on their sequence. Using a machine learning model inspired by CSM-peptides, Propedia built six models to predict the function of therapeutic peptides. See the documentation for details on how the AI ​​models were developed. Here, we present the probability that the current peptide belongs to each class, as calculated by our models. Predictive classification of peptide therapeutic functions, index range from 0 to 1, where 0 indicates a low likelihood of belonging to the class and 1 indicates a high probability. For more details, see http://doi.org/10.1002/pro.4442"><i class="bi bi-question-circle-fill opacity-25"></i></a></sup></h4>
                     <div class="table-responsive">
                     <table class="table table-striped small">
                         <tbody>
                         <tr>
-                            <th style="width: 20%;"><?php aviso_predicao('Predicted value: this probability comes from a machine learning model trained on peptide sequences, not from an experimental assay. Treat it as an indication and confirm it experimentally.'); ?> Anti-Angiogenic (AAP) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Anti-Angiogenic (AAP): This value indicates the probability that the peptide sequence belongs to this class. Propedia 26 uses a minimum cutoff value of 0.9 to indicate a high likelihood of belonging to the Anti-Angiogenic class. About Anti-Angiogenic peptide class – Function: They inhibit angiogenesis, that is, the formation of new blood vessels. Importance: Blocking angiogenesis is a strategy used to prevent tumor growth, since cancer depends on blood supply to obtain nutrients. Example of use: Development of antitumor and antiviral therapies. See the documentation for details on how this machine learning model was developed."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
-                            <td><span><?= avalia($info[1]).' '.$info[1] ?></span></td>
+                            <th style="width: 25%;"><?php aviso_predicao('Predicted value: this probability comes from a machine learning model trained on peptide sequences, not from an experimental assay. Treat it as an indication and confirm it experimentally.'); ?> Anti-Angiogenic (AAP) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Anti-Angiogenic (AAP): This value indicates the probability that the peptide sequence belongs to this class. Propedia 26 uses a minimum cutoff value of 0.9 to indicate a high likelihood of belonging to the Anti-Angiogenic class. About Anti-Angiogenic peptide class – Function: They inhibit angiogenesis, that is, the formation of new blood vessels. Importance: Blocking angiogenesis is a strategy used to prevent tumor growth, since cancer depends on blood supply to obtain nutrients. Example of use: Development of antitumor and antiviral therapies. See the documentation for details on how this machine learning model was developed."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <td><span><?= avalia($info[1]) ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;"><?php aviso_predicao('Predicted value: this probability comes from a machine learning model trained on peptide sequences, not from an experimental assay. Treat it as an indication and confirm it experimentally.'); ?> Antibacterial (ABP) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Anti-Bacterial (ABP): This value indicates the probability that the peptide sequence belongs to this class. Propedia 26 uses a minimum cutoff value of 0.9 to indicate a high likelihood of belonging to the Anti-Bacterial class. About Anti-Bacterial peptide class – Function: They are antimicrobial peptides that destroy or inhibit the growth of bacteria. Common mechanism: They interact with bacterial membranes, leading to cell lysis (rupture). Importance: They are promising alternatives to traditional antibiotics, especially in the face of bacterial resistance. See the documentation for details on how this machine learning model was developed. "><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
-                            <td><span><?= avalia($info[2]).' '.$info[2] ?></span></td>
+                            <th style="width: 25%;"><?php aviso_predicao('Predicted value: this probability comes from a machine learning model trained on peptide sequences, not from an experimental assay. Treat it as an indication and confirm it experimentally.'); ?> Antibacterial (ABP) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Anti-Bacterial (ABP): This value indicates the probability that the peptide sequence belongs to this class. Propedia 26 uses a minimum cutoff value of 0.9 to indicate a high likelihood of belonging to the Anti-Bacterial class. About Anti-Bacterial peptide class – Function: They are antimicrobial peptides that destroy or inhibit the growth of bacteria. Common mechanism: They interact with bacterial membranes, leading to cell lysis (rupture). Importance: They are promising alternatives to traditional antibiotics, especially in the face of bacterial resistance. See the documentation for details on how this machine learning model was developed. "><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <td><span><?= avalia($info[2]) ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;"><?php aviso_predicao('Predicted value: this probability comes from a machine learning model trained on peptide sequences, not from an experimental assay. Treat it as an indication and confirm it experimentally.'); ?> Anticancer (ACP) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Anti-Cancer (ACP): This value indicates the probability that the peptide sequence belongs to this class. Propedia 26 uses a minimum cutoff value of 0.9 to indicate a high likelihood of belonging to the Anti-Cancer class. About Anti-Cancer peptide class – Function: They induce selective death of tumor cells without significantly affecting normal cells. Mechanism: They can act by altering the permeability of cancer cell membranes, activating apoptosis, or modulating signaling pathways. Application: Development of next-generation antineoplastic therapies. See the documentation for details on how this machine learning model was developed. "><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
-                            <td><span><?= avalia($info[3]).' '.$info[3] ?></span></td>
+                            <th style="width: 25%;"><?php aviso_predicao('Predicted value: this probability comes from a machine learning model trained on peptide sequences, not from an experimental assay. Treat it as an indication and confirm it experimentally.'); ?> Anticancer (ACP) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Anti-Cancer (ACP): This value indicates the probability that the peptide sequence belongs to this class. Propedia 26 uses a minimum cutoff value of 0.9 to indicate a high likelihood of belonging to the Anti-Cancer class. About Anti-Cancer peptide class – Function: They induce selective death of tumor cells without significantly affecting normal cells. Mechanism: They can act by altering the permeability of cancer cell membranes, activating apoptosis, or modulating signaling pathways. Application: Development of next-generation antineoplastic therapies. See the documentation for details on how this machine learning model was developed. "><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <td><span><?= avalia($info[3]) ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;"><?php aviso_predicao('Predicted value: this probability comes from a machine learning model trained on peptide sequences, not from an experimental assay. Treat it as an indication and confirm it experimentally.'); ?> Anti-Inflammatory (AIP) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Anti-Inflammatory (AIP): This value indicates the probability that the peptide sequence belongs to this class. Propedia 26 uses a minimum cutoff value of 0.9 to indicate a high likelihood of belonging to the Anti-Inflammatory class. About Anti-Inflammatory peptide class – Function: They reduce or regulate exaggerated inflammatory responses. Mechanism: They can inhibit pro-inflammatory cytokines (such as TNF-α, IL-6) or modulate macrophage activity. Application: Treatment of chronic inflammatory and autoimmune diseases. See the documentation for details on how this machine learning model was developed. "><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
-                            <td><span><?= avalia($info[4]).' '.$info[4] ?></span></td>
+                            <th style="width: 25%;"><?php aviso_predicao('Predicted value: this probability comes from a machine learning model trained on peptide sequences, not from an experimental assay. Treat it as an indication and confirm it experimentally.'); ?> Anti-Inflammatory (AIP) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Anti-Inflammatory (AIP): This value indicates the probability that the peptide sequence belongs to this class. Propedia 26 uses a minimum cutoff value of 0.9 to indicate a high likelihood of belonging to the Anti-Inflammatory class. About Anti-Inflammatory peptide class – Function: They reduce or regulate exaggerated inflammatory responses. Mechanism: They can inhibit pro-inflammatory cytokines (such as TNF-α, IL-6) or modulate macrophage activity. Application: Treatment of chronic inflammatory and autoimmune diseases. See the documentation for details on how this machine learning model was developed. "><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <td><span><?= avalia($info[4]) ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;"><?php aviso_predicao('Predicted value: this probability comes from a machine learning model trained on peptide sequences, not from an experimental assay. Treat it as an indication and confirm it experimentally.'); ?> Quorum Sensing (QSP) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Quorum Sensing (QSP): This value indicates the probability that the peptide sequence belongs to this class. Propedia 26 uses a minimum cutoff value of 0.9 to indicate a high likelihood of belonging to the Quorum Sensing class. About Quorum Sensing peptide class – Function: They participate in bacterial communication (quorum sensing), regulating collective behaviors such as biofilm formation and virulence. Importance: Understanding and manipulating these peptides can lead to strategies to control bacterial infections without necessarily killing the bacteria (reducing selective pressure for resistance). See the documentation for details on how this machine learning model was developed. "><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
-                            <td><span><?= avalia($info[35]).' '.$info[35] ?></span></td>
+                            <th style="width: 25%;"><?php aviso_predicao('Predicted value: this probability comes from a machine learning model trained on peptide sequences, not from an experimental assay. Treat it as an indication and confirm it experimentally.'); ?> Quorum Sensing (QSP) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Quorum Sensing (QSP): This value indicates the probability that the peptide sequence belongs to this class. Propedia 26 uses a minimum cutoff value of 0.9 to indicate a high likelihood of belonging to the Quorum Sensing class. About Quorum Sensing peptide class – Function: They participate in bacterial communication (quorum sensing), regulating collective behaviors such as biofilm formation and virulence. Importance: Understanding and manipulating these peptides can lead to strategies to control bacterial infections without necessarily killing the bacteria (reducing selective pressure for resistance). See the documentation for details on how this machine learning model was developed. "><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <td><span><?= avalia($info[35]) ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;"><?php aviso_predicao('Predicted value: this probability comes from a machine learning model trained on peptide sequences, not from an experimental assay. Treat it as an indication and confirm it experimentally.'); ?> Surface Binding (SBP) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Surface Binding (SBP): This value indicates the probability that the peptide sequence belongs to this class. Propedia 26 uses a minimum cutoff value of 0.9 to indicate a high likelihood of belonging to the Surface Binding class. About Surface Binding peptide class – Function: They bind to biological surfaces or materials, such as metals, polymers, or minerals. Biotechnological use: They can be used to immobilize enzymes, design biomaterials, biosensors, or nanodevices. Example: Peptides that bind strongly to gold, silica, or metal oxides for use in nanotechnology. See the documentation for details on how this machine learning model was developed. "><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
-                            <td><span><?= avalia($info[37]).' '.$info[37] ?></span></td>
+                            <th style="width: 25%;"><?php aviso_predicao('Predicted value: this probability comes from a machine learning model trained on peptide sequences, not from an experimental assay. Treat it as an indication and confirm it experimentally.'); ?> Surface Binding (SBP) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Surface Binding (SBP): This value indicates the probability that the peptide sequence belongs to this class. Propedia 26 uses a minimum cutoff value of 0.9 to indicate a high likelihood of belonging to the Surface Binding class. About Surface Binding peptide class – Function: They bind to biological surfaces or materials, such as metals, polymers, or minerals. Biotechnological use: They can be used to immobilize enzymes, design biomaterials, biosensors, or nanodevices. Example: Peptides that bind strongly to gold, silica, or metal oxides for use in nanotechnology. See the documentation for details on how this machine learning model was developed. "><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <td><span><?= avalia($info[37]) ?></span></td>
                         </tr>
                         </tbody>
                     </table>
@@ -384,15 +385,15 @@
                     <table class="table table-striped small">
                         <tbody>
                         <tr>
-                            <th style="width: 20%;">Binding site <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Structures with similar binding site. For more details, see https://doi.org/10.1186/s12859-020-03881-z"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">Binding site <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Structures with similar binding site. For more details, see https://doi.org/10.1186/s12859-020-03881-z"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= empty($info[40])?'-':$info[40] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">Interface <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Structures with similar interface. For more details, see https://doi.org/10.1186/s12859-020-03881-z"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">Interface <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Structures with similar interface. For more details, see https://doi.org/10.1186/s12859-020-03881-z"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= empty($info[41])?'-':$info[41] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">Sequence <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Structures with sequences with high identity. For more details, see https://doi.org/10.1186/s12859-020-03881-z"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">Sequence <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Structures with sequences with high identity. For more details, see https://doi.org/10.1186/s12859-020-03881-z"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= empty($info[70])?'-':$info[70] ?></span></td>
                         </tr>
                         </tbody>
@@ -409,31 +410,31 @@
                     <table class="table table-striped small">
                         <tbody>
                         <tr>
-                            <th style="width: 20%;">ASA (complex)<a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ASA: Accessible Surface Area (ASA) is the measure of the entire surface area of the molecule that is exposed and can come into contact with the solvent, usually water (value given in Å²)"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">ASA (complex)<a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ASA: Accessible Surface Area (ASA) is the measure of the entire surface area of the molecule that is exposed and can come into contact with the solvent, usually water (value given in Å²)"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= (int)$info[5] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">ASA (protein) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA (protein): ΔASA_protein represents the surface area that is no longer exposed to the solvent upon complex formation and is calculated by the equation: ΔASA = ASA_unbound - ASA_bound. (Value given in Å²)"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">ASA (protein) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA (protein): ΔASA_protein represents the surface area that is no longer exposed to the solvent upon complex formation and is calculated by the equation: ΔASA = ASA_unbound - ASA_bound. (Value given in Å²)"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= (int)$info[7] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">ASA (peptide) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA (peptide): ΔASA_peptide represents the surface area that is no longer exposed to the solvent upon complex formation and is calculated by the equation: ΔASA = ASA_unbound - ASA_bound. (Value given in Å²)"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">ASA (peptide) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA (peptide): ΔASA_peptide represents the surface area that is no longer exposed to the solvent upon complex formation and is calculated by the equation: ΔASA = ASA_unbound - ASA_bound. (Value given in Å²)"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= (int)$info[6] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">BProA <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried protein area (value given in Å²)"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">BProA <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried protein area (value given in Å²)"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= (int)$info[10] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">BPepA <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried peptide area (value given in Å²)"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">BPepA <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried peptide area (value given in Å²)"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= (int)$info[9] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">BPP% <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried Peptide Percentage (%)"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">BPP% <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried Peptide Percentage (%)"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= (int)$info[8] ?>%</span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">BSA <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried Surface Area represents the area effectively shared at the binding interface and was calculated according to the expression. It can be calculated using the formula: BSA = (ASA_protein + ASA_peptide − ASA_complex) / 2 (value given in Å²)"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">BSA <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried Surface Area represents the area effectively shared at the binding interface and was calculated according to the expression. It can be calculated using the formula: BSA = (ASA_protein + ASA_peptide − ASA_complex) / 2 (value given in Å²)"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= (int)$info[11] ?></span></td>
                         </tr>
                         </tbody>
@@ -445,48 +446,48 @@
                     <table class="table table-striped small">
                         <tbody>
                         <tr>
-                            <th style="width: 20%;">Intermolecular contacts <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Number of Intermolecular Contacts: Total number of atomic contacts between the protein and the peptide within a specified cutoff distance (typically ≤ 5.5 Å). A higher number of contacts usually indicates a more extensive interaction interface.
+                            <th style="width: 25%;">Intermolecular contacts <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Number of Intermolecular Contacts: Total number of atomic contacts between the protein and the peptide within a specified cutoff distance (typically ≤ 5.5 Å). A higher number of contacts usually indicates a more extensive interaction interface.
 "><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= (int)$info[20] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">Charged-charged <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Number of Charged–Charged Contacts: Number of interactions between oppositely charged residues (e.g., Lys–Asp, Arg–Glu) across the binding interface, contributing significantly to electrostatic stabilization."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">Charged-charged <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Number of Charged–Charged Contacts: Number of interactions between oppositely charged residues (e.g., Lys–Asp, Arg–Glu) across the binding interface, contributing significantly to electrostatic stabilization."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= (int)$info[18] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">Charged-polar <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Number of Charged–Polar Contacts: Count of contacts between charged residues and polar uncharged residues (e.g., Lys–Ser, Asp–Thr), which often form hydrogen bonds or dipole interactions."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">Charged-polar <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Number of Charged–Polar Contacts: Count of contacts between charged residues and polar uncharged residues (e.g., Lys–Ser, Asp–Thr), which often form hydrogen bonds or dipole interactions."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= (int)$info[19] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">Charged-apolar <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Number of Charged–Apolar Contacts: Number of contacts between charged residues and hydrophobic residues (e.g., Arg–Leu, Lys–Val). These interactions typically contribute less to stability but may influence interface geometry."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">Charged-apolar <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Number of Charged–Apolar Contacts: Number of contacts between charged residues and hydrophobic residues (e.g., Arg–Leu, Lys–Val). These interactions typically contribute less to stability but may influence interface geometry."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= (int)$info[17] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">Polar-polar <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Number of Polar–Polar Contacts: Number of interactions between polar uncharged residues (e.g., Ser–Thr, Asn–Gln), frequently involving hydrogen bonding or dipole alignment across the interface."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">Polar-polar <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Number of Polar–Polar Contacts: Number of interactions between polar uncharged residues (e.g., Ser–Thr, Asn–Gln), frequently involving hydrogen bonding or dipole alignment across the interface."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= (int)$info[21] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">Apolar-polar <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Number of Apolar–Polar Contacts: Count of interactions between hydrophobic and polar residues at the interface, which can contribute to partial desolvation and interface packing."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">Apolar-polar <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Number of Apolar–Polar Contacts: Count of interactions between hydrophobic and polar residues at the interface, which can contribute to partial desolvation and interface packing."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= (int)$info[16] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">Apolar-apolar <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Number of Apolar–Apolar Contacts: Number of hydrophobic–hydrophobic interactions (e.g., Leu–Val, Phe–Ile) that promote interface stabilization through the exclusion of water molecules (hydrophobic effect)."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">Apolar-apolar <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Number of Apolar–Apolar Contacts: Number of hydrophobic–hydrophobic interactions (e.g., Leu–Val, Phe–Ile) that promote interface stabilization through the exclusion of water molecules (hydrophobic effect)."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= (int)$info[15] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">Apolar NIS residues <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Percentage of Apolar NIS Residues (%): Proportion of residues in the Non-Interacting Surface (NIS) that are classified as apolar, expressed as a percentage. This value helps assess the hydrophobic character of the exposed surface outside the binding interface."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">Apolar NIS residues <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Percentage of Apolar NIS Residues (%): Proportion of residues in the Non-Interacting Surface (NIS) that are classified as apolar, expressed as a percentage. This value helps assess the hydrophobic character of the exposed surface outside the binding interface."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= $info[31] ?>%</span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;">Charged NIS residues <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Percentage of Charged NIS Residues (%): Proportion of residues in the Non-Interacting Surface that are charged (either positively or negatively), expressed as a percentage. It reflects the electrostatic nature of the surface not involved in binding."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;">Charged NIS residues <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Percentage of Charged NIS Residues (%): Proportion of residues in the Non-Interacting Surface that are charged (either positively or negatively), expressed as a percentage. It reflects the electrostatic nature of the surface not involved in binding."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= $info[32] ?>%</span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;"><?php aviso_predicao('Predicted value: estimated by the PRODIGY model from the structure of the complex, not measured experimentally. Confirm it before drawing conclusions.'); ?> Predicted binding affinity (kcal/mol) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Predicted Binding Affinity (kcal·mol⁻¹): Estimated Gibbs free energy of binding (ΔG), in kilocalories per mole. More negative values indicate stronger predicted binding between the protein and peptide."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;"><?php aviso_predicao('Predicted value: estimated by the PRODIGY model from the structure of the complex, not measured experimentally. Confirm it before drawing conclusions.'); ?> Predicted binding affinity (kcal/mol) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Predicted Binding Affinity (kcal·mol⁻¹): Estimated Gibbs free energy of binding (ΔG), in kilocalories per mole. More negative values indicate stronger predicted binding between the protein and peptide."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= $info[33] ?></span></td>
                         </tr>
                         <tr>
-                            <th style="width: 20%;"><?php aviso_predicao('Predicted value: estimated by the PRODIGY model from the structure of the complex, not measured experimentally. Confirm it before drawing conclusions.'); ?> Predicted dissociation constant (M, 25 ˚C) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Predicted Dissociation Constant (M) at 25.0 °C: Predicted equilibrium dissociation constant (K_d), expressed in molar units (M), at 25 °C. It represents the expected concentration of the complex at which half of the binding sites are occupied. Lower values correspond to higher binding affinity."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;"><?php aviso_predicao('Predicted value: estimated by the PRODIGY model from the structure of the complex, not measured experimentally. Confirm it before drawing conclusions.'); ?> Predicted dissociation constant (M, 25 ˚C) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Predicted Dissociation Constant (M) at 25.0 °C: Predicted equilibrium dissociation constant (K_d), expressed in molar units (M), at 25 °C. It represents the expected concentration of the complex at which half of the binding sites are occupied. Lower values correspond to higher binding affinity."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= $info[34] ?></span></td>
                         </tr>
                         </tbody>
@@ -509,8 +510,34 @@
                     $pisa_pep  = '(peptide)';
                     $pisa_prot = '(protein)';
 
+                    // O CSS nao esta no CSV da entrada; o controller o le do
+                    // arquivo resumido. Entra aqui como um indice extra para
+                    // caber no mesmo laco das demais linhas.
+                    $info[93] = $pisa_css ?? '';
+
+                    // Leitura do CSS: 1 = a interface sustenta a montagem,
+                    // 0 = nenhum papel nela, vazio = o PISA nao avaliou
+                    $css_valor = trim($info[93]);
+                    if ($css_valor === '') {
+                        $info[94] = '<span class="text-muted">not assessed</span>';
+                    } elseif ((float) $css_valor >= 1) {
+                        $info[94] = '<span class="badge bg-success">high</span>';
+                    } elseif ((float) $css_valor > 0) {
+                        $info[94] = '<span class="badge bg-secondary">moderate</span>';
+                    } else {
+                        $info[94] = '<span class="badge bg-danger">low</span>';
+                    }
+
                     // [rotulo, texto de ajuda, indice no CSV], agrupados por tipo de medida
                     $pisa_grupos = [
+                        ['Interface significance', [
+                            ['Interface evidence',
+                                'Interface Evidence: reading of the Complexation Significance Score. High means the interface is essential to the assembly (CSS = 1), moderate means it contributes to it (CSS between 0 and 1) and low means it plays no role in the assembly (CSS = 0). Not assessed means PISA could not evaluate the structure.',
+                                94, true],
+                            ['Complexation significance score (CSS)',
+                                'Complexation Significance Score (CSS): how much this interface contributes to the formation of the assembly, from 0 to 1. A score of 1 means the interface is essential to the assembly, 0 means it plays no role in it. PISA computes it only for diffraction structures, so it is empty for entries solved by electron microscopy, NMR and other methods.',
+                                93],
+                        ]],
                         ['Surface area', [
                             ['Interface area (Å²)',
                                 'Interface Area: Area of one face of the protein-peptide interface, given in Å². It corresponds to the BSA calculated with NACCESS, reported in the Surface section above.',
@@ -587,8 +614,9 @@
                                     <?php foreach ($pisa_grupo[1] as $pisa_linha): ?>
                                         <?php $pisa_valor = trim($info[$pisa_linha[2]]); ?>
                                         <tr>
-                                            <th style="width: 20%;"><?php if (isset($pisa_grupo[2])) { aviso_predicao($pisa_grupo[2]); echo ' '; } ?><?= $pisa_linha[0] ?> <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="<?= esc($pisa_linha[1], 'attr') ?>"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
-                                            <td><?= ($pisa_valor === '') ? '-' : esc($pisa_valor) ?></td>
+                                            <th style="width: 25%;"><?php if (isset($pisa_grupo[2])) { aviso_predicao($pisa_grupo[2]); echo ' '; } ?><?= $pisa_linha[0] ?> <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="<?= esc($pisa_linha[1], 'attr') ?>"><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                                            <?php // o quarto item da linha, quando existe, diz que o valor ja e HTML ?>
+                                        <td><?= ($pisa_valor === '') ? '-' : (isset($pisa_linha[3]) ? $pisa_valor : esc($pisa_valor)) ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -601,6 +629,37 @@
             <h4 class="mt-3">Interface residues <sup><a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Interface Residues (distmax ≤ 6 Å): List of residues located within 6 Å of the interacting partner, defining the binding interface between the protein and peptide."><i class="bi bi-question-circle-fill opacity-25"></i></a></sup></h4>
 
             <style>
+                /* Botoes do topo (Download, Contact map, Find a similar binding site):
+                   viram orangered no hover, como os badges-link */
+                .title_h2 .btn-secondary:hover,
+                .title_h2 .btn-secondary:focus,
+                .title_h2 .btn-secondary.show {
+                    background-color: orangered;
+                    border-color: orangered;
+                }
+
+                /* Chave "Lines": ligada no azul do cabecalho, e nao no azul do Bootstrap */
+                #show_lines:checked {
+                    background-color: #031430;
+                    border-color: #031430;
+                }
+                #show_lines:focus {
+                    border-color: #031430;
+                    box-shadow: 0 0 0 .25rem rgba(3, 20, 48, .25);
+                }
+
+                /* Badges que sao links (Multipro, PDB, UniProt, PubMed, entradas
+                   semelhantes): azul do cabecalho, virando orangered no hover */
+                .link-multipro {
+                    text-decoration: none;
+                    background-color: #031430 !important;
+                    transition: background-color .15s;
+                }
+                .link-multipro:hover,
+                .link-multipro:focus {
+                    background-color: orangered !important;
+                }
+
                 /* Botoes dos residuos da interface: no maximo 10 por linha */
                 .interface-residues {
                     display: grid; gap: 4px; justify-content: start;
@@ -827,30 +886,27 @@
 
         <div class="col-md-4 col-12" id="col2">
             <div class="bd-toc" data-spy="affix" id="affix" data-offset-top="240" data-offset-bottom="250">
-                <div class="row">
-                    <div class="col">
-                        <div>
-                            <label class="badge bg-secondary" for="opacityRange">Surface: <span class="badge bg-dark" id="opacityValue">30%</span></label>
-                        </div>
+                <!-- Controles do viewer, acima da estrutura -->
+                <div class="d-flex align-items-center flex-wrap gap-2 mb-2 small">
+                    <div class="form-check form-switch mb-0">
+                        <input class="form-check-input" type="checkbox" role="switch" id="show_lines" checked>
+                        <label class="form-check-label" for="show_lines">Lines</label>
                     </div>
-                    <div class="col-6">
-                        <input class="form-range" type="range" id="opacityRange" min="0" max="1" step="0.1" value="0.3">
-                    </div>
-                    <div class="col">
-                        <p class="text-end my-0 text-muted small" style="">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#zoom" class="text-muted" id="click_zoom">
-                                <i class="bi bi-arrows-fullscreen" title="See 3D structure in full screen"></i>
-                            </a>
-                        </p>
-                    </div>
+
+                    <label class="mb-0 ms-2" for="opacityRange">Surface <span class="badge bg-secondary" id="opacityValue">30%</span></label>
+                    <input class="form-range" style="max-width: 7rem" type="range" id="opacityRange" min="0" max="1" step="0.1" value="0.3">
+
+                    <button type="button" class="btn btn-sm btn-outline-secondary ms-auto" onclick="reset()">
+                        <i class="bi bi-arrow-counterclockwise"></i> Clear
+                    </button>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#zoom" class="btn btn-sm btn-outline-secondary" id="click_zoom" data-bs-placement="top" data-bs-title="See the 3D structure in full screen">
+                        <i class="bi bi-arrows-fullscreen"></i>
+                    </a>
                 </div>
 
                 <div id="pdb" style="min-height: 400px; height: 80vh; min-width:280px; width: 100%">
 
                 </div>
-                <p style="color:#ccc; text-align: right" class="small">
-                    <!-- <a href="<?= base_url("/export/pdb-to-pymol/$id") ?>" class="me-2">Export to PyMOL</a> | --><button class="btn btn-link btn-sm pt-0" onclick="reset()">Clear</button>
-                </p>
             </div>
         </div>
     </div>
@@ -1656,8 +1712,18 @@
     // mesmo padrao de cores.
     var chainColorMap = {};
 
+    // Estado da chave "Lines": as linhas somem quando ela e desligada
+    var mostrarLinhas = true;
+
+    // Parte `line` do estilo, conforme a chave. Oculta com hidden:true, em vez
+    // de remover a chave, para o 3Dmol nao herdar o estilo anterior.
+    function estiloDeLinha() {
+        return mostrarLinhas ? { colorscheme: 'greyCarbon' } : { hidden: true };
+    }
+
     // Estilo da estrutura inteira (estado inicial / apos Clear): cartoon colorido
     // por cadeia mais as linhas. Nao mexe nas superficies do viewer principal.
+    // Guarda como reaplicar o estilo, para a chave de linhas nao perder a selecao.
     function styleWhole(viewer) {
         var chains = Object.keys(chainColorMap);
         if (chains.length) {
@@ -1665,9 +1731,7 @@
                 viewer.setStyle({
                     chain: chain
                 }, {
-                    line: {
-                        colorscheme: 'greyCarbon'
-                    },
+                    line: estiloDeLinha(),
                     cartoon: {
                         color: chainColorMap[chain]
                     }
@@ -1675,20 +1739,24 @@
             });
         } else {
             viewer.setStyle({}, {
-                line: {
-                    colorscheme: 'greyCarbon'
-                },
+                line: estiloDeLinha(),
                 cartoon: {
                     color: 'grey'
                 }
             });
         }
+        viewer._reapplyStyle = function() {
+            styleWhole(viewer);
+        };
     }
 
     // Estilo de destaque de um par: volta o resto da estrutura ao estilo padrao
     // (removendo o destaque anterior) e poe sticks nos dois residuos.
     function styleHighlight(viewer, res1, chain1, res2, chain2) {
         styleWhole(viewer);
+        viewer._reapplyStyle = function() {
+            styleHighlight(viewer, res1, chain1, res2, chain2);
+        };
 
         // ATENCAO: os sticks entram com addStyle, e nao com setStyle. O 3Dmol
         // desenha o cartoon em trechos continuos de residuos que compartilham o
@@ -2015,6 +2083,24 @@
     }
 
 
+    // Chave "Lines": redesenha mantendo a selecao corrente. Antes da primeira
+    // selecao o viewer ainda nao tem _reapplyStyle (o estilo inicial vem de
+    // createSurfacesWithOpacity), entao cai no estilo padrao.
+    $(document).on('change', '#show_lines', function() {
+        mostrarLinhas = this.checked;
+        [typeof glviewer !== 'undefined' ? glviewer : null, modalViewer].forEach(function(v) {
+            if (!v) {
+                return;
+            }
+            if (v._reapplyStyle) {
+                v._reapplyStyle();
+            } else {
+                styleWhole(v);
+            }
+            v.render();
+        });
+    });
+
     // Preenche o codigo de 1 letra do aminoacido nos botoes da interface. O CSV
     // guarda so o numero do residuo; o nome vem da estrutura carregada no 3Dmol,
     // que ja traz a numeracao correta (a sequencia sozinha nao serve porque a
@@ -2210,9 +2296,7 @@
                     glviewer.setStyle({
                         chain: chain
                     }, {
-                        line: {
-                            colorscheme: 'greyCarbon'
-                        },
+                        line: estiloDeLinha(),
                         cartoon: {
                             color: color
                         }
@@ -2295,6 +2379,18 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
 
 <script>
+
+    // O botao de tela cheia ja usa data-bs-toggle="modal", e a inicializacao
+    // global so alcanca data-bs-toggle="tooltip": este aqui e criado na mao.
+    $(function() {
+        const telaCheia = document.getElementById('click_zoom');
+        if (telaCheia) {
+            bootstrap.Tooltip.getOrCreateInstance(telaCheia, {
+                placement: 'top',
+                trigger: 'hover'
+            });
+        }
+    });
 
     // MAPA DE CONTATOS
     let allChains = new Set();

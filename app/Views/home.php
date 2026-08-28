@@ -20,7 +20,7 @@
       <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-1">
 
         <a class="btn btn-primary btn-lg px-4 me-md-2 azul" href="<?= base_url('explore') ?>">Explore Propedia</button>
-          <a href="http://bioinfo.dcc.ufmg.br/propedia" class="btn btn-outline-dark btn-lg px-4 me-md-2">Back to Propedia Legacy</a>
+          <a href="http://bioinfo.dcc.ufmg.br/propedia1" class="btn btn-outline-dark btn-lg px-4 me-md-2">Back to Propedia Legacy</a>
       </div>
     </div>
   </div>

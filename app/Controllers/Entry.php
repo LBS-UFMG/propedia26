@@ -53,8 +53,42 @@ class Entry extends BaseController
         # [20] peptide_InstabilityIndex;peptide_AliphaticIndex;peptide_GRAVY;peptide_HydrophobicPercent;peptide_PositiveResidues;peptide_NegativeResidues;peptide_C;peptide_H;peptide_N;peptide_O;peptide_S;peptide_Formula;peptide_TotalAtoms;peptide_ExtCoeff_Disulfide;peptide_ExtCoeff_NoDisulfide;protein_Length;protein_MW;protein_pI;protein_InstabilityIndex;protein_AliphaticIndex;protein_GRAVY;protein_HydrophobicPercent;protein_PositiveResidues;protein_NegativeResidues;protein_C;protein_H;protein_N;protein_O;protein_S;protein_Formula;protein_TotalAtoms;protein_ExtCoeff_Disulfide;protein_ExtCoeff_NoDisulfide
 
         $data['contacts'] = $this->getContacts($id,$modo);
+        $data['pisa_css'] = $this->getPisaCss($id);
 
         return view('entry', $data);
+    }
+
+    private function getPisaCss($id): string
+    {
+        # O CSS do PISA nao esta entre as 93 colunas do CSV da entrada: ele vem
+        # do arquivo resumido usado pela pagina Explore (coluna 22, separado por
+        # TAB). O arquivo tem dezenas de milhares de linhas, entao compara o
+        # inicio de cada uma e so parseia a linha certa.
+        $arquivo = FCPATH . 'data/propedia26_v17.tsv';
+        if (!file_exists($arquivo)) {
+            return '';
+        }
+
+        $handle = fopen($arquivo, 'r');
+        if ($handle === false) {
+            return '';
+        }
+
+        $prefixo = $id . "\t";
+        $tamanho = strlen($prefixo);
+        $css = '';
+
+        while (($linha = fgets($handle)) !== false) {
+            if (strncmp($linha, $prefixo, $tamanho) !== 0) {
+                continue;
+            }
+            $colunas = explode("\t", rtrim($linha, "\r\n"));
+            $css = isset($colunas[22]) ? trim($colunas[22]) : '';
+            break;
+        }
+        fclose($handle);
+
+        return $css;
     }
 
     private function getContacts($id, $modo, $tipo = null): Array 

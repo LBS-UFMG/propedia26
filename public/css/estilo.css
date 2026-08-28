@@ -112,3 +112,41 @@ footer{
 .validacao {
     text-transform: uppercase;
 }
+
+/* Balões de ajuda ("?"): links sem destino, discretos, e que só ganham
+   contraste quando o usuário passa o mouse ou navega pelo teclado */
+a.badge[data-bs-toggle="tooltip"],
+a.badge[data-bs-toggle="popover"] {
+    text-decoration: none;
+    opacity: .45;
+    transition: opacity .15s;
+}
+a.badge[data-bs-toggle="tooltip"]:hover,
+a.badge[data-bs-toggle="tooltip"]:focus,
+a.badge[data-bs-toggle="popover"]:hover,
+a.badge[data-bs-toggle="popover"]:focus {
+    opacity: 1;
+}
+
+
+/* Azul do cabeçalho, para destaques que não devem competir com o botão primário */
+.bg-propedia {
+    background-color: #031430 !important;
+    color: #fff !important;
+}
+
+
+/* Sliders: usam o azul do cabeçalho, não o azul primário do Bootstrap
+   (a página Explore tem regras próprias, mais específicas, e não é afetada) */
+.form-range::-webkit-slider-thumb {
+    background-color: #031430;
+}
+.form-range::-moz-range-thumb {
+    background-color: #031430;
+}
+.form-range:focus::-webkit-slider-thumb {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 .25rem rgba(3, 20, 48, .25);
+}
+.form-range:focus::-moz-range-thumb {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 .25rem rgba(3, 20, 48, .25);
+}

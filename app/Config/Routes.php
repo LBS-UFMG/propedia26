@@ -10,6 +10,8 @@ $routes->get('/clusters', 'Clusters::index');
 $routes->get('/documentation', 'Home::documentation');
 $routes->get('/download', 'Home::download');
 $routes->get('/explore', 'Home::explore');
+$routes->get('/explore/data', 'Home::exploreData');
+$routes->get('/explore/export', 'Home::exploreExport');
 $routes->post('/blast', 'Blast::index');
 $routes->post('/run', 'Project::create');
 $routes->get('/export/pymol/(:any)', 'Export::pymol/$1');
