@@ -436,11 +436,11 @@
                 </select>
             </div>
             <div class="col-6 col-md-4 col-lg-2">
-                <label class="form-label mb-1" for="interfaceEvidence">Interface evidence <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="PISA Complexation Significance Score (CSS), which measures how much the interface contributes to the assembly: strong = 1 (the interface drives the assembly), moderate = between 0 and 1, weak = 0 (no role in the assembly). PISA computes it only for diffraction structures, so entries solved by electron microscopy, NMR and other methods appear as not assessed.">?</a></label>
+                <label class="form-label mb-1" for="interfaceEvidence">Interface evidence <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="PISA Complexation Significance Score (CSS), which measures how much the interface contributes to the assembly: strong = 0.5 or above (the interface sustains the assembly), moderate = between 0 and 0.5, weak = 0 (no role in the assembly). PISA computes it only for diffraction structures, so entries solved by electron microscopy, NMR and other methods appear as not assessed.">?</a></label>
                 <select class="form-select form-select-sm" id="interfaceEvidence">
                     <option value="">All</option>
-                    <option value="strong">Strong – CSS = 1 (11,359)</option>
-                    <option value="moderate">Moderate – 0 &lt; CSS &lt; 1 (22,519)</option>
+                    <option value="strong">Strong – CSS ≥ 0.5 (15,911)</option>
+                    <option value="moderate">Moderate – 0 &lt; CSS &lt; 0.5 (17,967)</option>
                     <option value="weak">Weak – CSS = 0 (9,789)</option>
                     <option value="not_assessed">Not assessed (29,725)</option>
                 </select>
@@ -847,8 +847,8 @@
             if (f.minBpp) { L.push('mask &= df["BPP"] >= ' + f.minBpp); }
             if (f.maxResolution) { L.push('mask &= df["RESOLUTION"] <= ' + f.maxResolution); }
             if (f.method) { L.push('mask &= df["STRUCTURE_METHOD"] == ' + py(f.method)); }
-            if (f.interfaceEvidence === 'strong') { L.push('mask &= df["PISA_CSS"] >= 1'); }
-            if (f.interfaceEvidence === 'moderate') { L.push('mask &= df["PISA_CSS"].between(0, 1, inclusive="neither")'); }
+            if (f.interfaceEvidence === 'strong') { L.push('mask &= df["PISA_CSS"] >= 0.5'); }
+            if (f.interfaceEvidence === 'moderate') { L.push('mask &= df["PISA_CSS"].between(0, 0.5, inclusive="neither")'); }
             if (f.interfaceEvidence === 'weak') { L.push('mask &= df["PISA_CSS"] == 0'); }
             if (f.interfaceEvidence === 'not_assessed') { L.push('mask &= df["PISA_CSS"].isna()'); }
             if (f.minHydrophobic) { L.push('mask &= df["peptide_HydrophobicPercent"] >= ' + f.minHydrophobic); }

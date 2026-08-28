@@ -313,13 +313,13 @@ class Home extends BaseController
         if ($this->exploreForaDoMaximo($c[12], $f['maxResolucao'] ?? null)) { return false; }
         if (!empty($f['metodo']) && trim($c[13]) !== $f['metodo']) { return false; }
         if (!empty($f['evidencia'])) {
-            # CSS do PISA: 1 = a interface sustenta a montagem, 0 = nenhum papel.
-            # Vazio significa que o PISA nao avaliou (so ha valor para difracao).
+            # CSS do PISA: a partir de 0.5 a interface sustenta a montagem,
+            # 0 = nenhum papel. Vazio = o PISA nao avaliou (so ha valor para difracao).
             $css = trim($c[22]);
             $temCss = ($css !== '');
             if ($f['evidencia'] === 'not_assessed' && $temCss) { return false; }
-            if ($f['evidencia'] === 'strong' && !($temCss && (float) $css >= 1)) { return false; }
-            if ($f['evidencia'] === 'moderate' && !($temCss && (float) $css > 0 && (float) $css < 1)) { return false; }
+            if ($f['evidencia'] === 'strong' && !($temCss && (float) $css >= 0.5)) { return false; }
+            if ($f['evidencia'] === 'moderate' && !($temCss && (float) $css > 0 && (float) $css < 0.5)) { return false; }
             if ($f['evidencia'] === 'weak' && !($temCss && (float) $css == 0)) { return false; }
         }
 
