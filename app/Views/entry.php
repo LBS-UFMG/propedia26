@@ -519,20 +519,20 @@
                     // 0 = nenhum papel nela, vazio = o PISA nao avaliou
                     $css_valor = trim($info[93]);
                     if ($css_valor === '') {
-                        $info[94] = '<span class="text-muted">not assessed</span>';
+                        $info[94] = '<span class="badge bg-secondary bg-opacity-50">not assessed</span>';
                     } elseif ((float) $css_valor >= 1) {
-                        $info[94] = '<span class="badge bg-success">high</span>';
+                        $info[94] = '<span class="badge bg-success">strong</span>';
                     } elseif ((float) $css_valor > 0) {
                         $info[94] = '<span class="badge bg-secondary">moderate</span>';
                     } else {
-                        $info[94] = '<span class="badge bg-danger">low</span>';
+                        $info[94] = '<span class="badge bg-danger">weak</span>';
                     }
 
                     // [rotulo, texto de ajuda, indice no CSV], agrupados por tipo de medida
                     $pisa_grupos = [
                         ['Interface significance', [
                             ['Interface evidence',
-                                'Interface Evidence: reading of the Complexation Significance Score. High means the interface is essential to the assembly (CSS = 1), moderate means it contributes to it (CSS between 0 and 1) and low means it plays no role in the assembly (CSS = 0). Not assessed means PISA could not evaluate the structure.',
+                                'Interface Evidence: reading of the Complexation Significance Score. High means the interface is essential to the assembly (CSS = 1), moderate means it contributes to it (CSS between 0 and 1) and weak means it plays no role in the assembly (CSS = 0). Not assessed means PISA could not evaluate the structure.',
                                 94, true],
                             ['Complexation significance score (CSS)',
                                 'Complexation Significance Score (CSS): how much this interface contributes to the formation of the assembly, from 0 to 1. A score of 1 means the interface is essential to the assembly, 0 means it plays no role in it. PISA computes it only for diffraction structures, so it is empty for entries solved by electron microscopy, NMR and other methods.',
