@@ -760,9 +760,9 @@
                 // quantidade de resultados, no alto da pagina
                 const total = settings.fnRecordsTotal();
                 const exibidas = settings.fnRecordsDisplay();
-                $('#contador-valor').text(exibidas.toLocaleString());
+                $('#contador-valor').text(exibidas.toLocaleString('en-US'));
                 $('#contador-detalhe').text(
-                    (exibidas === total) ? '' : ' of ' + total.toLocaleString() + ' (filtered)'
+                    (exibidas === total) ? '' : ' of ' + total.toLocaleString('en-US') + ' (filtered)'
                 );
 
                 // sem resultado nao ha o que exportar
@@ -797,7 +797,7 @@
             table.ajax.reload(function(json) {
                 const exibidas = (json && json.recordsFiltered) || 0;
                 const total = (json && json.recordsTotal) || 0;
-                avisar(`Filters applied: ${exibidas.toLocaleString()} of ${total.toLocaleString()} complexes.`);
+                avisar(`Filters applied: ${exibidas.toLocaleString('en-US')} of ${total.toLocaleString('en-US')} complexes.`);
             });
             atualizarScriptPython();
         };

@@ -114,8 +114,8 @@
           <li><a href="#ecluster">2.1.4 Clustering information</a></li>
           <li><a href="#eprotein">2.1.5 Protein-peptide interaction information</a></li>
           <li><a href="#blast-tool">2.2 BLAST tool</a></li>
-          <li><a href="#parameters-config">2.1.1 Parameters and Configuration</a></li>
-          <li><a href="#blast-use">2.1.2 How to use Propedia BLAST?</a></li>
+          <li><a href="#parameters-config">2.2.1 Parameters and Configuration</a></li>
+          <li><a href="#blast-use">2.2.2 How to use Propedia BLAST?</a></li>
           <li><a href="#other">2.2.3 Other search tools</a></li>
           <li><a href="#clusters">2.3 Clusters</a></li>
           <li><a href="#history">2.3.1 History and evolution of clustering in Propedia</a></li>
@@ -132,7 +132,8 @@
           <li><a href="#binding-sites">2.6 Search for Similar Binding Sites (ProBiS)</a></li>
           <li><a href="#example">2.6.1 Example</a></li>
           <li><a href="#final">3. Final Considerations</a></li>
-          <li><a href="#reference">4. References</a></li>
+          <li><a href="#source-code">4. Source code and reproducibility</a></li>
+          <li><a href="#reference">5. References</a></li>
         </ul>
       </nav>
 
@@ -181,15 +182,15 @@
             <tbody>
               <tr>
                 <th scope="row">Unique entries</th>
-                <td>38.218</td>
+                <td>38,218</td>
                 <td>0</td>
-                <td>38.218</td>
+                <td>38,218</td>
               </tr>
               <tr>
                 <th scope="row">Duplicated entries</th>
-                <td>35.174</td>
+                <td>35,174</td>
                 <td>19,759</td>
-                <td>54.933</td>
+                <td>54,933</td>
               </tr>
             </tbody>
             <tfoot class="table-light">
@@ -231,9 +232,9 @@
       <section id="expanded" class="docs-card">
         <h3><em>1.2.1 Expanded dataset</em></h3>
         <ul>
-          <li><b> Increased complex count: </b> The updated version of Propedia now includes 78,148 protein-peptide complexes, representing nearly a fourfold increase in data coverage compared to the previous release (19,813 complexes), an increase of approximately 3.9-fold, as shown in figure 1.</li>
+          <li><b> Increased complex count: </b> The updated version of Propedia now includes 73,392 protein-peptide complexes, a 3.7-fold increase in data coverage compared to the previous release (19,813 complexes), as shown in figure 1. Together with the 19,759 multipro entries, the database holds 93,151 entries in total.</li>
 
-          <li><b> Updated PDB sources:</b> Includes structures from the Protein Data Bank up to 2023, ensuring researchers have access to the most recent structural data.</li>
+          <li><b> Updated PDB sources:</b> Includes structures from the Protein Data Bank collected in September 2025 (the most recent structure was deposited on 18 July 2025), ensuring researchers have access to the most recent structural data.</li>
         </ul>
 
         <figure>
@@ -244,13 +245,27 @@
           </figcaption>
         </figure>
 
+        <figure>
+          <img class="shadow bordered w-100 p-2 m-2" src="<?= base_url('/img/docs/doc-explore-filtros.png') ?>" alt="Search filters of the Explore page">
+          <figcaption>
+            <b>Figure 2.</b> Search filters of the Explore page. The expanded dataset is served with a
+            filter panel that combines the structural, energetic and functional properties of every
+            complex: PDB classification, structure method, interface evidence, canonical amino acids,
+            salt bridges, therapeutic class, peptide length, hydrogen bonds, buried area, buried
+            peptide, hydrophobicity, positive residues, resolution, binding free energy and
+            &Delta;G<sub>diss</sub>, plus the option of keeping only one representative per cluster.
+            The counter in the top right corner reports how many complexes match the current
+            selection. The filters are described in section 2.5.
+          </figcaption>
+        </figure>
+
       </section>
 
       <section id="redesigned" class="docs-card">
         <h3><em>1.2.2 Redesigned user interface</em></h3>
 
         <ul>
-          <li><strong>Modernized layout:</strong> Complete visual overhaul with improved navigation and responsive design (Figure 2).</li>
+          <li><strong>Modernized layout:</strong> Complete visual overhaul with improved navigation and responsive design (Figure 3).</li>
           <li><strong>Enhanced search page:</strong> More intuitive organization of search options and filters.</li>
           <li><strong>Advanced results page:</strong> Redesigned results table with better sorting capabilities and immediate access to key complex information.</li>
         </ul>
@@ -258,7 +273,7 @@
         <figure>
           <img class="w-50" src="<?= base_url('/img/docs/fig2prop.svg') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 2.</b> Propedia user interface. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2020, Propedia-legacy).
+            <b>Figure 3.</b> Propedia user interface. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2020, Propedia-legacy).
           </figcaption>
         </figure>
 
@@ -267,7 +282,7 @@
       <section id="analytical" class="docs-card">
         <h3><em>1.2.3 New analytical tools</em></h3>
         <ul>
-          <li><b>Peptide clustering: </b> Implementation of a novel peptide similarity clustering algorithm that groups complexes based on peptide sequence similarity, enabling evolutionary and functional analysis (Figure 3), more details in section 2.3 and 2.4.</li>
+          <li><b>Peptide clustering: </b> Implementation of a novel peptide similarity clustering algorithm that groups complexes based on peptide sequence similarity, enabling evolutionary and functional analysis (Figure 4), more details in section 2.3 and 2.4.</li>
 
           <li><b>Interface properties from PISA: </b> Each entry now reports the chemical and energetic properties of the interface calculated with PISA, including the Complexation Significance Score, the buried and dissociation areas, the dissociation free energy and the solvation energy gain, more details in section 2.1.5.</li>
 
@@ -276,7 +291,7 @@
         <figure>
           <img class="w-75" src="<?= base_url('/img/docs/fig3prop.svg') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 3.</b> Propedia peptide clustering. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2020).
+            <b>Figure 4.</b> Propedia peptide clustering. (A) Latest version of Propedia (2026, Propedia v26); (B) Original version of Propedia (2020).
           </figcaption>
         </figure>
 
@@ -285,14 +300,14 @@
       <section id="improved" class="docs-card">
         <h3><em>1.2.4 Improved search capabilities</em></h3>
         <ul>
-          <li><b>BLAST Search: </b> Updated sequence search with better performance and more configurable parameters (Figure 4).</li>
+          <li><b>BLAST Search: </b> Updated sequence search with better performance and more configurable parameters (Figure 5).</li>
 
         </ul>
 
         <figure>
           <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/fig4prop.svg') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 4.</b> New tool in Propedia v26: BLAST.
+            <b>Figure 5.</b> New tool in Propedia v26: BLAST.
           </figcaption>
         </figure>
 
@@ -867,7 +882,7 @@
         <figure>
           <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig5prop.svg') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 5.</b> Propedia home page.
+            <b>Figure 6.</b> Propedia home page.
           </figcaption>
         </figure>
 
@@ -908,7 +923,7 @@
         <figure>
           <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figaprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 6.</b> Example of an entry page.
+            <b>Figure 7.</b> Example of an entry page.
           </figcaption>
         </figure>
 
@@ -919,7 +934,7 @@
         <figure>
           <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figbprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 7.</b> Example of an entry page. Physical/chemical parameters are shown below the description section.
+            <b>Figure 8.</b> Example of an entry page. Physical/chemical parameters are shown below the description section.
           </figcaption>
         </figure>
 
@@ -930,14 +945,14 @@
         <figure>
           <img class="shadow bordered w-100 p-2 m-2" src="<?= base_url('/img/docs/doc-mapa-contatos.png') ?>" alt="Contact map of entry 1WRZ-B-A beside the 3D viewer showing the selected contact">
           <figcaption>
-            <b>Figure 8.</b> Contact map of entry 1WRZ-B-A and the 3D viewer displayed beside it. Each point of the map is an atomic contact between a residue of the peptide (x axis) and a residue of the protein (y axis), coloured by contact type; the chains shown on each axis are chosen in the selectors above the chart, and the legend allows each contact type to be shown or hidden. Clicking a point highlights the corresponding pair in the viewer on the right, which draws a dashed line between the two atoms and labels them with the residue, the atom and the distance &mdash; here the hydrogen bond between H317 (NE2) of the peptide and T79 (O) of the protein, 3.56 &Aring; apart.
+            <b>Figure 9.</b> Contact map of entry 1WRZ-B-A and the 3D viewer displayed beside it. Each point of the map is an atomic contact between a residue of the peptide (x axis) and a residue of the protein (y axis), coloured by contact type; the chains shown on each axis are chosen in the selectors above the chart, and the legend allows each contact type to be shown or hidden. Clicking a point highlights the corresponding pair in the viewer on the right, which draws a dashed line between the two atoms and labels them with the residue, the atom and the distance &mdash; here the hydrogen bond between H317 (NE2) of the peptide and T79 (O) of the protein, 3.56 &Aring; apart.
           </figcaption>
         </figure>
 
         <figure>
           <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figcprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 9.</b> Contact map.
+            <b>Figure 10.</b> Contact map.
           </figcaption>
         </figure>
 
@@ -952,7 +967,7 @@
         <figure>
           <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figdprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 10.</b> Physical-chemical parameters calculated using ProtParam.
+            <b>Figure 11.</b> Physical-chemical parameters calculated using ProtParam.
           </figcaption>
         </figure>
 
@@ -1019,14 +1034,14 @@
         <figure>
           <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/figeprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 11.</b> Complex 3D view.
+            <b>Figure 12.</b> Complex 3D view.
           </figcaption>
         </figure>
 
         <figure>
           <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/doc-interface-3d.png') ?>" alt="The Interface switch applied to entry 4BQ7-C-D">
           <figcaption>
-            <b>Figure 12.</b> The Interface switch applied to entry 4BQ7-C-D. The interface residues of both chains are shown as sticks and spheres with their labels, the interface residues of the protein are covered by a denser surface, and the atom-atom contacts of the contact table are drawn as dashed lines coloured by contact type (in green, the hydrogen bonds).
+            <b>Figure 13.</b> The Interface switch applied to entry 4BQ7-C-D. The interface residues of both chains are shown as sticks and spheres with their labels, the interface residues of the protein are covered by a denser surface, and the atom-atom contacts of the contact table are drawn as dashed lines coloured by contact type (in green, the hydrogen bonds).
           </figcaption>
         </figure>
 
@@ -1039,7 +1054,7 @@
         <figure>
           <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/figfprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 13.</b> Clustering box.
+            <b>Figure 14.</b> Clustering box.
           </figcaption>
         </figure>
 
@@ -1098,7 +1113,7 @@
         <figure>
           <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/figgprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 14.</b> Protein-petide interaction.
+            <b>Figure 15.</b> Protein-petide interaction.
           </figcaption>
         </figure>
 
@@ -1129,7 +1144,7 @@
         <figure>
           <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/fighprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 15.</b> Interaction energy.
+            <b>Figure 16.</b> Interaction energy.
           </figcaption>
         </figure>
 
@@ -1217,14 +1232,14 @@
         <figure>
           <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/doc-pisa-tabela.png') ?>" alt="Interface properties calculated with PISA for entry 4BQ7-C-D, an interface read as strong (CSS = 1">
           <figcaption>
-            <b>Figure 16.</b> Interface properties calculated with PISA for entry 4BQ7-C-D, an interface read as strong (CSS = 1.000). The warning sign marks the predicted energy values.
+            <b>Figure 17.</b> Interface properties calculated with PISA for entry 4BQ7-C-D, an interface read as strong (CSS = 1.000). The warning sign marks the predicted energy values.
           </figcaption>
         </figure>
 
         <figure>
           <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figiprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 17.</b> Interface residue.
+            <b>Figure 18.</b> Interface residue.
           </figcaption>
         </figure>
 
@@ -1236,7 +1251,7 @@
         <figure>
           <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figjprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 18.</b> Contacts (calculated using COCaDA).
+            <b>Figure 19.</b> Contacts (calculated using COCaDA).
           </figcaption>
         </figure>
 
@@ -1393,13 +1408,13 @@
         </p>
 
         <p>
-          A summary of all parameters is illustrated in Figure 6. It is important to note that BLAST alignment will always search for peptides if the input is a peptide sequence, or proteins if the input is a protein sequence.
+          A summary of all parameters is illustrated in Figure 20. It is important to note that BLAST alignment will always search for peptides if the input is a peptide sequence, or proteins if the input is a protein sequence.
         </p>
 
         <figure>
           <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig6prop.svg') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 19.</b> Parameters used for the development of the BLAST tool. On the left are examples of peptide sequence algorithms. The peptide sequence of 9VEI-F-A (available in the Propedia database) was used as input, and the sequence used as a response is a real example of a BLAST run performed by Propedia. The right side shows an example of the protein sequence algorithm (the total sequence has been omitted for better image visualization). The protein sequence 9VEI-F-A was used as input, and the sequence used as a response is a real example of a BLAST run performed by Propedia.
+            <b>Figure 20.</b> Parameters used for the development of the BLAST tool. On the left are examples of peptide sequence algorithms. The peptide sequence of 9VEI-F-A (available in the Propedia database) was used as input, and the sequence used as a response is a real example of a BLAST run performed by Propedia. The right side shows an example of the protein sequence algorithm (the total sequence has been omitted for better image visualization). The protein sequence 9VEI-F-A was used as input, and the sequence used as a response is a real example of a BLAST run performed by Propedia.
           </figcaption>
         </figure>
 
@@ -1408,7 +1423,7 @@
       <section id="blast-use" class="docs-card">
         <h3><em>2.2.2 How to use Propedia BLAST?</em></h3>
         <p>
-          When you access the Propedia website, the home page displays “BLAST” in the navigation bar (Figure 5, 3). Clicking on it will open a window where you can enter your peptide or protein sequence (Figure 4). Before running BLAST, you must indicate whether your sequence is peptide or protein, because, as seen in section 2.1.1, the parameters for alignment are different for each type of sequence. To start, simply click on the “Run Blast” button and wait a few seconds for the result.
+          When you access the Propedia website, the home page displays “BLAST” in the navigation bar (Figure 6, 3). Clicking on it will open a window where you can enter your peptide or protein sequence (Figure 5). Before running BLAST, you must indicate whether your sequence is peptide or protein, because, as seen in section 2.1.1, the parameters for alignment are different for each type of sequence. To start, simply click on the “Run Blast” button and wait a few seconds for the result.
         </p>
 
       </section>
@@ -1432,7 +1447,7 @@
         <figure>
           <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figkprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 20.</b> Propedia's v26 clusters.
+            <b>Figure 21.</b> Propedia's v26 clusters.
           </figcaption>
         </figure>
 
@@ -1455,7 +1470,7 @@
         </style>
 
         <table class="table table-hover table-condensed table-striped">
-          <caption class="table-caption-left">Table. Propedia's v26 clusters.</caption>
+          <caption class="table-caption-left">Table 2. Propedia's v26 clusters.</caption>
           <thead>
             <tr>
               <th>Cluster Type</th>
@@ -1526,10 +1541,10 @@
 
           <ol>
             <li>
-              <strong>Redundancy detection by sequence combination:</strong> proteins and peptides have their sequences concatenated, allowing completely identical complexes to be identified. This resulted in 51,082 unique complexes.
+              <strong>Redundancy detection by sequence combination:</strong> proteins and peptides have their sequences concatenated, allowing completely identical complexes to be identified. This resulted in 51,416 unique complexes across the protein-peptide and multipro sets (38,218 of them in the protein-peptide set).
             </li>
             <li>
-              <strong>Canonical Non-Redundant (CNR) dataset:</strong> from all peptides containing only canonical amino acids, 17,509 unique peptide sequences were extracted, forming the new set of non-redundant peptides.
+              <strong>Canonical Non-Redundant (CNR) dataset:</strong> from all peptides containing only canonical amino acids, 11,380 unique peptide sequences were extracted, forming the new set of non-redundant peptides (17,440 unique sequences when peptides with non-canonical residues are also counted).
             </li>
             <li>
               <strong>Recalculation of previous clusters:</strong> all clusters from past versions were redone using Python scripts and modern structural analysis tools.
@@ -1545,7 +1560,7 @@
 
 
         <section id="Practical-app" class="docs-card">
-          <h3><em>2.2.3 Practical applications of clusters</em></h3>
+          <h3><em>2.3.3 Practical applications of clusters</em></h3>
           <p>
             The clusters provided by Propedia v26 are a central tool for exploring, comparing, and selecting protein-peptide complexes. In the Clusters tab, users can browse clusters organized by three complementary criteria: peptide sequence similarity, interface structural similarity, and binding site similarity. For each cluster, the interface displays the group size, its members, and similarity metrics. It is also possible to directly access the page for each complex, where relevant structural, physicochemical, and functional properties are available.
           </p>
@@ -1580,12 +1595,12 @@
           <figure>
             <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig7prop.svg') ?>" alt="Interface">
             <figcaption>
-              <b>Figure 21.</b> Available downloads of Propedia v26.
+              <b>Figure 22.</b> Available downloads of Propedia v26.
             </figcaption>
           </figure>
 
 
-          <p>In addition to the main section, the page provides legacy versions (Propedia v2.3 and Propedia v1) with historical files (summarized in Figure 9), for example:</p>
+          <p>In addition to the main section, the page provides legacy versions (Propedia v2.3 and Propedia v1) with historical files (summarized in Figure 23), for example:</p>
 
           <ul>
             <li><strong>Propedia v2.3:</strong> separate sets of PDBs (peptides, receptors, complexes), signatures, and FASTA files. Useful for reproducibility of previous work.</li>
@@ -1606,7 +1621,7 @@
           <figure>
             <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig8prop.png') ?>" alt="Interface">
             <figcaption>
-              <b>Figure 22.</b> Downloads available on Propedia Legacy.
+              <b>Figure 23.</b> Downloads available on Propedia Legacy.
             </figcaption>
           </figure>
 
@@ -1643,7 +1658,7 @@
           <figure>
             <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig9prop.svg') ?>" alt="Interface">
             <figcaption>
-              <b>Figure 23.</b> Quick step-by-step guide: how to use the Explore page. When you open the Explore page, you will: (1, Optional) Set the length range in Min peptide size and Max peptide size. (2) Select one or more categories in PDB Classification to filter by function/structure. (3) Check Only canonical amino acids if you want only canonical sequences. (4) Check Remove redundancy to get only non-redundant entries. (5) Click Apply filters. The table will be updated with entries that meet the criteria. For a specific entry, click ID to open the complex details page or use Download to obtain the PDB.
+              <b>Figure 24.</b> Quick step-by-step guide: how to use the Explore page. When you open the Explore page, you will: (1, Optional) Set the length range in Min peptide size and Max peptide size. (2) Select one or more categories in PDB Classification to filter by function/structure. (3) Check Only canonical amino acids if you want only canonical sequences. (4) Check Remove redundancy to get only non-redundant entries. (5) Click Apply filters. The table will be updated with entries that meet the criteria. For a specific entry, click ID to open the complex details page or use Download to obtain the PDB.
             </figcaption>
           </figure>
         </section>
@@ -1692,14 +1707,14 @@
         <section id="id-page" class="docs-card">
           <h3><em>2.5.3 ID page: e.g.: 1A0N-A-B</em></h3>
 
-          <p>The ID page (Figure 11) displays all available data and analyses for a specific protein-peptide complex: metadata (PDB, experimental method, description), sequences, calculated physicochemical properties, cluster classification, surface and energy metrics, atomic contact table, contact map, and 3D viewer. It also provides download links and shortcuts to external resources (RCSB PDB, UniProt, PubMed).</p>
+          <p>The ID page (Figure 25) displays all available data and analyses for a specific protein-peptide complex: metadata (PDB, experimental method, description), sequences, calculated physicochemical properties, cluster classification, surface and energy metrics, atomic contact table, contact map, and 3D viewer. It also provides download links and shortcuts to external resources (RCSB PDB, UniProt, PubMed).</p>
 
-          <p>The header and metadata include the Identifier (ID), for example, 1A0N-A-B, which indicates the PDB code accompanied by the peptide and protein chains, as well as external links that provide direct access to the corresponding entries in RCSB PDB, UniProt, and PubMed. The structural method is also presented, containing the experimental technique used (such as SOLUTION NMR) and, when available, the resolution of the structure, as well as a concise description of the complex, such as in “Calmodulin complexed with a peptide...”. The page shows two columns (Protein/Peptide) with automatically calculated sequences and properties, for example: sequence (complete receptor chain and peptide sequence), length, molecular weight, isoelectric point (pI), instability index, aliphatic index, GRAVY, % Hydrophobicity, Residues + / -, atomic formula, total atoms and extinction coefficient. All of these properties are shown in Figure 11. These values are useful for rapid assessment of physicochemical properties and for filtering in pipelines.</p>
+          <p>The header and metadata include the Identifier (ID), for example, 1A0N-A-B, which indicates the PDB code accompanied by the peptide and protein chains, as well as external links that provide direct access to the corresponding entries in RCSB PDB, UniProt, and PubMed. The structural method is also presented, containing the experimental technique used (such as SOLUTION NMR) and, when available, the resolution of the structure, as well as a concise description of the complex, such as in “Calmodulin complexed with a peptide...”. The page shows two columns (Protein/Peptide) with automatically calculated sequences and properties, for example: sequence (complete receptor chain and peptide sequence), length, molecular weight, isoelectric point (pI), instability index, aliphatic index, GRAVY, % Hydrophobicity, Residues + / -, atomic formula, total atoms and extinction coefficient. All of these properties are shown in Figure 25. These values are useful for rapid assessment of physicochemical properties and for filtering in pipelines.</p>
 
           <figure>
             <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig10prop.png') ?>" alt="Interface">
             <figcaption>
-              <b>Figure 24.</b> Propedia v26 ID page.
+              <b>Figure 25.</b> Propedia v26 ID page.
             </figcaption>
           </figure>
 
@@ -1716,7 +1731,7 @@
             <figure>
               <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig11prop.svg') ?>" alt="Interface">
               <figcaption>
-                <b>Figure 24.</b> Graphical summary of protein-peptide complex interaction analyses.
+                <b>Figure 26.</b> Graphical summary of protein-peptide complex interaction analyses.
               </figcaption>
             </figure>
 
@@ -1743,13 +1758,13 @@
               <li>Exploring possible molecular recognition mechanisms in distant families.</li>
             </ul>
 
-            <p>The search is based on the ProBiS (Protein Binding Sites) algorithm, which performs local structural alignment between protein surfaces. Unlike global methods, ProBiS searches for local 3D patterns of physicochemical properties, including geometry, functional groups, curvature, and electrostatic characteristics. A tutorial is shown in Figure 14.</p>
+            <p>The search is based on the ProBiS (Protein Binding Sites) algorithm, which performs local structural alignment between protein surfaces. Unlike global methods, ProBiS searches for local 3D patterns of physicochemical properties, including geometry, functional groups, curvature, and electrostatic characteristics. A tutorial is shown in Figure 27.</p>
 
 
             <figure>
               <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figmprop.png') ?>" alt="Interface">
               <figcaption>
-                <b>Figure 25.</b> Graphical tutorial of Propedia v26 search for similar binding sites.
+                <b>Figure 27.</b> Graphical tutorial of Propedia v26 search for similar binding sites.
               </figcaption>
             </figure>
 
@@ -1766,7 +1781,7 @@
             <figure>
               <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figlprop.png') ?>" alt="Interface">
               <figcaption>
-                <b>Figure 26.</b> ProBiS example.
+                <b>Figure 28.</b> ProBiS example.
               </figcaption>
             </figure>
 
@@ -1779,7 +1794,7 @@
             <figure>
               <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figmprop.png') ?>" alt="Interface">
               <figcaption>
-                <b>Figure 27.</b> Second example of ProBiS.
+                <b>Figure 29.</b> Second example of ProBiS.
               </figcaption>
             </figure>
           </section>
@@ -1792,8 +1807,23 @@
 
           </section>
 
+          <section id="source-code" class="docs-card">
+            <h2>4. Source code and reproducibility</h2>
+
+            <p>
+              Everything needed to inspect, reuse or rebuild Propedia is publicly available:
+            </p>
+
+            <ul>
+              <li>The source code for the web tool is available at <a href="https://github.com/LBS-UFMG/propedia26" target="_blank" rel="noopener">https://github.com/LBS-UFMG/propedia26</a>.</li>
+              <li>Full supplementary material is available at <a href="https://github.com/LBS-UFMG/propedia26-sm" target="_blank" rel="noopener">https://github.com/LBS-UFMG/propedia26-sm</a>.</li>
+              <li>Data descriptors are also available in Supplementary Table S98.</li>
+              <li>The complete Python pipeline for reproducing Propedia is available at <a href="https://github.com/LBS-UFMG/propedia-pipeline" target="_blank" rel="noopener">https://github.com/LBS-UFMG/propedia-pipeline</a>.</li>
+            </ul>
+          </section>
+
           <section id="reference" class="docs-card">
-            <h2>4. References</h2>
+            <h2>5. References</h2>
 
             <p>ALTSCHUL, S. F., GISH, W., MILLER, W., MYERS, E. W. & LIPMAN, D. J. Basic local alignment search tool. <em>J. Mol. Biol.</em> v. 215, p. 403-410, 1990.</p>
 
