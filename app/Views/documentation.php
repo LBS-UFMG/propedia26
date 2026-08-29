@@ -105,6 +105,7 @@
           <li><a href="#technical">1.2.5 Technical improvements</a></li>
           <li><a href="#how-to-cite">1.3 How to Cite & License</a></li>
           <li><a href="#license1">1.3.1 Article License (2021): CC BY 4.0</a></li>
+          <li><a href="#license2">1.3.2 Software policy: LBS-SRC</a></li>
           <li><a href="#using-platform">2. How to Use the Platform</a></li>
           <li><a href="#entry">2.1 Entry Page</a></li>
           <li><a href="#edescription">2.1.1 Entry description</a></li>
@@ -267,6 +268,8 @@
         <h3><em>1.2.3 New analytical tools</em></h3>
         <ul>
           <li><b>Peptide clustering: </b> Implementation of a novel peptide similarity clustering algorithm that groups complexes based on peptide sequence similarity, enabling evolutionary and functional analysis (Figure 3), more details in section 2.3 and 2.4.</li>
+
+          <li><b>Interface properties from PISA: </b> Each entry now reports the chemical and energetic properties of the interface calculated with PISA, including the Complexation Significance Score, the buried and dissociation areas, the dissociation free energy and the solvation energy gain, more details in section 2.1.5.</li>
 
         </ul>
 
@@ -663,6 +666,91 @@
               <td>No</td>
               <td>Yes</td>
             </tr>
+
+            <!-- Interface properties -->
+            <tr>
+              <th colspan="3" style="text-align: center;">Interface properties (PISA)</th>
+            </tr>
+            <tr>
+              <td>Interface evidence (strong / moderate / weak)</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Complexation significance score (CSS)</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Interface area (Å²)</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Buried area, peptide and protein (Å²)</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Total buried area (Å²)</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Complex ASA (Å²)</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Dissociation area (Å²)</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Dissociation free energy ΔG<sub>diss</sub> (kcal·mol⁻¹)</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Solvation energy gain ΔiG (kcal·mol⁻¹)</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>ΔiG P-value</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Solvation energy, peptide and protein (kcal·mol⁻¹)</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Total interaction energy ΔiG (kcal·mol⁻¹)</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Dissociation entropy TΔS (kcal·mol⁻¹)</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Hydrogen bonds and salt bridges at the interface</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Interface residues, peptide and protein</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Interface atoms, peptide and protein</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
           </tbody>
         </table>
 
@@ -716,6 +804,39 @@
         <p>You can use the Propedia data freely in your research, but there is a restriction if you wish to create a competing database.</p>
 
         <p>The code is available on GitHub and is shared under an MIT license.</p>
+      </section>
+
+      <section id="license2" class="docs-card">
+        <h2><em>1.3.2 Software policy: LBS-SRC</em></h2>
+
+        <p>
+          Propedia follows the <a href="https://bioinfo.dcc.ufmg.br/software-policy" target="_blank">LBS-SRC Software Policy</a>, the academic software release cycle adopted by the Laboratory of Bioinformatics and Systems (LBS) of the Federal University of Minas Gerais (UFMG), Brazil, and by its partner groups. The policy defines the support period, the license, the versioning scheme and the authorship of every tool produced in the laboratory.
+        </p>
+
+        <p><strong>Support cycle.</strong> Each tool has a five-year life cycle counted from the publication date of the paper associated with it:</p>
+
+        <ul>
+          <li><strong>Full support (first two years):</strong> provided by the developers of the tool and the co-authors of the paper. It covers security fixes, bug fixes, interface changes and general user support.</li>
+
+          <li><strong>Extended support (following three years):</strong> provided mainly by the LBS IT team, and it may not involve the original developers. It is limited to keeping the tool available and accessible; fixes to the results produced by the tool, new features and methodological changes are not covered.</li>
+        </ul>
+
+        <p>
+          More significant changes require a new version, and the support period is renewed from the publication of the paper associated with it. A new major version must not be created during the full support period of the previous one, and a new publication must be justified by new features or substantial changes to the tool, never by a data update alone.
+        </p>
+
+        <p><strong>License.</strong> Except where expressly stated otherwise, software produced by the LBS is released as open source under the <a href="https://opensource.org/license/mit" target="_blank">MIT license</a>, and documentation and supplementary materials under the <a href="https://creativecommons.org/licenses/by/4.0" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license. The Propedia data follow the license described in section 1.3.1.</p>
+
+        <p><strong>Versioning.</strong> Version numbers follow the pattern <code>X.YY.MMDD</code>, where <code>X</code> is the major version associated with the published paper, <code>YY</code> is the last two digits of the year, <code>MM</code> the month without a leading zero and <code>DD</code> the day with two digits. Versions <code>0.YY.MMDD</code> are development versions (alpha and beta); after the publication of the paper the major version becomes 1, and it is only incremented when a new paper directly related to the tool is published. When an update changes only the data, <code>X</code> stays the same and just the <code>YY.MMDD</code> part is updated.</p>
+
+        <p><strong>Authorship and ownership.</strong> The software trademark is attributed to the LBS, UFMG, Brazil. Ownership of each published version belongs, in order, to the first author of that version (or equally to the group of authors credited with the same level of contribution), to the project supervisor identified as the last author, and to the remaining collaborating authors — so different versions may have different ownership. Each version must carry the LBS-SRC license and the corresponding copyright notices, preserving the year of creation, the name of the software and the laboratory, followed by the notice of the current version:</p>
+
+        <code class="text-dark">
+          &copy; 2020 PROPEDIA | LBS, UFMG (Brazil)<br>
+          &copy; 2026 PROPEDIA v26 | Diego Mariano et al.
+        </code>
+
+        <p><br>New versions may be developed by other research groups, provided they are expressly authorised by the last author (project supervisor).</p>
 
 
       </section>
@@ -807,9 +928,16 @@
         </p>
 
         <figure>
+          <img class="shadow bordered w-100 p-2 m-2" src="<?= base_url('/img/docs/doc-mapa-contatos.png') ?>" alt="Contact map of entry 1WRZ-B-A beside the 3D viewer showing the selected contact">
+          <figcaption>
+            <b>Figure 8.</b> Contact map of entry 1WRZ-B-A and the 3D viewer displayed beside it. Each point of the map is an atomic contact between a residue of the peptide (x axis) and a residue of the protein (y axis), coloured by contact type; the chains shown on each axis are chosen in the selectors above the chart, and the legend allows each contact type to be shown or hidden. Clicking a point highlights the corresponding pair in the viewer on the right, which draws a dashed line between the two atoms and labels them with the residue, the atom and the distance &mdash; here the hydrogen bond between H317 (NE2) of the peptide and T79 (O) of the protein, 3.56 &Aring; apart.
+          </figcaption>
+        </figure>
+
+        <figure>
           <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figcprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 8.</b> Contact map.
+            <b>Figure 9.</b> Contact map.
           </figcaption>
         </figure>
 
@@ -824,7 +952,7 @@
         <figure>
           <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figdprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 9.</b> Physical-chemical parameters calculated using ProtParam.
+            <b>Figure 10.</b> Physical-chemical parameters calculated using ProtParam.
           </figcaption>
         </figure>
 
@@ -867,13 +995,38 @@
 
         <h2><em>2.1.3 Interactive 3D structure visualization panel</em></h2>
         <p>
-          Allows you to interact with the 3D structure of the protein-peptide complex. You can click on the atoms to display their labels. Left-click and drag to move the protein. Use the mouse scroll wheel to zoom. The top bar lets you adjust the transparency of the complex's surface. Click the maximize button to view the interface in full screen (residue labels are displayed by default).
+          Allows you to interact with the 3D structure of the protein-peptide complex. You can click on the atoms to display their labels. Left-click and drag to move the protein. Use the mouse scroll wheel to zoom.
+        </p>
+
+        <p>The bar above the structure holds the viewer controls:</p>
+
+        <ul>
+          <li><strong>Lines:</strong> shows or hides the bonds of the whole structure, drawn as thin lines over the cartoon.</li>
+
+          <li><strong>Interface:</strong> highlights the protein-peptide interface. The interface residues of both chains are drawn as sticks and spheres and labelled with the one-letter code and the residue number, the interface residues of the protein receive a denser surface, and the atom-atom contacts of the contact table are drawn as thick dashed lines coloured by contact type (green for hydrogen bonds, blue for salt bridges, cyan for attractive, red for repulsive, black for disulfide bonds and grey for aromatic contacts). Hydrophobic contacts are left out of the drawing, since they are numerous and would hide the rest of the interface; they remain in the contact table and in the contact map.</li>
+
+          <li><strong>Surface:</strong> slider that sets the opacity of the surface of each chain, with the current value shown next to it.</li>
+
+          <li><strong>Clear:</strong> returns the viewer to its initial state, removing the labels and any residue or contact that was selected.</li>
+
+          <li><strong>Full screen:</strong> opens the structure in a full-screen viewer with further options — representation, colour scheme, residue selection, surfaces, labels and contact cutoff. Residue labels are displayed by default there.</li>
+        </ul>
+
+        <p>
+          Further down the page, each button of the <em>Interface residues</em> list highlights a single residue in this viewer. Clicking one of them switches <strong>Interface</strong> off, so that the highlight of the whole interface does not compete with the residue being inspected; clicking a row of the contact table highlights the corresponding pair of residues in the same way.
         </p>
 
         <figure>
           <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/figeprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 10.</b> Complex 3D view.
+            <b>Figure 11.</b> Complex 3D view.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/doc-interface-3d.png') ?>" alt="The Interface switch applied to entry 4BQ7-C-D">
+          <figcaption>
+            <b>Figure 12.</b> The Interface switch applied to entry 4BQ7-C-D. The interface residues of both chains are shown as sticks and spheres with their labels, the interface residues of the protein are covered by a denser surface, and the atom-atom contacts of the contact table are drawn as dashed lines coloured by contact type (in green, the hydrogen bonds).
           </figcaption>
         </figure>
 
@@ -886,7 +1039,7 @@
         <figure>
           <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/figfprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 11.</b> Clustering box.
+            <b>Figure 13.</b> Clustering box.
           </figcaption>
         </figure>
 
@@ -945,7 +1098,7 @@
         <figure>
           <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/figgprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 12.</b> Protein-petide interaction.
+            <b>Figure 14.</b> Protein-petide interaction.
           </figcaption>
         </figure>
 
@@ -976,7 +1129,7 @@
         <figure>
           <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/fighprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 13.</b> Interaction energy.
+            <b>Figure 15.</b> Interaction energy.
           </figcaption>
         </figure>
 
@@ -1007,10 +1160,71 @@
           <li><strong>Predicted Dissociation Constant (M) at 25.0 °C:</strong> Predicted dissociation constant (K<sub>d</sub>), in molar units (M), at 25 °C. Represents the expected concentration at which half of the binding sites are occupied. Lower values indicate stronger affinity.</li>
         </ul>
 
+        <p><strong>Interface properties (calculated using PISA)</strong></p>
+
+        <p>
+          The interface is also evaluated with PISA (Protein Interfaces, Surfaces and Assemblies, see <a href="https://www.ebi.ac.uk/pdbe/pisa">PDBePISA</a> and Krissinel &amp; Henrick, 2007), which describes the chemical and energetic properties of the association and estimates how much the interface contributes to the assembly. The entry page presents these values in four groups. When PISA could not process the structure, the page shows a message in place of the table; individual fields that PISA did not compute are shown as “-”.
+        </p>
+
+        <p><em>Interface significance</em></p>
+        <ul>
+          <li><strong>Interface evidence:</strong> reading of the Complexation Significance Score adopted by Propedia. <em>Strong</em> means the interface sustains the assembly (CSS of 0.5 or above), <em>moderate</em> means it contributes to it (CSS between 0 and 0.5) and <em>weak</em> means it plays no role in the assembly (CSS = 0). <em>Not assessed</em> means PISA could not evaluate the structure.</li>
+
+          <li><strong>Complexation Significance Score (CSS):</strong> how much this interface contributes to the formation of the assembly, from 0 to 1. PISA computes it only for structures solved by diffraction, so it is empty for entries solved by electron microscopy, NMR and other methods.</li>
+        </ul>
+
+        <p><em>Surface area</em></p>
+        <ul>
+          <li><strong>Interface area (Å²):</strong> area of one face of the protein-peptide interface. It corresponds to the BSA calculated with NACCESS, reported above.</li>
+
+          <li><strong>Buried area (peptide, Å²) and Buried area (protein, Å²):</strong> surface area of each chain that becomes buried upon formation of the interface.</li>
+
+          <li><strong>Total buried area (Å²):</strong> total surface area buried by the association, counting both faces of the interface. It is therefore about twice the BSA reported by NACCESS, which counts a single face.</li>
+
+          <li><strong>Complex ASA (Å²):</strong> accessible surface area of the complex, the PISA counterpart of the ASA (complex) calculated with NACCESS.</li>
+
+          <li><strong>Dissociation area (Å²):</strong> interface area that is broken when the complex dissociates. It usually coincides with the interface area.</li>
+        </ul>
+
+        <p><em>Energy (predicted)</em></p>
+        <ul>
+          <li><strong>Dissociation free energy ΔG<sub>diss</sub> (kcal/mol):</strong> free energy required to dissociate the complex. Positive values indicate a thermodynamically stable complex. It is the PISA counterpart of the binding affinity predicted by PRODIGY, with the opposite sign.</li>
+
+          <li><strong>Solvation energy gain ΔiG (kcal/mol):</strong> free energy gain obtained on formation of the interface. Negative values indicate a hydrophobic interface, which favours the association. It does not include the contribution of hydrogen bonds and salt bridges across the interface.</li>
+
+          <li><strong>ΔiG P-value:</strong> statistical significance of the solvation energy gain. Values below 0.5 indicate an interface more hydrophobic than would be expected by chance, that is, an interface likely to be interaction-specific rather than a crystal-packing artefact.</li>
+
+          <li><strong>Solvation energy (peptide, kcal/mol) and Solvation energy (protein, kcal/mol):</strong> contribution of each chain to the solvation free energy gain of the interface.</li>
+
+          <li><strong>Total interaction energy ΔiG (kcal/mol):</strong> solvation energy gain summed over all the interfaces of the structure. It is equal to the interface ΔiG when the structure has a single interface.</li>
+
+          <li><strong>Dissociation entropy TΔS (kcal/mol):</strong> entropic cost of the association. It always opposes the formation of the complex and is taken into account in the calculation of ΔG<sub>diss</sub>.</li>
+        </ul>
+
+        <p>
+          The energies reported by PISA are estimates from an empirical model, not experimental measurements, and are marked as predicted values on the entry page. Use them as an indication and confirm them before drawing conclusions.
+        </p>
+
+        <p><em>Contacts</em></p>
+        <ul>
+          <li><strong>Hydrogen bonds and Salt bridges:</strong> number of hydrogen bonds and of interactions between oppositely charged groups identified by PISA across the interface. They are computed independently of the COCaDA contacts listed below, so the counts may differ.</li>
+
+          <li><strong>Interface residues (peptide) and Interface residues (protein):</strong> number of residues of each chain that take part in the interface, that is, residues that lose accessible surface area upon complex formation.</li>
+
+          <li><strong>Interface atoms (peptide) and Interface atoms (protein):</strong> number of atoms of each chain that take part in the interface.</li>
+        </ul>
+
+        <figure>
+          <img class="shadow bordered w-50 p-2 m-2" src="<?= base_url('/img/docs/doc-pisa-tabela.png') ?>" alt="Interface properties calculated with PISA for entry 4BQ7-C-D, an interface read as strong (CSS = 1">
+          <figcaption>
+            <b>Figure 16.</b> Interface properties calculated with PISA for entry 4BQ7-C-D, an interface read as strong (CSS = 1.000). The warning sign marks the predicted energy values.
+          </figcaption>
+        </figure>
+
         <figure>
           <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figiprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 14.</b> Interface residue.
+            <b>Figure 17.</b> Interface residue.
           </figcaption>
         </figure>
 
@@ -1022,7 +1236,7 @@
         <figure>
           <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figjprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 15.</b> Contacts (calculated using COCaDA).
+            <b>Figure 18.</b> Contacts (calculated using COCaDA).
           </figcaption>
         </figure>
 
@@ -1185,7 +1399,7 @@
         <figure>
           <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig6prop.svg') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 16.</b> Parameters used for the development of the BLAST tool. On the left are examples of peptide sequence algorithms. The peptide sequence of 9VEI-F-A (available in the Propedia database) was used as input, and the sequence used as a response is a real example of a BLAST run performed by Propedia. The right side shows an example of the protein sequence algorithm (the total sequence has been omitted for better image visualization). The protein sequence 9VEI-F-A was used as input, and the sequence used as a response is a real example of a BLAST run performed by Propedia.
+            <b>Figure 19.</b> Parameters used for the development of the BLAST tool. On the left are examples of peptide sequence algorithms. The peptide sequence of 9VEI-F-A (available in the Propedia database) was used as input, and the sequence used as a response is a real example of a BLAST run performed by Propedia. The right side shows an example of the protein sequence algorithm (the total sequence has been omitted for better image visualization). The protein sequence 9VEI-F-A was used as input, and the sequence used as a response is a real example of a BLAST run performed by Propedia.
           </figcaption>
         </figure>
 
@@ -1218,7 +1432,7 @@
         <figure>
           <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figkprop.png') ?>" alt="Interface">
           <figcaption>
-            <b>Figure 17.</b> Propedia's v26 clusters.
+            <b>Figure 20.</b> Propedia's v26 clusters.
           </figcaption>
         </figure>
 
@@ -1366,12 +1580,12 @@
           <figure>
             <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig7prop.svg') ?>" alt="Interface">
             <figcaption>
-              <b>Figure 18.</b> Available downloads of Propedia v26.
+              <b>Figure 21.</b> Available downloads of Propedia v26.
             </figcaption>
           </figure>
 
 
-          <p>In addition to the main section, the page provides legacy versions (Propedia v2.3 and Propedia v1) with historical files (summarized in Figure 8), for example:</p>
+          <p>In addition to the main section, the page provides legacy versions (Propedia v2.3 and Propedia v1) with historical files (summarized in Figure 9), for example:</p>
 
           <ul>
             <li><strong>Propedia v2.3:</strong> separate sets of PDBs (peptides, receptors, complexes), signatures, and FASTA files. Useful for reproducibility of previous work.</li>
@@ -1392,7 +1606,7 @@
           <figure>
             <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig8prop.png') ?>" alt="Interface">
             <figcaption>
-              <b>Figure 19.</b> Downloads available on Propedia Legacy.
+              <b>Figure 22.</b> Downloads available on Propedia Legacy.
             </figcaption>
           </figure>
 
@@ -1408,10 +1622,28 @@
             The Explore page is the main interface for browsing and filtering Propedia protein-peptide complexes. It brings together interactive filters, options to reduce redundancy, and a table of entries that allows quick inspection and direct download of associated files. A quick tutorial is illustrated in the figure below.
           </p>
 
+          <p>
+            The <em>Filter search</em> panel combines selection fields and sliders. Every filter is optional: a field left on <em>All</em>, or a slider left at its neutral end (shown as <em>any</em>), does not restrict the results. The filters currently available are:
+          </p>
+
+          <ul>
+            <li><strong>Structural and functional description:</strong> PDB classification, Structure method, Canonical amino acids, Therapeutic class and the peptide length range (Min peptide size and Max peptide size).</li>
+
+            <li><strong>Interface and contacts:</strong> Interface evidence (the PISA reading described in section 2.1.5: strong, moderate or weak), Salt bridges, Min hydrogen bonds, Min buried area (Å²), Min buried peptide (%), Min hydrophobic (%) and Min positive residues.</li>
+
+            <li><strong>Quality and energy:</strong> Min resolution (Å), Min bind. free energy (the affinity predicted by PRODIGY) and Min ΔG<sub>diss</sub> (the dissociation free energy estimated by PISA). The last two are predicted values and are marked with a warning sign on the page.</li>
+
+            <li><strong>Remove redundancy:</strong> keeps only the leader of each cluster of complexes with similar sequences (see section 2.3).</li>
+          </ul>
+
+          <p>
+            Filters are applied together, and take effect when you click <strong>Apply filters</strong>; <strong>Clear</strong> puts every field back to its neutral state. The counter above the panel reports how many complexes match the current selection.
+          </p>
+
           <figure>
             <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig9prop.svg') ?>" alt="Interface">
             <figcaption>
-              <b>Figure 20.</b> Quick step-by-step guide: how to use the Explore page. When you open the Explore page, you will: (1, Optional) Set the length range in Min peptide size and Max peptide size. (2) Select one or more categories in PDB Classification to filter by function/structure. (3) Check Only canonical amino acids if you want only canonical sequences. (4) Check Remove redundancy to get only non-redundant entries. (5) Click Apply filters. The table will be updated with entries that meet the criteria. For a specific entry, click ID to open the complex details page or use Download to obtain the PDB.
+              <b>Figure 23.</b> Quick step-by-step guide: how to use the Explore page. When you open the Explore page, you will: (1, Optional) Set the length range in Min peptide size and Max peptide size. (2) Select one or more categories in PDB Classification to filter by function/structure. (3) Check Only canonical amino acids if you want only canonical sequences. (4) Check Remove redundancy to get only non-redundant entries. (5) Click Apply filters. The table will be updated with entries that meet the criteria. For a specific entry, click ID to open the complex details page or use Download to obtain the PDB.
             </figcaption>
           </figure>
         </section>
@@ -1460,14 +1692,14 @@
         <section id="id-page" class="docs-card">
           <h3><em>2.5.3 ID page: e.g.: 1A0N-A-B</em></h3>
 
-          <p>The ID page (Figure 10) displays all available data and analyses for a specific protein-peptide complex: metadata (PDB, experimental method, description), sequences, calculated physicochemical properties, cluster classification, surface and energy metrics, atomic contact table, contact map, and 3D viewer. It also provides download links and shortcuts to external resources (RCSB PDB, UniProt, PubMed).</p>
+          <p>The ID page (Figure 11) displays all available data and analyses for a specific protein-peptide complex: metadata (PDB, experimental method, description), sequences, calculated physicochemical properties, cluster classification, surface and energy metrics, atomic contact table, contact map, and 3D viewer. It also provides download links and shortcuts to external resources (RCSB PDB, UniProt, PubMed).</p>
 
-          <p>The header and metadata include the Identifier (ID), for example, 1A0N-A-B, which indicates the PDB code accompanied by the peptide and protein chains, as well as external links that provide direct access to the corresponding entries in RCSB PDB, UniProt, and PubMed. The structural method is also presented, containing the experimental technique used (such as SOLUTION NMR) and, when available, the resolution of the structure, as well as a concise description of the complex, such as in “Calmodulin complexed with a peptide...”. The page shows two columns (Protein/Peptide) with automatically calculated sequences and properties, for example: sequence (complete receptor chain and peptide sequence), length, molecular weight, isoelectric point (pI), instability index, aliphatic index, GRAVY, % Hydrophobicity, Residues + / -, atomic formula, total atoms and extinction coefficient. All of these properties are shown in Figure 10. These values are useful for rapid assessment of physicochemical properties and for filtering in pipelines.</p>
+          <p>The header and metadata include the Identifier (ID), for example, 1A0N-A-B, which indicates the PDB code accompanied by the peptide and protein chains, as well as external links that provide direct access to the corresponding entries in RCSB PDB, UniProt, and PubMed. The structural method is also presented, containing the experimental technique used (such as SOLUTION NMR) and, when available, the resolution of the structure, as well as a concise description of the complex, such as in “Calmodulin complexed with a peptide...”. The page shows two columns (Protein/Peptide) with automatically calculated sequences and properties, for example: sequence (complete receptor chain and peptide sequence), length, molecular weight, isoelectric point (pI), instability index, aliphatic index, GRAVY, % Hydrophobicity, Residues + / -, atomic formula, total atoms and extinction coefficient. All of these properties are shown in Figure 11. These values are useful for rapid assessment of physicochemical properties and for filtering in pipelines.</p>
 
           <figure>
             <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig10prop.png') ?>" alt="Interface">
             <figcaption>
-              <b>Figure 21.</b> Propedia v26 ID page.
+              <b>Figure 24.</b> Propedia v26 ID page.
             </figcaption>
           </figure>
 
@@ -1484,7 +1716,7 @@
             <figure>
               <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/fig11prop.svg') ?>" alt="Interface">
               <figcaption>
-                <b>Figure 21.</b> Graphical summary of protein-peptide complex interaction analyses.
+                <b>Figure 24.</b> Graphical summary of protein-peptide complex interaction analyses.
               </figcaption>
             </figure>
 
@@ -1511,13 +1743,13 @@
               <li>Exploring possible molecular recognition mechanisms in distant families.</li>
             </ul>
 
-            <p>The search is based on the ProBiS (Protein Binding Sites) algorithm, which performs local structural alignment between protein surfaces. Unlike global methods, ProBiS searches for local 3D patterns of physicochemical properties, including geometry, functional groups, curvature, and electrostatic characteristics. A tutorial is shown in Figure 12.</p>
+            <p>The search is based on the ProBiS (Protein Binding Sites) algorithm, which performs local structural alignment between protein surfaces. Unlike global methods, ProBiS searches for local 3D patterns of physicochemical properties, including geometry, functional groups, curvature, and electrostatic characteristics. A tutorial is shown in Figure 14.</p>
 
 
             <figure>
               <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figmprop.png') ?>" alt="Interface">
               <figcaption>
-                <b>Figure 22.</b> Graphical tutorial of Propedia v26 search for similar binding sites.
+                <b>Figure 25.</b> Graphical tutorial of Propedia v26 search for similar binding sites.
               </figcaption>
             </figure>
 
@@ -1534,7 +1766,7 @@
             <figure>
               <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figlprop.png') ?>" alt="Interface">
               <figcaption>
-                <b>Figure 23.</b> ProBiS example.
+                <b>Figure 26.</b> ProBiS example.
               </figcaption>
             </figure>
 
@@ -1547,7 +1779,7 @@
             <figure>
               <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figmprop.png') ?>" alt="Interface">
               <figcaption>
-                <b>Figure 24.</b> Second example of ProBiS.
+                <b>Figure 27.</b> Second example of ProBiS.
               </figcaption>
             </figure>
           </section>
@@ -1578,6 +1810,8 @@
             <p>GASTEIGER, E. et al. Protein identification and analysis tools on the ExPASy server. In: <em>The proteomics protocols handbook</em>, p. 571–607 (Springer, 2005).</p>
 
             <p>HUBBARD, S. J.; THORNTON, J. M. (1993). "NACCESS", Computer Program, Department of Biochemistry and Molecular Biology, University College London.</p>
+
+            <p>KRISSINEL, E.; HENRICK, K. “Inference of macromolecular assemblies from crystalline state.” <em>Journal of Molecular Biology</em> 372.3 (2007): 774–797.</p>
 
             <p>LEMOS, Rafael Pereira, et al. “COCαDA - A fast and scalable algorithm for interatomic contact detection in proteins using Cα distance matrices.” <em>Frontiers in Bioinformatics</em> 5 (2025): 1630078.</p>
 

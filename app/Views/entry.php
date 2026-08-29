@@ -483,7 +483,7 @@
                             <td><span><?= $info[32] ?>%</span></td>
                         </tr>
                         <tr>
-                            <th style="width: 25%;"><?php aviso_predicao('Predicted value: estimated by the PRODIGY model from the structure of the complex, not measured experimentally. Confirm it before drawing conclusions.'); ?> Predicted binding affinity (kcal/mol) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Predicted Binding Affinity (kcal·mol⁻¹): Estimated Gibbs free energy of binding (ΔG), in kilocalories per mole. More negative values indicate stronger predicted binding between the protein and peptide."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
+                            <th style="width: 25%;"><?php aviso_predicao('Predicted value: estimated by the PRODIGY model from the structure of the complex, not measured experimentally. Confirm it before drawing conclusions.'); ?> Predicted free energy of binding (kcal/mol) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Predicted Binding Affinity (kcal·mol⁻¹): Estimated Gibbs free energy of binding (ΔG), in kilocalories per mole. More negative values indicate stronger predicted binding between the protein and peptide."><i class="bi bi-question-circle-fill opacity-25"></i></a></th>
                             <td><span><?= $info[33] ?></span></td>
                         </tr>
                         <tr>
@@ -886,22 +886,71 @@
 
         <div class="col-md-4 col-12" id="col2">
             <div class="bd-toc" data-spy="affix" id="affix" data-offset-top="240" data-offset-bottom="250">
-                <!-- Controles do viewer, acima da estrutura -->
-                <div class="d-flex align-items-center flex-wrap gap-2 mb-2 small">
-                    <div class="form-check form-switch mb-0">
-                        <input class="form-check-input" type="checkbox" role="switch" id="show_lines" checked>
-                        <label class="form-check-label" for="show_lines">Lines</label>
+                <style>
+                    /* Chaves do viewer: azul-escuro da Propedia quando ligadas */
+                    .viewer-controls .form-check-input:checked {
+                        background-color: #031430;
+                        border-color: #031430;
+                    }
+
+                    /* "Surface:", barra e valor formam um bloco so, com o
+                       espacamento interno menor que o da linha de controles.
+                       A margem inferior repete a folga que o .form-check tem por
+                       causa do min-height, para o texto "Surface:" ficar alinhado
+                       com "Lines" e "Interface". */
+                    .viewer-controls .surface-group {
+                        margin-bottom: 3px;
+                    }
+
+                    /* O trilho padrao do Bootstrap e quase branco (#f8f9fa) */
+                    .viewer-controls .form-range {
+                        height: 1.3125rem;
+                    }
+                    .viewer-controls .form-range::-webkit-slider-runnable-track {
+                        background-color: #ced4da;
+                    }
+                    .viewer-controls .form-range::-moz-range-track {
+                        background-color: #ced4da;
+                    }
+                </style>
+
+                <!-- Controles do viewer, acima da estrutura: tres grupos (chaves,
+                     superficie e botoes) com o espaco sobrando dividido por igual.
+                     Abaixo de 1400px de janela nao cabe o texto das chaves, e ai
+                     entram os icones; o tooltip explica os dois casos. -->
+                <div class="d-flex align-items-center flex-wrap justify-content-between gap-2 mb-2 small viewer-controls">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="form-check form-switch mb-0">
+                            <input class="form-check-input" type="checkbox" role="switch" id="show_lines" checked>
+                            <label class="form-check-label" for="show_lines" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Lines: bonds of the whole structure drawn as thin lines">
+                                <i class="bi bi-slash-lg d-xxl-none"></i><span class="d-none d-xxl-inline">Lines</span>
+                            </label>
+                        </div>
+
+                        <!-- Destaca a interface: residuos em sticks, superficie por cima
+                             e os contatos atomo-atomo da tabela desenhados como linhas -->
+                        <div class="form-check form-switch mb-0">
+                            <input class="form-check-input" type="checkbox" role="switch" id="show_interface">
+                            <label class="form-check-label" for="show_interface" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Interface residues as sticks, covered by a surface, with the atom contacts drawn as lines">
+                                <i class="bi bi-intersect d-xxl-none"></i><span class="d-none d-xxl-inline">Interface</span>
+                            </label>
+                        </div>
                     </div>
 
-                    <label class="mb-0 ms-2" for="opacityRange">Surface <span class="badge bg-secondary" id="opacityValue">30%</span></label>
-                    <input class="form-range" style="max-width: 7rem" type="range" id="opacityRange" min="0" max="1" step="0.1" value="0.3">
+                    <div class="d-flex align-items-center gap-1 surface-group">
+                        <label class="mb-0" for="opacityRange">Surface:</label>
+                        <input class="form-range" style="max-width: 3.5rem" type="range" id="opacityRange" min="0" max="1" step="0.1" value="0.3">
+                        <span class="badge bg-secondary px-1" id="opacityValue">30%</span>
+                    </div>
 
-                    <button type="button" class="btn btn-sm btn-outline-secondary ms-auto" onclick="reset()">
-                        <i class="bi bi-arrow-counterclockwise"></i> Clear
-                    </button>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#zoom" class="btn btn-sm btn-outline-secondary" id="click_zoom" data-bs-placement="top" data-bs-title="See the 3D structure in full screen">
-                        <i class="bi bi-arrows-fullscreen"></i>
-                    </a>
+                    <div class="d-flex align-items-center gap-1">
+                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="reset()" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Clear: back to the initial 3D viewer settings">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                        </button>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#zoom" class="btn btn-sm btn-outline-secondary" id="click_zoom" data-bs-placement="top" data-bs-title="See the 3D structure in full screen">
+                            <i class="bi bi-arrows-fullscreen"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <div id="pdb" style="min-height: 400px; height: 80vh; min-width:280px; width: 100%">
@@ -1748,6 +1797,9 @@
         viewer._reapplyStyle = function() {
             styleWhole(viewer);
         };
+
+        // Sticks da interface, quando a chave "Interface" estiver ligada
+        ifaceEstiloSticks(viewer);
     }
 
     // Estilo de destaque de um par: volta o resto da estrutura ao estilo padrao
@@ -2122,6 +2174,14 @@
     $(document).on('click', '.btn-resi', function() {
         $('.btn-resi').removeClass('active');
         $(this).addClass('active');
+
+        // O botao destaca um residuo so, entao a chave "Interface", que destaca a
+        // interface inteira, e desligada antes (o change limpa sticks, linhas e
+        // rotulos e devolve o estilo base)
+        if ($('#show_interface').prop('checked')) {
+            $('#show_interface').prop('checked', false).trigger('change');
+        }
+
         highlightResidue(
             (typeof glviewer !== 'undefined') ? glviewer : null,
             this.dataset.chain,
@@ -2218,12 +2278,269 @@
 
     // Botao Clear do viewer principal
     function reset() {
+        // Tira o destaque do residuo da interface que estivesse selecionado. Vem
+        // antes de ifaceAplica, para a superficie da interface voltar.
+        $('.btn-resi').removeClass('active');
+
         if (typeof glviewer !== 'undefined' && glviewer) {
             resetViewer(glviewer);
+            // resetViewer removeu todos os labels do viewer, inclusive os da
+            // interface: refaz o destaque para ele nao ficar pela metade
+            ifaceRotulos = [];
+            ifaceAplica();
         }
-        // Tira o destaque do residuo da interface que estivesse selecionado
-        $('.btn-resi').removeClass('active');
     }
+
+    // ============ Destaque da interface no viewer principal (#pdb) ============
+    // A chave "Interface", acima da estrutura, poe os residuos da interface em
+    // sticks e esferas, cobre os da proteina com uma superficie densa (os do
+    // peptideo ficam com a superficie do slider) e desenha os contatos
+    // atomo-atomo da tabela de contatos (pares de
+    // cadeias diferentes) como linhas pontilhadas coloridas pelo tipo de
+    // contato. A distancia de cada contato fica na tabela de contatos.
+
+    var mostrarInterface = false;
+    // Opacidade da superficie sobre os residuos da interface da proteina
+    const IFACE_OPACIDADE_PROT = 0.9;
+
+    var ifaceSuperficies = []; // ids das superficies criadas por este recurso
+    var ifaceLinhas = [];      // shapes das linhas de contato
+    var ifaceRotulos = [];     // labels dos residuos que interagem
+    var ifaceIndice = null;    // cadeia:residuo:atomo -> atomo do modelo
+
+    const ifaceCadeiaProt = '<?= $info[27] ?>';
+
+    <?php
+    // Contatos entre cadeias diferentes (proteina x peptideo), no formato do CSV
+    // da tabela de contatos: 0 cadeia1, 1 numero1, 2 nome1, 3 atomo1, 4 cadeia2,
+    // 5 numero2, 6 nome2, 7 atomo2, 8 distancia, 9 tipo.
+    $contatos_interface = [];
+    foreach ($contacts as $contact) {
+        $c = explode(',', $contact);
+        if ((count($c) < 9) or ($c[0] == 'Chain1') or (trim($c[0]) === trim($c[4]))) {
+            continue;
+        }
+        $contatos_interface[] = [
+            'c1' => trim($c[0]), 'r1' => (int) $c[1], 'a1' => trim($c[3]),
+            'c2' => trim($c[4]), 'r2' => (int) $c[5], 'a2' => trim($c[7]),
+            'd'  => (float) $c[8],
+            't'  => isset($c[9]) ? trim($c[9]) : '',
+        ];
+    }
+    ?>
+    const ifaceContatos = <?= json_encode($contatos_interface) ?>;
+
+    // Residuos da interface por cadeia: os que aparecem nos contatos entre as
+    // duas cadeias, mais a lista da interface calculada pelo Naccess (proteina),
+    // que e a mesma exibida nos botoes de "Interface residues".
+    const ifaceResiduos = (function() {
+        var porCadeia = {};
+
+        function guarda(chain, resi) {
+            if (!chain) {
+                return;
+            }
+            if (!porCadeia[chain]) {
+                porCadeia[chain] = {};
+            }
+            porCadeia[chain][resi] = true;
+        }
+        ifaceContatos.forEach(function(ct) {
+            guarda(ct.c1, ct.r1);
+            guarda(ct.c2, ct.r2);
+        });
+        [<?= implode(',', array_map('intval', $residuos_interface ?? [])) ?>].forEach(function(resi) {
+            guarda(ifaceCadeiaProt, resi);
+        });
+        var saida = {};
+        Object.keys(porCadeia).forEach(function(chain) {
+            saida[chain] = Object.keys(porCadeia[chain]).map(Number);
+        });
+        return saida;
+    })();
+
+    // Contatos hidrofobicos ficam de fora do desenho: sao muitos e poluem a
+    // visualizacao. Eles seguem na tabela de contatos e no mapa de contatos, e os
+    // residuos que fazem esses contatos continuam destacados como interface.
+    function ifaceContatoOculto(tipo) {
+        return /HY/i.test(String(tipo));
+    }
+
+    // Cor da linha conforme o tipo de contato: as mesmas cores dos botoes de
+    // filtro e dos badges da coluna Type da tabela.
+    function ifaceCorContato(tipo) {
+        var t = String(tipo).toUpperCase();
+        if (t.indexOf('HB') >= 0) return '#198754';  // ligacao de hidrogenio
+        if (t.indexOf('SB') >= 0) return '#0d6efd';  // ponte salina
+        if (t.indexOf('DS') >= 0) return '#212529';  // ponte dissulfeto
+        if (t.indexOf('AT') >= 0) return '#0dcaf0';  // atrativo
+        if (t.indexOf('RE') >= 0) return '#dc3545';  // repulsivo
+        if (t.indexOf('HY') >= 0) return '#ffc107';  // hidrofobico
+        if (/AS|SPA|SPE|SOT/.test(t)) return '#6c757d'; // aromaticos
+        return '#adb5bd';                            // indefinido
+    }
+
+    // Sticks nos residuos da interface, chamado no fim de styleWhole(). Entra com
+    // addStyle, e nao setStyle, para nao partir o cartoon (ver styleHighlight).
+    function ifaceEstiloSticks(viewer) {
+        if (!mostrarInterface || typeof glviewer === 'undefined' || viewer !== glviewer) {
+            return;
+        }
+        Object.keys(ifaceResiduos).forEach(function(chain) {
+            var esquema = (chainColorMap[chain] || 'grey') + 'Carbon';
+            viewer.addStyle({
+                chain: chain,
+                resi: ifaceResiduos[chain]
+            }, {
+                stick: {
+                    radius: 0.2,
+                    colorscheme: esquema
+                },
+                sphere: {
+                    scale: 0.25,
+                    colorscheme: esquema
+                }
+            });
+        });
+    }
+
+    function ifaceRemoveSuperficies() {
+        ifaceSuperficies.forEach(function(sup) {
+            try {
+                glviewer.removeSurface(sup);
+            } catch (err) {
+                // a superficie ja pode ter sido removida pelo slider de opacidade
+            }
+        });
+        ifaceSuperficies = [];
+    }
+
+    // Superficie so sobre os residuos da interface da proteina, bem mais densa
+    // que a do slider. Os residuos do peptideo ficam com a superficie padrao da
+    // cadeia, que o slider controla.
+    function ifaceCriaSuperficies() {
+        var resis = ifaceResiduos[ifaceCadeiaProt];
+        if (!resis || !resis.length) {
+            return;
+        }
+        // addSurface devolve uma promise com o id da superficie em .surfid, que
+        // e o que removeSurface espera
+        var sup = glviewer.addSurface($3Dmol.SurfaceType.VDW, {
+            opacity: IFACE_OPACIDADE_PROT,
+            color: chainColorMap[ifaceCadeiaProt] || 'grey'
+        }, {
+            chain: ifaceCadeiaProt,
+            resi: resis
+        });
+        ifaceSuperficies.push((sup && sup.surfid !== undefined) ? sup.surfid : sup);
+    }
+
+    function ifaceRemoveLinhas() {
+        ifaceLinhas.forEach(function(sh) {
+            try {
+                glviewer.removeShape(sh);
+            } catch (err) {
+                // ignora shapes que ja nao existem
+            }
+        });
+        ifaceLinhas = [];
+    }
+
+    // Indice cadeia:residuo:atomo montado uma unica vez, para achar os atomos de
+    // cada contato sem varrer o modelo inteiro linha a linha
+    function ifaceMontaIndice() {
+        ifaceIndice = {};
+        glviewer.selectedAtoms({}).forEach(function(a) {
+            ifaceIndice[a.chain + ':' + a.resi + ':' + a.atom] = a;
+        });
+    }
+
+    // Linhas dos contatos: cilindros pontilhados, e nao addLine, porque a
+    // espessura de linha do WebGL fica presa em 1 px na maioria dos navegadores.
+    function ifaceCriaLinhas() {
+        ifaceContatos.forEach(function(ct) {
+            if (ifaceContatoOculto(ct.t)) {
+                return;
+            }
+            var a = ifaceIndice[ct.c1 + ':' + ct.r1 + ':' + ct.a1];
+            var b = ifaceIndice[ct.c2 + ':' + ct.r2 + ':' + ct.a2];
+            if (!a || !b) {
+                return; // atomo ausente na estrutura (ex.: hidrogenio)
+            }
+            var cor = ifaceCorContato(ct.t);
+
+            ifaceLinhas.push(glviewer.addCylinder({
+                dashed: true,
+                start: { x: a.x, y: a.y, z: a.z },
+                end: { x: b.x, y: b.y, z: b.z },
+                radius: 0.1,
+                fromCap: 1,
+                toCap: 1,
+                color: cor
+            }));
+        });
+    }
+
+    function ifaceRemoveRotulos() {
+        ifaceRotulos.forEach(function(l) {
+            glviewer.removeLabel(l);
+        });
+        ifaceRotulos = [];
+    }
+
+    // Um rotulo por residuo da interface, no CA, no mesmo formato dos rotulos do
+    // viewer em tela cheia (codigo de uma letra + numero).
+    function ifaceCriaRotulos() {
+        Object.keys(ifaceResiduos).forEach(function(chain) {
+            ifaceResiduos[chain].forEach(function(resi) {
+                var ca = ifaceIndice[chain + ':' + resi + ':CA'];
+                if (!ca) {
+                    return;
+                }
+                ifaceRotulos.push(glviewer.addLabel(three2one(ca.resn) + resi, {
+                    position: { x: ca.x, y: ca.y, z: ca.z },
+                    fontSize: 8,
+                    fontColor: 'black',
+                    backgroundOpacity: 0,
+                    inFront: true
+                }));
+            });
+        });
+    }
+
+    // (Re)aplica o destaque conforme o estado da chave. Reaproveitado pelo slider
+    // de opacidade, que refaz as superficies e o estilo das cadeias.
+    function ifaceAplica() {
+        if (typeof glviewer === 'undefined' || !glviewer) {
+            return;
+        }
+        ifaceRemoveSuperficies();
+        ifaceRemoveLinhas();
+        ifaceRemoveRotulos();
+
+        // Reaplica o estilo atual; styleWhole()/styleHighlight() ja somam os
+        // sticks da interface quando a chave esta ligada
+        if (glviewer._reapplyStyle) {
+            glviewer._reapplyStyle();
+        } else {
+            styleWhole(glviewer);
+        }
+
+        if (mostrarInterface) {
+            if (!ifaceIndice) {
+                ifaceMontaIndice();
+            }
+            ifaceCriaSuperficies();
+            ifaceCriaLinhas();
+            ifaceCriaRotulos();
+        }
+        glviewer.render();
+    }
+
+    $('#show_interface').on('change', function() {
+        mostrarInterface = this.checked;
+        ifaceAplica();
+    });
 
     // PDB carregado no viewer principal, reaproveitado pelo viewer do mapa de contatos
     let moldata = null;
@@ -2325,7 +2642,9 @@
                 // (re)cria todas as superfícies com a nova opacidade
                 createSurfacesWithOpacity(newOpacity);
 
-                glviewer.render();
+                // o setStyle acima apaga os sticks da interface: refaz o
+                // destaque (linhas e rótulos inclusive) se ele estiver ligado
+                ifaceAplica();
             }, 60));
 
             // restante: marca átomos como clicáveis etc.
@@ -2339,6 +2658,11 @@
             glviewer.mapAtomProperties($3Dmol.applyPartialCharges);
             glviewer.zoomTo();
             glviewer.render();
+
+            // Se a chave "Interface" foi ligada antes de a estrutura carregar
+            if (mostrarInterface) {
+                ifaceAplica();
+            }
         });
 
         const atomcallback = function(atom, viewer) {

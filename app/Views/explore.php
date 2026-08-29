@@ -79,10 +79,10 @@
         </div>
 
         <!-- 6 filtros por linha em telas grandes, 2 em telas pequenas -->
-        <div class="row g-3">
+        <div class="row g-3 small">
 
             <!-- os seis campos de selecao -->
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <label class="form-label mb-1" for="classification">PDB classification <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Molecular classification of the structure, as annotated in the PDB. Start typing to see the available classifications; the value must match one of them.">?</a></label>
                 <input class="form-control form-control-sm" id="classification" list="lista-classificacoes" placeholder="All" autocomplete="off">
                 <datalist id="lista-classificacoes">
@@ -423,7 +423,7 @@
                         <option value="VIRUS/VIRAL PROTEIN" label="10 complexes"></option>
                 </datalist>
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <label class="form-label mb-1" for="method">Structure method <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Experimental method used to determine the structure.">?</a></label>
                 <select class="form-select form-select-sm" id="method">
                     <option value="">All</option>
@@ -435,7 +435,7 @@
                     <option value="ECRYST">Electron crystallography (1)</option>
                 </select>
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <label class="form-label mb-1" for="interfaceEvidence">Interface evidence <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="PISA Complexation Significance Score (CSS), which measures how much the interface contributes to the assembly: strong = 0.5 or above (the interface sustains the assembly), moderate = between 0 and 0.5, weak = 0 (no role in the assembly). PISA computes it only for diffraction structures, so entries solved by electron microscopy, NMR and other methods appear as not assessed.">?</a></label>
                 <select class="form-select form-select-sm" id="interfaceEvidence">
                     <option value="">All</option>
@@ -445,7 +445,7 @@
                     <option value="not_assessed">Not assessed (29,725)</option>
                 </select>
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <label class="form-label mb-1" for="aminoAcids">Canonical amino acids <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Peptides with non-standard residues carry an X in the sequence. Choose whether to keep only the canonical ones, only those containing non-standard residues, or all of them.">?</a></label>
                 <select class="form-select form-select-sm" id="aminoAcids">
                     <option value="">All</option>
@@ -453,7 +453,7 @@
                     <option value="noncanonical">With non-canonical (X)</option>
                 </select>
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <label class="form-label mb-1" for="saltBridges">Salt bridges <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Salt bridges are attractive contacts between oppositely charged groups across the interface, as identified by PISA. Choose whether to keep only complexes that have them, only those without, or all of them.">?</a></label>
                 <select class="form-select form-select-sm" id="saltBridges">
                     <option value="">All</option>
@@ -461,7 +461,7 @@
                     <option value="without">Without salt bridges</option>
                 </select>
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <label class="form-label mb-1" for="therapeutic">Therapeutic class <span class="text-warning" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Predicted value: estimated by a computational model, not measured experimentally."><i class="bi bi-exclamation-triangle-fill"></i></span> <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Keeps peptides whose predicted probability for the class is above 0.9, the cutoff Propedia adopts for a high likelihood. Predicted by machine learning models, not experimental data.">?</a></label>
                 <select class="form-select form-select-sm" id="therapeutic">
                     <option value="">All</option>
@@ -475,57 +475,59 @@
             </div>
 
             <!-- medidas do peptideo e da interface -->
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <label class="form-label mb-0" for="minSize">Min peptide size <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Keeps complexes whose peptide has at least this many residues (from 2 to 50).">?</a> <span class="badge bg-secondary" id="minSize_val">2</span></label>
                 <input type="range" class="form-range filtro-range" id="minSize" min="2" max="50" step="1" value="2" data-neutro="min">
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <label class="form-label mb-0" for="maxSize">Max peptide size <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Keeps complexes whose peptide has at most this many residues (from 2 to 50).">?</a> <span class="badge bg-secondary" id="maxSize_val">50</span></label>
                 <input type="range" class="form-range filtro-range" id="maxSize" min="2" max="50" step="1" value="50" data-neutro="max">
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <label class="form-label mb-0" for="minHbonds">Min hydrogen bonds <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Minimum number of hydrogen bonds across the protein-peptide interface, as identified by PISA (0 to 93).">?</a> <span class="badge bg-secondary" id="minHbonds_val">0</span></label>
                 <input type="range" class="form-range filtro-range" id="minHbonds" min="0" max="93" step="1" value="0" data-neutro="min">
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <label class="form-label mb-0" for="minBsa">Min buried area (Å²) <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Minimum buried surface area of the interface, in Å², calculated with NACCESS (1 to 3,856).">?</a> <span class="badge bg-secondary" id="minBsa_val">0</span></label>
                 <input type="range" class="form-range filtro-range" id="minBsa" min="0" max="3856" step="50" value="0" data-neutro="min">
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <label class="form-label mb-0" for="minBpp">Min buried peptide (%) <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Minimum percentage of the peptide surface that becomes buried upon complex formation.">?</a> <span class="badge bg-secondary" id="minBpp_val">0</span></label>
                 <input type="range" class="form-range filtro-range" id="minBpp" min="0" max="100" step="5" value="0" data-neutro="min">
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <label class="form-label mb-0" for="minHydrophobic">Min hydrophobic (%) <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Minimum percentage of hydrophobic residues in the peptide sequence.">?</a> <span class="badge bg-secondary" id="minHydrophobic_val">0</span></label>
                 <input type="range" class="form-range filtro-range" id="minHydrophobic" min="0" max="100" step="5" value="0" data-neutro="min">
             </div>
 
             <!-- resolucao, energias preditas, redundancia e acoes -->
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <label class="form-label mb-0" for="minPositive">Min positive residues <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Minimum number of positively charged residues in the peptide (0 to 22).">?</a> <span class="badge bg-secondary" id="minPositive_val">0</span></label>
                 <input type="range" class="form-range filtro-range" id="minPositive" min="0" max="22" step="1" value="0" data-neutro="min">
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <label class="form-label mb-0" for="maxResolution">Min resolution (Å) <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Keeps structures determined at this resolution or better, in Å: the lower the number, the sharper the structure. Leave it at the left (any) to accept every resolution. Entries without a resolution value, such as those solved by NMR, are left out when this filter is used.">?</a> <span class="badge bg-secondary" id="maxResolution_val">any</span></label>
                 <input type="range" class="form-range filtro-range" id="maxResolution" data-neutro-rotulo="any" min="0" max="36" step="0.1" value="0" data-neutro="min">
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
-                <label class="form-label mb-0" for="maxAffinity">Min binding affinity <span class="text-warning" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Predicted value: estimated by a computational model, not measured experimentally."><i class="bi bi-exclamation-triangle-fill"></i></span> <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Binding affinity predicted by PRODIGY, in kcal/mol. The stronger the binding, the more negative the value, so choosing 10 keeps complexes with affinity of -10 kcal/mol or stronger. Predicted value, not experimental data.">?</a> <span class="badge bg-secondary" id="maxAffinity_val">0</span></label>
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <label class="form-label mb-0" for="maxAffinity">Min bind. free energy <span class="text-warning" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Predicted value: estimated by a computational model, not measured experimentally."><i class="bi bi-exclamation-triangle-fill"></i></span> <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Binding affinity predicted by PRODIGY, in kcal/mol. The stronger the binding, the more negative the value, so choosing 10 keeps complexes with affinity of -10 kcal/mol or stronger. Predicted value, not experimental data.">?</a> <span class="badge bg-secondary" id="maxAffinity_val">0</span></label>
                 <input type="range" class="form-range filtro-range" id="maxAffinity" data-neutro-rotulo="any" data-inverte="1" min="0" max="40" step="0.5" value="0" data-neutro="min">
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <label class="form-label mb-0" for="minDiss">Min ΔGdiss <span class="text-warning" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Predicted value: estimated by a computational model, not measured experimentally."><i class="bi bi-exclamation-triangle-fill"></i></span> <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Dissociation free energy estimated by PISA, in kcal/mol, from -19.7 to +68.9. Positive values indicate a thermodynamically stable complex. Predicted value, not experimental data.">?</a> <span class="badge bg-secondary" id="minDiss_val">-20</span></label>
                 <input type="range" class="form-range filtro-range" id="minDiss" data-neutro-rotulo="any" min="-20" max="69" step="1" value="-20" data-neutro="min">
             </div>
-            <div class="col-6 col-md-4 col-lg-2 d-flex align-items-end">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2 d-flex align-items-end">
                 <div class="form-check form-switch mb-2">
                     <input class="form-check-input" type="checkbox" role="switch" id="onlyUnique">
                     <label class="form-check-label" for="onlyUnique">Remove redundancy <a class="badge bg-secondary" href="#" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-title="Keeps only the leader of each cluster of complexes with similar sequences.">?</a></label>
                 </div>
             </div>
 
-            <!-- acoes: Apply por ultimo, a direita -->
-            <div class="col-12 col-md-4 col-lg-2 d-flex align-items-end justify-content-md-end gap-2 flex-wrap">
+            <!-- acoes: Apply por ultimo, a direita. O ms-md-auto encosta a coluna
+                 na borda direita da linha, senao ela para logo depois do ultimo
+                 filtro e sobra espaco a direita (acontecia no breakpoint lg). -->
+            <div class="col-12 col-md-4 col-lg-3 col-xl-2 d-flex align-items-end justify-content-md-end gap-2 flex-wrap ms-md-auto">
                 <button type="button" id="btn-limpar" class="btn btn-outline-secondary">Clear</button>
                 <button type="button" id="btn-filtrar" class="btn btn-primary">Apply filters</button>
             </div>
@@ -639,6 +641,7 @@
             : valorDaFaixa(el);
 
         // mostra o valor corrente ao lado do rotulo e pinta a trilha percorrida
+        const atualizadores = {};
         $('.filtro-range').each(function() {
             const badge = document.getElementById(this.id + '_val');
             const atualiza = () => {
@@ -653,8 +656,26 @@
                     : ((parseFloat(this.value) - min) / (max - min)) * 100;
                 this.style.setProperty('--pct', pct.toFixed(1) + '%');
             };
+            atualizadores[this.id] = atualiza;
             atualiza();
             $(this).on('input', atualiza);
+        });
+
+        // O tamanho minimo do peptideo nunca passa do maximo: o cursor empurrado
+        // para alem do outro para no valor dele.
+        $('#minSize').on('input', function() {
+            const maximo = document.getElementById('maxSize');
+            if (parseFloat(this.value) > parseFloat(maximo.value)) {
+                this.value = maximo.value;
+                atualizadores.minSize();
+            }
+        });
+        $('#maxSize').on('input', function() {
+            const minimo = document.getElementById('minSize');
+            if (parseFloat(this.value) < parseFloat(minimo.value)) {
+                this.value = minimo.value;
+                atualizadores.maxSize();
+            }
         });
 
         // Filtros enviados ao servidor (mesmos nomes lidos em Home::exploreFiltros)
