@@ -131,9 +131,10 @@
           <li><a href="#troubleshooting2">2.5.3.2 Troubleshooting</a></li>
           <li><a href="#binding-sites">2.6 Search for Similar Binding Sites (ProBiS)</a></li>
           <li><a href="#example">2.6.1 Example</a></li>
-          <li><a href="#final">3. Final Considerations</a></li>
-          <li><a href="#source-code">4. Source code and reproducibility</a></li>
-          <li><a href="#reference">5. References</a></li>
+          <li><a href="#source-code">3. Source code and reproducibility</a></li>
+          <li><a href="#descriptors">4. Data descriptors</a></li>
+          <li><a href="#final">5. Final Considerations</a></li>
+          <li><a href="#reference">6. References</a></li>
         </ul>
       </nav>
 
@@ -244,6 +245,19 @@
             (B) Original version of Propedia (2020).
           </figcaption>
         </figure>
+
+        <p>
+          A dataset of this size is only useful if it can be narrowed down, so the growth in the number of
+          complexes was accompanied by a new filter panel on the Explore page. Instead of searching by
+          identifier alone, the user combines the properties that were computed for every complex &mdash;
+          provenance (PDB classification, structure method, resolution), composition (peptide length,
+          canonical amino acids), interface (evidence from PISA, hydrogen bonds, salt bridges, buried area,
+          buried peptide, hydrophobicity, positive residues), energy (binding free energy,
+          &Delta;G<sub>diss</sub>) and predicted therapeutic class &mdash; and the counter reports how many
+          complexes survive the selection before the table is redrawn. The redundancy switch reduces the
+          result to one representative per cluster, which is the usual starting point for building a
+          dataset. Figure 2 shows the panel; each filter is described in detail in section 2.5.
+        </p>
 
         <figure>
           <img class="shadow bordered w-100 p-2 m-2" src="<?= base_url('/img/docs/doc-explore-filtros.png') ?>" alt="Search filters of the Explore page">
@@ -1798,17 +1812,8 @@
               </figcaption>
             </figure>
           </section>
-          <section id="final" class="docs-card">
-            <h2>3. Final Considerations</h2>
-            <p>This documentation presented the structure, functionalities, and usage flows of Propedia v26, including navigation, data models, structural analyses, algorithms employed, and search methods by interaction and binding sites.</p>
-            <p>As a database dedicated to protein-peptide complexes, Propedia remains in active development, maintaining its commitment to transparency, reproducibility, and continuous updating. We hope that this tool will provide solid support for research in structural bioinformatics, peptide design, biomolecular interaction mining, and the development of computational methods.</p>
-            <p>For questions, suggestions, or feature requests, users can contact the team at the address listed on the project's official website.</p>
-            <p>We appreciate your use of the platform and hope that Propedia will contribute significantly to the advancement of your research.</p>
-
-          </section>
-
           <section id="source-code" class="docs-card">
-            <h2>4. Source code and reproducibility</h2>
+            <h2>3. Source code and reproducibility</h2>
 
             <p>
               Everything needed to inspect, reuse or rebuild Propedia is publicly available:
@@ -1817,13 +1822,112 @@
             <ul>
               <li>The source code for the web tool is available at <a href="https://github.com/LBS-UFMG/propedia26" target="_blank" rel="noopener">https://github.com/LBS-UFMG/propedia26</a>.</li>
               <li>Full supplementary material is available at <a href="https://github.com/LBS-UFMG/propedia26-sm" target="_blank" rel="noopener">https://github.com/LBS-UFMG/propedia26-sm</a>.</li>
-              <li>Data descriptors are also available in Supplementary Table S98.</li>
               <li>The complete Python pipeline for reproducing Propedia is available at <a href="https://github.com/LBS-UFMG/propedia-pipeline" target="_blank" rel="noopener">https://github.com/LBS-UFMG/propedia-pipeline</a>.</li>
             </ul>
           </section>
 
+          <section id="descriptors" class="docs-card">
+            <h2>4. Data descriptors</h2>
+
+            <p>
+              The CSV distributed on the Download page carries 94 columns per complex. The table below
+              summarises them by block; the complete descriptor, field by field, is Supplementary Table S9
+              of the Propedia 26 paper and is also available in the supplementary material repository.
+              Each block is described in detail in the section indicated in the last column.
+            </p>
+
+            <div class="table-responsive">
+              <table class="table table-hover table-condensed table-striped">
+                <caption style="text-align: left; font-weight: bold;">Table 4. Summary of the data descriptors of the entries dataset (94 columns).</caption>
+                <thead class="table-light">
+                  <tr>
+                    <th scope="col">Block</th>
+                    <th scope="col">Columns</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Source</th>
+                    <th scope="col">Section</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Identification and provenance</th>
+                    <td>10</td>
+                    <td><code>id</code>, <code>PDB_ID</code>, <code>PEPTIDE_CHAIN</code>, <code>PROTEIN_CHAIN</code>, <code>TITLE</code>, <code>CLASSIFICATION</code>, <code>DEPOSITION_DATE</code>, <code>STRUCTURE_METHOD</code>, <code>RESOLUTION</code>, <code>organism</code>. The <code>id</code> is the PDB code followed by the peptide and the protein chain.</td>
+                    <td>PDB</td>
+                    <td>2.1.1</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Sequences</th>
+                    <td>6</td>
+                    <td><code>PEPTIDE_SEQ</code>, <code>PEPTIDE_SIZE</code>, <code>PEPTIDE_DESC</code> and the three equivalent columns for the protein. Sequences are the observed residues of the chain, in one-letter code.</td>
+                    <td>PDB</td>
+                    <td>2.1.1</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Physicochemical properties</th>
+                    <td>24</td>
+                    <td>Twelve properties computed for each chain, with the prefixes <code>peptide_</code> and <code>protein_</code>: <code>MW</code>, <code>pI</code>, <code>InstabilityIndex</code>, <code>AliphaticIndex</code>, <code>GRAVY</code>, <code>HydrophobicPercent</code>, <code>PositiveResidues</code>, <code>NegativeResidues</code>, <code>Formula</code>, <code>TotalAtoms</code>, <code>ExtCoeff_Disulfide</code> and <code>ExtCoeff_NoDisulfide</code>.</td>
+                    <td>ProtParam</td>
+                    <td>2.1.2</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Surface</th>
+                    <td>7</td>
+                    <td><code>ASA_Complex</code>, <code>ASA_Peptide</code>, <code>ASA_Protein</code>, <code>BPepA</code>, <code>BProA</code>, <code>BPP%</code> and <code>BSA</code>: accessible and buried areas, in &Aring;&sup2;, of the complex and of each chain.</td>
+                    <td>NACCESS</td>
+                    <td>2.1.5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Contacts and binding energy</th>
+                    <td>11</td>
+                    <td>Intermolecular contacts broken down by residue polarity (six columns), their total, the percentage of apolar and of charged NIS residues, the predicted free energy of binding and the predicted dissociation constant at 25 &deg;C. Predicted values.</td>
+                    <td>PRODIGY</td>
+                    <td>2.1.5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Interface properties</th>
+                    <td>23</td>
+                    <td>Columns with the <code>PISA_</code> prefix: buried and dissociation areas, solvation energy gain and its P-value, hydrogen bonds and salt bridges, residues and atoms of each chain, dissociation free energy, entropy, internal energy and the Complexation Significance Score (<code>PISA_CSS</code>). Empty for structures not solved by diffraction.</td>
+                    <td>PISA</td>
+                    <td>2.1.5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Interface residues</th>
+                    <td>1</td>
+                    <td><code>Interface Residues</code>: the residue numbers of the protein chain that are in contact with the peptide.</td>
+                    <td>COCaDA</td>
+                    <td>2.1.5</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Therapeutic classes</th>
+                    <td>6</td>
+                    <td><code>AAP</code>, <code>ABP</code>, <code>ACP</code>, <code>AIP</code>, <code>QSP</code> and <code>SBP</code>: probability that the peptide belongs to each class, with a cutoff of 0.9. Predicted values.</td>
+                    <td>CSM-peptides models</td>
+                    <td>2.1.4</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Clustering</th>
+                    <td>6</td>
+                    <td><code>seq100_clusters</code>, <code>sequence-cluster</code>, <code>interface-cluster</code>, <code>binding-cluster</code>, <code>is_leader</code> and <code>leader_id</code>: the clusters the complex belongs to and whether it is the representative of its group.</td>
+                    <td>Propedia 26 / Propedia v1</td>
+                    <td>2.3</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="final" class="docs-card">
+            <h2>5. Final Considerations</h2>
+            <p>This documentation presented the structure, functionalities, and usage flows of Propedia v26, including navigation, data models, structural analyses, algorithms employed, and search methods by interaction and binding sites.</p>
+            <p>As a database dedicated to protein-peptide complexes, Propedia remains in active development, maintaining its commitment to transparency, reproducibility, and continuous updating. We hope that this tool will provide solid support for research in structural bioinformatics, peptide design, biomolecular interaction mining, and the development of computational methods.</p>
+            <p>For questions, suggestions, or feature requests, users can contact the team at the address listed on the project's official website.</p>
+            <p>We appreciate your use of the platform and hope that Propedia will contribute significantly to the advancement of your research.</p>
+
+          </section>
+
           <section id="reference" class="docs-card">
-            <h2>5. References</h2>
+            <h2>6. References</h2>
 
             <p>ALTSCHUL, S. F., GISH, W., MILLER, W., MYERS, E. W. & LIPMAN, D. J. Basic local alignment search tool. <em>J. Mol. Biol.</em> v. 215, p. 403-410, 1990.</p>
 
