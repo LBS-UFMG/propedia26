@@ -130,7 +130,8 @@
           <li><a href="#interpreted">2.5.3.1 How should it be interpreted?</a></li>
           <li><a href="#troubleshooting2">2.5.3.2 Troubleshooting</a></li>
           <li><a href="#binding-sites">2.6 Search for Similar Binding Sites (ProBiS)</a></li>
-          <li><a href="#example">2.6.1 Example</a></li>
+          <li><a href="#new-probis">2.6.1 What is new in version 26</a></li>
+          <li><a href="#example">2.6.2 Example</a></li>
           <li><a href="#source-code">3. Source code and reproducibility</a></li>
           <li><a href="#descriptors">4. Data descriptors</a></li>
           <li><a href="#final">5. Final Considerations</a></li>
@@ -1782,12 +1783,75 @@
               </figcaption>
             </figure>
 
+            <h3 id="new-probis"><em>2.6.1 What is new in version 26</em></h3>
+
+            <p>
+              In version 26 the search stopped being a form that only accepts typed text. The structure is
+              now loaded into the window itself, and everything the search needs &mdash; the chain and the
+              residues of the binding site &mdash; can be taken from the structure instead of being written
+              by hand.
+            </p>
+
+            <ul>
+              <li>
+                <strong>Reachable from an entry.</strong> The <em>Find a similar binding site</em> button on
+                the page of a complex opens the search already filled in with the PDB code, the protein
+                chain and the interface residues of that entry, so the site being queried is the one the
+                user was looking at.
+              </li>
+              <li>
+                <strong>Your own structure.</strong> Besides a PDB code, which Propedia downloads from the
+                RCSB PDB, the user can upload a structure in PDB format (up to 20 MB). The file is used only
+                for that search and is not added to the database.
+              </li>
+              <li>
+                <strong>Asynchronous loading and list of chains.</strong> The structure is fetched in the
+                background, without blocking the form. As soon as it is parsed, the <em>Chain</em> field
+                becomes a list of the chains found in the file, each with the number of residues it
+                contains, and only the selected chain is displayed in the viewer.
+              </li>
+              <li>
+                <strong>Interactive viewer.</strong> The structure is shown in a 3D viewer, with one colour
+                per chain. Clicking a residue adds its number to the binding site list and draws it as
+                sticks with a label; clicking it again removes it. Switches control the display of lines,
+                sticks and labels for the whole chain, and <em>Clear selection</em> empties the list.
+              </li>
+              <li>
+                <strong>Reference chain.</strong> Instead of listing the residues, the user can point to a
+                second chain &mdash; a peptide, for instance &mdash; as a reference. Propedia then takes the
+                binding site to be the residues of the target chain within 6 &Aring; of that chain, and the
+                reference chain is drawn as a surface in the viewer.
+              </li>
+            </ul>
+
+            <figure>
+              <img class="shadow bordered w-100 p-2 m-2" src="<?= base_url('/img/docs/doc-probis-form.png') ?>" alt="The binding site search form">
+              <figcaption>
+                <b>Figure 28.</b> The binding site search. The PDB code and the upload of the user's own
+                structure sit side by side, and one or the other is used. The chain field only offers the
+                chains after a structure has been loaded, and the switch below it replaces the list of
+                binding site residues with a reference chain.
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img class="shadow bordered w-100 p-2 m-2" src="<?= base_url('/img/docs/doc-probis-viewer.png') ?>" alt="The binding site search with a structure loaded">
+              <figcaption>
+                <b>Figure 29.</b> The search with the structure of entry 1WRZ-B-A loaded. (A) Opened from
+                the entry page: the chain list reports chain A with 147 residues, the binding site residues
+                of the entry are already filled in and appear as sticks with labels in the viewer, where
+                clicking a residue adds it to or removes it from the list. (B) Reference chain mode: chain B,
+                the peptide of the complex, is drawn as a surface, and the binding site becomes the residues
+                of chain A within 6 &Aring; of it.
+              </figcaption>
+            </figure>
+
             <p>This tool should be used to locate other experimental complexes in which the peptide interacts with equivalent sites, as well as to predict cross-reactivity, identifying peptides capable of binding to multiple proteins that have similar surfaces. It is also useful for exploring mutations, allowing the evaluation of whether structural changes at the site modify its similarity to already known sites, in addition to assisting in the identification of functional analogues in proteins that have not yet been characterized.</p>
 
           </section>
 
           <section id="example" class="docs-card">
-            <h3><em>2.6.1 Example (ProBiS)</em></h3>
+            <h3><em>2.6.2 Example (ProBiS)</em></h3>
             <p>
               To perform a search for binding sites, click the option in the top menu. Enter the PDB ID used in the search, including the chain, and the residues that compose the desired binding site. The figure below shows an example for the 1a1m (chain A) structure and their binding site: 60,62-82,146-171.
             </p>
@@ -1795,7 +1859,7 @@
             <figure>
               <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figlprop.png') ?>" alt="Interface">
               <figcaption>
-                <b>Figure 28.</b> ProBiS example.
+                <b>Figure 30.</b> ProBiS example.
               </figcaption>
             </figure>
 
@@ -1808,7 +1872,7 @@
             <figure>
               <img class="shadow bordered w-75 p-2 m-2" src="<?= base_url('/img/docs/figmprop.png') ?>" alt="Interface">
               <figcaption>
-                <b>Figure 29.</b> Second example of ProBiS.
+                <b>Figure 31.</b> Second example of ProBiS.
               </figcaption>
             </figure>
           </section>
@@ -1830,91 +1894,705 @@
             <h2>4. Data descriptors</h2>
 
             <p>
-              The CSV distributed on the Download page carries 94 columns per complex. The table below
-              summarises them by block; the complete descriptor, field by field, is Supplementary Table S9
-              of the Propedia 26 paper and is also available in the supplementary material repository.
-              Each block is described in detail in the section indicated in the last column.
+              The CSV distributed on the Download page carries one row per complex and 94 columns, listed
+              below in the order in which they appear in the file. The descriptions here are deliberately
+              short; the full descriptor, with the complete definition of each field, is Supplementary
+              Table S9 of the Propedia 26 paper and is also available in the supplementary material
+              repository. Fields marked as predicted come from computational models, not from experiment,
+              and the sections referenced in the text explain how each one is obtained: physicochemical
+              properties in 2.1.2, therapeutic classes in 2.1.4, surface, energy and interface properties
+              in 2.1.5, and clustering in 2.3.
             </p>
 
-            <div class="table-responsive">
+            <div class="table-responsive" style="max-height: 620px; overflow-y: auto;">
               <table class="table table-hover table-condensed table-striped">
-                <caption style="text-align: left; font-weight: bold;">Table 4. Summary of the data descriptors of the entries dataset (94 columns).</caption>
-                <thead class="table-light">
+                <caption style="text-align: left; font-weight: bold;">Table 4. Data descriptors of the entries dataset, summarised from Supplementary Table S9.</caption>
+                <colgroup>
+                  <col style="width: 4%">
+                  <col style="width: 22%">
+                  <col style="width: 49%">
+                  <col style="width: 9%">
+                  <col style="width: 16%">
+                </colgroup>
+                <thead class="table-light" style="position: sticky; top: 0; z-index: 1;">
                   <tr>
-                    <th scope="col">Block</th>
-                    <th scope="col">Columns</th>
-                    <th scope="col">Content</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Column</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Type</th>
                     <th scope="col">Source</th>
-                    <th scope="col">Section</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">Identification and provenance</th>
-                    <td>10</td>
-                    <td><code>id</code>, <code>PDB_ID</code>, <code>PEPTIDE_CHAIN</code>, <code>PROTEIN_CHAIN</code>, <code>TITLE</code>, <code>CLASSIFICATION</code>, <code>DEPOSITION_DATE</code>, <code>STRUCTURE_METHOD</code>, <code>RESOLUTION</code>, <code>organism</code>. The <code>id</code> is the PDB code followed by the peptide and the protein chain.</td>
-                    <td>PDB</td>
-                    <td>2.1.1</td>
+                    <td>0</td>
+                    <td><code>id</code></td>
+                    <td>PDB code followed by the peptide and the protein chain (e.g. 1A0N-A-B).</td>
+                    <td>String (8)</td>
+                    <td>Propedia 26</td>
                   </tr>
                   <tr>
-                    <th scope="row">Sequences</th>
-                    <td>6</td>
-                    <td><code>PEPTIDE_SEQ</code>, <code>PEPTIDE_SIZE</code>, <code>PEPTIDE_DESC</code> and the three equivalent columns for the protein. Sequences are the observed residues of the chain, in one-letter code.</td>
-                    <td>PDB</td>
-                    <td>2.1.1</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Physicochemical properties</th>
-                    <td>24</td>
-                    <td>Twelve properties computed for each chain, with the prefixes <code>peptide_</code> and <code>protein_</code>: <code>MW</code>, <code>pI</code>, <code>InstabilityIndex</code>, <code>AliphaticIndex</code>, <code>GRAVY</code>, <code>HydrophobicPercent</code>, <code>PositiveResidues</code>, <code>NegativeResidues</code>, <code>Formula</code>, <code>TotalAtoms</code>, <code>ExtCoeff_Disulfide</code> and <code>ExtCoeff_NoDisulfide</code>.</td>
-                    <td>ProtParam</td>
-                    <td>2.1.2</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Surface</th>
-                    <td>7</td>
-                    <td><code>ASA_Complex</code>, <code>ASA_Peptide</code>, <code>ASA_Protein</code>, <code>BPepA</code>, <code>BProA</code>, <code>BPP%</code> and <code>BSA</code>: accessible and buried areas, in &Aring;&sup2;, of the complex and of each chain.</td>
-                    <td>NACCESS</td>
-                    <td>2.1.5</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Contacts and binding energy</th>
-                    <td>11</td>
-                    <td>Intermolecular contacts broken down by residue polarity (six columns), their total, the percentage of apolar and of charged NIS residues, the predicted free energy of binding and the predicted dissociation constant at 25 &deg;C. Predicted values.</td>
-                    <td>PRODIGY</td>
-                    <td>2.1.5</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Interface properties</th>
-                    <td>23</td>
-                    <td>Columns with the <code>PISA_</code> prefix: buried and dissociation areas, solvation energy gain and its P-value, hydrogen bonds and salt bridges, residues and atoms of each chain, dissociation free energy, entropy, internal energy and the Complexation Significance Score (<code>PISA_CSS</code>). Empty for structures not solved by diffraction.</td>
-                    <td>PISA</td>
-                    <td>2.1.5</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Interface residues</th>
                     <td>1</td>
-                    <td><code>Interface Residues</code>: the residue numbers of the protein chain that are in contact with the peptide.</td>
+                    <td><code>AAP</code></td>
+                    <td>Probability that the peptide is anti-angiogenic (cutoff 0.9). Predicted.</td>
+                    <td>Float</td>
+                    <td>CSM-peptides</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td><code>ABP</code></td>
+                    <td>Probability that the peptide is antibacterial (cutoff 0.9). Predicted.</td>
+                    <td>Float</td>
+                    <td>CSM-peptides</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td><code>ACP</code></td>
+                    <td>Probability that the peptide is anticancer (cutoff 0.9). Predicted.</td>
+                    <td>Float</td>
+                    <td>CSM-peptides</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td><code>AIP</code></td>
+                    <td>Probability that the peptide is anti-inflammatory (cutoff 0.9). Predicted.</td>
+                    <td>Float</td>
+                    <td>CSM-peptides</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td><code>ASA_Complex</code></td>
+                    <td>Accessible surface area of the complex (&Aring;&sup2;).</td>
+                    <td>Float</td>
+                    <td>NACCESS</td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td><code>ASA_Peptide</code></td>
+                    <td>Accessible surface area of the isolated peptide (&Aring;&sup2;).</td>
+                    <td>Float</td>
+                    <td>NACCESS</td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td><code>ASA_Protein</code></td>
+                    <td>Accessible surface area of the isolated protein (&Aring;&sup2;).</td>
+                    <td>Float</td>
+                    <td>NACCESS</td>
+                  </tr>
+                  <tr>
+                    <td>8</td>
+                    <td><code>BPP%</code></td>
+                    <td>Percentage of the peptide surface buried at the interface: 100 &times; BPepA / ASA_Peptide.</td>
+                    <td>Int</td>
+                    <td>NACCESS</td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td><code>BPepA</code></td>
+                    <td>Peptide area buried upon binding (&Aring;&sup2;).</td>
+                    <td>Int</td>
+                    <td>NACCESS</td>
+                  </tr>
+                  <tr>
+                    <td>10</td>
+                    <td><code>BProA</code></td>
+                    <td>Protein area buried upon binding (&Aring;&sup2;).</td>
+                    <td>Int</td>
+                    <td>NACCESS</td>
+                  </tr>
+                  <tr>
+                    <td>11</td>
+                    <td><code>BSA</code></td>
+                    <td>Buried surface area of the interface (&Aring;&sup2;): (ASA_Protein + ASA_Peptide &minus; ASA_Complex) / 2.</td>
+                    <td>Int</td>
+                    <td>NACCESS</td>
+                  </tr>
+                  <tr>
+                    <td>12</td>
+                    <td><code>CLASSIFICATION</code></td>
+                    <td>Classification of the entry as annotated in the PDB.</td>
+                    <td>String</td>
+                    <td>PDB</td>
+                  </tr>
+                  <tr>
+                    <td>13</td>
+                    <td><code>DEPOSITION_DATE</code></td>
+                    <td>Date the structure was deposited in the PDB (YYYY-MM-DD).</td>
+                    <td>String</td>
+                    <td>PDB</td>
+                  </tr>
+                  <tr>
+                    <td>14</td>
+                    <td><code>Interface Residues</code></td>
+                    <td>Residue numbers of the protein chain within 6 &Aring; of the peptide, comma separated.</td>
+                    <td>String</td>
                     <td>COCaDA</td>
-                    <td>2.1.5</td>
                   </tr>
                   <tr>
-                    <th scope="row">Therapeutic classes</th>
-                    <td>6</td>
-                    <td><code>AAP</code>, <code>ABP</code>, <code>ACP</code>, <code>AIP</code>, <code>QSP</code> and <code>SBP</code>: probability that the peptide belongs to each class, with a cutoff of 0.9. Predicted values.</td>
-                    <td>CSM-peptides models</td>
-                    <td>2.1.4</td>
+                    <td>15</td>
+                    <td><code>No. of apolar-apolar contacts</code></td>
+                    <td>Contacts between two apolar residues.</td>
+                    <td>Int</td>
+                    <td>PRODIGY</td>
                   </tr>
                   <tr>
-                    <th scope="row">Clustering</th>
-                    <td>6</td>
-                    <td><code>seq100_clusters</code>, <code>sequence-cluster</code>, <code>interface-cluster</code>, <code>binding-cluster</code>, <code>is_leader</code> and <code>leader_id</code>: the clusters the complex belongs to and whether it is the representative of its group.</td>
-                    <td>Propedia 26 / Propedia v1</td>
-                    <td>2.3</td>
+                    <td>16</td>
+                    <td><code>No. of apolar-polar contacts</code></td>
+                    <td>Contacts between an apolar and a polar residue.</td>
+                    <td>Int</td>
+                    <td>PRODIGY</td>
+                  </tr>
+                  <tr>
+                    <td>17</td>
+                    <td><code>No. of charged-apolar contacts</code></td>
+                    <td>Contacts between a charged and an apolar residue.</td>
+                    <td>Int</td>
+                    <td>PRODIGY</td>
+                  </tr>
+                  <tr>
+                    <td>18</td>
+                    <td><code>No. of charged-charged contacts</code></td>
+                    <td>Contacts between two charged residues.</td>
+                    <td>Int</td>
+                    <td>PRODIGY</td>
+                  </tr>
+                  <tr>
+                    <td>19</td>
+                    <td><code>No. of charged-polar contacts</code></td>
+                    <td>Contacts between a charged and a polar residue.</td>
+                    <td>Int</td>
+                    <td>PRODIGY</td>
+                  </tr>
+                  <tr>
+                    <td>20</td>
+                    <td><code>No. of intermolecular contacts</code></td>
+                    <td>Total protein-peptide contacts within 5.5 &Aring;.</td>
+                    <td>Int</td>
+                    <td>PRODIGY</td>
+                  </tr>
+                  <tr>
+                    <td>21</td>
+                    <td><code>No. of polar-polar contacts</code></td>
+                    <td>Contacts between two polar residues.</td>
+                    <td>Int</td>
+                    <td>PRODIGY</td>
+                  </tr>
+                  <tr>
+                    <td>22</td>
+                    <td><code>PDB_ID</code></td>
+                    <td>PDB code of the structure.</td>
+                    <td>String (4)</td>
+                    <td>PDB</td>
+                  </tr>
+                  <tr>
+                    <td>23</td>
+                    <td><code>PEPTIDE_CHAIN</code></td>
+                    <td>Chain identifier of the peptide.</td>
+                    <td>String (1)</td>
+                    <td>PDB</td>
+                  </tr>
+                  <tr>
+                    <td>24</td>
+                    <td><code>PEPTIDE_DESC</code></td>
+                    <td>Name of the peptide chain as annotated in the PDB.</td>
+                    <td>String</td>
+                    <td>PDB</td>
+                  </tr>
+                  <tr>
+                    <td>25</td>
+                    <td><code>PEPTIDE_SEQ</code></td>
+                    <td>Peptide sequence in one-letter code.</td>
+                    <td>String</td>
+                    <td>PDB</td>
+                  </tr>
+                  <tr>
+                    <td>26</td>
+                    <td><code>PEPTIDE_SIZE</code></td>
+                    <td>Number of residues observed in the peptide chain.</td>
+                    <td>Int</td>
+                    <td>PDB</td>
+                  </tr>
+                  <tr>
+                    <td>27</td>
+                    <td><code>PROTEIN_CHAIN</code></td>
+                    <td>Chain identifier of the protein.</td>
+                    <td>String (1)</td>
+                    <td>PDB</td>
+                  </tr>
+                  <tr>
+                    <td>28</td>
+                    <td><code>PROTEIN_DESC</code></td>
+                    <td>Name of the protein chain as annotated in the PDB.</td>
+                    <td>String</td>
+                    <td>PDB</td>
+                  </tr>
+                  <tr>
+                    <td>29</td>
+                    <td><code>PROTEIN_SEQ</code></td>
+                    <td>Protein sequence in one-letter code.</td>
+                    <td>String</td>
+                    <td>PDB</td>
+                  </tr>
+                  <tr>
+                    <td>30</td>
+                    <td><code>PROTEIN_SIZE</code></td>
+                    <td>Number of residues observed in the protein chain.</td>
+                    <td>String</td>
+                    <td>PDB</td>
+                  </tr>
+                  <tr>
+                    <td>31</td>
+                    <td><code>Percentage of apolar NIS residues</code></td>
+                    <td>Apolar fraction of the non-interacting surface (%).</td>
+                    <td>Float</td>
+                    <td>PRODIGY</td>
+                  </tr>
+                  <tr>
+                    <td>32</td>
+                    <td><code>Percentage of charged NIS residues</code></td>
+                    <td>Charged fraction of the non-interacting surface (%).</td>
+                    <td>Float</td>
+                    <td>PRODIGY</td>
+                  </tr>
+                  <tr>
+                    <td>33</td>
+                    <td><code>Predicted binding affinity (kcal.mol-1)</code></td>
+                    <td>Free energy of binding &Delta;G (kcal/mol); the more negative, the stronger. Predicted.</td>
+                    <td>Float</td>
+                    <td>PRODIGY</td>
+                  </tr>
+                  <tr>
+                    <td>34</td>
+                    <td><code>Predicted dissociation constant (M) at 25.0&#730;C</code></td>
+                    <td>Dissociation constant K<sub>d</sub> (M) at 25 &deg;C. Predicted.</td>
+                    <td>String</td>
+                    <td>PRODIGY</td>
+                  </tr>
+                  <tr>
+                    <td>35</td>
+                    <td><code>QSP</code></td>
+                    <td>Probability that the peptide is quorum sensing (cutoff 0.9). Predicted.</td>
+                    <td>Float</td>
+                    <td>CSM-peptides</td>
+                  </tr>
+                  <tr>
+                    <td>36</td>
+                    <td><code>RESOLUTION</code></td>
+                    <td>Resolution of the structure (&Aring;); empty for methods without resolution.</td>
+                    <td>String</td>
+                    <td>PDB</td>
+                  </tr>
+                  <tr>
+                    <td>37</td>
+                    <td><code>SBP</code></td>
+                    <td>Probability that the peptide is surface binding (cutoff 0.9). Predicted.</td>
+                    <td>Float</td>
+                    <td>CSM-peptides</td>
+                  </tr>
+                  <tr>
+                    <td>38</td>
+                    <td><code>STRUCTURE_METHOD</code></td>
+                    <td>Experimental method used to solve the structure.</td>
+                    <td>String</td>
+                    <td>PDB</td>
+                  </tr>
+                  <tr>
+                    <td>39</td>
+                    <td><code>TITLE</code></td>
+                    <td>Title of the PDB entry.</td>
+                    <td>String</td>
+                    <td>PDB</td>
+                  </tr>
+                  <tr>
+                    <td>40</td>
+                    <td><code>binding-cluster</code></td>
+                    <td>Cluster of structures with a similar binding site.</td>
+                    <td>String</td>
+                    <td>Propedia v1</td>
+                  </tr>
+                  <tr>
+                    <td>41</td>
+                    <td><code>interface-cluster</code></td>
+                    <td>Cluster of structures with a similar interface.</td>
+                    <td>String</td>
+                    <td>Propedia v1</td>
+                  </tr>
+                  <tr>
+                    <td>42</td>
+                    <td><code>is_leader</code></td>
+                    <td><em>yes</em> when the complex is the representative of its sequence cluster.</td>
+                    <td>String</td>
+                    <td>Propedia 26</td>
+                  </tr>
+                  <tr>
+                    <td>43</td>
+                    <td><code>leader_id</code></td>
+                    <td>Identifier of the representative of the cluster the complex belongs to.</td>
+                    <td>String</td>
+                    <td>Propedia 26</td>
+                  </tr>
+                  <tr>
+                    <td>44</td>
+                    <td><code>organism</code></td>
+                    <td>Source organism of the structure.</td>
+                    <td>String</td>
+                    <td>PDB</td>
+                  </tr>
+                  <tr>
+                    <td>45</td>
+                    <td><code>peptide_AliphaticIndex</code></td>
+                    <td>Relative volume of the aliphatic side chains of the peptide.</td>
+                    <td>Float</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>46</td>
+                    <td><code>peptide_ExtCoeff_Disulfide</code></td>
+                    <td>Extinction coefficient of the peptide (M&#8315;&sup1; cm&#8315;&sup1;) with cysteines paired.</td>
+                    <td>Int</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>47</td>
+                    <td><code>peptide_ExtCoeff_NoDisulfide</code></td>
+                    <td>Extinction coefficient of the peptide (M&#8315;&sup1; cm&#8315;&sup1;) with cysteines reduced.</td>
+                    <td>Int</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>48</td>
+                    <td><code>peptide_Formula</code></td>
+                    <td>Atomic formula of the peptide.</td>
+                    <td>String</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>49</td>
+                    <td><code>peptide_GRAVY</code></td>
+                    <td>Average hydropathy of the peptide (Kyte-Doolittle); positive is hydrophobic.</td>
+                    <td>Float</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>50</td>
+                    <td><code>peptide_HydrophobicPercent</code></td>
+                    <td>Percentage of hydrophobic residues in the peptide.</td>
+                    <td>Float</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>51</td>
+                    <td><code>peptide_InstabilityIndex</code></td>
+                    <td>Estimated <em>in vitro</em> instability of the peptide; above 40 is unstable.</td>
+                    <td>Float</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>52</td>
+                    <td><code>peptide_MW</code></td>
+                    <td>Molecular weight of the peptide (Da).</td>
+                    <td>Float</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>53</td>
+                    <td><code>peptide_NegativeResidues</code></td>
+                    <td>Number of Asp and Glu residues in the peptide.</td>
+                    <td>Int</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>54</td>
+                    <td><code>peptide_PositiveResidues</code></td>
+                    <td>Number of Lys, Arg and His residues in the peptide.</td>
+                    <td>Int</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>55</td>
+                    <td><code>peptide_TotalAtoms</code></td>
+                    <td>Number of atoms in the peptide.</td>
+                    <td>Int</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>56</td>
+                    <td><code>peptide_pI</code></td>
+                    <td>Isoelectric point of the peptide.</td>
+                    <td>Float</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>57</td>
+                    <td><code>protein_AliphaticIndex</code></td>
+                    <td>Relative volume of the aliphatic side chains of the protein.</td>
+                    <td>Float</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>58</td>
+                    <td><code>protein_ExtCoeff_Disulfide</code></td>
+                    <td>Extinction coefficient of the protein (M&#8315;&sup1; cm&#8315;&sup1;) with cysteines paired.</td>
+                    <td>Int</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>59</td>
+                    <td><code>protein_ExtCoeff_NoDisulfide</code></td>
+                    <td>Extinction coefficient of the protein (M&#8315;&sup1; cm&#8315;&sup1;) with cysteines reduced.</td>
+                    <td>Int</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>60</td>
+                    <td><code>protein_Formula</code></td>
+                    <td>Atomic formula of the protein.</td>
+                    <td>String</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>61</td>
+                    <td><code>protein_GRAVY</code></td>
+                    <td>Average hydropathy of the protein (Kyte-Doolittle); positive is hydrophobic.</td>
+                    <td>Float</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>62</td>
+                    <td><code>protein_HydrophobicPercent</code></td>
+                    <td>Percentage of hydrophobic residues in the protein.</td>
+                    <td>Float</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>63</td>
+                    <td><code>protein_InstabilityIndex</code></td>
+                    <td>Estimated <em>in vitro</em> instability of the protein; above 40 is unstable.</td>
+                    <td>Float</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>64</td>
+                    <td><code>protein_MW</code></td>
+                    <td>Molecular weight of the protein (Da).</td>
+                    <td>Float</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>65</td>
+                    <td><code>protein_NegativeResidues</code></td>
+                    <td>Number of Asp and Glu residues in the protein.</td>
+                    <td>Int</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>66</td>
+                    <td><code>protein_PositiveResidues</code></td>
+                    <td>Number of Lys, Arg and His residues in the protein.</td>
+                    <td>Int</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>67</td>
+                    <td><code>protein_TotalAtoms</code></td>
+                    <td>Number of atoms in the protein.</td>
+                    <td>Int</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>68</td>
+                    <td><code>protein_pI</code></td>
+                    <td>Isoelectric point of the protein.</td>
+                    <td>Float</td>
+                    <td>ProtParam</td>
+                  </tr>
+                  <tr>
+                    <td>69</td>
+                    <td><code>seq100_clusters</code></td>
+                    <td>Identifier of the cluster of peptides with 100% sequence identity.</td>
+                    <td>String</td>
+                    <td>Propedia 26</td>
+                  </tr>
+                  <tr>
+                    <td>70</td>
+                    <td><code>sequence-cluster</code></td>
+                    <td>Cluster of structures whose sequences have high identity.</td>
+                    <td>String</td>
+                    <td>Propedia v1</td>
+                  </tr>
+                  <tr>
+                    <td>71</td>
+                    <td><code>PISA_status</code></td>
+                    <td><em>ok</em> when PISA analysed the interface; otherwise the reason it did not.</td>
+                    <td>String</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>72</td>
+                    <td><code>PISA_chain_1</code></td>
+                    <td>Chain PISA treated as the first partner (the peptide).</td>
+                    <td>String (1)</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>73</td>
+                    <td><code>PISA_chain_2</code></td>
+                    <td>Chain PISA treated as the second partner (the protein).</td>
+                    <td>String (1)</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>74</td>
+                    <td><code>PISA_area</code></td>
+                    <td>Interface area, one face (&Aring;&sup2;).</td>
+                    <td>Int</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>75</td>
+                    <td><code>PISA_solv_en</code></td>
+                    <td>Solvation energy gain &Delta;iG of the interface (kcal/mol). Predicted.</td>
+                    <td>Float</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>76</td>
+                    <td><code>PISA_pvalue</code></td>
+                    <td>Significance of &Delta;iG; below 0.5 the interface is more hydrophobic than by chance.</td>
+                    <td>Float</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>77</td>
+                    <td><code>PISA_n_hbonds</code></td>
+                    <td>Hydrogen bonds across the interface.</td>
+                    <td>Int</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>78</td>
+                    <td><code>PISA_n_saltbridges</code></td>
+                    <td>Salt bridges across the interface.</td>
+                    <td>Int</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>79</td>
+                    <td><code>PISA_nres_1</code></td>
+                    <td>Peptide residues that take part in the interface.</td>
+                    <td>Int</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>80</td>
+                    <td><code>PISA_natoms_1</code></td>
+                    <td>Peptide atoms that take part in the interface.</td>
+                    <td>Int</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>81</td>
+                    <td><code>PISA_area_1</code></td>
+                    <td>Peptide area buried at the interface (&Aring;&sup2;).</td>
+                    <td>Int</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>82</td>
+                    <td><code>PISA_solv_en_1</code></td>
+                    <td>Contribution of the peptide to &Delta;iG (kcal/mol). Predicted.</td>
+                    <td>Float</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>83</td>
+                    <td><code>PISA_nres_2</code></td>
+                    <td>Protein residues that take part in the interface.</td>
+                    <td>Int</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>84</td>
+                    <td><code>PISA_natoms_2</code></td>
+                    <td>Protein atoms that take part in the interface.</td>
+                    <td>Int</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>85</td>
+                    <td><code>PISA_area_2</code></td>
+                    <td>Protein area buried at the interface (&Aring;&sup2;).</td>
+                    <td>Int</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>86</td>
+                    <td><code>PISA_solv_en_2</code></td>
+                    <td>Contribution of the protein to &Delta;iG (kcal/mol). Predicted.</td>
+                    <td>Float</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>87</td>
+                    <td><code>PISA_diss_energy</code></td>
+                    <td>Dissociation free energy &Delta;G<sub>diss</sub> (kcal/mol); positive means a stable complex. Predicted.</td>
+                    <td>Float</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>88</td>
+                    <td><code>PISA_entropy</code></td>
+                    <td>Entropic cost of the association T&Delta;S (kcal/mol). Predicted.</td>
+                    <td>Float</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>89</td>
+                    <td><code>PISA_int_energy</code></td>
+                    <td>&Delta;iG summed over every interface of the structure (kcal/mol). Predicted.</td>
+                    <td>Float</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>90</td>
+                    <td><code>PISA_asa</code></td>
+                    <td>Accessible surface area of the complex (&Aring;&sup2;).</td>
+                    <td>Int</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>91</td>
+                    <td><code>PISA_bsa</code></td>
+                    <td>Total area buried by the association, both faces (&Aring;&sup2;).</td>
+                    <td>Int</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>92</td>
+                    <td><code>PISA_diss_area</code></td>
+                    <td>Interface area broken on dissociation (&Aring;&sup2;).</td>
+                    <td>Int</td>
+                    <td>PISA</td>
+                  </tr>
+                  <tr>
+                    <td>93</td>
+                    <td><code>PISA_CSS</code></td>
+                    <td>Complexation Significance Score, 0 to 1; read as the interface evidence.</td>
+                    <td>Float</td>
+                    <td>PISA</td>
                   </tr>
                 </tbody>
               </table>
             </div>
+
+            <p class="small">
+              The multipro dataset is distributed as a separate file with a header of its own (64 columns).
+              It shares the structural, physicochemical, surface, contact and energy columns described
+              above and adds the cluster identifier and the complexes that belong to it, but it does not
+              carry the therapeutic classes, the clustering columns or the interface properties calculated
+              with PISA.
+            </p>
           </section>
 
           <section id="final" class="docs-card">
