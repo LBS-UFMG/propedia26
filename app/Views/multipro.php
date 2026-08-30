@@ -281,28 +281,6 @@ function mp_por_cadeia($valor, $cadeias, $cores, $hex, $fmt = null, $sep = '<br>
             </div>
             <div class="row mt-5">
                 <div class="col-12">
-                    <h4>Surface (calculated using Naccess) <sup><a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="We used naccess to calculate the protein-peptide interaction interface. To more details, see https://www.bioinf.manchester.ac.uk/naccess/nac_intro.html"><i class="bi bi-question-circle-fill opacity-25"></i></a></sup></h4>
-            <ul class="bg-light p-3 rounded small">
-
-                <li class="ms-4"><strong>ASA (complex)<a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ASA: Accessible Surface Area (ASA) is the measure of the entire surface area of the molecule that is exposed and can come into contact with the solvent (usually water; value given in Å²)."><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[57] ?></span></li>
-
-                <li class="ms-4"><strong>ASA (protein) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA (protein): ΔASA_protein represents the surface area that is no longer exposed to the solvent upon complex formation and is calculated by the equation: ΔASA = ASA_unbound - ASA_bound (value given in Å²)."><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[58] ?></span></li>
-
-                <li class="ms-4"><strong>ASA (peptide) <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="ΔASA (peptide): ΔASA_peptide represents the surface area that is no longer exposed to the solvent upon complex formation and is calculated by the equation: ΔASA = ASA_unbound - ASA_bound (value given in Å²)."><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[59] ?></span></li>
-                
-                <li class="ms-4"><strong>BProA <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried protein area (value given in Å²)"><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[60] ?></span></li>
-
-                <li class="ms-4"><strong>BPepA <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried peptide area (value given in Å²)"><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[61] ?></span></li>
-
-                <li class="ms-4"><strong>BPP% <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried Peptide Percentage (%)"><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[62] ?>%</span></li>
-
-                <li class="ms-4"><strong>BSA <a data-bs-toggle="popover" data-bs-title="Help" data-bs-trigger="hover focus" data-bs-content="Buried Surface Area represents the area effectively shared at the binding interface and was calculated according to the expression. It can be calculated using the formula: BSA = (ASA_protein + ASA_peptide − ASA_complex) / 2 (value given in Å²)"><i class="bi bi-question-circle-fill opacity-25"></i></a>: </strong><span><?= (int)$info[63] ?></span></li>
-            </ul>
-                </div>
-                
-            </div>
-            <div class="row mt-5">
-                <div class="col-12">
                     <h2>Clustering classification</h2>
                 </div>
                 <hr>
@@ -1289,9 +1267,8 @@ function mp_por_cadeia($valor, $cadeias, $cores, $hex, $fmt = null, $sep = '<br>
     ?>
     const ifaceContatos = <?= json_encode($contatos_interface) ?>;
 
-    // Residuos da interface por cadeia: os que aparecem nos contatos entre as
-    // duas cadeias, mais a lista da interface calculada pelo Naccess (proteina),
-    // que e a mesma exibida nos botoes de "Interface residues".
+    // Residuos da interface por cadeia: os que aparecem nos contatos de cada
+    // cadeia de proteina com o peptideo.
     const ifaceResiduos = (function() {
         var porCadeia = {};
 

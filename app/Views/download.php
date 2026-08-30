@@ -54,9 +54,9 @@
             <tr>
                <td>Propedia26 Multipro - descriptions</td>
                <td class="text-end">19,759</td>
-               <td>CSV</td>
-               <td>35MB</td>
-               <td><a target="_blank" href="<?=base_url('/data/multipro_v4.csv')?>">multipro.csv</a></td>
+               <td>CSV (v5)</td>
+               <td>33MB</td>
+               <td><a target="_blank" href="<?=base_url('/data/multipro_v5.csv')?>">multipro.csv</a></td>
             </tr>  
 
             <tr>
