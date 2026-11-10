@@ -7,7 +7,7 @@ class Blast extends BaseController
     public function index()
     {
         if (!isset($_POST["sequence"]) || !isset($_POST["search"])) {
-            redirect("/explore");
+            return redirect()->to("/explore");
         }
 
         $data = array();
@@ -32,7 +32,7 @@ class Blast extends BaseController
 
         // dd('blastp -query ../writable/blast/tmp.fasta -subject data/' . $where . '.fasta -outfmt="6 qseqid sseqid pident score slen sstart send qlen qstart qend qframe positive" -max_target_seqs 50' . $tamanho);
 
-        $out = explode("\n", $output);
+        $out = explode("\n", (string) $output);
         $i = 0;
         $data['result'] = array();
 

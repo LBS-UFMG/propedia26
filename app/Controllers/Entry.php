@@ -34,7 +34,7 @@ class Entry extends BaseController
         
         // Abra o arquivo para leitura
         if (($handle = fopen($arquivo, "r")) !== false) {
-            while (($linha = fgetcsv($handle, 0, ";")) !== false) {
+            while (($linha = fgetcsv($handle, 0, ';', '"', '\\')) !== false) {
                 // Verifica se a primeira coluna é igual ao ID
                 if ($linha[0] === $id) {
                     // Exibe a linha encontrada
@@ -145,7 +145,7 @@ class Entry extends BaseController
         
         // Abra o arquivo para leitura
         if (($handle = fopen($arquivo, "r")) !== false) {
-            while (($linha = fgetcsv($handle, 0, ";")) !== false) {
+            while (($linha = fgetcsv($handle, 0, ';', '"', '\\')) !== false) {
                 // Verifica se a primeira coluna é igual ao ID
                 if ($linha[0] === $id) {
                     // Exibe a linha encontrada

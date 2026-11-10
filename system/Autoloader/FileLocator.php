@@ -16,8 +16,6 @@ namespace CodeIgniter\Autoloader;
 /**
  * Allows loading non-class files in a namespaced manner.
  * Works with Helpers, Views, etc.
- *
- * @see \CodeIgniter\Autoloader\FileLocatorTest
  */
 class FileLocator implements FileLocatorInterface
 {
@@ -330,19 +328,7 @@ class FileLocator implements FileLocatorInterface
         helper('filesystem');
 
         foreach ($this->getNamespaces() as $namespace) {
-            $fullPath     = $namespace['path'] . $path;
-            $resolvedPath = realpath($fullPath);
-            $fullPath     = $resolvedPath !== false ? $resolvedPath : $fullPath;
-
-            if (! is_dir($fullPath)) {
-                continue;
-            }
-
-            $tempFiles = get_filenames($fullPath, true, false, false);
-
-            if ($tempFiles !== []) {
-                $files = array_merge($files, $tempFiles);
-            }
+            $files = array_merge($files, get_filenames($namespace['path'] . $path, true, false, false));
         }
 
         return $files;

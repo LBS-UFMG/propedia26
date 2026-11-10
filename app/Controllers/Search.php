@@ -18,7 +18,7 @@ class Search extends BaseController
         if (!isset($_POST["search_binding_sites"]) || !isset($_POST["chain"])
             || (!isset($_POST["pdb"]) && !$tem_upload)
             || (!isset($_POST["residues"]) && !$usa_referencia)) {
-            redirect("/explore");
+            return redirect()->to("/explore");
         }
 
         # Escolheu um arquivo mas ele nao chegou inteiro (tamanho acima do limite
@@ -156,7 +156,7 @@ class Search extends BaseController
             $data['pdb'],
             $data['chain'],
             $data['residues']
-        ], ';');
+        ], ';', '"', '\\');
         fclose($fp);
 
         // PROBIS
@@ -194,7 +194,7 @@ class Search extends BaseController
 
         $dados = [];
         if (($fp = fopen($fileinfo, 'r')) !== false) {
-            $dados = fgetcsv($fp, 0, ';');
+            $dados = fgetcsv($fp, 0, ';', '"', '\\');
             fclose($fp);
         }
 
@@ -217,9 +217,9 @@ class Search extends BaseController
         $result = [];
         if (file_exists($resultcsv) && ($fp = fopen($resultcsv, 'r')) !== false) {
             // Lê o cabeçalho (primeira linha)
-            $cabecalho = fgetcsv($fp, 0, ';');
+            $cabecalho = fgetcsv($fp, 0, ';', '"', '\\');
             // Lê cada linha e monta array associativo
-            while (($linha = fgetcsv($fp, 0, ';')) !== false) {
+            while (($linha = fgetcsv($fp, 0, ';', '"', '\\')) !== false) {
                 if ($cabecalho !== false && count($cabecalho) === count($linha)) {
                     $result[] = array_combine($cabecalho, $linha);
                 }

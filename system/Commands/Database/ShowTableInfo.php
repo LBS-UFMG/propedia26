@@ -22,8 +22,6 @@ use Config\Database;
 
 /**
  * Get table data if it exists in the database.
- *
- * @see \CodeIgniter\Commands\Database\ShowTableInfoTest
  */
 class ShowTableInfo extends BaseCommand
 {
@@ -241,9 +239,11 @@ class ShowTableInfo extends BaseCommand
      */
     private function makeTbodyForShowAllTables(array $tables): array
     {
+        $this->tbody = [];
+
         $this->removeDBPrefix();
 
-        foreach ($tables  as $id => $tableName) {
+        foreach ($tables as $id => $tableName) {
             $table = $this->db->protectIdentifiers($tableName);
             $db    = $this->db->query("SELECT * FROM {$table}");
 

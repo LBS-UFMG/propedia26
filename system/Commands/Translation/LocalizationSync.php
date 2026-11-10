@@ -24,9 +24,6 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
 
-/**
- * @see \CodeIgniter\Commands\Translation\LocalizationSyncTest
- */
 class LocalizationSync extends BaseCommand
 {
     protected $group       = 'Translation';
@@ -131,9 +128,7 @@ class LocalizationSync extends BaseCommand
             ),
         );
 
-        /**
-         * @var array<non-empty-string, SplFileInfo> $files
-         */
+        /** @var array<non-empty-string, SplFileInfo> $files */
         $files = iterator_to_array($iterator, true);
         ksort($files);
 

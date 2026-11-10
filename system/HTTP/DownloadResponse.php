@@ -20,8 +20,6 @@ use Config\Mimes;
 
 /**
  * HTTP response when a download is requested.
- *
- * @see \CodeIgniter\HTTP\DownloadResponseTest
  */
 class DownloadResponse extends Response
 {
@@ -171,9 +169,9 @@ class DownloadResponse extends Response
          *
          * Reference: http://digiblog.de/2011/04/19/android-and-the-download-file-headers/
          */
-        // @todo: depend super global
-        if (count($x) !== 1 && isset($_SERVER['HTTP_USER_AGENT'])
-                && preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT'])) {
+        $userAgent = service('superglobals')->server('HTTP_USER_AGENT');
+        if (count($x) !== 1 && $userAgent !== null
+                && preg_match('/Android\s(1|2\.[01])/', $userAgent)) {
             $x[count($x) - 1] = strtoupper($extension);
             $filename         = implode('.', $x);
         }
@@ -216,7 +214,7 @@ class DownloadResponse extends Response
      * Sets the Content Type header for this response with the mime type
      * and, optionally, the charset.
      *
-     * @return ResponseInterface
+     * @return $this
      */
     public function setContentType(string $mime, string $charset = 'UTF-8')
     {
@@ -286,7 +284,7 @@ class DownloadResponse extends Response
     /**
      * output download file text.
      *
-     * @return DownloadResponse
+     * @return $this
      *
      * @throws DownloadException
      */
@@ -306,7 +304,7 @@ class DownloadResponse extends Response
     /**
      * output download text by file.
      *
-     * @return DownloadResponse
+     * @return $this
      */
     private function sendBodyByFilePath()
     {
@@ -324,7 +322,7 @@ class DownloadResponse extends Response
     /**
      * output download text by binary
      *
-     * @return DownloadResponse
+     * @return $this
      */
     private function sendBodyByBinary()
     {

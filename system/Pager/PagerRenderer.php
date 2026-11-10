@@ -21,17 +21,18 @@ use CodeIgniter\HTTP\URI;
  * This class is passed to the view that describes the pagination,
  * and is used to get the link information and provide utility
  * methods needed to work with pagination.
- *
- * @see \CodeIgniter\Pager\PagerRendererTest
  */
 class PagerRenderer
 {
     /**
      * First page number in the set of links to be displayed.
      *
+     * `first` and `last` will be updated by `setSurroundCount()`.
+     * You must call `setSurroundCount()` after instantiation.
+     *
      * @var int
      */
-    protected $first;
+    protected $first = 1;
 
     /**
      * Last page number in the set of links to be displayed.
@@ -98,14 +99,20 @@ class PagerRenderer
     protected ?int $perPageEnd = null;
 
     /**
-     * Constructor.
+     * @param array{
+     *   uri: URI,
+     *   pageCount: int,
+     *   currentPage: int,
+     *   total: int|null,
+     *   segment?: int,
+     *   pageSelector?: string,
+     *   perPage?: int|null,
+     *   ...<string, mixed>
+     * } $details
      */
     public function __construct(array $details)
     {
-        // `first` and `last` will be updated by `setSurroundCount()`.
-        // You must call `setSurroundCount()` after instantiation.
-        $this->first = 1;
-        $this->last  = $details['pageCount'];
+        $this->last = $details['pageCount'];
 
         $this->current      = $details['currentPage'];
         $this->total        = $details['total'];

@@ -15,15 +15,13 @@ namespace CodeIgniter\Commands\Utilities\Routes;
 
 /**
  * Collects data for auto route listing.
- *
- * @see \CodeIgniter\Commands\Utilities\Routes\AutoRouteCollectorTest
  */
-final class AutoRouteCollector
+final readonly class AutoRouteCollector
 {
     /**
      * @param string $namespace namespace to search
      */
-    public function __construct(private readonly string $namespace, private readonly string $defaultController, private readonly string $defaultMethod)
+    public function __construct(private string $namespace, private string $defaultController, private string $defaultMethod)
     {
     }
 

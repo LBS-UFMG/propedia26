@@ -13,18 +13,15 @@ declare(strict_types=1);
 
 namespace CodeIgniter\Validation;
 
-/**
- * @see \CodeIgniter\Validation\DotArrayFilterTest
- */
 final class DotArrayFilter
 {
     /**
      * Creates a new array with only the elements specified in dot array syntax.
      *
-     * @param array $indexes The dot array syntax pattern to use for filtering.
-     * @param array $array   The array to filter.
+     * @param list<string>            $indexes The dot array syntax pattern to use for filtering.
+     * @param array<array-key, mixed> $array   The array to filter.
      *
-     * @return array The filtered array.
+     * @return array<array-key, mixed> The filtered array.
      */
     public static function run(array $indexes, array $array): array
     {
@@ -47,10 +44,10 @@ final class DotArrayFilter
     /**
      * Used by `run()` to recursively filter the array with wildcards.
      *
-     * @param array $indexes The dot array syntax pattern to use for filtering.
-     * @param array $array   The array to filter.
+     * @param list<string>            $indexes The dot array syntax pattern to use for filtering.
+     * @param array<array-key, mixed> $array   The array to filter.
      *
-     * @return array The filtered array.
+     * @return array<array-key, mixed> The filtered array.
      */
     private static function filter(array $indexes, array $array): array
     {
@@ -62,8 +59,9 @@ final class DotArrayFilter
         // Get the current index
         $currentIndex = array_shift($indexes);
 
-        // If the current index doesn't exist and is not a wildcard, return an empty array
-        if (! isset($array[$currentIndex]) && $currentIndex !== '*') {
+        // If the current index doesn't exist and is not a wildcard, return an empty array.
+        // Use array_key_exists() so explicit null values are preserved.
+        if ($currentIndex !== '*' && ! array_key_exists($currentIndex, $array)) {
             return [];
         }
 
@@ -88,9 +86,9 @@ final class DotArrayFilter
             return $result;
         }
 
-        // If this is the last index, return the value
+        // If this is the last index, return the value as-is, including null.
         if ($indexes === []) {
-            return [$currentIndex => $array[$currentIndex] ?? []];
+            return [$currentIndex => $array[$currentIndex]];
         }
 
         // If the current value is an array, recursively filter it

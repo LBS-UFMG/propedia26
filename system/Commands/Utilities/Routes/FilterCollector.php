@@ -21,10 +21,8 @@ use Config\Filters as FiltersConfig;
 
 /**
  * Collects filters for a route.
- *
- * @see \CodeIgniter\Commands\Utilities\Routes\FilterCollectorTest
  */
-final class FilterCollector
+final readonly class FilterCollector
 {
     public function __construct(
         /**
@@ -32,7 +30,7 @@ final class FilterCollector
          *
          * If set to true, route filters are not found.
          */
-        private readonly bool $resetRoutes = false,
+        private bool $resetRoutes = false,
     ) {
     }
 
